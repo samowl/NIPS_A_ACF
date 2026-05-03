@@ -14,58 +14,72 @@
     \item[] Justification: The main paper gives high-level limitations in Section~\ref{sec:discussion}, and the appendix expands them with scoped protocol notes: frozen/light-adaptation only; unbundled LoRA and RIGA full-fine-tuning mechanism probes retained only as transparency notes; released CNN random-init and small ACDC full-fine-tuning provenance traces are diagnostic, not primary evidence; UNet-with-skip and task-level nnU-Net v2 complements reported but not fully case-identical dense 3D FM/full-pipeline baselines for every primary row; the unbundled 3D architecture pilot is appendix scope context only; 2D axial slices at $224{\times}224$ for the primary FM audit; MedSAM used only as a frozen vision-encoder probe; broader cross-scanner / cross-demographic shifts remain untested; clinical Dice thresholds are operational conventions and many lift thresholds are support-limited.
 
 \item {\bf Theory assumptions and proofs}
+    \item[] Question: For each theoretical result, does the paper provide the full set of assumptions and a complete (and correct) proof?
     \item[] Answer: \answerNA{}
     \item[] Justification: The paper is empirical and benchmark-oriented; it does not include theoretical results or proofs. Section~\ref{sec:formal} introduces estimand notation but the $\bar{r}$, $\Delta$, and lift statistics are descriptive.
 
 \item {\bf Experimental result reproducibility}
+    \item[] Question: Does the paper fully disclose all the information needed to reproduce the main experimental results of the paper to the extent that it affects the main claims and/or conclusions of the paper (regardless of whether the code and data are provided or not)?
     \item[] Answer: \answerYes{}
     \item[] Justification: Section~\ref{sec:design} and Appendix~\ref{sec:adaptation} specify the public FM checkpoints, decoder architecture ($1{\times}1$-conv default plus stated sweeps), training protocol (Adam $10^{-3}$, 30 epochs for the frozen-head primary runs, batch 16, BCE for the binary primary rows), seed set ($\{42,43,44,45\}$ with $\sigma$-seeded determinism), and the actual primary split protocols: Kvasir 880/120, RIGA train = BinRushed+MESSIDOR with Magrabia (Magrabi Eye Center) source held out ($n{=}95$), ACDC public patients 001--100 with patient-level fold-0 LV-positive slices ($n{=}361$), and the BraTS 2024 2D FLAIR \texttt{seg>0} foreground derivative: per held-out subject, up to the top-10 axial slices by foreground area with at least 64 positive pixels, subject-level 80/20 split using NumPy seed 42 ($n{=}3228$). This BraTS target includes the GLI resection-cavity label and is not the official 3D BraTS WT challenge target. The supplementary artifact releases primary-task per-case Dice JSONs, merged summaries, selected aggregate diagnostic JSONs, and code; full raw data, full prediction caches, raw held-out prediction arrays, and fuller split manifests are outside the supplementary artifact.
 
 \item {\bf Open access to data and code}
+    \item[] Question: Does the paper provide open access to the data and code, with sufficient instructions to faithfully reproduce the main experimental results, as described in supplemental material?
     \item[] Answer: \answerYes{}
     \item[] Justification: All source datasets are public or access-controlled research resources from their upstream providers, subject to their licences, research-use terms, or DUAs (RIGA+ via Deep Blue; ACDC via the ACDC challenge; Kvasir-SEG via Simula; BraTS 2024 adult glioma via Synapse; CVC-ClinicDB via an operational HuggingFace mirror for a no-raw-redistribution OOD diagnostic). All backbones are publicly available or documented as gated research checkpoints. The supplementary artifact releases benchmark code, estimator implementations, primary-task per-case Dice traces, merged summaries, and selected appendix result JSONs; authored code and metadata use the bundle licence, while derived scalar traces remain subject to upstream dataset/model terms. Raw medical images, full prediction caches, some held-out-task artifacts, and complete split manifests are not redistributed in the supplementary artifact.
 
 \item {\bf Experimental setting/details}
+    \item[] Question: Does the paper specify all the training and test details (e.g., data splits, hyperparameters, how they were chosen, type of optimizer) necessary to understand the results?
     \item[] Answer: \answerYes{}
     \item[] Justification: Section~\ref{sec:formal} gives the formal estimands (within-/cross-family $\bar{r}$, spatial $\Delta_{\mathrm{pix}}$, threshold lift $L$) and the symmetric $4{\times}4$ seed-combo averaging rule; Section~\ref{sec:design} gives the datasets (with patient-level splits), foundation-model list, and protocol (image size, encoder-specific upstream normalisation, decoder, optimiser, loss, epochs, batch, seed control).
 
 \item {\bf Experiment statistical significance}
+    \item[] Question: Does the paper report error bars suitably and correctly defined or other appropriate information about the statistical significance of the experiments?
     \item[] Answer: \answerYes{}
     \item[] Justification: Table~\ref{tab:main} reports paired case-level and hierarchical family/seed bootstrap 95\% CIs ($B{=}2000$). The BraTS foreground derivative is analysed at the slice level with an explicit within-subject dependence caveat, Appendix~\ref{app:subject-cluster} reports subject-level sensitivity checks, and Appendix~\ref{app:brats-ablations} explains why sparse-class NCR filtering diagnostics are not used as numeric evidence.
 
 \item {\bf Experiments compute resources}
+    \item[] Question: For each experiment, does the paper provide sufficient information on the computer resources (type of compute workers, memory, time of execution) needed to reproduce the experiments?
     \item[] Answer: \answerYes{}
     \item[] Justification: Experiments were run on NVIDIA A100-80GB, A6000, and L40S GPUs across a shared compute cluster. Feature extraction per FM per domain ranges from minutes for CNN backbones to longer ViT/BraTS jobs; cached 1$\times$1-head training per seed is lightweight. Exact wall-clock varies by completed matrix; the release reports per-job elapsed times in result JSONs where recorded rather than claiming a single exact compute total.
 
 \item {\bf Code of ethics}
+    \item[] Question: Does the research conducted in the paper conform, in every respect, with the NeurIPS Code of Ethics \url{https://neurips.cc/public/EthicsGuidelines}?
     \item[] Answer: \answerYes{}
     \item[] Justification: The research uses only de-identified public or access-controlled research medical imaging datasets (RIGA, ACDC, Kvasir-SEG, BraTS 2024) under their original research licences, terms, or DUAs. No additional patient data are collected. The paper audits retrospective failure-correlation properties of benchmark segmentation pipelines and does not propose new clinical tools.
 
 \item {\bf Broader impacts}
+    \item[] Question: Does the paper discuss both potential positive societal impacts and negative societal impacts of the work performed?
     \item[] Answer: \answerYes{}
     \item[] Justification: Section~\ref{sec:discussion} discusses deployment implications: shared-pipeline model pools (same FM, same architecture family, same recipe) in frozen/light-adaptation medical AI deployments may be over-estimated as providing independent safety margins. The paper quantifies a retrospective evaluation assumption (independence among FM-pool members) and does not measure clinician decisions, diagnoses, or patient outcomes. Backbone-family diversification is observed to have lower dependence in the tested comparisons, not to be a complete clinical mitigation.
 
 \item {\bf Safeguards}
+    \item[] Question: Does the paper describe safeguards that have been put in place for responsible release of data or models that have a high risk for misuse (e.g., pre-trained language models, image generators, or scraped datasets)?
     \item[] Answer: \answerYes{}
     \item[] Justification: The supplementary artifact does not release raw medical images, voxel labels, full prediction caches, upstream checkpoints, trained clinical services, or patient-facing models. Released artifacts are derived per-case scalar traces, aggregate summaries, metadata, hashes, and scorer code under upstream dataset/model constraints. The paper states that the audit is not a clinical safety guarantee, does not support re-identification or patient profiling, and should not be used as a standalone model-selection or deployment rule.
 
 \item {\bf Licenses for existing assets}
+    \item[] Question: Are the creators or original owners of assets (e.g., code, data, models), used in the paper, properly credited and are the license and terms of use explicitly mentioned and properly respected?
     \item[] Answer: \answerYes{}
     \item[] Justification: RIGA+ (CC BY-NC 4.0 via Deep Blue; non-commercial use only; raw images and masks not redistributed), ACDC (research licence via challenge website), Kvasir-SEG (research/educational use via Simula; raw images not redistributed), BraTS 2024 (research licence/DUA via Synapse; no raw images or voxel-level labels redistributed), and CVC-ClinicDB used only through a no-raw-redistribution OOD diagnostic; we do not redistribute raw CVC images or masks, and any future raw redistribution would require checking the original CVC terms. Backbones/checkpoints: DINOv2 (Apache-2.0), MAE ViT-B/16 (CC BY-NC 4.0), DeiT-B/16 (Apache-2.0), OpenAI CLIP ViT-B/16 and ViT-L/14 weights (OpenAI CLIP license; open\_clip code MIT), BiomedCLIP checkpoint under its model-card terms rather than the open\_clip library license, ConvNeXt-T/EfficientNet-B0/ResNet-50/18 loaded via torchvision weights/code under PyTorch/torchvision terms, RETFound checkpoint (gated; CC BY-NC 4.0/research-use), MedSAM/SAM (Apache-2.0). No upstream checkpoints are redistributed. \textbf{BraTS redistribution compliance:} in the supplementary artifact we release only derived scalar traces and aggregate statistics needed to reproduce the estimators; we do \emph{not} redistribute raw BraTS images, raw voxel labels, or full prediction caches. All assets are cited.
 
 \item {\bf New assets}
+    \item[] Question: Are new assets introduced in the paper well documented and is the documentation provided alongside the assets?
     \item[] Answer: \answerYes{}
     \item[] Justification: The paper releases (i)~a benchmark protocol (estimands + symmetric multi-seed + bootstrap estimators); (ii)~primary-task per-case Dice JSONs and merged summary JSONs for the released rows; (iii)~selected appendix/ablation result JSONs and reproduction scripts. Raw prediction masks/caches and full split manifests are not part of the supplementary artifact because upstream redistribution rights and artifact size constraints vary across datasets.
 
 \item {\bf Crowdsourcing and research with human subjects}
+    \item[] Question: For crowdsourcing experiments and research with human subjects, does the paper include the full text of instructions given to participants and screenshots, if applicable, as well as details about compensation (if any)?
     \item[] Answer: \answerNA{}
     \item[] Justification: No crowdsourcing; no new human-subjects research. We use existing public or access-controlled research datasets whose upstream governance, approvals, or access terms are handled by the dataset providers.
 
 \item {\bf Institutional review board (IRB) approvals or equivalent for research with human subjects}
+    \item[] Question: Does the paper describe potential risks incurred by study participants, whether such risks were disclosed to the subjects, and whether Institutional Review Board (IRB) approvals (or an equivalent approval/review based on the requirements of your country or institution) were obtained?
     \item[] Answer: \answerNA{}
     \item[] Justification: No new human-subjects data were collected. Upstream datasets carry their own governance, approvals, or access terms (RIGA, ACDC, Kvasir-SEG, BraTS 2024).
 
 \item {\bf Declaration of LLM usage}
+    \item[] Question: Does the paper describe the usage of LLMs if it is an important, original, or non-standard component of the core methods in this research? Note that if the LLM is used only for writing, editing, or formatting purposes and does \emph{not} impact the core methodology, scientific rigor, or originality of the research, declaration is not required.
     \item[] Answer: \answerYes{}
     \item[] Justification: LLMs were used as editorial and programming assistants during manuscript and artifact preparation. They are not a component of the benchmark methodology, estimator, training pipeline, or evaluation protocol: all reported numbers come from the released scripts, logs, and JSON artifacts, and all manuscript text, code, citations, and claims were reviewed and approved by the authors.
 
