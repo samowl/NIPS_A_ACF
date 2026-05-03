@@ -50,6 +50,7 @@ Our primary contribution is a reusable E\&D audit protocol and released primary 
 
 \section{Related work}
 \label{sec:related}
+\vspace{-1.15em}
 
 \textbf{Relation to prior work and scope of novelty.} Our risk framing follows algorithmic-monoculture and foundation-model ecosystem work \citep{kleinberg2021monoculture,bommasani2021foundation,bommasani2022picking,toups2023ecosystem}. The correlation gap we measure has modelling antecedents: trial-by-trial error consistency asks whether systems fail on the same inputs \citep{geirhos2020errorconsistency}, error correlations arise when deployed models share algorithms, datasets, or foundation models \citep{li2025quantifying}, shared training trajectories and weight-space basins can constrain checkpoint diversity \citep{fort2019loss,wortsman2022soups}, transfer/representation work studies what is reused across pretrained models \citep{neyshabur2020what,gontijolopes2022norep}, pretrained-model ensemble work treats pretraining as a possible diversity source \citep{deepensemble_transfer2020}, same-architecture models can align strongly across initializations \citep{kornblith2019similarity}, and predictive-diversity pathologies can limit deep-ensemble gains \citep{abe2023pathologies}. LLM monoculture audits \citep{jiang2025hivemind,kim2025correlated,gorecki2025monoculture,goel2025greatmodels} and null-model critiques \citep{subjectivity2026} motivate our estimator choices. Pathology-FM and precision-oncology studies provide adjacent evidence about center robustness, benchmark behavior, and complementary domain-specialised features \citep{dejong2025pathologyrobust,campanella2025clinical,luo2025elf,neidlinger2025benchmarking}. Our contribution is not the abstract claim that correlated errors exist; rather, we provide a released medical-segmentation audit of frozen-feature pretrained-encoder pools that distinguishes primary from diagnostic evidence and reports where same-checkpoint/recipe, same-architecture-family, and broader cross-family correlations appear or contract under a shared protocol.
 
@@ -277,6 +278,38 @@ released artifact files, and the metadata files document the released trace/code
 artifact rather than a standalone dataset release. These mechanics do not make
 the study fully reproducible from raw data; rather, they make the released
 evidence auditable at the level at which the claims are made.
+
+\textbf{Audit contract.} The released trace level is also the unit at which the
+paper's claims should be checked. The primary claim is falsified or confirmed by
+recomputing the case-aligned same/cross bundle correlations, the functional
+pools, and the reported intervals from the listed per-case Dice files. Numbers
+that are not supported at that level are explicitly labelled diagnostic or
+scope-boundary evidence instead of being promoted to Table~\ref{tab:main}.
+This convention makes the benchmark useful even when upstream data-use
+agreements prevent redistribution of raw scans, masks, checkpoints, or dense
+prediction caches.
+
+\textbf{What future audits should report.} The practical reporting unit is not
+only mean Dice, but the dependence structure induced by the pool construction:
+which bundles are counted as same, which pairs are counted as cross, which
+traces survive the functional floor, and whether the same-vs-cross gap remains
+under subject aggregation or item-difficulty residualisation. A future pool can
+therefore reuse this protocol without adopting our exact encoders: report the
+case alignment, pair taxonomy, marginal quality floor, uncertainty intervals,
+and remaining non-released components. The resulting number is not a universal
+threshold for safe deployment; it is a compact audit readout of whether extra
+decoder seeds or near-duplicate pretrained bundles are being counted as
+independent failure coverage.
+
+\textbf{Use with non-released components.} When an audit requires protected raw
+data or unreleased prediction arrays, the artifact still defines a minimum
+reporting standard: mark the row as aggregate-only, state which alignment or
+mask-level objects are unavailable, and avoid using that row as the main support
+for a stronger claim. This is why the paper separates primary evidence,
+diagnostics, and scope boundaries throughout the main text and appendix. The
+separation is conservative, but it makes the negative result actionable: users
+can see which dependence claims survive direct recomputation and which claims
+would require a new, case-identical release.
 
 \newpage
 {\small
