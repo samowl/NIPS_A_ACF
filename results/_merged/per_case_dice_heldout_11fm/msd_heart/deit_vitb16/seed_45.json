@@ -1,0 +1,24 @@
+{
+  "task": "msd_heart",
+  "fm": "deit_vitb16",
+  "seed": 45,
+  "n_test": 4,
+  "test_ids": [
+    "la_014",
+    "la_017",
+    "la_022",
+    "la_023"
+  ],
+  "per_case_dice": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mean_dice": 0.0,
+  "cache_manifest_sha256": "d07f4f624866350d83310a9b7e3482d3463e00b6256ef0a97b7a4d911a6ddcd8",
+  "head_checkpoint_sha256": "a31621854b9c9bec920f369757f9f174716501fceff2a534e335a9524b3512eb",
+  "training_elapsed_s": 9.643744707107544,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

@@ -1,0 +1,47 @@
+{
+  "target": "disc",
+  "n_fms": 8,
+  "n_seeds": 4,
+  "n_test": 224,
+  "n_mono_pairs": 48,
+  "n_diverse_pairs": 448,
+  "dilate_radius": 5,
+  "mono": {
+    "err_dice_uncond": 0.7965719551968985,
+    "err_dice_cond": 0.7965719551968985,
+    "err_jacc": 0.6817873381148358,
+    "fp_dice": 0.7301339338424335,
+    "fn_dice": 0.7416846844457605,
+    "bnd_dice": 0.8209985026953573,
+    "p_both_perfect_E": 0.0
+  },
+  "diverse": {
+    "err_dice_uncond": 0.3157608729318869,
+    "err_dice_cond": 0.3157608729318869,
+    "err_jacc": 0.20091373096511586,
+    "fp_dice": 0.23631207501237986,
+    "fn_dice": 0.2772004840753899,
+    "bnd_dice": 0.3815653439598619,
+    "p_both_perfect_E": 0.0
+  },
+  "gap": {
+    "err_dice_uncond": 0.48081108226501157,
+    "err_dice_cond": 0.48081108226501157,
+    "err_jacc": 0.48087360714971994,
+    "fp_dice": 0.4938218588300537,
+    "fn_dice": 0.46448420037037064,
+    "bnd_dice": 0.43943315873549543
+  },
+  "gap_ci": {
+    "err_dice_uncond": [
+      0.47451303457370597,
+      0.4875697287970315
+    ],
+    "err_dice_uncond_P_leq_0": 0.0,
+    "err_dice_cond": [
+      0.47493812571127864,
+      0.4867829356934043
+    ],
+    "err_dice_cond_P_leq_0": 0.0
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "description": "Aggregate summary for the MedSAM ViT-B image-encoder-only boundary probe. MedSAM is used only as a frozen image encoder with the paper's 1x1 decoder; prompt encoder and mask decoder are discarded. This is not prompt-conditioned MedSAM inference and is not primary evidence.",
+  "family": "MedSAM",
+  "fm": "medsam_vitb16",
+  "n_tasks": 4,
+  "schema_version": "medsam_only_summary_v1",
+  "source_root": "code/results/per_case_dice_medsam_only",
+  "tasks": {
+    "acdc_lv": {
+      "mean_dice_across_seeds": 0.516837,
+      "n_seeds": 4,
+      "seed_dice": {
+        "42": 0.550911,
+        "43": 0.523917,
+        "44": 0.483431,
+        "45": 0.509089
+      },
+      "sd_dice_across_seeds": 0.024429
+    },
+    "kvasir": {
+      "mean_dice_across_seeds": 0.513083,
+      "n_seeds": 4,
+      "seed_dice": {
+        "42": 0.499920,
+        "43": 0.522902,
+        "44": 0.518843,
+        "45": 0.510668
+      },
+      "sd_dice_across_seeds": 0.008785
+    },
+    "riga_cup": {
+      "mean_dice_across_seeds": 0.734298,
+      "n_seeds": 4,
+      "seed_dice": {
+        "42": 0.752557,
+        "43": 0.727142,
+        "44": 0.712702,
+        "45": 0.744791
+      },
+      "sd_dice_across_seeds": 0.015500
+    },
+    "riga_disc": {
+      "mean_dice_across_seeds": 0.908059,
+      "n_seeds": 4,
+      "seed_dice": {
+        "42": 0.914884,
+        "43": 0.909705,
+        "44": 0.902827,
+        "45": 0.904823
+      },
+      "sd_dice_across_seeds": 0.004667
+    }
+  }
+}

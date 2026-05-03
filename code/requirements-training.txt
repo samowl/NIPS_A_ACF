@@ -1,0 +1,10 @@
+-r requirements-review.txt
+pillow>=10
+pyyaml>=6
+nibabel>=5
+torch>=2.2
+torchvision>=0.17
+timm>=0.9
+open_clip_torch==3.3.0
+huggingface_hub>=0.23
+segment-anything

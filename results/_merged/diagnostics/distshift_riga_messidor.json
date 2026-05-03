@@ -1,0 +1,150 @@
+{
+  "gap_shift_ood_minus_id": -0.024113150981687537,
+  "generated_at": "2026-05-02T16:31:53Z",
+  "n_boot": 500,
+  "results_root": "results/_merged",
+  "rows": {
+    "id_reference": {
+      "case_bootstrap_95ci": {
+        "cross_rbar": [
+          0.1974265749076195,
+          0.3688749080411145
+        ],
+        "gap": [
+          0.3005151761236867,
+          0.4628959234053426
+        ],
+        "within_rbar": [
+          0.602933705890053,
+          0.7148394514377358
+        ]
+      },
+      "cross_rbar": 0.2817749578203511,
+      "family_rule": "within = same FM or same broad family (DINOv2-B/S, ResNet-18/50); cross = otherwise",
+      "floor": null,
+      "fms": [
+        "biomedclip",
+        "clip_vitl14",
+        "convnext_tiny",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "resnet18",
+        "resnet50"
+      ],
+      "gap": 0.3773300669734462,
+      "n_cases": 95,
+      "n_cross_pairs": 416,
+      "n_within_pairs": 80,
+      "pool": "fixed 8-bundle x 4-seed",
+      "source_files": [
+        "per_case_dice/riga_cup/biomedclip/seed_42.json",
+        "per_case_dice/riga_cup/biomedclip/seed_43.json",
+        "per_case_dice/riga_cup/biomedclip/seed_44.json",
+        "per_case_dice/riga_cup/biomedclip/seed_45.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_42.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_43.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_44.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_45.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_42.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_43.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_44.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_45.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_42.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_43.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_44.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_45.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_42.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_43.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_44.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_45.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_42.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_43.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_44.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_45.json",
+        "per_case_dice/riga_cup/resnet18/seed_42.json",
+        "per_case_dice/riga_cup/resnet18/seed_43.json",
+        "per_case_dice/riga_cup/resnet18/seed_44.json",
+        "per_case_dice/riga_cup/resnet18/seed_45.json",
+        "per_case_dice/riga_cup/resnet50/seed_42.json",
+        "per_case_dice/riga_cup/resnet50/seed_43.json",
+        "per_case_dice/riga_cup/resnet50/seed_44.json",
+        "per_case_dice/riga_cup/resnet50/seed_45.json"
+      ],
+      "task": "riga_cup",
+      "within_rbar": 0.6591050247937973
+    },
+    "ood_messidor": {
+      "case_bootstrap_95ci": {
+        "cross_rbar": [
+          0.3453155936346099,
+          0.4297789654327634
+        ],
+        "gap": [
+          0.3179400757557322,
+          0.38792375202737867
+        ],
+        "within_rbar": [
+          0.72166684930765,
+          0.7651495165697519
+        ]
+      },
+      "cross_rbar": 0.3901093423855171,
+      "family_rule": "within = same FM or same broad family (DINOv2-B/S, ResNet-18/50); cross = otherwise",
+      "floor": null,
+      "fms": [
+        "biomedclip",
+        "clip_vitl14",
+        "convnext_tiny",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "resnet18",
+        "resnet50"
+      ],
+      "gap": 0.35321691599175864,
+      "n_cases": 454,
+      "n_cross_pairs": 416,
+      "n_within_pairs": 80,
+      "pool": "fixed 8-bundle x 4-seed",
+      "source_files": [
+        "per_case_dice/riga_cup_ood_messidor/biomedclip/seed_42.json",
+        "per_case_dice/riga_cup_ood_messidor/biomedclip/seed_43.json",
+        "per_case_dice/riga_cup_ood_messidor/biomedclip/seed_44.json",
+        "per_case_dice/riga_cup_ood_messidor/biomedclip/seed_45.json",
+        "per_case_dice/riga_cup_ood_messidor/clip_vitl14/seed_42.json",
+        "per_case_dice/riga_cup_ood_messidor/clip_vitl14/seed_43.json",
+        "per_case_dice/riga_cup_ood_messidor/clip_vitl14/seed_44.json",
+        "per_case_dice/riga_cup_ood_messidor/clip_vitl14/seed_45.json",
+        "per_case_dice/riga_cup_ood_messidor/convnext_tiny/seed_42.json",
+        "per_case_dice/riga_cup_ood_messidor/convnext_tiny/seed_43.json",
+        "per_case_dice/riga_cup_ood_messidor/convnext_tiny/seed_44.json",
+        "per_case_dice/riga_cup_ood_messidor/convnext_tiny/seed_45.json",
+        "per_case_dice/riga_cup_ood_messidor/dinov2_vitb14/seed_42.json",
+        "per_case_dice/riga_cup_ood_messidor/dinov2_vitb14/seed_43.json",
+        "per_case_dice/riga_cup_ood_messidor/dinov2_vitb14/seed_44.json",
+        "per_case_dice/riga_cup_ood_messidor/dinov2_vitb14/seed_45.json",
+        "per_case_dice/riga_cup_ood_messidor/dinov2_vits14/seed_42.json",
+        "per_case_dice/riga_cup_ood_messidor/dinov2_vits14/seed_43.json",
+        "per_case_dice/riga_cup_ood_messidor/dinov2_vits14/seed_44.json",
+        "per_case_dice/riga_cup_ood_messidor/dinov2_vits14/seed_45.json",
+        "per_case_dice/riga_cup_ood_messidor/efficientnet_b0/seed_42.json",
+        "per_case_dice/riga_cup_ood_messidor/efficientnet_b0/seed_43.json",
+        "per_case_dice/riga_cup_ood_messidor/efficientnet_b0/seed_44.json",
+        "per_case_dice/riga_cup_ood_messidor/efficientnet_b0/seed_45.json",
+        "per_case_dice/riga_cup_ood_messidor/resnet18/seed_42.json",
+        "per_case_dice/riga_cup_ood_messidor/resnet18/seed_43.json",
+        "per_case_dice/riga_cup_ood_messidor/resnet18/seed_44.json",
+        "per_case_dice/riga_cup_ood_messidor/resnet18/seed_45.json",
+        "per_case_dice/riga_cup_ood_messidor/resnet50/seed_42.json",
+        "per_case_dice/riga_cup_ood_messidor/resnet50/seed_43.json",
+        "per_case_dice/riga_cup_ood_messidor/resnet50/seed_44.json",
+        "per_case_dice/riga_cup_ood_messidor/resnet50/seed_45.json"
+      ],
+      "task": "riga_cup_ood_messidor",
+      "within_rbar": 0.7433262583772757
+    }
+  },
+  "schema_version": "fmpool_distshift_v1",
+  "seed": 0
+}

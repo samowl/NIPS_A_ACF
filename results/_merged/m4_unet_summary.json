@@ -1,0 +1,339 @@
+{
+  "mean_dice_range": [
+    0.806158148552387,
+    0.9022173376109405
+  ],
+  "n_cells": 20,
+  "rows": [
+    {
+      "backbone": "DINOv2-B",
+      "fm": "dinov2_vitb14",
+      "mean_dice": 0.8833608720544728,
+      "n_test": 120,
+      "seed_pair_r": 0.8766371942123119,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/kvasir/dinov2_vitb14/seed_42.json",
+        "per_case_dice_m4/kvasir/dinov2_vitb14/seed_43.json"
+      ],
+      "task": "kvasir"
+    },
+    {
+      "backbone": "DINOv2-S",
+      "fm": "dinov2_vits14",
+      "mean_dice": 0.8655056102961594,
+      "n_test": 120,
+      "seed_pair_r": 0.918575076994442,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/kvasir/dinov2_vits14/seed_42.json",
+        "per_case_dice_m4/kvasir/dinov2_vits14/seed_43.json"
+      ],
+      "task": "kvasir"
+    },
+    {
+      "backbone": "BiomedCLIP",
+      "fm": "biomedclip",
+      "mean_dice": 0.806158148552387,
+      "n_test": 120,
+      "seed_pair_r": 0.9256218118478886,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/kvasir/biomedclip/seed_42.json",
+        "per_case_dice_m4/kvasir/biomedclip/seed_43.json"
+      ],
+      "task": "kvasir"
+    },
+    {
+      "backbone": "ConvNeXt-T",
+      "fm": "convnext_tiny",
+      "mean_dice": 0.8596681019890061,
+      "n_test": 120,
+      "seed_pair_r": 0.7748929137562665,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/kvasir/convnext_tiny/seed_42.json",
+        "per_case_dice_m4/kvasir/convnext_tiny/seed_43.json"
+      ],
+      "task": "kvasir"
+    },
+    {
+      "backbone": "ResNet-50",
+      "fm": "resnet50",
+      "mean_dice": 0.8157103663233264,
+      "n_test": 120,
+      "seed_pair_r": 0.7741974961471467,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/kvasir/resnet50/seed_42.json",
+        "per_case_dice_m4/kvasir/resnet50/seed_43.json"
+      ],
+      "task": "kvasir"
+    },
+    {
+      "backbone": "DINOv2-B",
+      "fm": "dinov2_vitb14",
+      "mean_dice": 0.8642136217017212,
+      "n_test": 361,
+      "seed_pair_r": 0.9792492297995565,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/acdc_lv/dinov2_vitb14/seed_42.json",
+        "per_case_dice_m4/acdc_lv/dinov2_vitb14/seed_43.json"
+      ],
+      "task": "acdc_lv"
+    },
+    {
+      "backbone": "DINOv2-S",
+      "fm": "dinov2_vits14",
+      "mean_dice": 0.8632894929287445,
+      "n_test": 361,
+      "seed_pair_r": 0.9695241121894033,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/acdc_lv/dinov2_vits14/seed_42.json",
+        "per_case_dice_m4/acdc_lv/dinov2_vits14/seed_43.json"
+      ],
+      "task": "acdc_lv"
+    },
+    {
+      "backbone": "BiomedCLIP",
+      "fm": "biomedclip",
+      "mean_dice": 0.8271820553939742,
+      "n_test": 361,
+      "seed_pair_r": 0.9501273099554863,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/acdc_lv/biomedclip/seed_42.json",
+        "per_case_dice_m4/acdc_lv/biomedclip/seed_43.json"
+      ],
+      "task": "acdc_lv"
+    },
+    {
+      "backbone": "ConvNeXt-T",
+      "fm": "convnext_tiny",
+      "mean_dice": 0.88519914954774,
+      "n_test": 361,
+      "seed_pair_r": 0.9169816395219453,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/acdc_lv/convnext_tiny/seed_42.json",
+        "per_case_dice_m4/acdc_lv/convnext_tiny/seed_43.json"
+      ],
+      "task": "acdc_lv"
+    },
+    {
+      "backbone": "ResNet-50",
+      "fm": "resnet50",
+      "mean_dice": 0.8824906626704077,
+      "n_test": 361,
+      "seed_pair_r": 0.9448604677165062,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/acdc_lv/resnet50/seed_42.json",
+        "per_case_dice_m4/acdc_lv/resnet50/seed_43.json"
+      ],
+      "task": "acdc_lv"
+    },
+    {
+      "backbone": "DINOv2-B",
+      "fm": "dinov2_vitb14",
+      "mean_dice": 0.9022173376109405,
+      "n_test": 95,
+      "seed_pair_r": 0.9670129838386453,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/riga_cup/dinov2_vitb14/seed_42.json",
+        "per_case_dice_m4/riga_cup/dinov2_vitb14/seed_43.json"
+      ],
+      "task": "riga_cup"
+    },
+    {
+      "backbone": "DINOv2-S",
+      "fm": "dinov2_vits14",
+      "mean_dice": 0.8938787000680843,
+      "n_test": 95,
+      "seed_pair_r": 0.893118852185437,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/riga_cup/dinov2_vits14/seed_42.json",
+        "per_case_dice_m4/riga_cup/dinov2_vits14/seed_43.json"
+      ],
+      "task": "riga_cup"
+    },
+    {
+      "backbone": "BiomedCLIP",
+      "fm": "biomedclip",
+      "mean_dice": 0.8799676410661346,
+      "n_test": 95,
+      "seed_pair_r": 0.8921258561694725,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/riga_cup/biomedclip/seed_42.json",
+        "per_case_dice_m4/riga_cup/biomedclip/seed_43.json"
+      ],
+      "task": "riga_cup"
+    },
+    {
+      "backbone": "ConvNeXt-T",
+      "fm": "convnext_tiny",
+      "mean_dice": 0.8947707114480044,
+      "n_test": 95,
+      "seed_pair_r": 0.969996107279718,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/riga_cup/convnext_tiny/seed_42.json",
+        "per_case_dice_m4/riga_cup/convnext_tiny/seed_43.json"
+      ],
+      "task": "riga_cup"
+    },
+    {
+      "backbone": "ResNet-50",
+      "fm": "resnet50",
+      "mean_dice": 0.8809417342463866,
+      "n_test": 95,
+      "seed_pair_r": 0.9522877949112236,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/riga_cup/resnet50/seed_42.json",
+        "per_case_dice_m4/riga_cup/resnet50/seed_43.json"
+      ],
+      "task": "riga_cup"
+    },
+    {
+      "backbone": "DINOv2-B",
+      "fm": "dinov2_vitb14",
+      "mean_dice": 0.877371893956407,
+      "n_test": 3228,
+      "seed_pair_r": 0.9360103719370719,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/brats_wt/dinov2_vitb14/seed_42.json",
+        "per_case_dice_m4/brats_wt/dinov2_vitb14/seed_43.json"
+      ],
+      "task": "brats_wt"
+    },
+    {
+      "backbone": "DINOv2-S",
+      "fm": "dinov2_vits14",
+      "mean_dice": 0.8745787241066287,
+      "n_test": 3228,
+      "seed_pair_r": 0.88574495250469,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/brats_wt/dinov2_vits14/seed_42.json",
+        "per_case_dice_m4/brats_wt/dinov2_vits14/seed_43.json"
+      ],
+      "task": "brats_wt"
+    },
+    {
+      "backbone": "BiomedCLIP",
+      "fm": "biomedclip",
+      "mean_dice": 0.8575165661681377,
+      "n_test": 3228,
+      "seed_pair_r": 0.9286131126617077,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/brats_wt/biomedclip/seed_42.json",
+        "per_case_dice_m4/brats_wt/biomedclip/seed_43.json"
+      ],
+      "task": "brats_wt"
+    },
+    {
+      "backbone": "ConvNeXt-T",
+      "fm": "convnext_tiny",
+      "mean_dice": 0.8946611204041199,
+      "n_test": 3228,
+      "seed_pair_r": 0.9381260472379817,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/brats_wt/convnext_tiny/seed_42.json",
+        "per_case_dice_m4/brats_wt/convnext_tiny/seed_43.json"
+      ],
+      "task": "brats_wt"
+    },
+    {
+      "backbone": "ResNet-50",
+      "fm": "resnet50",
+      "mean_dice": 0.8892226527160791,
+      "n_test": 3228,
+      "seed_pair_r": 0.9343031116576469,
+      "seeds": [
+        42,
+        43
+      ],
+      "source_files": [
+        "per_case_dice_m4/brats_wt/resnet50/seed_42.json",
+        "per_case_dice_m4/brats_wt/resnet50/seed_43.json"
+      ],
+      "task": "brats_wt"
+    }
+  ],
+  "schema_version": "m4_unet_summary_v1",
+  "seed_pair_r_range": [
+    0.7741974961471467,
+    0.9792492297995565
+  ],
+  "seeds": [
+    42,
+    43
+  ],
+  "source_root": "per_case_dice_m4"
+}

@@ -1,0 +1,24 @@
+{
+  "task": "msd_heart",
+  "fm": "efficientnet_b0",
+  "seed": 43,
+  "n_test": 4,
+  "test_ids": [
+    "la_014",
+    "la_017",
+    "la_022",
+    "la_023"
+  ],
+  "per_case_dice": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mean_dice": 0.0,
+  "cache_manifest_sha256": "80da27b6a8bfb31454e515635e9cff61a56490e5e5228a7e7e5b3588bd734d4f",
+  "head_checkpoint_sha256": "e552d2990c93720ec38c1f0b88de4e94d64c8c58511f0c9fe0eba3eff774b6c1",
+  "training_elapsed_s": 9.668718576431274,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

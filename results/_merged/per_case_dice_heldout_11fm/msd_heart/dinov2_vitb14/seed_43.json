@@ -1,0 +1,24 @@
+{
+  "task": "msd_heart",
+  "fm": "dinov2_vitb14",
+  "seed": 43,
+  "n_test": 4,
+  "test_ids": [
+    "la_014",
+    "la_017",
+    "la_022",
+    "la_023"
+  ],
+  "per_case_dice": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mean_dice": 0.0,
+  "cache_manifest_sha256": "e5ed57c752c9df165ea2a806f218fe9f83863f0dd75777f7484bfe30b7c6086d",
+  "head_checkpoint_sha256": "012f80df3c2cea17675f3714c5dc385ee27ae7faeca7aa8a0d3e47dc0f13ce4a",
+  "training_elapsed_s": 8.33557415008545,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

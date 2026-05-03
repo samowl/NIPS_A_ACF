@@ -1,0 +1,25 @@
+EXTRACT brats_wt_multimodal dinov2_vitb14
+EXTRACT brats_wt_multimodal biomedclip
+EXTRACT brats_wt_multimodal dinov2_vits14
+EXTRACT brats_wt_multimodal clip_vitl14
+EXTRACT brats_wt_multimodal resnet50
+HEAD brats_wt_multimodal dinov2_vitb14 42
+HEAD brats_wt_multimodal biomedclip 42
+HEAD brats_wt_multimodal dinov2_vits14 42
+HEAD brats_wt_multimodal clip_vitl14 42
+HEAD brats_wt_multimodal resnet50 42
+HEAD brats_wt_multimodal dinov2_vitb14 43
+HEAD brats_wt_multimodal biomedclip 43
+HEAD brats_wt_multimodal dinov2_vits14 43
+HEAD brats_wt_multimodal clip_vitl14 43
+HEAD brats_wt_multimodal resnet50 43
+HEAD brats_wt_multimodal dinov2_vitb14 44
+HEAD brats_wt_multimodal biomedclip 44
+HEAD brats_wt_multimodal dinov2_vits14 44
+HEAD brats_wt_multimodal clip_vitl14 44
+HEAD brats_wt_multimodal resnet50 44
+HEAD brats_wt_multimodal dinov2_vitb14 45
+HEAD brats_wt_multimodal biomedclip 45
+HEAD brats_wt_multimodal dinov2_vits14 45
+HEAD brats_wt_multimodal clip_vitl14 45
+HEAD brats_wt_multimodal resnet50 45

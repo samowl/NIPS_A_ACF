@@ -1,0 +1,47 @@
+{
+  "target": "kvasir",
+  "n_fms": 7,
+  "n_seeds": 4,
+  "n_test": 300,
+  "n_mono_pairs": 42,
+  "n_diverse_pairs": 336,
+  "dilate_radius": 5,
+  "mono": {
+    "err_dice_uncond": 0.795439390596885,
+    "err_dice_cond": 0.795439390596885,
+    "err_jacc": 0.6818294852134423,
+    "fp_dice": 0.6277886413926944,
+    "fn_dice": 0.7850026810174683,
+    "bnd_dice": 0.8569709386264674,
+    "p_both_perfect_E": 0.0
+  },
+  "diverse": {
+    "err_dice_uncond": 0.4018641668093449,
+    "err_dice_cond": 0.4018641668093449,
+    "err_jacc": 0.2810387542338857,
+    "fp_dice": 0.1957701646983792,
+    "fn_dice": 0.42620345866292303,
+    "bnd_dice": 0.5563134387208398,
+    "p_both_perfect_E": 0.0
+  },
+  "gap": {
+    "err_dice_uncond": 0.39357522378754006,
+    "err_dice_cond": 0.39357522378754006,
+    "err_jacc": 0.40079073097955664,
+    "fp_dice": 0.4320184766943152,
+    "fn_dice": 0.35879922235454526,
+    "bnd_dice": 0.3006574999056276
+  },
+  "gap_ci": {
+    "err_dice_uncond": [
+      0.38202342205476547,
+      0.4047385839981917
+    ],
+    "err_dice_uncond_P_leq_0": 0.0,
+    "err_dice_cond": [
+      0.3814776285871856,
+      0.4051759860228238
+    ],
+    "err_dice_cond_P_leq_0": 0.0
+  }
+}

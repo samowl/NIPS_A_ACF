@@ -1,0 +1,24 @@
+{
+  "task": "msd_heart",
+  "fm": "resnet18",
+  "seed": 42,
+  "n_test": 4,
+  "test_ids": [
+    "la_014",
+    "la_017",
+    "la_022",
+    "la_023"
+  ],
+  "per_case_dice": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mean_dice": 0.0,
+  "cache_manifest_sha256": "14012710c8b67f81ffed6e5488921bf7287e0483afb37bcc01a661f1b52adc51",
+  "head_checkpoint_sha256": "e27a02f3fd1a44afb3de50e5ac47948c7d2c1b074a714c463e4a7c00f816e5f7",
+  "training_elapsed_s": 11.895206689834595,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

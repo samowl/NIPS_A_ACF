@@ -1,0 +1,136 @@
+{
+  "commit_sha": "not_recorded_for_artifact",
+  "diverse_pools_summary": {
+    "M_eff_mean": 2.967814757828679,
+    "M_eff_std": 0.43604446397844354,
+    "n_fm_compositions": 330,
+    "n_seed_compositions": 84480,
+    "n_valid_compositions": 84480,
+    "pool_size_fms": 4,
+    "rho_fail_mean": 0.12559225173925495,
+    "rho_fail_std": 0.06744074932046629
+  },
+  "full_pool_diagnostic": {
+    "M_eff": 5.1487037769520265,
+    "n_fm_seed": 44,
+    "rho_fail": 0.17548465710139216
+  },
+  "generated_at": "2026-04-29T18:23:48Z",
+  "mono_pools": [
+    {
+      "M_eff": null,
+      "fm": "biomedclip",
+      "n_fm_seed": 4,
+      "rho_fail": null
+    },
+    {
+      "M_eff": 1.1120066475113701,
+      "fm": "clip_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8657002662564571
+    },
+    {
+      "M_eff": 1.0910791876116679,
+      "fm": "clip_vitl14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8886983472928462
+    },
+    {
+      "M_eff": 1.0799213783208141,
+      "fm": "convnext_tiny",
+      "n_fm_seed": 4,
+      "rho_fail": 0.9013244483345814
+    },
+    {
+      "M_eff": 1.1338123257456818,
+      "fm": "deit_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8426402410026408
+    },
+    {
+      "M_eff": 1.2179138037894859,
+      "fm": "dinov2_vitb14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.7614348917945243
+    },
+    {
+      "M_eff": 1.2182482108700363,
+      "fm": "dinov2_vits14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.7611343797619371
+    },
+    {
+      "M_eff": 1.1237409672334178,
+      "fm": "efficientnet_b0",
+      "n_fm_seed": 4,
+      "rho_fail": 0.853179726358634
+    },
+    {
+      "M_eff": 1.1372476309545876,
+      "fm": "mae_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8390879556115859
+    },
+    {
+      "M_eff": 1.3895410543794084,
+      "fm": "resnet18",
+      "n_fm_seed": 4,
+      "rho_fail": 0.6262161014466426
+    },
+    {
+      "M_eff": 1.1991046470891646,
+      "fm": "resnet50",
+      "n_fm_seed": 4,
+      "rho_fail": 0.7786074272750171
+    }
+  ],
+  "schema_version": "fmpool_clean_v1",
+  "source_files": [
+    "per_case_dice/riga_disc/biomedclip/seed_42.json",
+    "per_case_dice/riga_disc/biomedclip/seed_43.json",
+    "per_case_dice/riga_disc/biomedclip/seed_44.json",
+    "per_case_dice/riga_disc/biomedclip/seed_45.json",
+    "per_case_dice/riga_disc/clip_vitb16/seed_42.json",
+    "per_case_dice/riga_disc/clip_vitb16/seed_43.json",
+    "per_case_dice/riga_disc/clip_vitb16/seed_44.json",
+    "per_case_dice/riga_disc/clip_vitb16/seed_45.json",
+    "per_case_dice/riga_disc/clip_vitl14/seed_42.json",
+    "per_case_dice/riga_disc/clip_vitl14/seed_43.json",
+    "per_case_dice/riga_disc/clip_vitl14/seed_44.json",
+    "per_case_dice/riga_disc/clip_vitl14/seed_45.json",
+    "per_case_dice/riga_disc/convnext_tiny/seed_42.json",
+    "per_case_dice/riga_disc/convnext_tiny/seed_43.json",
+    "per_case_dice/riga_disc/convnext_tiny/seed_44.json",
+    "per_case_dice/riga_disc/convnext_tiny/seed_45.json",
+    "per_case_dice/riga_disc/deit_vitb16/seed_42.json",
+    "per_case_dice/riga_disc/deit_vitb16/seed_43.json",
+    "per_case_dice/riga_disc/deit_vitb16/seed_44.json",
+    "per_case_dice/riga_disc/deit_vitb16/seed_45.json",
+    "per_case_dice/riga_disc/dinov2_vitb14/seed_42.json",
+    "per_case_dice/riga_disc/dinov2_vitb14/seed_43.json",
+    "per_case_dice/riga_disc/dinov2_vitb14/seed_44.json",
+    "per_case_dice/riga_disc/dinov2_vitb14/seed_45.json",
+    "per_case_dice/riga_disc/dinov2_vits14/seed_42.json",
+    "per_case_dice/riga_disc/dinov2_vits14/seed_43.json",
+    "per_case_dice/riga_disc/dinov2_vits14/seed_44.json",
+    "per_case_dice/riga_disc/dinov2_vits14/seed_45.json",
+    "per_case_dice/riga_disc/efficientnet_b0/seed_42.json",
+    "per_case_dice/riga_disc/efficientnet_b0/seed_43.json",
+    "per_case_dice/riga_disc/efficientnet_b0/seed_44.json",
+    "per_case_dice/riga_disc/efficientnet_b0/seed_45.json",
+    "per_case_dice/riga_disc/mae_vitb16/seed_42.json",
+    "per_case_dice/riga_disc/mae_vitb16/seed_43.json",
+    "per_case_dice/riga_disc/mae_vitb16/seed_44.json",
+    "per_case_dice/riga_disc/mae_vitb16/seed_45.json",
+    "per_case_dice/riga_disc/resnet18/seed_42.json",
+    "per_case_dice/riga_disc/resnet18/seed_43.json",
+    "per_case_dice/riga_disc/resnet18/seed_44.json",
+    "per_case_dice/riga_disc/resnet18/seed_45.json",
+    "per_case_dice/riga_disc/resnet50/seed_42.json",
+    "per_case_dice/riga_disc/resnet50/seed_43.json",
+    "per_case_dice/riga_disc/resnet50/seed_44.json",
+    "per_case_dice/riga_disc/resnet50/seed_45.json"
+  ],
+  "task": "riga_disc",
+  "tau": 0.85
+}

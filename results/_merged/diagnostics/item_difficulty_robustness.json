@@ -1,0 +1,4314 @@
+{
+  "bootstrap_B": 2000,
+  "bootstrap_seed": 0,
+  "broad_family_rule": {
+    "biomedclip": "biomedclip",
+    "clip_vitb16": "openai_clip",
+    "clip_vitb32": "openai_clip",
+    "clip_vitl14": "openai_clip",
+    "convnext_base": "convnext",
+    "convnext_small": "convnext",
+    "convnext_tiny": "convnext",
+    "deit_vitb16": "deit",
+    "deit_vits16": "deit",
+    "deit_vitt16": "deit",
+    "dinov2_vitb14": "dinov2",
+    "dinov2_vitg14": "dinov2",
+    "dinov2_vitl14": "dinov2",
+    "dinov2_vits14": "dinov2",
+    "efficientnet_b0": "efficientnet",
+    "efficientnet_b1": "efficientnet",
+    "efficientnet_b2": "efficientnet",
+    "efficientnet_b3": "efficientnet",
+    "mae_vitb16": "mae",
+    "mae_vitl16": "mae",
+    "medsam_vitb16": "medsam",
+    "resnet101": "resnet",
+    "resnet18": "resnet",
+    "resnet34": "resnet",
+    "resnet50": "resnet",
+    "retfound_vitl16": "retfound"
+  },
+  "functional_floor_grid": [
+    0.0,
+    0.1,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.5
+  ],
+  "generated_at": "2026-05-02T13:48:56Z",
+  "primary_floor": 0.3,
+  "results_root": "results/_merged",
+  "schema_version": "fmpool_item_difficulty_robustness_v1",
+  "task_rows": {
+    "acdc_lv": {
+      "available_fms": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitl14",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet18",
+        "resnet50"
+      ],
+      "available_members": 44,
+      "case_unit": "2D cardiac slice",
+      "cluster_unit": "ACDC patient",
+      "cross_fitted_item_difficulty_floor_0.30": {
+        "attenuation_ratio_residual_over_raw": 3.045909889070716,
+        "bootstrap": {
+          "B": 2000,
+          "attenuation_ratio_95ci": [
+            2.737661142613149,
+            3.38382992764962
+          ],
+          "raw_gap_95ci": [
+            0.28900014899961707,
+            0.35515149892633807
+          ],
+          "residualized_gap_95ci": [
+            0.9496324930909635,
+            1.000476841661359
+          ],
+          "seed": 0
+        },
+        "description": "Each FM trace is residualized against per-case difficulty estimated from traces outside that FM's broad upstream family; the original within/cross family-pair rule is then recomputed on residuals.",
+        "difficulty_family_rule": "broad upstream family exclusion",
+        "fit_summary": {
+          "fit_r2_mean": 0.6068682811738902,
+          "fit_r2_median": 0.6733635609642682,
+          "fit_r2_range": [
+            0.3238604028919022,
+            0.7470768836193566
+          ],
+          "n_residualized_traces": 40,
+          "skipped_traces": [],
+          "trace_fits": {
+            "biomedclip:42": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.13845176135502185,
+              "n_heldout_traces": 36,
+              "r2": 0.7431251748016117,
+              "slope": 0.9736199053833889
+            },
+            "biomedclip:43": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.14367825726666134,
+              "n_heldout_traces": 36,
+              "r2": 0.7470768836193566,
+              "slope": 0.9703802709736719
+            },
+            "biomedclip:44": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.15406771825149723,
+              "n_heldout_traces": 36,
+              "r2": 0.7251412880766294,
+              "slope": 0.9533124867976762
+            },
+            "biomedclip:45": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.15188855129856735,
+              "n_heldout_traces": 36,
+              "r2": 0.7291951365138893,
+              "slope": 0.956444077349429
+            },
+            "clip_vitb16:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.020234408334613138,
+              "n_heldout_traces": 32,
+              "r2": 0.5839515131016237,
+              "slope": 0.9732279650233461
+            },
+            "clip_vitb16:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.01950172667220057,
+              "n_heldout_traces": 32,
+              "r2": 0.5887100637637814,
+              "slope": 0.9780446238618632
+            },
+            "clip_vitb16:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.021755613100497742,
+              "n_heldout_traces": 32,
+              "r2": 0.595974337566794,
+              "slope": 0.9789960747228053
+            },
+            "clip_vitb16:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.013069288774828686,
+              "n_heldout_traces": 32,
+              "r2": 0.5875386394444448,
+              "slope": 0.9763002006739462
+            },
+            "clip_vitl14:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.09018998745491867,
+              "n_heldout_traces": 32,
+              "r2": 0.6941457306871655,
+              "slope": 0.9845317793445618
+            },
+            "clip_vitl14:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.0986624252584818,
+              "n_heldout_traces": 32,
+              "r2": 0.713395160912988,
+              "slope": 0.9898077801456595
+            },
+            "clip_vitl14:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.09908459656384279,
+              "n_heldout_traces": 32,
+              "r2": 0.7014890474800852,
+              "slope": 0.982166843335769
+            },
+            "clip_vitl14:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.07198221427483463,
+              "n_heldout_traces": 32,
+              "r2": 0.6906550232633101,
+              "slope": 1.0016971162566732
+            },
+            "convnext_tiny:42": {
+              "heldout_family": "convnext",
+              "intercept": -0.11314708180503627,
+              "n_heldout_traces": 36,
+              "r2": 0.5133806391706259,
+              "slope": 0.9592345601585393
+            },
+            "convnext_tiny:43": {
+              "heldout_family": "convnext",
+              "intercept": -0.10638511398001824,
+              "n_heldout_traces": 36,
+              "r2": 0.5114036120367369,
+              "slope": 0.9513651211569063
+            },
+            "convnext_tiny:44": {
+              "heldout_family": "convnext",
+              "intercept": -0.11165397620359845,
+              "n_heldout_traces": 36,
+              "r2": 0.5122575852118592,
+              "slope": 0.9544332994319359
+            },
+            "convnext_tiny:45": {
+              "heldout_family": "convnext",
+              "intercept": -0.11610395622723359,
+              "n_heldout_traces": 36,
+              "r2": 0.5155356724326587,
+              "slope": 0.9599619677249784
+            },
+            "deit_vitb16:42": {
+              "heldout_family": "deit",
+              "intercept": 0.09114409454573706,
+              "n_heldout_traces": 36,
+              "r2": 0.6834977513017899,
+              "slope": 0.9953002618735984
+            },
+            "deit_vitb16:43": {
+              "heldout_family": "deit",
+              "intercept": 0.10104426159799916,
+              "n_heldout_traces": 36,
+              "r2": 0.6782260102890408,
+              "slope": 0.978795164754871
+            },
+            "deit_vitb16:44": {
+              "heldout_family": "deit",
+              "intercept": 0.09170892756336514,
+              "n_heldout_traces": 36,
+              "r2": 0.6740043299953651,
+              "slope": 0.9877911918480834
+            },
+            "deit_vitb16:45": {
+              "heldout_family": "deit",
+              "intercept": 0.10872132632393201,
+              "n_heldout_traces": 36,
+              "r2": 0.6727227919331713,
+              "slope": 0.9679191449182658
+            },
+            "dinov2_vitb14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.21590517653183813,
+              "n_heldout_traces": 32,
+              "r2": 0.6937684487107203,
+              "slope": 0.8966630768678439
+            },
+            "dinov2_vitb14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.19550087803275723,
+              "n_heldout_traces": 32,
+              "r2": 0.6995600687223221,
+              "slope": 0.9203788685002039
+            },
+            "dinov2_vitb14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.20121495547220541,
+              "n_heldout_traces": 32,
+              "r2": 0.6945644094527992,
+              "slope": 0.9080293949169451
+            },
+            "dinov2_vitb14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.20458637758653878,
+              "n_heldout_traces": 32,
+              "r2": 0.6963322476524445,
+              "slope": 0.9107805949777289
+            },
+            "dinov2_vits14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.17970414530519763,
+              "n_heldout_traces": 32,
+              "r2": 0.670670904841417,
+              "slope": 0.913706970393738
+            },
+            "dinov2_vits14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.19205630639518578,
+              "n_heldout_traces": 32,
+              "r2": 0.6646482938258796,
+              "slope": 0.9004833833135546
+            },
+            "dinov2_vits14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.18564287935868581,
+              "n_heldout_traces": 32,
+              "r2": 0.6706002185327659,
+              "slope": 0.9093446594464575
+            },
+            "dinov2_vits14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.18891861662997286,
+              "n_heldout_traces": 32,
+              "r2": 0.6780108430995301,
+              "slope": 0.9089585089697898
+            },
+            "efficientnet_b0:42": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.14819917280661316,
+              "n_heldout_traces": 36,
+              "r2": 0.3238604028919022,
+              "slope": 0.733854556518822
+            },
+            "efficientnet_b0:43": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.14063081042507947,
+              "n_heldout_traces": 36,
+              "r2": 0.3269979811399809,
+              "slope": 0.7455343472576459
+            },
+            "efficientnet_b0:44": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.14188983224205412,
+              "n_heldout_traces": 36,
+              "r2": 0.37098068042533805,
+              "slope": 0.7922260543434548
+            },
+            "efficientnet_b0:45": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.13741113275230238,
+              "n_heldout_traces": 36,
+              "r2": 0.40314326071416884,
+              "slope": 0.8201163256800622
+            },
+            "mae_vitb16:42": {
+              "heldout_family": "mae",
+              "intercept": 0.060246608031441634,
+              "n_heldout_traces": 36,
+              "r2": 0.7118795969885401,
+              "slope": 1.0387298184599103
+            },
+            "mae_vitb16:43": {
+              "heldout_family": "mae",
+              "intercept": 0.059999219789216435,
+              "n_heldout_traces": 36,
+              "r2": 0.7197673655848473,
+              "slope": 1.0488796208095592
+            },
+            "mae_vitb16:44": {
+              "heldout_family": "mae",
+              "intercept": 0.052390676469791016,
+              "n_heldout_traces": 36,
+              "r2": 0.7118049429290763,
+              "slope": 1.05291674693999
+            },
+            "mae_vitb16:45": {
+              "heldout_family": "mae",
+              "intercept": 0.06350717428841045,
+              "n_heldout_traces": 36,
+              "r2": 0.7118363700367252,
+              "slope": 1.0387511884109573
+            },
+            "resnet50:42": {
+              "heldout_family": "resnet",
+              "intercept": -0.1131835905653622,
+              "n_heldout_traces": 36,
+              "r2": 0.4339110447615875,
+              "slope": 0.8661533965659775
+            },
+            "resnet50:43": {
+              "heldout_family": "resnet",
+              "intercept": -0.12482805173397718,
+              "n_heldout_traces": 36,
+              "r2": 0.4182135880575155,
+              "slope": 0.8515161008895181
+            },
+            "resnet50:44": {
+              "heldout_family": "resnet",
+              "intercept": -0.1384641936860781,
+              "n_heldout_traces": 36,
+              "r2": 0.39766119212010453,
+              "slope": 0.8372627854019143
+            },
+            "resnet50:45": {
+              "heldout_family": "resnet",
+              "intercept": -0.14039576932249875,
+              "n_heldout_traces": 36,
+              "r2": 0.4150929948650154,
+              "slope": 0.8563743049196817
+            }
+          }
+        },
+        "raw": {
+          "cross_rbar": 0.6385343738891122,
+          "gap": 0.320524845224301,
+          "n_cross_pairs": 704,
+          "n_within_pairs": 76,
+          "within_rbar": 0.9590592191134132
+        },
+        "residualized": {
+          "cross_rbar": -0.09619214740866887,
+          "gap": 0.9762897957615592,
+          "n_cross_pairs": 704,
+          "n_within_pairs": 76,
+          "within_rbar": 0.8800976483528903
+        },
+        "residualized_gap_minus_raw_gap": 0.6557649505372581,
+        "within_cross_family_rule": "paper primary rule: same FM plus DINOv2-B/S pair"
+      },
+      "floor_grid": [
+        {
+          "case_level": {
+            "cross_rbar": 0.6034180881098329,
+            "gap": 0.35517472259822624,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9585928107080591
+          },
+          "floor": 0.0,
+          "fm_mean_dice": {
+            "biomedclip": 0.6946310587536925,
+            "clip_vitb16": 0.5773640040552033,
+            "clip_vitl14": 0.6560884218706835,
+            "convnext_tiny": 0.45695321166428665,
+            "deit_vitb16": 0.6603163573624071,
+            "dinov2_vitb14": 0.7060706860145911,
+            "dinov2_vits14": 0.6878858453689602,
+            "efficientnet_b0": 0.3287197636039554,
+            "mae_vitb16": 0.6572416717647072,
+            "resnet18": 0.28357690826433757,
+            "resnet50": 0.3848727312443037
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44,
+          "subject_level": {
+            "cross_rbar": 0.6884348572778505,
+            "gap": 0.2943092885202706,
+            "n_cross_pairs": 864,
+            "n_units": 20,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9827441457981211
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6034180881098329,
+            "gap": 0.35517472259822624,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9585928107080591
+          },
+          "floor": 0.1,
+          "fm_mean_dice": {
+            "biomedclip": 0.6946310587536925,
+            "clip_vitb16": 0.5773640040552033,
+            "clip_vitl14": 0.6560884218706835,
+            "convnext_tiny": 0.45695321166428665,
+            "deit_vitb16": 0.6603163573624071,
+            "dinov2_vitb14": 0.7060706860145911,
+            "dinov2_vits14": 0.6878858453689602,
+            "efficientnet_b0": 0.3287197636039554,
+            "mae_vitb16": 0.6572416717647072,
+            "resnet18": 0.28357690826433757,
+            "resnet50": 0.3848727312443037
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44,
+          "subject_level": {
+            "cross_rbar": 0.6884348572778505,
+            "gap": 0.2943092885202706,
+            "n_cross_pairs": 864,
+            "n_units": 20,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9827441457981211
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6034180881098329,
+            "gap": 0.35517472259822624,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9585928107080591
+          },
+          "floor": 0.2,
+          "fm_mean_dice": {
+            "biomedclip": 0.6946310587536925,
+            "clip_vitb16": 0.5773640040552033,
+            "clip_vitl14": 0.6560884218706835,
+            "convnext_tiny": 0.45695321166428665,
+            "deit_vitb16": 0.6603163573624071,
+            "dinov2_vitb14": 0.7060706860145911,
+            "dinov2_vits14": 0.6878858453689602,
+            "efficientnet_b0": 0.3287197636039554,
+            "mae_vitb16": 0.6572416717647072,
+            "resnet18": 0.28357690826433757,
+            "resnet50": 0.3848727312443037
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44,
+          "subject_level": {
+            "cross_rbar": 0.6884348572778505,
+            "gap": 0.2943092885202706,
+            "n_cross_pairs": 864,
+            "n_units": 20,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9827441457981211
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6034180881098329,
+            "gap": 0.35517472259822624,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9585928107080591
+          },
+          "floor": 0.25,
+          "fm_mean_dice": {
+            "biomedclip": 0.6946310587536925,
+            "clip_vitb16": 0.5773640040552033,
+            "clip_vitl14": 0.6560884218706835,
+            "convnext_tiny": 0.45695321166428665,
+            "deit_vitb16": 0.6603163573624071,
+            "dinov2_vitb14": 0.7060706860145911,
+            "dinov2_vits14": 0.6878858453689602,
+            "efficientnet_b0": 0.3287197636039554,
+            "mae_vitb16": 0.6572416717647072,
+            "resnet18": 0.28357690826433757,
+            "resnet50": 0.3848727312443037
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44,
+          "subject_level": {
+            "cross_rbar": 0.6884348572778505,
+            "gap": 0.2943092885202706,
+            "n_cross_pairs": 864,
+            "n_units": 20,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9827441457981211
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6385343738891122,
+            "gap": 0.320524845224301,
+            "n_cross_pairs": 704,
+            "n_within_pairs": 76,
+            "within_rbar": 0.9590592191134132
+          },
+          "floor": 0.3,
+          "fm_mean_dice": {
+            "biomedclip": 0.6946310587536925,
+            "clip_vitb16": 0.5773640040552033,
+            "clip_vitl14": 0.6560884218706835,
+            "convnext_tiny": 0.45695321166428665,
+            "deit_vitb16": 0.6603163573624071,
+            "dinov2_vitb14": 0.7060706860145911,
+            "dinov2_vits14": 0.6878858453689602,
+            "efficientnet_b0": 0.3287197636039554,
+            "mae_vitb16": 0.6572416717647072,
+            "resnet50": 0.3848727312443037
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet50"
+          ],
+          "n_fms": 10,
+          "n_members": 40,
+          "subject_level": {
+            "cross_rbar": 0.7211013880127158,
+            "gap": 0.2623435100743027,
+            "n_cross_pairs": 704,
+            "n_units": 20,
+            "n_within_pairs": 76,
+            "within_rbar": 0.9834448980870185
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.674341526808785,
+            "gap": 0.28538180205422936,
+            "n_cross_pairs": 560,
+            "n_within_pairs": 70,
+            "within_rbar": 0.9597233288630144
+          },
+          "floor": 0.35,
+          "fm_mean_dice": {
+            "biomedclip": 0.6946310587536925,
+            "clip_vitb16": 0.5773640040552033,
+            "clip_vitl14": 0.6560884218706835,
+            "convnext_tiny": 0.45695321166428665,
+            "deit_vitb16": 0.6603163573624071,
+            "dinov2_vitb14": 0.7060706860145911,
+            "dinov2_vits14": 0.6878858453689602,
+            "mae_vitb16": 0.6572416717647072,
+            "resnet50": 0.3848727312443037
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "mae_vitb16",
+            "resnet50"
+          ],
+          "n_fms": 9,
+          "n_members": 36,
+          "subject_level": {
+            "cross_rbar": 0.7318580770263685,
+            "gap": 0.2517564910811416,
+            "n_cross_pairs": 560,
+            "n_units": 20,
+            "n_within_pairs": 70,
+            "within_rbar": 0.9836145681075101
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.716375097267007,
+            "gap": 0.24186993842855442,
+            "n_cross_pairs": 432,
+            "n_within_pairs": 64,
+            "within_rbar": 0.9582450356955614
+          },
+          "floor": 0.4,
+          "fm_mean_dice": {
+            "biomedclip": 0.6946310587536925,
+            "clip_vitb16": 0.5773640040552033,
+            "clip_vitl14": 0.6560884218706835,
+            "convnext_tiny": 0.45695321166428665,
+            "deit_vitb16": 0.6603163573624071,
+            "dinov2_vitb14": 0.7060706860145911,
+            "dinov2_vits14": 0.6878858453689602,
+            "mae_vitb16": 0.6572416717647072
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "mae_vitb16"
+          ],
+          "n_fms": 8,
+          "n_members": 32,
+          "subject_level": {
+            "cross_rbar": 0.7983943203972621,
+            "gap": 0.1845351638535193,
+            "n_cross_pairs": 432,
+            "n_units": 20,
+            "n_within_pairs": 64,
+            "within_rbar": 0.9829294842507814
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.7569381935400952,
+            "gap": 0.19728540603285938,
+            "n_cross_pairs": 320,
+            "n_within_pairs": 58,
+            "within_rbar": 0.9542235995729546
+          },
+          "floor": 0.5,
+          "fm_mean_dice": {
+            "biomedclip": 0.6946310587536925,
+            "clip_vitb16": 0.5773640040552033,
+            "clip_vitl14": 0.6560884218706835,
+            "deit_vitb16": 0.6603163573624071,
+            "dinov2_vitb14": 0.7060706860145911,
+            "dinov2_vits14": 0.6878858453689602,
+            "mae_vitb16": 0.6572416717647072
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "mae_vitb16"
+          ],
+          "n_fms": 7,
+          "n_members": 28,
+          "subject_level": {
+            "cross_rbar": 0.8415719053900791,
+            "gap": 0.1396753645732438,
+            "n_cross_pairs": 320,
+            "n_units": 20,
+            "n_within_pairs": 58,
+            "within_rbar": 0.9812472699633229
+          }
+        }
+      ],
+      "n_test": 361,
+      "n_units": 20,
+      "source_files": [
+        "per_case_dice/acdc_lv/biomedclip/seed_42.json",
+        "per_case_dice/acdc_lv/biomedclip/seed_43.json",
+        "per_case_dice/acdc_lv/biomedclip/seed_44.json",
+        "per_case_dice/acdc_lv/biomedclip/seed_45.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_42.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_43.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_44.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_45.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_42.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_43.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_44.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_45.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_42.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_43.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_44.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_45.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_42.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_43.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_44.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_45.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_42.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_43.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_44.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_45.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_42.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_43.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_44.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_45.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_42.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_43.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_44.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_45.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_42.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_43.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_44.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_45.json",
+        "per_case_dice/acdc_lv/resnet18/seed_42.json",
+        "per_case_dice/acdc_lv/resnet18/seed_43.json",
+        "per_case_dice/acdc_lv/resnet18/seed_44.json",
+        "per_case_dice/acdc_lv/resnet18/seed_45.json",
+        "per_case_dice/acdc_lv/resnet50/seed_42.json",
+        "per_case_dice/acdc_lv/resnet50/seed_43.json",
+        "per_case_dice/acdc_lv/resnet50/seed_44.json",
+        "per_case_dice/acdc_lv/resnet50/seed_45.json"
+      ],
+      "subject_level_cross_fitted_item_difficulty_floor_0.30": {
+        "attenuation_ratio_residual_over_raw": 3.7347886573799425,
+        "bootstrap": {
+          "B": 2000,
+          "attenuation_ratio_95ci": [
+            2.349280869949427,
+            6.470478104606885
+          ],
+          "raw_gap_95ci": [
+            0.15071931997111332,
+            0.4127797710768864
+          ],
+          "residualized_gap_95ci": [
+            0.9125057290917475,
+            1.021549117723215
+          ],
+          "seed": 0
+        },
+        "description": "Each FM trace is residualized against per-case difficulty estimated from traces outside that FM's broad upstream family; the original within/cross family-pair rule is then recomputed on residuals.",
+        "difficulty_family_rule": "broad upstream family exclusion",
+        "fit_summary": {
+          "fit_r2_mean": 0.6989689997736235,
+          "fit_r2_median": 0.7010168665103109,
+          "fit_r2_range": [
+            0.36504803989205015,
+            0.8662628711182431
+          ],
+          "n_residualized_traces": 40,
+          "skipped_traces": [],
+          "trace_fits": {
+            "biomedclip:42": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.24610209153623006,
+              "n_heldout_traces": 36,
+              "r2": 0.758410080186125,
+              "slope": 0.7827934252763623
+            },
+            "biomedclip:43": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.24883772959090503,
+              "n_heldout_traces": 36,
+              "r2": 0.7739548168952504,
+              "slope": 0.783860676052225
+            },
+            "biomedclip:44": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.2632341812083543,
+              "n_heldout_traces": 36,
+              "r2": 0.7521357706590471,
+              "slope": 0.7585763244787801
+            },
+            "biomedclip:45": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.26200626032974533,
+              "n_heldout_traces": 36,
+              "r2": 0.7322883481984216,
+              "slope": 0.7607731520753378
+            },
+            "clip_vitb16:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.003994388280993384,
+              "n_heldout_traces": 32,
+              "r2": 0.7968167347252983,
+              "slope": 1.0071593470206788
+            },
+            "clip_vitb16:43": {
+              "heldout_family": "openai_clip",
+              "intercept": -0.0031782607743691253,
+              "n_heldout_traces": 32,
+              "r2": 0.8051700386045471,
+              "slope": 1.022097629614429
+            },
+            "clip_vitb16:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.0034026304824313664,
+              "n_heldout_traces": 32,
+              "r2": 0.810358930530044,
+              "slope": 1.0145766611197808
+            },
+            "clip_vitb16:45": {
+              "heldout_family": "openai_clip",
+              "intercept": -0.009955815552503576,
+              "n_heldout_traces": 32,
+              "r2": 0.810703479951314,
+              "slope": 1.0210480277178409
+            },
+            "clip_vitl14:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.08477568808913655,
+              "n_heldout_traces": 32,
+              "r2": 0.7826449761442915,
+              "slope": 0.9862899729694684
+            },
+            "clip_vitl14:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.10751963689112123,
+              "n_heldout_traces": 32,
+              "r2": 0.8097640391924377,
+              "slope": 0.9672419621053899
+            },
+            "clip_vitl14:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.09569453073521678,
+              "n_heldout_traces": 32,
+              "r2": 0.8141862630966725,
+              "slope": 0.9816761890263569
+            },
+            "clip_vitl14:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.06651133610789191,
+              "n_heldout_traces": 32,
+              "r2": 0.7891223569589596,
+              "slope": 1.0047964182700106
+            },
+            "convnext_tiny:42": {
+              "heldout_family": "convnext",
+              "intercept": -0.2862316427594337,
+              "n_heldout_traces": 36,
+              "r2": 0.6449676392459076,
+              "slope": 1.2702907661215568
+            },
+            "convnext_tiny:43": {
+              "heldout_family": "convnext",
+              "intercept": -0.28906438636617554,
+              "n_heldout_traces": 36,
+              "r2": 0.6482389985796901,
+              "slope": 1.2776506439486328
+            },
+            "convnext_tiny:44": {
+              "heldout_family": "convnext",
+              "intercept": -0.291811847358748,
+              "n_heldout_traces": 36,
+              "r2": 0.6453165442509892,
+              "slope": 1.277123467716122
+            },
+            "convnext_tiny:45": {
+              "heldout_family": "convnext",
+              "intercept": -0.28456695804204485,
+              "n_heldout_traces": 36,
+              "r2": 0.6397028490437494,
+              "slope": 1.2624043810350158
+            },
+            "deit_vitb16:42": {
+              "heldout_family": "deit",
+              "intercept": 0.14164051114985168,
+              "n_heldout_traces": 36,
+              "r2": 0.6404527587752946,
+              "slope": 0.8986944396707169
+            },
+            "deit_vitb16:43": {
+              "heldout_family": "deit",
+              "intercept": 0.16069622274361584,
+              "n_heldout_traces": 36,
+              "r2": 0.6228169936141973,
+              "slope": 0.8664823906852333
+            },
+            "deit_vitb16:44": {
+              "heldout_family": "deit",
+              "intercept": 0.1562384463106438,
+              "n_heldout_traces": 36,
+              "r2": 0.6117400719365416,
+              "slope": 0.8679538442016718
+            },
+            "deit_vitb16:45": {
+              "heldout_family": "deit",
+              "intercept": 0.16751927782254136,
+              "n_heldout_traces": 36,
+              "r2": 0.6055739291547255,
+              "slope": 0.8576129881691807
+            },
+            "dinov2_vitb14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.2295293106474504,
+              "n_heldout_traces": 32,
+              "r2": 0.8510672725418875,
+              "slope": 0.8639332519988435
+            },
+            "dinov2_vitb14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.21595907816445975,
+              "n_heldout_traces": 32,
+              "r2": 0.8619003813286381,
+              "slope": 0.8776973988216666
+            },
+            "dinov2_vitb14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.19943337784171933,
+              "n_heldout_traces": 32,
+              "r2": 0.8662628711182431,
+              "slope": 0.903875262028237
+            },
+            "dinov2_vitb14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.21910195215742367,
+              "n_heldout_traces": 32,
+              "r2": 0.8614069340032251,
+              "slope": 0.878098676016739
+            },
+            "dinov2_vits14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.2425661782809883,
+              "n_heldout_traces": 32,
+              "r2": 0.8291283483109064,
+              "slope": 0.7937794551536352
+            },
+            "dinov2_vits14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.24916741260011102,
+              "n_heldout_traces": 32,
+              "r2": 0.8409411319926494,
+              "slope": 0.7908831507032635
+            },
+            "dinov2_vits14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.23548176857489392,
+              "n_heldout_traces": 32,
+              "r2": 0.8305129165963185,
+              "slope": 0.8125758924511445
+            },
+            "dinov2_vits14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.246025209784772,
+              "n_heldout_traces": 32,
+              "r2": 0.8385122335772952,
+              "slope": 0.7977592592792202
+            },
+            "efficientnet_b0:42": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.2850207232223287,
+              "n_heldout_traces": 36,
+              "r2": 0.6192182646357127,
+              "slope": 0.959141421296308
+            },
+            "efficientnet_b0:43": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.29628335020615687,
+              "n_heldout_traces": 36,
+              "r2": 0.6028687271838858,
+              "slope": 1.003428825171997
+            },
+            "efficientnet_b0:44": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.2923613380975636,
+              "n_heldout_traces": 36,
+              "r2": 0.6371629464537036,
+              "slope": 1.0437272604328651
+            },
+            "efficientnet_b0:45": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.2739644736875202,
+              "n_heldout_traces": 36,
+              "r2": 0.6439225360348846,
+              "slope": 1.0492810748153187
+            },
+            "mae_vitb16:42": {
+              "heldout_family": "mae",
+              "intercept": 0.037582459398223585,
+              "n_heldout_traces": 36,
+              "r2": 0.6683948853556477,
+              "slope": 1.0668028499310456
+            },
+            "mae_vitb16:43": {
+              "heldout_family": "mae",
+              "intercept": 0.05400354671100812,
+              "n_heldout_traces": 36,
+              "r2": 0.6584385678154583,
+              "slope": 1.0475310231873174
+            },
+            "mae_vitb16:44": {
+              "heldout_family": "mae",
+              "intercept": 0.04088617312009247,
+              "n_heldout_traces": 36,
+              "r2": 0.6581135404413858,
+              "slope": 1.0611772003955966
+            },
+            "mae_vitb16:45": {
+              "heldout_family": "mae",
+              "intercept": 0.03994108408036119,
+              "n_heldout_traces": 36,
+              "r2": 0.6697453848222004,
+              "slope": 1.0680318232808594
+            },
+            "resnet50:42": {
+              "heldout_family": "resnet",
+              "intercept": -0.09119763127060934,
+              "n_heldout_traces": 36,
+              "r2": 0.3822804108017791,
+              "slope": 0.838275220768851
+            },
+            "resnet50:43": {
+              "heldout_family": "resnet",
+              "intercept": -0.10698713674161595,
+              "n_heldout_traces": 36,
+              "r2": 0.36504803989205015,
+              "slope": 0.8301225509327715
+            },
+            "resnet50:44": {
+              "heldout_family": "resnet",
+              "intercept": -0.15082326806684776,
+              "n_heldout_traces": 36,
+              "r2": 0.36926996808031143,
+              "slope": 0.86488641972464
+            },
+            "resnet50:45": {
+              "heldout_family": "resnet",
+              "intercept": -0.16489079175495047,
+              "n_heldout_traces": 36,
+              "r2": 0.4101990102152573,
+              "slope": 0.905064992979217
+            }
+          }
+        },
+        "n_units": 20,
+        "raw": {
+          "cross_rbar": 0.7211013880127158,
+          "gap": 0.2623435100743027,
+          "n_cross_pairs": 704,
+          "n_within_pairs": 76,
+          "within_rbar": 0.9834448980870185
+        },
+        "residualized": {
+          "cross_rbar": -0.07400408944135138,
+          "gap": 0.9797975657627463,
+          "n_cross_pairs": 704,
+          "n_within_pairs": 76,
+          "within_rbar": 0.905793476321395
+        },
+        "residualized_gap_minus_raw_gap": 0.7174540556884437,
+        "within_cross_family_rule": "paper primary rule: same FM plus DINOv2-B/S pair"
+      },
+      "task": "acdc_lv"
+    },
+    "brats_wt": {
+      "available_fms": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitl14",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet18",
+        "resnet50"
+      ],
+      "available_members": 44,
+      "case_unit": "2D axial lesion-enriched slice",
+      "cluster_unit": "BraTS subject",
+      "cross_fitted_item_difficulty_floor_0.30": {
+        "attenuation_ratio_residual_over_raw": 2.92323939720068,
+        "bootstrap": {
+          "B": 2000,
+          "attenuation_ratio_95ci": [
+            2.804745351186821,
+            3.0514588435524583
+          ],
+          "raw_gap_95ci": [
+            0.30175807096932694,
+            0.3287074205487882
+          ],
+          "residualized_gap_95ci": [
+            0.9098973468673133,
+            0.93244926803041
+          ],
+          "seed": 0
+        },
+        "description": "Each FM trace is residualized against per-case difficulty estimated from traces outside that FM's broad upstream family; the original within/cross family-pair rule is then recomputed on residuals.",
+        "difficulty_family_rule": "broad upstream family exclusion",
+        "fit_summary": {
+          "fit_r2_mean": 0.5736635227699052,
+          "fit_r2_median": 0.6029354163244909,
+          "fit_r2_range": [
+            0.3824330992659122,
+            0.6846370379264426
+          ],
+          "n_residualized_traces": 40,
+          "skipped_traces": [],
+          "trace_fits": {
+            "biomedclip:42": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.16944269753334074,
+              "n_heldout_traces": 36,
+              "r2": 0.6412892508657568,
+              "slope": 0.8581717165169829
+            },
+            "biomedclip:43": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.15131456989346448,
+              "n_heldout_traces": 36,
+              "r2": 0.6297832157720935,
+              "slope": 0.874522055225522
+            },
+            "biomedclip:44": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.18929470077870827,
+              "n_heldout_traces": 36,
+              "r2": 0.6510260021382285,
+              "slope": 0.8401244842177495
+            },
+            "biomedclip:45": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.1295830888235878,
+              "n_heldout_traces": 36,
+              "r2": 0.6354719022171669,
+              "slope": 0.9006084261429037
+            },
+            "clip_vitb16:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.11362578900504532,
+              "n_heldout_traces": 32,
+              "r2": 0.6026281359108796,
+              "slope": 0.8742487978655638
+            },
+            "clip_vitb16:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.12117873456480843,
+              "n_heldout_traces": 32,
+              "r2": 0.6032426967381022,
+              "slope": 0.8663991635853243
+            },
+            "clip_vitb16:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.10706110411035827,
+              "n_heldout_traces": 32,
+              "r2": 0.5977216221236097,
+              "slope": 0.879446790848913
+            },
+            "clip_vitb16:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.10884886832710174,
+              "n_heldout_traces": 32,
+              "r2": 0.5978260214612809,
+              "slope": 0.8780085337051144
+            },
+            "clip_vitl14:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.17222473623237242,
+              "n_heldout_traces": 32,
+              "r2": 0.5827089958524012,
+              "slope": 0.8182142120466898
+            },
+            "clip_vitl14:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.16563279540888465,
+              "n_heldout_traces": 32,
+              "r2": 0.5754434568515007,
+              "slope": 0.8218926759942222
+            },
+            "clip_vitl14:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.20963019706509334,
+              "n_heldout_traces": 32,
+              "r2": 0.6082682723168777,
+              "slope": 0.7838155272425444
+            },
+            "clip_vitl14:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.15679234195524447,
+              "n_heldout_traces": 32,
+              "r2": 0.5707290507296345,
+              "slope": 0.8318278848882515
+            },
+            "convnext_tiny:42": {
+              "heldout_family": "convnext",
+              "intercept": -0.20181333651582492,
+              "n_heldout_traces": 36,
+              "r2": 0.531543614770383,
+              "slope": 1.1220988104931189
+            },
+            "convnext_tiny:43": {
+              "heldout_family": "convnext",
+              "intercept": -0.19506855960775288,
+              "n_heldout_traces": 36,
+              "r2": 0.5293116560915363,
+              "slope": 1.11725193880358
+            },
+            "convnext_tiny:44": {
+              "heldout_family": "convnext",
+              "intercept": -0.2256182070896358,
+              "n_heldout_traces": 36,
+              "r2": 0.5176103527722671,
+              "slope": 1.1344865495225045
+            },
+            "convnext_tiny:45": {
+              "heldout_family": "convnext",
+              "intercept": -0.20329056656754385,
+              "n_heldout_traces": 36,
+              "r2": 0.5284260417707383,
+              "slope": 1.1230579836626586
+            },
+            "deit_vitb16:42": {
+              "heldout_family": "deit",
+              "intercept": 0.16105022874322072,
+              "n_heldout_traces": 36,
+              "r2": 0.63050469416823,
+              "slope": 0.8535921921873177
+            },
+            "deit_vitb16:43": {
+              "heldout_family": "deit",
+              "intercept": 0.1753453042165187,
+              "n_heldout_traces": 36,
+              "r2": 0.6262798497859174,
+              "slope": 0.8349985352436183
+            },
+            "deit_vitb16:44": {
+              "heldout_family": "deit",
+              "intercept": 0.17931996529468083,
+              "n_heldout_traces": 36,
+              "r2": 0.6335777222774046,
+              "slope": 0.8328870705843249
+            },
+            "deit_vitb16:45": {
+              "heldout_family": "deit",
+              "intercept": 0.14626678116151276,
+              "n_heldout_traces": 36,
+              "r2": 0.6265494435919456,
+              "slope": 0.8685704697299487
+            },
+            "dinov2_vitb14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.24488697578864235,
+              "n_heldout_traces": 32,
+              "r2": 0.6390664827260057,
+              "slope": 0.7899782761230745
+            },
+            "dinov2_vitb14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.19990370751120576,
+              "n_heldout_traces": 32,
+              "r2": 0.6330831188463522,
+              "slope": 0.834431044397819
+            },
+            "dinov2_vitb14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.2755151314683322,
+              "n_heldout_traces": 32,
+              "r2": 0.6478704097756388,
+              "slope": 0.7557102381055271
+            },
+            "dinov2_vitb14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.22934775671655994,
+              "n_heldout_traces": 32,
+              "r2": 0.6447432806615754,
+              "slope": 0.8095906001792875
+            },
+            "dinov2_vits14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.19235549299066193,
+              "n_heldout_traces": 32,
+              "r2": 0.6120690947803702,
+              "slope": 0.8357659938080708
+            },
+            "dinov2_vits14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.1759308048138265,
+              "n_heldout_traces": 32,
+              "r2": 0.5980051414026581,
+              "slope": 0.8484228776173789
+            },
+            "dinov2_vits14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.1637967570100925,
+              "n_heldout_traces": 32,
+              "r2": 0.6050304023388096,
+              "slope": 0.8656140296046513
+            },
+            "dinov2_vits14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.17146252281704819,
+              "n_heldout_traces": 32,
+              "r2": 0.5804813395010939,
+              "slope": 0.8492084295477295
+            },
+            "efficientnet_b0:42": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.27331739366391705,
+              "n_heldout_traces": 36,
+              "r2": 0.38771487066754307,
+              "slope": 1.1059385495438192
+            },
+            "efficientnet_b0:43": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.25519082890965017,
+              "n_heldout_traces": 36,
+              "r2": 0.4068297415552733,
+              "slope": 1.1022897621575247
+            },
+            "efficientnet_b0:44": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.25848863267760686,
+              "n_heldout_traces": 36,
+              "r2": 0.406224323034295,
+              "slope": 1.105577364874575
+            },
+            "efficientnet_b0:45": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.28399406045106446,
+              "n_heldout_traces": 36,
+              "r2": 0.3824330992659122,
+              "slope": 1.1079735723911703
+            },
+            "mae_vitb16:42": {
+              "heldout_family": "mae",
+              "intercept": 0.22800944925136285,
+              "n_heldout_traces": 36,
+              "r2": 0.6846370379264426,
+              "slope": 0.8125514595219981
+            },
+            "mae_vitb16:43": {
+              "heldout_family": "mae",
+              "intercept": 0.24251576813954298,
+              "n_heldout_traces": 36,
+              "r2": 0.6819583461194183,
+              "slope": 0.7944090312355057
+            },
+            "mae_vitb16:44": {
+              "heldout_family": "mae",
+              "intercept": 0.2136252926051303,
+              "n_heldout_traces": 36,
+              "r2": 0.6832127233406293,
+              "slope": 0.8281641944390502
+            },
+            "mae_vitb16:45": {
+              "heldout_family": "mae",
+              "intercept": 0.2295111685028402,
+              "n_heldout_traces": 36,
+              "r2": 0.6834537878515055,
+              "slope": 0.8099276674692609
+            },
+            "resnet50:42": {
+              "heldout_family": "resnet",
+              "intercept": -0.24216475599553874,
+              "n_heldout_traces": 36,
+              "r2": 0.43862284339163926,
+              "slope": 1.0964772931770357
+            },
+            "resnet50:43": {
+              "heldout_family": "resnet",
+              "intercept": -0.25649763036105516,
+              "n_heldout_traces": 36,
+              "r2": 0.4273274912366567,
+              "slope": 1.0970697018840059
+            },
+            "resnet50:44": {
+              "heldout_family": "resnet",
+              "intercept": -0.2071070352262693,
+              "n_heldout_traces": 36,
+              "r2": 0.4799405395274873,
+              "slope": 1.0948859590103317
+            },
+            "resnet50:45": {
+              "heldout_family": "resnet",
+              "intercept": -0.27677484116496065,
+              "n_heldout_traces": 36,
+              "r2": 0.403894838640948,
+              "slope": 1.0788338890797515
+            }
+          }
+        },
+        "raw": {
+          "cross_rbar": 0.6226263775361939,
+          "gap": 0.3151706543782974,
+          "n_cross_pairs": 704,
+          "n_within_pairs": 76,
+          "within_rbar": 0.9377970319144913
+        },
+        "residualized": {
+          "cross_rbar": -0.07852247826947929,
+          "gap": 0.9213192737201579,
+          "n_cross_pairs": 704,
+          "n_within_pairs": 76,
+          "within_rbar": 0.8427967954506785
+        },
+        "residualized_gap_minus_raw_gap": 0.6061486193418605,
+        "within_cross_family_rule": "paper primary rule: same FM plus DINOv2-B/S pair"
+      },
+      "floor_grid": [
+        {
+          "case_level": {
+            "cross_rbar": 0.5741007865673204,
+            "gap": 0.36237074924903356,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.936471535816354
+          },
+          "floor": 0.0,
+          "fm_mean_dice": {
+            "biomedclip": 0.7105120823928486,
+            "clip_vitb16": 0.6658600736253087,
+            "clip_vitl14": 0.6909263622068892,
+            "convnext_tiny": 0.5290604388925908,
+            "deit_vitb16": 0.7035385300066996,
+            "dinov2_vitb14": 0.7336895486254834,
+            "dinov2_vits14": 0.7047270076679091,
+            "efficientnet_b0": 0.4635241109702087,
+            "mae_vitb16": 0.7401459164603854,
+            "resnet18": 0.27009018544083707,
+            "resnet50": 0.475203656956045
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44,
+          "subject_level": {
+            "cross_rbar": 0.705941843094764,
+            "gap": 0.2606348714124438,
+            "n_cross_pairs": 864,
+            "n_units": 324,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9665767145072078
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.5741007865673204,
+            "gap": 0.36237074924903356,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.936471535816354
+          },
+          "floor": 0.1,
+          "fm_mean_dice": {
+            "biomedclip": 0.7105120823928486,
+            "clip_vitb16": 0.6658600736253087,
+            "clip_vitl14": 0.6909263622068892,
+            "convnext_tiny": 0.5290604388925908,
+            "deit_vitb16": 0.7035385300066996,
+            "dinov2_vitb14": 0.7336895486254834,
+            "dinov2_vits14": 0.7047270076679091,
+            "efficientnet_b0": 0.4635241109702087,
+            "mae_vitb16": 0.7401459164603854,
+            "resnet18": 0.27009018544083707,
+            "resnet50": 0.475203656956045
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44,
+          "subject_level": {
+            "cross_rbar": 0.705941843094764,
+            "gap": 0.2606348714124438,
+            "n_cross_pairs": 864,
+            "n_units": 324,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9665767145072078
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.5741007865673204,
+            "gap": 0.36237074924903356,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.936471535816354
+          },
+          "floor": 0.2,
+          "fm_mean_dice": {
+            "biomedclip": 0.7105120823928486,
+            "clip_vitb16": 0.6658600736253087,
+            "clip_vitl14": 0.6909263622068892,
+            "convnext_tiny": 0.5290604388925908,
+            "deit_vitb16": 0.7035385300066996,
+            "dinov2_vitb14": 0.7336895486254834,
+            "dinov2_vits14": 0.7047270076679091,
+            "efficientnet_b0": 0.4635241109702087,
+            "mae_vitb16": 0.7401459164603854,
+            "resnet18": 0.27009018544083707,
+            "resnet50": 0.475203656956045
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44,
+          "subject_level": {
+            "cross_rbar": 0.705941843094764,
+            "gap": 0.2606348714124438,
+            "n_cross_pairs": 864,
+            "n_units": 324,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9665767145072078
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.5741007865673204,
+            "gap": 0.36237074924903356,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.936471535816354
+          },
+          "floor": 0.25,
+          "fm_mean_dice": {
+            "biomedclip": 0.7105120823928486,
+            "clip_vitb16": 0.6658600736253087,
+            "clip_vitl14": 0.6909263622068892,
+            "convnext_tiny": 0.5290604388925908,
+            "deit_vitb16": 0.7035385300066996,
+            "dinov2_vitb14": 0.7336895486254834,
+            "dinov2_vits14": 0.7047270076679091,
+            "efficientnet_b0": 0.4635241109702087,
+            "mae_vitb16": 0.7401459164603854,
+            "resnet18": 0.27009018544083707,
+            "resnet50": 0.475203656956045
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44,
+          "subject_level": {
+            "cross_rbar": 0.705941843094764,
+            "gap": 0.2606348714124438,
+            "n_cross_pairs": 864,
+            "n_units": 324,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9665767145072078
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6226263775361939,
+            "gap": 0.3151706543782974,
+            "n_cross_pairs": 704,
+            "n_within_pairs": 76,
+            "within_rbar": 0.9377970319144913
+          },
+          "floor": 0.3,
+          "fm_mean_dice": {
+            "biomedclip": 0.7105120823928486,
+            "clip_vitb16": 0.6658600736253087,
+            "clip_vitl14": 0.6909263622068892,
+            "convnext_tiny": 0.5290604388925908,
+            "deit_vitb16": 0.7035385300066996,
+            "dinov2_vitb14": 0.7336895486254834,
+            "dinov2_vits14": 0.7047270076679091,
+            "efficientnet_b0": 0.4635241109702087,
+            "mae_vitb16": 0.7401459164603854,
+            "resnet50": 0.475203656956045
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet50"
+          ],
+          "n_fms": 10,
+          "n_members": 40,
+          "subject_level": {
+            "cross_rbar": 0.752600235985448,
+            "gap": 0.21421607271981724,
+            "n_cross_pairs": 704,
+            "n_units": 324,
+            "n_within_pairs": 76,
+            "within_rbar": 0.9668163087052652
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6226263775361939,
+            "gap": 0.3151706543782974,
+            "n_cross_pairs": 704,
+            "n_within_pairs": 76,
+            "within_rbar": 0.9377970319144913
+          },
+          "floor": 0.35,
+          "fm_mean_dice": {
+            "biomedclip": 0.7105120823928486,
+            "clip_vitb16": 0.6658600736253087,
+            "clip_vitl14": 0.6909263622068892,
+            "convnext_tiny": 0.5290604388925908,
+            "deit_vitb16": 0.7035385300066996,
+            "dinov2_vitb14": 0.7336895486254834,
+            "dinov2_vits14": 0.7047270076679091,
+            "efficientnet_b0": 0.4635241109702087,
+            "mae_vitb16": 0.7401459164603854,
+            "resnet50": 0.475203656956045
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet50"
+          ],
+          "n_fms": 10,
+          "n_members": 40,
+          "subject_level": {
+            "cross_rbar": 0.752600235985448,
+            "gap": 0.21421607271981724,
+            "n_cross_pairs": 704,
+            "n_units": 324,
+            "n_within_pairs": 76,
+            "within_rbar": 0.9668163087052652
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6226263775361939,
+            "gap": 0.3151706543782974,
+            "n_cross_pairs": 704,
+            "n_within_pairs": 76,
+            "within_rbar": 0.9377970319144913
+          },
+          "floor": 0.4,
+          "fm_mean_dice": {
+            "biomedclip": 0.7105120823928486,
+            "clip_vitb16": 0.6658600736253087,
+            "clip_vitl14": 0.6909263622068892,
+            "convnext_tiny": 0.5290604388925908,
+            "deit_vitb16": 0.7035385300066996,
+            "dinov2_vitb14": 0.7336895486254834,
+            "dinov2_vits14": 0.7047270076679091,
+            "efficientnet_b0": 0.4635241109702087,
+            "mae_vitb16": 0.7401459164603854,
+            "resnet50": 0.475203656956045
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet50"
+          ],
+          "n_fms": 10,
+          "n_members": 40,
+          "subject_level": {
+            "cross_rbar": 0.752600235985448,
+            "gap": 0.21421607271981724,
+            "n_cross_pairs": 704,
+            "n_units": 324,
+            "n_within_pairs": 76,
+            "within_rbar": 0.9668163087052652
+          }
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6876819185113731,
+            "gap": 0.24618363144035849,
+            "n_cross_pairs": 432,
+            "n_within_pairs": 64,
+            "within_rbar": 0.9338655499517315
+          },
+          "floor": 0.5,
+          "fm_mean_dice": {
+            "biomedclip": 0.7105120823928486,
+            "clip_vitb16": 0.6658600736253087,
+            "clip_vitl14": 0.6909263622068892,
+            "convnext_tiny": 0.5290604388925908,
+            "deit_vitb16": 0.7035385300066996,
+            "dinov2_vitb14": 0.7336895486254834,
+            "dinov2_vits14": 0.7047270076679091,
+            "mae_vitb16": 0.7401459164603854
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "mae_vitb16"
+          ],
+          "n_fms": 8,
+          "n_members": 32,
+          "subject_level": {
+            "cross_rbar": 0.8119510082688235,
+            "gap": 0.15286334640589083,
+            "n_cross_pairs": 432,
+            "n_units": 324,
+            "n_within_pairs": 64,
+            "within_rbar": 0.9648143546747143
+          }
+        }
+      ],
+      "n_test": 3228,
+      "n_units": 324,
+      "source_files": [
+        "per_case_dice/brats_wt/biomedclip/seed_42.json",
+        "per_case_dice/brats_wt/biomedclip/seed_43.json",
+        "per_case_dice/brats_wt/biomedclip/seed_44.json",
+        "per_case_dice/brats_wt/biomedclip/seed_45.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_42.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_43.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_44.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_45.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_42.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_43.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_44.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_45.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_42.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_43.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_44.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_45.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_42.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_43.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_44.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_45.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_42.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_43.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_44.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_45.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_42.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_43.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_44.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_45.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_42.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_43.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_44.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_45.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_42.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_43.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_44.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_45.json",
+        "per_case_dice/brats_wt/resnet18/seed_42.json",
+        "per_case_dice/brats_wt/resnet18/seed_43.json",
+        "per_case_dice/brats_wt/resnet18/seed_44.json",
+        "per_case_dice/brats_wt/resnet18/seed_45.json",
+        "per_case_dice/brats_wt/resnet50/seed_42.json",
+        "per_case_dice/brats_wt/resnet50/seed_43.json",
+        "per_case_dice/brats_wt/resnet50/seed_44.json",
+        "per_case_dice/brats_wt/resnet50/seed_45.json"
+      ],
+      "subject_level_cross_fitted_item_difficulty_floor_0.30": {
+        "attenuation_ratio_residual_over_raw": 4.4023590574064,
+        "bootstrap": {
+          "B": 2000,
+          "attenuation_ratio_95ci": [
+            3.754948977988146,
+            5.183676098263782
+          ],
+          "raw_gap_95ci": [
+            0.18160406322936137,
+            0.25050303751423275
+          ],
+          "residualized_gap_95ci": [
+            0.9199637482452445,
+            0.9644658127891281
+          ],
+          "seed": 0
+        },
+        "description": "Each FM trace is residualized against per-case difficulty estimated from traces outside that FM's broad upstream family; the original within/cross family-pair rule is then recomputed on residuals.",
+        "difficulty_family_rule": "broad upstream family exclusion",
+        "fit_summary": {
+          "fit_r2_mean": 0.7162966046251011,
+          "fit_r2_median": 0.7457871904822198,
+          "fit_r2_range": [
+            0.5221432093307827,
+            0.7944008930574458
+          ],
+          "n_residualized_traces": 40,
+          "skipped_traces": [],
+          "trace_fits": {
+            "biomedclip:42": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.14815100668311115,
+              "n_heldout_traces": 36,
+              "r2": 0.7533533886809907,
+              "slope": 0.8905888896785732
+            },
+            "biomedclip:43": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.13473116222494794,
+              "n_heldout_traces": 36,
+              "r2": 0.744589414657443,
+              "slope": 0.8996975929714575
+            },
+            "biomedclip:44": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.16721869195159791,
+              "n_heldout_traces": 36,
+              "r2": 0.771066629993586,
+              "slope": 0.8737623396794988
+            },
+            "biomedclip:45": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.11335803942979471,
+              "n_heldout_traces": 36,
+              "r2": 0.7469143045308821,
+              "slope": 0.925181547333698
+            },
+            "clip_vitb16:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.09485541203234647,
+              "n_heldout_traces": 32,
+              "r2": 0.7525340279019929,
+              "slope": 0.9036090622909381
+            },
+            "clip_vitb16:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.10080694690725508,
+              "n_heldout_traces": 32,
+              "r2": 0.7556023613669994,
+              "slope": 0.8981905235114241
+            },
+            "clip_vitb16:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.08923341553092153,
+              "n_heldout_traces": 32,
+              "r2": 0.7464192778856463,
+              "slope": 0.907350936765403
+            },
+            "clip_vitb16:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.09016629265370306,
+              "n_heldout_traces": 32,
+              "r2": 0.7470676486722548,
+              "slope": 0.9072417623290864
+            },
+            "clip_vitl14:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.16635110629059705,
+              "n_heldout_traces": 32,
+              "r2": 0.7288036285775721,
+              "slope": 0.8273520640020376
+            },
+            "clip_vitl14:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.1607846026701373,
+              "n_heldout_traces": 32,
+              "r2": 0.7227765357137201,
+              "slope": 0.8294487184823021
+            },
+            "clip_vitl14:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.1974289224627701,
+              "n_heldout_traces": 32,
+              "r2": 0.7538898390805548,
+              "slope": 0.8027669626675298
+            },
+            "clip_vitl14:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.15278597265068503,
+              "n_heldout_traces": 32,
+              "r2": 0.715150670884445,
+              "slope": 0.8381450184289675
+            },
+            "convnext_tiny:42": {
+              "heldout_family": "convnext",
+              "intercept": -0.2441320375650744,
+              "n_heldout_traces": 36,
+              "r2": 0.6955038115233112,
+              "slope": 1.1872774047134758
+            },
+            "convnext_tiny:43": {
+              "heldout_family": "convnext",
+              "intercept": -0.23716843474479654,
+              "n_heldout_traces": 36,
+              "r2": 0.6935953570421058,
+              "slope": 1.1820727444100863
+            },
+            "convnext_tiny:44": {
+              "heldout_family": "convnext",
+              "intercept": -0.263491640986604,
+              "n_heldout_traces": 36,
+              "r2": 0.6751062845569669,
+              "slope": 1.1929805672279847
+            },
+            "convnext_tiny:45": {
+              "heldout_family": "convnext",
+              "intercept": -0.24711984150475375,
+              "n_heldout_traces": 36,
+              "r2": 0.6955166587132571,
+              "slope": 1.1905359211557143
+            },
+            "deit_vitb16:42": {
+              "heldout_family": "deit",
+              "intercept": 0.15404194039792934,
+              "n_heldout_traces": 36,
+              "r2": 0.7878761711473063,
+              "slope": 0.864456188499293
+            },
+            "deit_vitb16:43": {
+              "heldout_family": "deit",
+              "intercept": 0.16406494731748353,
+              "n_heldout_traces": 36,
+              "r2": 0.790897990032631,
+              "slope": 0.8523679865227334
+            },
+            "deit_vitb16:44": {
+              "heldout_family": "deit",
+              "intercept": 0.16842068551409026,
+              "n_heldout_traces": 36,
+              "r2": 0.7944008930574458,
+              "slope": 0.8496925289969672
+            },
+            "deit_vitb16:45": {
+              "heldout_family": "deit",
+              "intercept": 0.13809402961951095,
+              "n_heldout_traces": 36,
+              "r2": 0.7909507249093192,
+              "slope": 0.8811115656136723
+            },
+            "dinov2_vitb14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.22871921893958136,
+              "n_heldout_traces": 32,
+              "r2": 0.7834738795302528,
+              "slope": 0.8153193365864677
+            },
+            "dinov2_vitb14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.18932116126273033,
+              "n_heldout_traces": 32,
+              "r2": 0.7705047975916788,
+              "slope": 0.8509168970431188
+            },
+            "dinov2_vitb14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.2551899599214175,
+              "n_heldout_traces": 32,
+              "r2": 0.7902402511178014,
+              "slope": 0.7876452310963425
+            },
+            "dinov2_vitb14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.2128793495692024,
+              "n_heldout_traces": 32,
+              "r2": 0.7917752953510298,
+              "slope": 0.8355338068422474
+            },
+            "dinov2_vits14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.1746199773969734,
+              "n_heldout_traces": 32,
+              "r2": 0.7451551030787933,
+              "slope": 0.8638614061311007
+            },
+            "dinov2_vits14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.16018282433815578,
+              "n_heldout_traces": 32,
+              "r2": 0.730706305058093,
+              "slope": 0.8734677275369797
+            },
+            "dinov2_vits14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.14896053062086567,
+              "n_heldout_traces": 32,
+              "r2": 0.7341664204573888,
+              "slope": 0.8893211941725538
+            },
+            "dinov2_vits14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.15898479949857752,
+              "n_heldout_traces": 32,
+              "r2": 0.7061955440840026,
+              "slope": 0.8689398881199637
+            },
+            "efficientnet_b0:42": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.3028634362654528,
+              "n_heldout_traces": 36,
+              "r2": 0.5221432093307827,
+              "slope": 1.151361637568347
+            },
+            "efficientnet_b0:43": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.2879877087021504,
+              "n_heldout_traces": 36,
+              "r2": 0.5570324603345145,
+              "slope": 1.1525424942913973
+            },
+            "efficientnet_b0:44": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.2925928717466471,
+              "n_heldout_traces": 36,
+              "r2": 0.557640402441264,
+              "slope": 1.1578279491879002
+            },
+            "efficientnet_b0:45": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.3116071202511799,
+              "n_heldout_traces": 36,
+              "r2": 0.5244173940139814,
+              "slope": 1.1505244417497218
+            },
+            "mae_vitb16:42": {
+              "heldout_family": "mae",
+              "intercept": 0.21286968278710522,
+              "n_heldout_traces": 36,
+              "r2": 0.7848149184773773,
+              "slope": 0.8359271013159982
+            },
+            "mae_vitb16:43": {
+              "heldout_family": "mae",
+              "intercept": 0.22634844561634315,
+              "n_heldout_traces": 36,
+              "r2": 0.7826767785220657,
+              "slope": 0.819344693605981
+            },
+            "mae_vitb16:44": {
+              "heldout_family": "mae",
+              "intercept": 0.19903231349217387,
+              "n_heldout_traces": 36,
+              "r2": 0.7832965436566667,
+              "slope": 0.8506468002533046
+            },
+            "mae_vitb16:45": {
+              "heldout_family": "mae",
+              "intercept": 0.21410699946467487,
+              "n_heldout_traces": 36,
+              "r2": 0.7847144169569803,
+              "slope": 0.8336955993569577
+            },
+            "resnet50:42": {
+              "heldout_family": "resnet",
+              "intercept": -0.2812662509499067,
+              "n_heldout_traces": 36,
+              "r2": 0.6118344161493343,
+              "slope": 1.1563502533133991
+            },
+            "resnet50:43": {
+              "heldout_family": "resnet",
+              "intercept": -0.29835840699806015,
+              "n_heldout_traces": 36,
+              "r2": 0.5969479903328718,
+              "slope": 1.1612051281359923
+            },
+            "resnet50:44": {
+              "heldout_family": "resnet",
+              "intercept": -0.25055404014511623,
+              "n_heldout_traces": 36,
+              "r2": 0.6484972851210125,
+              "slope": 1.1611572000729196
+            },
+            "resnet50:45": {
+              "heldout_family": "resnet",
+              "intercept": -0.3155922979019926,
+              "n_heldout_traces": 36,
+              "r2": 0.5836151544697241,
+              "slope": 1.138472096312786
+            }
+          }
+        },
+        "n_units": 324,
+        "raw": {
+          "cross_rbar": 0.752600235985448,
+          "gap": 0.21421607271981724,
+          "n_cross_pairs": 704,
+          "n_within_pairs": 76,
+          "within_rbar": 0.9668163087052652
+        },
+        "residualized": {
+          "cross_rbar": -0.07169547781646698,
+          "gap": 0.9430560679801154,
+          "n_cross_pairs": 704,
+          "n_within_pairs": 76,
+          "within_rbar": 0.8713605901636484
+        },
+        "residualized_gap_minus_raw_gap": 0.7288399952602982,
+        "within_cross_family_rule": "paper primary rule: same FM plus DINOv2-B/S pair"
+      },
+      "task": "brats_wt"
+    },
+    "kvasir": {
+      "available_fms": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitl14",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet18",
+        "resnet50"
+      ],
+      "available_members": 44,
+      "case_unit": "endoscopic image",
+      "cluster_unit": null,
+      "cross_fitted_item_difficulty_floor_0.30": {
+        "attenuation_ratio_residual_over_raw": 3.6822573820422817,
+        "bootstrap": {
+          "B": 2000,
+          "attenuation_ratio_95ci": [
+            3.0540473915412005,
+            4.448404747615289
+          ],
+          "raw_gap_95ci": [
+            0.21148617803691885,
+            0.32008674807930404
+          ],
+          "residualized_gap_95ci": [
+            0.8951381658640135,
+            1.007691303001497
+          ],
+          "seed": 0
+        },
+        "description": "Each FM trace is residualized against per-case difficulty estimated from traces outside that FM's broad upstream family; the original within/cross family-pair rule is then recomputed on residuals.",
+        "difficulty_family_rule": "broad upstream family exclusion",
+        "fit_summary": {
+          "fit_r2_mean": 0.66332433755388,
+          "fit_r2_median": 0.6803420085375821,
+          "fit_r2_range": [
+            0.36221058947662965,
+            0.8045958600811537
+          ],
+          "n_residualized_traces": 44,
+          "skipped_traces": [],
+          "trace_fits": {
+            "biomedclip:42": {
+              "heldout_family": "biomedclip",
+              "intercept": -0.048743151482303675,
+              "n_heldout_traces": 40,
+              "r2": 0.7553415661916596,
+              "slope": 1.0933232688818018
+            },
+            "biomedclip:43": {
+              "heldout_family": "biomedclip",
+              "intercept": -0.0036775209990716176,
+              "n_heldout_traces": 40,
+              "r2": 0.758024517846379,
+              "slope": 1.0460982504340137
+            },
+            "biomedclip:44": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.0708270081754996,
+              "n_heldout_traces": 40,
+              "r2": 0.7507830833921529,
+              "slope": 0.9651395101082915
+            },
+            "biomedclip:45": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.09341104665627781,
+              "n_heldout_traces": 40,
+              "r2": 0.7319317207151881,
+              "slope": 0.9377252335803935
+            },
+            "clip_vitb16:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.09365358556143809,
+              "n_heldout_traces": 36,
+              "r2": 0.7242460701210909,
+              "slope": 0.9248585764829925
+            },
+            "clip_vitb16:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.14883792112137123,
+              "n_heldout_traces": 36,
+              "r2": 0.7373678927190149,
+              "slope": 0.8669198457222075
+            },
+            "clip_vitb16:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.06619241560544525,
+              "n_heldout_traces": 36,
+              "r2": 0.7109781569837641,
+              "slope": 0.9520369187466362
+            },
+            "clip_vitb16:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.080176427798456,
+              "n_heldout_traces": 36,
+              "r2": 0.7088110897598552,
+              "slope": 0.9372141967807373
+            },
+            "clip_vitl14:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.20889038422661335,
+              "n_heldout_traces": 36,
+              "r2": 0.6709637800501491,
+              "slope": 0.8087634242125208
+            },
+            "clip_vitl14:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.19173179645152935,
+              "n_heldout_traces": 36,
+              "r2": 0.6820111894568992,
+              "slope": 0.8289229406847947
+            },
+            "clip_vitl14:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.14314765026420725,
+              "n_heldout_traces": 36,
+              "r2": 0.6976848884207234,
+              "slope": 0.8831721922441562
+            },
+            "clip_vitl14:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.17104074797367946,
+              "n_heldout_traces": 36,
+              "r2": 0.678672827618265,
+              "slope": 0.8483974860071687
+            },
+            "convnext_tiny:42": {
+              "heldout_family": "convnext",
+              "intercept": 0.01394137564603336,
+              "n_heldout_traces": 40,
+              "r2": 0.6268982972657748,
+              "slope": 0.9201439129006597
+            },
+            "convnext_tiny:43": {
+              "heldout_family": "convnext",
+              "intercept": 0.009353704279933277,
+              "n_heldout_traces": 40,
+              "r2": 0.6313863690603446,
+              "slope": 0.9263358576242596
+            },
+            "convnext_tiny:44": {
+              "heldout_family": "convnext",
+              "intercept": -0.039724171067592545,
+              "n_heldout_traces": 40,
+              "r2": 0.6583392711205133,
+              "slope": 0.9767805174710935
+            },
+            "convnext_tiny:45": {
+              "heldout_family": "convnext",
+              "intercept": -0.06708055364256098,
+              "n_heldout_traces": 40,
+              "r2": 0.6616261796543089,
+              "slope": 1.0047233178358232
+            },
+            "deit_vitb16:42": {
+              "heldout_family": "deit",
+              "intercept": 0.1533061785700709,
+              "n_heldout_traces": 40,
+              "r2": 0.7088814277723582,
+              "slope": 0.8840033956327843
+            },
+            "deit_vitb16:43": {
+              "heldout_family": "deit",
+              "intercept": 0.17430956566622888,
+              "n_heldout_traces": 40,
+              "r2": 0.7072075579721604,
+              "slope": 0.8579248424964718
+            },
+            "deit_vitb16:44": {
+              "heldout_family": "deit",
+              "intercept": 0.1296011875468397,
+              "n_heldout_traces": 40,
+              "r2": 0.7113556736426347,
+              "slope": 0.912956937274376
+            },
+            "deit_vitb16:45": {
+              "heldout_family": "deit",
+              "intercept": 0.14509520034243845,
+              "n_heldout_traces": 40,
+              "r2": 0.6954703238244588,
+              "slope": 0.8937425389601589
+            },
+            "dinov2_vitb14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.24084798568419802,
+              "n_heldout_traces": 36,
+              "r2": 0.74731813199519,
+              "slope": 0.8391194658709579
+            },
+            "dinov2_vitb14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.22050674631883702,
+              "n_heldout_traces": 36,
+              "r2": 0.7737002040900168,
+              "slope": 0.8611977034158531
+            },
+            "dinov2_vitb14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.1896901943890969,
+              "n_heldout_traces": 36,
+              "r2": 0.7570676427578864,
+              "slope": 0.903269117495085
+            },
+            "dinov2_vitb14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.2092402595643116,
+              "n_heldout_traces": 36,
+              "r2": 0.7614108989338277,
+              "slope": 0.8800834583709727
+            },
+            "dinov2_vits14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.27855625640746456,
+              "n_heldout_traces": 36,
+              "r2": 0.6247696778312773,
+              "slope": 0.7862484120895997
+            },
+            "dinov2_vits14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.29052381749820144,
+              "n_heldout_traces": 36,
+              "r2": 0.6021950882892335,
+              "slope": 0.7672119179412143
+            },
+            "dinov2_vits14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.2801767044666527,
+              "n_heldout_traces": 36,
+              "r2": 0.6183215608613859,
+              "slope": 0.7817750158630877
+            },
+            "dinov2_vits14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.24304503250398007,
+              "n_heldout_traces": 36,
+              "r2": 0.635945841810558,
+              "slope": 0.8274795514199929
+            },
+            "efficientnet_b0:42": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.1203836875012161,
+              "n_heldout_traces": 40,
+              "r2": 0.5409173748719991,
+              "slope": 1.0377912388028083
+            },
+            "efficientnet_b0:43": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.1122291230212482,
+              "n_heldout_traces": 40,
+              "r2": 0.5548190491152171,
+              "slope": 1.0327120314697795
+            },
+            "efficientnet_b0:44": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.12208416378027581,
+              "n_heldout_traces": 40,
+              "r2": 0.5758244518218554,
+              "slope": 1.0501250352757339
+            },
+            "efficientnet_b0:45": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.1229928100285501,
+              "n_heldout_traces": 40,
+              "r2": 0.575951875514856,
+              "slope": 1.0519356948059224
+            },
+            "mae_vitb16:42": {
+              "heldout_family": "mae",
+              "intercept": -0.07208900294302223,
+              "n_heldout_traces": 40,
+              "r2": 0.8006200331615388,
+              "slope": 1.1697673699357907
+            },
+            "mae_vitb16:43": {
+              "heldout_family": "mae",
+              "intercept": 0.0020227757405326713,
+              "n_heldout_traces": 40,
+              "r2": 0.7959177220257407,
+              "slope": 1.0765478787481373
+            },
+            "mae_vitb16:44": {
+              "heldout_family": "mae",
+              "intercept": -0.06863542754479293,
+              "n_heldout_traces": 40,
+              "r2": 0.8020088794370784,
+              "slope": 1.162837838730177
+            },
+            "mae_vitb16:45": {
+              "heldout_family": "mae",
+              "intercept": -0.10225731013502275,
+              "n_heldout_traces": 40,
+              "r2": 0.8045958600811537,
+              "slope": 1.2008463251448855
+            },
+            "resnet18:42": {
+              "heldout_family": "resnet",
+              "intercept": -0.1785885824672083,
+              "n_heldout_traces": 36,
+              "r2": 0.40596624143342686,
+              "slope": 0.887780517534468
+            },
+            "resnet18:43": {
+              "heldout_family": "resnet",
+              "intercept": -0.18748121882420957,
+              "n_heldout_traces": 36,
+              "r2": 0.36387275021909227,
+              "slope": 0.8609353692393216
+            },
+            "resnet18:44": {
+              "heldout_family": "resnet",
+              "intercept": -0.19873054474331509,
+              "n_heldout_traces": 36,
+              "r2": 0.36221058947662965,
+              "slope": 0.8632683982250284
+            },
+            "resnet18:45": {
+              "heldout_family": "resnet",
+              "intercept": -0.18731843127294354,
+              "n_heldout_traces": 36,
+              "r2": 0.43998177630676605,
+              "slope": 0.9106672170433444
+            },
+            "resnet50:42": {
+              "heldout_family": "resnet",
+              "intercept": -0.13984239113151611,
+              "n_heldout_traces": 36,
+              "r2": 0.6444465920818172,
+              "slope": 1.0198108673028676
+            },
+            "resnet50:43": {
+              "heldout_family": "resnet",
+              "intercept": -0.19141864046872603,
+              "n_heldout_traces": 36,
+              "r2": 0.6586173489301251,
+              "slope": 1.0685916940033406
+            },
+            "resnet50:44": {
+              "heldout_family": "resnet",
+              "intercept": -0.18801036256541115,
+              "n_heldout_traces": 36,
+              "r2": 0.672995162709559,
+              "slope": 1.0670169978979123
+            },
+            "resnet50:45": {
+              "heldout_family": "resnet",
+              "intercept": -0.1641842121191951,
+              "n_heldout_traces": 36,
+              "r2": 0.6588142150267912,
+              "slope": 1.0487207933805462
+            }
+          }
+        },
+        "raw": {
+          "cross_rbar": 0.6972080594904794,
+          "gap": 0.26064239117327825,
+          "n_cross_pairs": 864,
+          "n_within_pairs": 82,
+          "within_rbar": 0.9578504506637576
+        },
+        "residualized": {
+          "cross_rbar": -0.08898305897870619,
+          "gap": 0.959752368970956,
+          "n_cross_pairs": 864,
+          "n_within_pairs": 82,
+          "within_rbar": 0.8707693099922498
+        },
+        "residualized_gap_minus_raw_gap": 0.6991099777976777,
+        "within_cross_family_rule": "paper primary rule: same FM plus DINOv2-B/S pair"
+      },
+      "floor_grid": [
+        {
+          "case_level": {
+            "cross_rbar": 0.6972080594904794,
+            "gap": 0.26064239117327825,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9578504506637576
+          },
+          "floor": 0.0,
+          "fm_mean_dice": {
+            "biomedclip": 0.6941145339139135,
+            "clip_vitb16": 0.696617120072915,
+            "clip_vitl14": 0.7273369058093522,
+            "convnext_tiny": 0.6173157652025112,
+            "deit_vitb16": 0.7320214068226051,
+            "dinov2_vitb14": 0.7703722641347365,
+            "dinov2_vits14": 0.7772158481481407,
+            "efficientnet_b0": 0.5801005071722708,
+            "mae_vitb16": 0.6989240691798235,
+            "resnet18": 0.4278490124147842,
+            "resnet50": 0.5641621212441047
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6972080594904794,
+            "gap": 0.26064239117327825,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9578504506637576
+          },
+          "floor": 0.1,
+          "fm_mean_dice": {
+            "biomedclip": 0.6941145339139135,
+            "clip_vitb16": 0.696617120072915,
+            "clip_vitl14": 0.7273369058093522,
+            "convnext_tiny": 0.6173157652025112,
+            "deit_vitb16": 0.7320214068226051,
+            "dinov2_vitb14": 0.7703722641347365,
+            "dinov2_vits14": 0.7772158481481407,
+            "efficientnet_b0": 0.5801005071722708,
+            "mae_vitb16": 0.6989240691798235,
+            "resnet18": 0.4278490124147842,
+            "resnet50": 0.5641621212441047
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6972080594904794,
+            "gap": 0.26064239117327825,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9578504506637576
+          },
+          "floor": 0.2,
+          "fm_mean_dice": {
+            "biomedclip": 0.6941145339139135,
+            "clip_vitb16": 0.696617120072915,
+            "clip_vitl14": 0.7273369058093522,
+            "convnext_tiny": 0.6173157652025112,
+            "deit_vitb16": 0.7320214068226051,
+            "dinov2_vitb14": 0.7703722641347365,
+            "dinov2_vits14": 0.7772158481481407,
+            "efficientnet_b0": 0.5801005071722708,
+            "mae_vitb16": 0.6989240691798235,
+            "resnet18": 0.4278490124147842,
+            "resnet50": 0.5641621212441047
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6972080594904794,
+            "gap": 0.26064239117327825,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9578504506637576
+          },
+          "floor": 0.25,
+          "fm_mean_dice": {
+            "biomedclip": 0.6941145339139135,
+            "clip_vitb16": 0.696617120072915,
+            "clip_vitl14": 0.7273369058093522,
+            "convnext_tiny": 0.6173157652025112,
+            "deit_vitb16": 0.7320214068226051,
+            "dinov2_vitb14": 0.7703722641347365,
+            "dinov2_vits14": 0.7772158481481407,
+            "efficientnet_b0": 0.5801005071722708,
+            "mae_vitb16": 0.6989240691798235,
+            "resnet18": 0.4278490124147842,
+            "resnet50": 0.5641621212441047
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6972080594904794,
+            "gap": 0.26064239117327825,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9578504506637576
+          },
+          "floor": 0.3,
+          "fm_mean_dice": {
+            "biomedclip": 0.6941145339139135,
+            "clip_vitb16": 0.696617120072915,
+            "clip_vitl14": 0.7273369058093522,
+            "convnext_tiny": 0.6173157652025112,
+            "deit_vitb16": 0.7320214068226051,
+            "dinov2_vitb14": 0.7703722641347365,
+            "dinov2_vits14": 0.7772158481481407,
+            "efficientnet_b0": 0.5801005071722708,
+            "mae_vitb16": 0.6989240691798235,
+            "resnet18": 0.4278490124147842,
+            "resnet50": 0.5641621212441047
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6972080594904794,
+            "gap": 0.26064239117327825,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9578504506637576
+          },
+          "floor": 0.35,
+          "fm_mean_dice": {
+            "biomedclip": 0.6941145339139135,
+            "clip_vitb16": 0.696617120072915,
+            "clip_vitl14": 0.7273369058093522,
+            "convnext_tiny": 0.6173157652025112,
+            "deit_vitb16": 0.7320214068226051,
+            "dinov2_vitb14": 0.7703722641347365,
+            "dinov2_vits14": 0.7772158481481407,
+            "efficientnet_b0": 0.5801005071722708,
+            "mae_vitb16": 0.6989240691798235,
+            "resnet18": 0.4278490124147842,
+            "resnet50": 0.5641621212441047
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.6972080594904794,
+            "gap": 0.26064239117327825,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.9578504506637576
+          },
+          "floor": 0.4,
+          "fm_mean_dice": {
+            "biomedclip": 0.6941145339139135,
+            "clip_vitb16": 0.696617120072915,
+            "clip_vitl14": 0.7273369058093522,
+            "convnext_tiny": 0.6173157652025112,
+            "deit_vitb16": 0.7320214068226051,
+            "dinov2_vitb14": 0.7703722641347365,
+            "dinov2_vits14": 0.7772158481481407,
+            "efficientnet_b0": 0.5801005071722708,
+            "mae_vitb16": 0.6989240691798235,
+            "resnet18": 0.4278490124147842,
+            "resnet50": 0.5641621212441047
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.7292559542448629,
+            "gap": 0.2276431858415564,
+            "n_cross_pairs": 704,
+            "n_within_pairs": 76,
+            "within_rbar": 0.9568991400864193
+          },
+          "floor": 0.5,
+          "fm_mean_dice": {
+            "biomedclip": 0.6941145339139135,
+            "clip_vitb16": 0.696617120072915,
+            "clip_vitl14": 0.7273369058093522,
+            "convnext_tiny": 0.6173157652025112,
+            "deit_vitb16": 0.7320214068226051,
+            "dinov2_vitb14": 0.7703722641347365,
+            "dinov2_vits14": 0.7772158481481407,
+            "efficientnet_b0": 0.5801005071722708,
+            "mae_vitb16": 0.6989240691798235,
+            "resnet50": 0.5641621212441047
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet50"
+          ],
+          "n_fms": 10,
+          "n_members": 40
+        }
+      ],
+      "n_test": 120,
+      "n_units": 120,
+      "source_files": [
+        "per_case_dice/kvasir/biomedclip/seed_42.json",
+        "per_case_dice/kvasir/biomedclip/seed_43.json",
+        "per_case_dice/kvasir/biomedclip/seed_44.json",
+        "per_case_dice/kvasir/biomedclip/seed_45.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_42.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_43.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_44.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_45.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_42.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_43.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_44.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_45.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_42.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_43.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_44.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_45.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_42.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_43.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_44.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_45.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_42.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_43.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_44.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_45.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_42.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_43.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_44.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_45.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_42.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_43.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_44.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_45.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_42.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_43.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_44.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_45.json",
+        "per_case_dice/kvasir/resnet18/seed_42.json",
+        "per_case_dice/kvasir/resnet18/seed_43.json",
+        "per_case_dice/kvasir/resnet18/seed_44.json",
+        "per_case_dice/kvasir/resnet18/seed_45.json",
+        "per_case_dice/kvasir/resnet50/seed_42.json",
+        "per_case_dice/kvasir/resnet50/seed_43.json",
+        "per_case_dice/kvasir/resnet50/seed_44.json",
+        "per_case_dice/kvasir/resnet50/seed_45.json"
+      ],
+      "task": "kvasir"
+    },
+    "riga_cup": {
+      "available_fms": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitl14",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet18",
+        "resnet50"
+      ],
+      "available_members": 44,
+      "case_unit": "fundus image",
+      "cluster_unit": null,
+      "cross_fitted_item_difficulty_floor_0.30": {
+        "attenuation_ratio_residual_over_raw": 1.7547856671928161,
+        "bootstrap": {
+          "B": 2000,
+          "attenuation_ratio_95ci": [
+            1.49216333123739,
+            2.108943816821226
+          ],
+          "raw_gap_95ci": [
+            0.39464019739086664,
+            0.5555718776445887
+          ],
+          "residualized_gap_95ci": [
+            0.7820682757019682,
+            0.8817224390061371
+          ],
+          "seed": 0
+        },
+        "description": "Each FM trace is residualized against per-case difficulty estimated from traces outside that FM's broad upstream family; the original within/cross family-pair rule is then recomputed on residuals.",
+        "difficulty_family_rule": "broad upstream family exclusion",
+        "fit_summary": {
+          "fit_r2_mean": 0.3177654231678844,
+          "fit_r2_median": 0.32217462026481786,
+          "fit_r2_range": [
+            0.004573206078825942,
+            0.5297868745925014
+          ],
+          "n_residualized_traces": 36,
+          "skipped_traces": [],
+          "trace_fits": {
+            "biomedclip:42": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.41692755386545766,
+              "n_heldout_traces": 32,
+              "r2": 0.3163309614201065,
+              "slope": 0.5741188649666286
+            },
+            "biomedclip:43": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.46190612391132047,
+              "n_heldout_traces": 32,
+              "r2": 0.27494079099108193,
+              "slope": 0.5068096068909055
+            },
+            "biomedclip:44": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.4452013470252728,
+              "n_heldout_traces": 32,
+              "r2": 0.31978220821099956,
+              "slope": 0.5424012592545688
+            },
+            "biomedclip:45": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.4695796542542938,
+              "n_heldout_traces": 32,
+              "r2": 0.24537443250396362,
+              "slope": 0.5008854771770581
+            },
+            "clip_vitb16:42": {
+              "heldout_family": "openai_clip",
+              "intercept": -0.13528910239377487,
+              "n_heldout_traces": 28,
+              "r2": 0.43510785742740354,
+              "slope": 1.2096034120595405
+            },
+            "clip_vitb16:43": {
+              "heldout_family": "openai_clip",
+              "intercept": -0.20202083068599203,
+              "n_heldout_traces": 28,
+              "r2": 0.43717151044260616,
+              "slope": 1.2955733692333484
+            },
+            "clip_vitb16:44": {
+              "heldout_family": "openai_clip",
+              "intercept": -0.13900840164200037,
+              "n_heldout_traces": 28,
+              "r2": 0.4565649360885342,
+              "slope": 1.2323658907782988
+            },
+            "clip_vitb16:45": {
+              "heldout_family": "openai_clip",
+              "intercept": -0.1817554110241355,
+              "n_heldout_traces": 28,
+              "r2": 0.41739800787714754,
+              "slope": 1.2481732479163146
+            },
+            "clip_vitl14:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.08125909199387867,
+              "n_heldout_traces": 28,
+              "r2": 0.5185105732525823,
+              "slope": 0.9593444822969829
+            },
+            "clip_vitl14:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.09035761808120865,
+              "n_heldout_traces": 28,
+              "r2": 0.5297868745925014,
+              "slope": 0.9673180756879428
+            },
+            "clip_vitl14:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.049673147788038184,
+              "n_heldout_traces": 28,
+              "r2": 0.5184180339726998,
+              "slope": 1.0147615895192692
+            },
+            "clip_vitl14:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.0527826208025184,
+              "n_heldout_traces": 28,
+              "r2": 0.5148352872303382,
+              "slope": 1.0042169509669592
+            },
+            "deit_vitb16:42": {
+              "heldout_family": "deit",
+              "intercept": 0.34907967274282553,
+              "n_heldout_traces": 32,
+              "r2": 0.32456703231863615,
+              "slope": 0.6129340797463262
+            },
+            "deit_vitb16:43": {
+              "heldout_family": "deit",
+              "intercept": 0.3301262975118559,
+              "n_heldout_traces": 32,
+              "r2": 0.2643488696431959,
+              "slope": 0.6206466214025146
+            },
+            "deit_vitb16:44": {
+              "heldout_family": "deit",
+              "intercept": 0.30971520976178873,
+              "n_heldout_traces": 32,
+              "r2": 0.2712585491204986,
+              "slope": 0.6499771406174005
+            },
+            "deit_vitb16:45": {
+              "heldout_family": "deit",
+              "intercept": 0.3104468375750475,
+              "n_heldout_traces": 32,
+              "r2": 0.2659776712974953,
+              "slope": 0.6476098811972317
+            },
+            "dinov2_vitb14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.23277040455200781,
+              "n_heldout_traces": 28,
+              "r2": 0.32797743462918116,
+              "slope": 0.7620894594919561
+            },
+            "dinov2_vitb14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.2422225166484993,
+              "n_heldout_traces": 28,
+              "r2": 0.31144446434656226,
+              "slope": 0.7540970424246162
+            },
+            "dinov2_vitb14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.24964292137878832,
+              "n_heldout_traces": 28,
+              "r2": 0.29732445693226783,
+              "slope": 0.7379348947426593
+            },
+            "dinov2_vitb14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.28896279271457187,
+              "n_heldout_traces": 28,
+              "r2": 0.2790639768697566,
+              "slope": 0.6774277873301731
+            },
+            "dinov2_vits14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.3237893795024632,
+              "n_heldout_traces": 28,
+              "r2": 0.4193049659012478,
+              "slope": 0.6591572006179127
+            },
+            "dinov2_vits14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.3932023789727059,
+              "n_heldout_traces": 28,
+              "r2": 0.3985955698210152,
+              "slope": 0.575766941477339
+            },
+            "dinov2_vits14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.328682744113568,
+              "n_heldout_traces": 28,
+              "r2": 0.41870487272511525,
+              "slope": 0.6594501209465802
+            },
+            "dinov2_vits14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.3145709142433416,
+              "n_heldout_traces": 28,
+              "r2": 0.43783635100656393,
+              "slope": 0.6780721321443975
+            },
+            "efficientnet_b0:42": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.03234868127141564,
+              "n_heldout_traces": 32,
+              "r2": 0.26854418023948634,
+              "slope": 0.884984964658807
+            },
+            "efficientnet_b0:43": {
+              "heldout_family": "efficientnet",
+              "intercept": 0.02054448868767031,
+              "n_heldout_traces": 32,
+              "r2": 0.12632397984089783,
+              "slope": 0.6881629134159175
+            },
+            "efficientnet_b0:44": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.022500773661791193,
+              "n_heldout_traces": 32,
+              "r2": 0.20191937027893647,
+              "slope": 0.8049757431180409
+            },
+            "efficientnet_b0:45": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.07070680826140427,
+              "n_heldout_traces": 32,
+              "r2": 0.1940271366549997,
+              "slope": 0.8448843941909843
+            },
+            "mae_vitb16:42": {
+              "heldout_family": "mae",
+              "intercept": -0.29060519431645093,
+              "n_heldout_traces": 32,
+              "r2": 0.41796930508591346,
+              "slope": 1.4540124623225776
+            },
+            "mae_vitb16:43": {
+              "heldout_family": "mae",
+              "intercept": -0.44351046734217003,
+              "n_heldout_traces": 32,
+              "r2": 0.39675927341420814,
+              "slope": 1.6268579517360462
+            },
+            "mae_vitb16:44": {
+              "heldout_family": "mae",
+              "intercept": -0.39497523011085267,
+              "n_heldout_traces": 32,
+              "r2": 0.39178506337446684,
+              "slope": 1.5677440917545333
+            },
+            "mae_vitb16:45": {
+              "heldout_family": "mae",
+              "intercept": -0.44215082715163956,
+              "n_heldout_traces": 32,
+              "r2": 0.40016920490128605,
+              "slope": 1.6324562699244514
+            },
+            "resnet50:42": {
+              "heldout_family": "resnet",
+              "intercept": 0.2294139171244348,
+              "n_heldout_traces": 32,
+              "r2": 0.007704590268558187,
+              "slope": 0.1614025335729656
+            },
+            "resnet50:43": {
+              "heldout_family": "resnet",
+              "intercept": 0.27047167498811087,
+              "n_heldout_traces": 32,
+              "r2": 0.021365532914841667,
+              "slope": 0.26214699460750374
+            },
+            "resnet50:44": {
+              "heldout_family": "resnet",
+              "intercept": 0.18700090586972737,
+              "n_heldout_traces": 32,
+              "r2": 0.007788702369915912,
+              "slope": 0.16610381781234354
+            },
+            "resnet50:45": {
+              "heldout_family": "resnet",
+              "intercept": 0.1859614321110637,
+              "n_heldout_traces": 32,
+              "r2": 0.004573206078825942,
+              "slope": 0.12065264986504726
+            }
+          }
+        },
+        "raw": {
+          "cross_rbar": 0.3607490284428245,
+          "gap": 0.47315334131525844,
+          "n_cross_pairs": 560,
+          "n_within_pairs": 70,
+          "within_rbar": 0.833902369758083
+        },
+        "residualized": {
+          "cross_rbar": -0.0806469172138099,
+          "gap": 0.830282701724406,
+          "n_cross_pairs": 560,
+          "n_within_pairs": 70,
+          "within_rbar": 0.7496357845105961
+        },
+        "residualized_gap_minus_raw_gap": 0.35712936040914756,
+        "within_cross_family_rule": "paper primary rule: same FM plus DINOv2-B/S pair"
+      },
+      "floor_grid": [
+        {
+          "case_level": {
+            "cross_rbar": 0.3222904297038558,
+            "gap": 0.5288878624254685,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8511782921293243
+          },
+          "floor": 0.0,
+          "fm_mean_dice": {
+            "biomedclip": 0.7663902619167378,
+            "clip_vitb16": 0.5985885143169741,
+            "clip_vitl14": 0.6724326217645094,
+            "convnext_tiny": 0.28979711864958513,
+            "deit_vitb16": 0.7083395285041709,
+            "dinov2_vitb14": 0.6876723929847541,
+            "dinov2_vits14": 0.7211374540470149,
+            "efficientnet_b0": 0.48460018852921694,
+            "mae_vitb16": 0.5833656578618837,
+            "resnet18": 0.21679571908469752,
+            "resnet50": 0.3341367316377153
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.3222904297038558,
+            "gap": 0.5288878624254685,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8511782921293243
+          },
+          "floor": 0.1,
+          "fm_mean_dice": {
+            "biomedclip": 0.7663902619167378,
+            "clip_vitb16": 0.5985885143169741,
+            "clip_vitl14": 0.6724326217645094,
+            "convnext_tiny": 0.28979711864958513,
+            "deit_vitb16": 0.7083395285041709,
+            "dinov2_vitb14": 0.6876723929847541,
+            "dinov2_vits14": 0.7211374540470149,
+            "efficientnet_b0": 0.48460018852921694,
+            "mae_vitb16": 0.5833656578618837,
+            "resnet18": 0.21679571908469752,
+            "resnet50": 0.3341367316377153
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.3222904297038558,
+            "gap": 0.5288878624254685,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8511782921293243
+          },
+          "floor": 0.2,
+          "fm_mean_dice": {
+            "biomedclip": 0.7663902619167378,
+            "clip_vitb16": 0.5985885143169741,
+            "clip_vitl14": 0.6724326217645094,
+            "convnext_tiny": 0.28979711864958513,
+            "deit_vitb16": 0.7083395285041709,
+            "dinov2_vitb14": 0.6876723929847541,
+            "dinov2_vits14": 0.7211374540470149,
+            "efficientnet_b0": 0.48460018852921694,
+            "mae_vitb16": 0.5833656578618837,
+            "resnet18": 0.21679571908469752,
+            "resnet50": 0.3341367316377153
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.34725543581308355,
+            "gap": 0.4989033791996293,
+            "n_cross_pairs": 704,
+            "n_within_pairs": 76,
+            "within_rbar": 0.8461588150127128
+          },
+          "floor": 0.25,
+          "fm_mean_dice": {
+            "biomedclip": 0.7663902619167378,
+            "clip_vitb16": 0.5985885143169741,
+            "clip_vitl14": 0.6724326217645094,
+            "convnext_tiny": 0.28979711864958513,
+            "deit_vitb16": 0.7083395285041709,
+            "dinov2_vitb14": 0.6876723929847541,
+            "dinov2_vits14": 0.7211374540470149,
+            "efficientnet_b0": 0.48460018852921694,
+            "mae_vitb16": 0.5833656578618837,
+            "resnet50": 0.3341367316377153
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet50"
+          ],
+          "n_fms": 10,
+          "n_members": 40
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.3607490284428245,
+            "gap": 0.47315334131525844,
+            "n_cross_pairs": 560,
+            "n_within_pairs": 70,
+            "within_rbar": 0.833902369758083
+          },
+          "floor": 0.3,
+          "fm_mean_dice": {
+            "biomedclip": 0.7663902619167378,
+            "clip_vitb16": 0.5985885143169741,
+            "clip_vitl14": 0.6724326217645094,
+            "deit_vitb16": 0.7083395285041709,
+            "dinov2_vitb14": 0.6876723929847541,
+            "dinov2_vits14": 0.7211374540470149,
+            "efficientnet_b0": 0.48460018852921694,
+            "mae_vitb16": 0.5833656578618837,
+            "resnet50": 0.3341367316377153
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet50"
+          ],
+          "n_fms": 9,
+          "n_members": 36
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.44317371788816184,
+            "gap": 0.3842223134656624,
+            "n_cross_pairs": 432,
+            "n_within_pairs": 64,
+            "within_rbar": 0.8273960313538242
+          },
+          "floor": 0.35,
+          "fm_mean_dice": {
+            "biomedclip": 0.7663902619167378,
+            "clip_vitb16": 0.5985885143169741,
+            "clip_vitl14": 0.6724326217645094,
+            "deit_vitb16": 0.7083395285041709,
+            "dinov2_vitb14": 0.6876723929847541,
+            "dinov2_vits14": 0.7211374540470149,
+            "efficientnet_b0": 0.48460018852921694,
+            "mae_vitb16": 0.5833656578618837
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16"
+          ],
+          "n_fms": 8,
+          "n_members": 32
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.44317371788816184,
+            "gap": 0.3842223134656624,
+            "n_cross_pairs": 432,
+            "n_within_pairs": 64,
+            "within_rbar": 0.8273960313538242
+          },
+          "floor": 0.4,
+          "fm_mean_dice": {
+            "biomedclip": 0.7663902619167378,
+            "clip_vitb16": 0.5985885143169741,
+            "clip_vitl14": 0.6724326217645094,
+            "deit_vitb16": 0.7083395285041709,
+            "dinov2_vitb14": 0.6876723929847541,
+            "dinov2_vits14": 0.7211374540470149,
+            "efficientnet_b0": 0.48460018852921694,
+            "mae_vitb16": 0.5833656578618837
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16"
+          ],
+          "n_fms": 8,
+          "n_members": 32
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.4833896764585015,
+            "gap": 0.3366817365896828,
+            "n_cross_pairs": 320,
+            "n_within_pairs": 58,
+            "within_rbar": 0.8200714130481843
+          },
+          "floor": 0.5,
+          "fm_mean_dice": {
+            "biomedclip": 0.7663902619167378,
+            "clip_vitb16": 0.5985885143169741,
+            "clip_vitl14": 0.6724326217645094,
+            "deit_vitb16": 0.7083395285041709,
+            "dinov2_vitb14": 0.6876723929847541,
+            "dinov2_vits14": 0.7211374540470149,
+            "mae_vitb16": 0.5833656578618837
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "mae_vitb16"
+          ],
+          "n_fms": 7,
+          "n_members": 28
+        }
+      ],
+      "n_test": 95,
+      "n_units": 95,
+      "source_files": [
+        "per_case_dice/riga_cup/biomedclip/seed_42.json",
+        "per_case_dice/riga_cup/biomedclip/seed_43.json",
+        "per_case_dice/riga_cup/biomedclip/seed_44.json",
+        "per_case_dice/riga_cup/biomedclip/seed_45.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_42.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_43.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_44.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_45.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_42.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_43.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_44.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_45.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_42.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_43.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_44.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_45.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_42.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_43.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_44.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_45.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_42.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_43.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_44.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_45.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_42.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_43.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_44.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_45.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_42.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_43.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_44.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_45.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_42.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_43.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_44.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_45.json",
+        "per_case_dice/riga_cup/resnet18/seed_42.json",
+        "per_case_dice/riga_cup/resnet18/seed_43.json",
+        "per_case_dice/riga_cup/resnet18/seed_44.json",
+        "per_case_dice/riga_cup/resnet18/seed_45.json",
+        "per_case_dice/riga_cup/resnet50/seed_42.json",
+        "per_case_dice/riga_cup/resnet50/seed_43.json",
+        "per_case_dice/riga_cup/resnet50/seed_44.json",
+        "per_case_dice/riga_cup/resnet50/seed_45.json"
+      ],
+      "task": "riga_cup"
+    },
+    "riga_disc": {
+      "available_fms": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitl14",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet18",
+        "resnet50"
+      ],
+      "available_members": 44,
+      "case_unit": "fundus image",
+      "cluster_unit": null,
+      "cross_fitted_item_difficulty_floor_0.30": {
+        "attenuation_ratio_residual_over_raw": 1.3700298437270424,
+        "bootstrap": {
+          "B": 2000,
+          "attenuation_ratio_95ci": [
+            1.2662038094282322,
+            1.489714351345339
+          ],
+          "raw_gap_95ci": [
+            0.568734507809203,
+            0.6869552130532515
+          ],
+          "residualized_gap_95ci": [
+            0.8047988297163693,
+            0.9201444094221269
+          ],
+          "seed": 0
+        },
+        "description": "Each FM trace is residualized against per-case difficulty estimated from traces outside that FM's broad upstream family; the original within/cross family-pair rule is then recomputed on residuals.",
+        "difficulty_family_rule": "broad upstream family exclusion",
+        "fit_summary": {
+          "fit_r2_mean": 0.13783599831785154,
+          "fit_r2_median": 0.1519851816630164,
+          "fit_r2_range": [
+            0.018087501870135525,
+            0.25012743305997465
+          ],
+          "n_residualized_traces": 44,
+          "skipped_traces": [],
+          "trace_fits": {
+            "biomedclip:42": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.7413768309831075,
+              "n_heldout_traces": 40,
+              "r2": 0.1401572620083661,
+              "slope": 0.22148900843717875
+            },
+            "biomedclip:43": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.756796385548967,
+              "n_heldout_traces": 40,
+              "r2": 0.14136165744745377,
+              "slope": 0.20723613404403599
+            },
+            "biomedclip:44": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.723237024300695,
+              "n_heldout_traces": 40,
+              "r2": 0.19600557019659515,
+              "slope": 0.24265442364531817
+            },
+            "biomedclip:45": {
+              "heldout_family": "biomedclip",
+              "intercept": 0.7661224186087308,
+              "n_heldout_traces": 40,
+              "r2": 0.1292967652471515,
+              "slope": 0.19840615956375163
+            },
+            "clip_vitb16:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.40162813419715304,
+              "n_heldout_traces": 36,
+              "r2": 0.13822348382310667,
+              "slope": 0.5652859338498855
+            },
+            "clip_vitb16:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.3713498934420825,
+              "n_heldout_traces": 36,
+              "r2": 0.15439490743643958,
+              "slope": 0.6019469265319215
+            },
+            "clip_vitb16:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.43945403288715046,
+              "n_heldout_traces": 36,
+              "r2": 0.1406753054996044,
+              "slope": 0.5254330543957579
+            },
+            "clip_vitb16:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.3610780955936149,
+              "n_heldout_traces": 36,
+              "r2": 0.152381215149077,
+              "slope": 0.6092711773288556
+            },
+            "clip_vitl14:42": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.4992281988532133,
+              "n_heldout_traces": 36,
+              "r2": 0.22753378847340977,
+              "slope": 0.4616197988227861
+            },
+            "clip_vitl14:43": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.48460728402619313,
+              "n_heldout_traces": 36,
+              "r2": 0.233432092967352,
+              "slope": 0.4847394699753736
+            },
+            "clip_vitl14:44": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.49639611934834343,
+              "n_heldout_traces": 36,
+              "r2": 0.25012743305997465,
+              "slope": 0.47024001718999137
+            },
+            "clip_vitl14:45": {
+              "heldout_family": "openai_clip",
+              "intercept": 0.48225653093875315,
+              "n_heldout_traces": 36,
+              "r2": 0.21064880608713332,
+              "slope": 0.48097427957882094
+            },
+            "convnext_tiny:42": {
+              "heldout_family": "convnext",
+              "intercept": 0.42121419452962483,
+              "n_heldout_traces": 40,
+              "r2": 0.024605505263254335,
+              "slope": 0.4218824191970854
+            },
+            "convnext_tiny:43": {
+              "heldout_family": "convnext",
+              "intercept": 0.43299977838796244,
+              "n_heldout_traces": 40,
+              "r2": 0.0181807738340668,
+              "slope": 0.3961204176070779
+            },
+            "convnext_tiny:44": {
+              "heldout_family": "convnext",
+              "intercept": 0.4251789135403133,
+              "n_heldout_traces": 40,
+              "r2": 0.023601812359610563,
+              "slope": 0.4170930208748632
+            },
+            "convnext_tiny:45": {
+              "heldout_family": "convnext",
+              "intercept": 0.4558575498130362,
+              "n_heldout_traces": 40,
+              "r2": 0.018087501870135525,
+              "slope": 0.3754521441338104
+            },
+            "deit_vitb16:42": {
+              "heldout_family": "deit",
+              "intercept": 0.5805564747754525,
+              "n_heldout_traces": 40,
+              "r2": 0.1515891481769558,
+              "slope": 0.38090115498473276
+            },
+            "deit_vitb16:43": {
+              "heldout_family": "deit",
+              "intercept": 0.5440318702308108,
+              "n_heldout_traces": 40,
+              "r2": 0.1632127027081136,
+              "slope": 0.4208177673585532
+            },
+            "deit_vitb16:44": {
+              "heldout_family": "deit",
+              "intercept": 0.5352223860045284,
+              "n_heldout_traces": 40,
+              "r2": 0.15942548025871028,
+              "slope": 0.43245840585092016
+            },
+            "deit_vitb16:45": {
+              "heldout_family": "deit",
+              "intercept": 0.5611528863059373,
+              "n_heldout_traces": 40,
+              "r2": 0.15623405891801168,
+              "slope": 0.40288424555424746
+            },
+            "dinov2_vitb14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.7221211699949067,
+              "n_heldout_traces": 36,
+              "r2": 0.06510710215507531,
+              "slope": 0.23159649043145614
+            },
+            "dinov2_vitb14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.6947269298359314,
+              "n_heldout_traces": 36,
+              "r2": 0.07094627539111664,
+              "slope": 0.2640459815442597
+            },
+            "dinov2_vitb14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.7251293495580364,
+              "n_heldout_traces": 36,
+              "r2": 0.08033314835136296,
+              "slope": 0.23016733549528684
+            },
+            "dinov2_vitb14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.7144466092418034,
+              "n_heldout_traces": 36,
+              "r2": 0.07486505391964038,
+              "slope": 0.24267683496256978
+            },
+            "dinov2_vits14:42": {
+              "heldout_family": "dinov2",
+              "intercept": 0.6111575064709195,
+              "n_heldout_traces": 36,
+              "r2": 0.16414637202343585,
+              "slope": 0.3524956602340412
+            },
+            "dinov2_vits14:43": {
+              "heldout_family": "dinov2",
+              "intercept": 0.645091722286335,
+              "n_heldout_traces": 36,
+              "r2": 0.16824677378604214,
+              "slope": 0.31746353187930454
+            },
+            "dinov2_vits14:44": {
+              "heldout_family": "dinov2",
+              "intercept": 0.644407468602692,
+              "n_heldout_traces": 36,
+              "r2": 0.13595213557747732,
+              "slope": 0.3153228355049037
+            },
+            "dinov2_vits14:45": {
+              "heldout_family": "dinov2",
+              "intercept": 0.5622312195686264,
+              "n_heldout_traces": 36,
+              "r2": 0.19196583273649948,
+              "slope": 0.40618306618973227
+            },
+            "efficientnet_b0:42": {
+              "heldout_family": "efficientnet",
+              "intercept": 0.03805399950242389,
+              "n_heldout_traces": 40,
+              "r2": 0.213004319619994,
+              "slope": 0.9296228882718295
+            },
+            "efficientnet_b0:43": {
+              "heldout_family": "efficientnet",
+              "intercept": -0.00771006871963834,
+              "n_heldout_traces": 40,
+              "r2": 0.24725946167960733,
+              "slope": 0.9832097825014487
+            },
+            "efficientnet_b0:44": {
+              "heldout_family": "efficientnet",
+              "intercept": 0.13704889231364378,
+              "n_heldout_traces": 40,
+              "r2": 0.1823328449398086,
+              "slope": 0.8164760506610415
+            },
+            "efficientnet_b0:45": {
+              "heldout_family": "efficientnet",
+              "intercept": 0.08403027502298212,
+              "n_heldout_traces": 40,
+              "r2": 0.19574180421041043,
+              "slope": 0.8759116873627439
+            },
+            "mae_vitb16:42": {
+              "heldout_family": "mae",
+              "intercept": 0.4036418856611389,
+              "n_heldout_traces": 40,
+              "r2": 0.14928439947994365,
+              "slope": 0.5459763482168745
+            },
+            "mae_vitb16:43": {
+              "heldout_family": "mae",
+              "intercept": 0.3506465248941838,
+              "n_heldout_traces": 40,
+              "r2": 0.1417260446191051,
+              "slope": 0.6011653219355969
+            },
+            "mae_vitb16:44": {
+              "heldout_family": "mae",
+              "intercept": 0.36771671994010646,
+              "n_heldout_traces": 40,
+              "r2": 0.1388638351170327,
+              "slope": 0.5806517704117897
+            },
+            "mae_vitb16:45": {
+              "heldout_family": "mae",
+              "intercept": 0.34250838616014057,
+              "n_heldout_traces": 40,
+              "r2": 0.15269192511297058,
+              "slope": 0.6153132336563742
+            },
+            "resnet18:42": {
+              "heldout_family": "resnet",
+              "intercept": -0.1227320544683729,
+              "n_heldout_traces": 36,
+              "r2": 0.02497789896825897,
+              "slope": 0.9451569751783131
+            },
+            "resnet18:43": {
+              "heldout_family": "resnet",
+              "intercept": -0.037238030751124356,
+              "n_heldout_traces": 36,
+              "r2": 0.018178577352770176,
+              "slope": 0.8392762398379645
+            },
+            "resnet18:44": {
+              "heldout_family": "resnet",
+              "intercept": 0.08138747212290552,
+              "n_heldout_traces": 36,
+              "r2": 0.019140480218890032,
+              "slope": 0.757652174289246
+            },
+            "resnet18:45": {
+              "heldout_family": "resnet",
+              "intercept": -0.08122756321915395,
+              "n_heldout_traces": 36,
+              "r2": 0.036401100632509786,
+              "slope": 0.9528004349091191
+            },
+            "resnet50:42": {
+              "heldout_family": "resnet",
+              "intercept": -0.5252696463056157,
+              "n_heldout_traces": 36,
+              "r2": 0.1895167606202578,
+              "slope": 1.506362334155257
+            },
+            "resnet50:43": {
+              "heldout_family": "resnet",
+              "intercept": -0.6594854532195508,
+              "n_heldout_traces": 36,
+              "r2": 0.1942344253233791,
+              "slope": 1.648511318281281
+            },
+            "resnet50:44": {
+              "heldout_family": "resnet",
+              "intercept": -0.9262510259167849,
+              "n_heldout_traces": 36,
+              "r2": 0.18603596004291567,
+              "slope": 1.924160597397093
+            },
+            "resnet50:45": {
+              "heldout_family": "resnet",
+              "intercept": -0.69975171874943,
+              "n_heldout_traces": 36,
+              "r2": 0.19465612332244042,
+              "slope": 1.6882865611971163
+            }
+          }
+        },
+        "raw": {
+          "cross_rbar": 0.23189399474779168,
+          "gap": 0.6378960090692704,
+          "n_cross_pairs": 864,
+          "n_within_pairs": 82,
+          "within_rbar": 0.8697900038170621
+        },
+        "residualized": {
+          "cross_rbar": -0.019621983570066646,
+          "gap": 0.8739365696192765,
+          "n_cross_pairs": 864,
+          "n_within_pairs": 82,
+          "within_rbar": 0.8543145860492098
+        },
+        "residualized_gap_minus_raw_gap": 0.2360405605500061,
+        "within_cross_family_rule": "paper primary rule: same FM plus DINOv2-B/S pair"
+      },
+      "floor_grid": [
+        {
+          "case_level": {
+            "cross_rbar": 0.23189399474779168,
+            "gap": 0.6378960090692704,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8697900038170621
+          },
+          "floor": 0.0,
+          "fm_mean_dice": {
+            "biomedclip": 0.9323419376423485,
+            "clip_vitb16": 0.8845369040966033,
+            "clip_vitl14": 0.8955032226286436,
+            "convnext_tiny": 0.7832233854030308,
+            "deit_vitb16": 0.9054034328774402,
+            "dinov2_vitb14": 0.9194035942617216,
+            "dinov2_vits14": 0.9106815618904013,
+            "efficientnet_b0": 0.8399049481278973,
+            "mae_vitb16": 0.8694196682227285,
+            "resnet18": 0.7309045835937324,
+            "resnet50": 0.7899594393215681
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.23189399474779168,
+            "gap": 0.6378960090692704,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8697900038170621
+          },
+          "floor": 0.1,
+          "fm_mean_dice": {
+            "biomedclip": 0.9323419376423485,
+            "clip_vitb16": 0.8845369040966033,
+            "clip_vitl14": 0.8955032226286436,
+            "convnext_tiny": 0.7832233854030308,
+            "deit_vitb16": 0.9054034328774402,
+            "dinov2_vitb14": 0.9194035942617216,
+            "dinov2_vits14": 0.9106815618904013,
+            "efficientnet_b0": 0.8399049481278973,
+            "mae_vitb16": 0.8694196682227285,
+            "resnet18": 0.7309045835937324,
+            "resnet50": 0.7899594393215681
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.23189399474779168,
+            "gap": 0.6378960090692704,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8697900038170621
+          },
+          "floor": 0.2,
+          "fm_mean_dice": {
+            "biomedclip": 0.9323419376423485,
+            "clip_vitb16": 0.8845369040966033,
+            "clip_vitl14": 0.8955032226286436,
+            "convnext_tiny": 0.7832233854030308,
+            "deit_vitb16": 0.9054034328774402,
+            "dinov2_vitb14": 0.9194035942617216,
+            "dinov2_vits14": 0.9106815618904013,
+            "efficientnet_b0": 0.8399049481278973,
+            "mae_vitb16": 0.8694196682227285,
+            "resnet18": 0.7309045835937324,
+            "resnet50": 0.7899594393215681
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.23189399474779168,
+            "gap": 0.6378960090692704,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8697900038170621
+          },
+          "floor": 0.25,
+          "fm_mean_dice": {
+            "biomedclip": 0.9323419376423485,
+            "clip_vitb16": 0.8845369040966033,
+            "clip_vitl14": 0.8955032226286436,
+            "convnext_tiny": 0.7832233854030308,
+            "deit_vitb16": 0.9054034328774402,
+            "dinov2_vitb14": 0.9194035942617216,
+            "dinov2_vits14": 0.9106815618904013,
+            "efficientnet_b0": 0.8399049481278973,
+            "mae_vitb16": 0.8694196682227285,
+            "resnet18": 0.7309045835937324,
+            "resnet50": 0.7899594393215681
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.23189399474779168,
+            "gap": 0.6378960090692704,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8697900038170621
+          },
+          "floor": 0.3,
+          "fm_mean_dice": {
+            "biomedclip": 0.9323419376423485,
+            "clip_vitb16": 0.8845369040966033,
+            "clip_vitl14": 0.8955032226286436,
+            "convnext_tiny": 0.7832233854030308,
+            "deit_vitb16": 0.9054034328774402,
+            "dinov2_vitb14": 0.9194035942617216,
+            "dinov2_vits14": 0.9106815618904013,
+            "efficientnet_b0": 0.8399049481278973,
+            "mae_vitb16": 0.8694196682227285,
+            "resnet18": 0.7309045835937324,
+            "resnet50": 0.7899594393215681
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.23189399474779168,
+            "gap": 0.6378960090692704,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8697900038170621
+          },
+          "floor": 0.35,
+          "fm_mean_dice": {
+            "biomedclip": 0.9323419376423485,
+            "clip_vitb16": 0.8845369040966033,
+            "clip_vitl14": 0.8955032226286436,
+            "convnext_tiny": 0.7832233854030308,
+            "deit_vitb16": 0.9054034328774402,
+            "dinov2_vitb14": 0.9194035942617216,
+            "dinov2_vits14": 0.9106815618904013,
+            "efficientnet_b0": 0.8399049481278973,
+            "mae_vitb16": 0.8694196682227285,
+            "resnet18": 0.7309045835937324,
+            "resnet50": 0.7899594393215681
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.23189399474779168,
+            "gap": 0.6378960090692704,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8697900038170621
+          },
+          "floor": 0.4,
+          "fm_mean_dice": {
+            "biomedclip": 0.9323419376423485,
+            "clip_vitb16": 0.8845369040966033,
+            "clip_vitl14": 0.8955032226286436,
+            "convnext_tiny": 0.7832233854030308,
+            "deit_vitb16": 0.9054034328774402,
+            "dinov2_vitb14": 0.9194035942617216,
+            "dinov2_vits14": 0.9106815618904013,
+            "efficientnet_b0": 0.8399049481278973,
+            "mae_vitb16": 0.8694196682227285,
+            "resnet18": 0.7309045835937324,
+            "resnet50": 0.7899594393215681
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        },
+        {
+          "case_level": {
+            "cross_rbar": 0.23189399474779168,
+            "gap": 0.6378960090692704,
+            "n_cross_pairs": 864,
+            "n_within_pairs": 82,
+            "within_rbar": 0.8697900038170621
+          },
+          "floor": 0.5,
+          "fm_mean_dice": {
+            "biomedclip": 0.9323419376423485,
+            "clip_vitb16": 0.8845369040966033,
+            "clip_vitl14": 0.8955032226286436,
+            "convnext_tiny": 0.7832233854030308,
+            "deit_vitb16": 0.9054034328774402,
+            "dinov2_vitb14": 0.9194035942617216,
+            "dinov2_vits14": 0.9106815618904013,
+            "efficientnet_b0": 0.8399049481278973,
+            "mae_vitb16": 0.8694196682227285,
+            "resnet18": 0.7309045835937324,
+            "resnet50": 0.7899594393215681
+          },
+          "fms_kept": [
+            "biomedclip",
+            "clip_vitb16",
+            "clip_vitl14",
+            "convnext_tiny",
+            "deit_vitb16",
+            "dinov2_vitb14",
+            "dinov2_vits14",
+            "efficientnet_b0",
+            "mae_vitb16",
+            "resnet18",
+            "resnet50"
+          ],
+          "n_fms": 11,
+          "n_members": 44
+        }
+      ],
+      "n_test": 95,
+      "n_units": 95,
+      "source_files": [
+        "per_case_dice/riga_disc/biomedclip/seed_42.json",
+        "per_case_dice/riga_disc/biomedclip/seed_43.json",
+        "per_case_dice/riga_disc/biomedclip/seed_44.json",
+        "per_case_dice/riga_disc/biomedclip/seed_45.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_42.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_43.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_44.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_45.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_42.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_43.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_44.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_45.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_42.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_43.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_44.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_45.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_42.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_43.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_44.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_45.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_42.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_43.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_44.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_45.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_42.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_43.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_44.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_45.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_42.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_43.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_44.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_45.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_42.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_43.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_44.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_45.json",
+        "per_case_dice/riga_disc/resnet18/seed_42.json",
+        "per_case_dice/riga_disc/resnet18/seed_43.json",
+        "per_case_dice/riga_disc/resnet18/seed_44.json",
+        "per_case_dice/riga_disc/resnet18/seed_45.json",
+        "per_case_dice/riga_disc/resnet50/seed_42.json",
+        "per_case_dice/riga_disc/resnet50/seed_43.json",
+        "per_case_dice/riga_disc/resnet50/seed_44.json",
+        "per_case_dice/riga_disc/resnet50/seed_45.json"
+      ],
+      "task": "riga_disc"
+    }
+  }
+}

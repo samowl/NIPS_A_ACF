@@ -1,0 +1,150 @@
+EXTRACT kvasir dinov2_vitl14
+EXTRACT kvasir clip_vitb32
+EXTRACT kvasir resnet34
+EXTRACT kvasir resnet101
+EXTRACT kvasir convnext_small
+EXTRACT kvasir convnext_base
+EXTRACT acdc_lv dinov2_vitl14
+EXTRACT acdc_lv clip_vitb32
+EXTRACT acdc_lv resnet34
+EXTRACT acdc_lv resnet101
+EXTRACT acdc_lv convnext_small
+EXTRACT acdc_lv convnext_base
+EXTRACT brats_wt dinov2_vitl14
+EXTRACT brats_wt clip_vitb32
+EXTRACT brats_wt resnet34
+EXTRACT brats_wt resnet101
+EXTRACT brats_wt convnext_small
+EXTRACT brats_wt convnext_base
+EXTRACT riga_cup dinov2_vitl14
+EXTRACT riga_cup clip_vitb32
+EXTRACT riga_cup resnet34
+EXTRACT riga_cup resnet101
+EXTRACT riga_cup convnext_small
+EXTRACT riga_cup convnext_base
+EXTRACT riga_disc dinov2_vitl14
+EXTRACT riga_disc clip_vitb32
+EXTRACT riga_disc resnet34
+EXTRACT riga_disc resnet101
+EXTRACT riga_disc convnext_small
+EXTRACT riga_disc convnext_base
+HEAD kvasir dinov2_vitl14 42
+HEAD kvasir clip_vitb32 42
+HEAD kvasir resnet34 42
+HEAD kvasir resnet101 42
+HEAD kvasir convnext_small 42
+HEAD kvasir convnext_base 42
+HEAD acdc_lv dinov2_vitl14 42
+HEAD acdc_lv clip_vitb32 42
+HEAD acdc_lv resnet34 42
+HEAD acdc_lv resnet101 42
+HEAD acdc_lv convnext_small 42
+HEAD acdc_lv convnext_base 42
+HEAD brats_wt dinov2_vitl14 42
+HEAD brats_wt clip_vitb32 42
+HEAD brats_wt resnet34 42
+HEAD brats_wt resnet101 42
+HEAD brats_wt convnext_small 42
+HEAD brats_wt convnext_base 42
+HEAD riga_cup dinov2_vitl14 42
+HEAD riga_cup clip_vitb32 42
+HEAD riga_cup resnet34 42
+HEAD riga_cup resnet101 42
+HEAD riga_cup convnext_small 42
+HEAD riga_cup convnext_base 42
+HEAD riga_disc dinov2_vitl14 42
+HEAD riga_disc clip_vitb32 42
+HEAD riga_disc resnet34 42
+HEAD riga_disc resnet101 42
+HEAD riga_disc convnext_small 42
+HEAD riga_disc convnext_base 42
+HEAD kvasir dinov2_vitl14 43
+HEAD kvasir clip_vitb32 43
+HEAD kvasir resnet34 43
+HEAD kvasir resnet101 43
+HEAD kvasir convnext_small 43
+HEAD kvasir convnext_base 43
+HEAD acdc_lv dinov2_vitl14 43
+HEAD acdc_lv clip_vitb32 43
+HEAD acdc_lv resnet34 43
+HEAD acdc_lv resnet101 43
+HEAD acdc_lv convnext_small 43
+HEAD acdc_lv convnext_base 43
+HEAD brats_wt dinov2_vitl14 43
+HEAD brats_wt clip_vitb32 43
+HEAD brats_wt resnet34 43
+HEAD brats_wt resnet101 43
+HEAD brats_wt convnext_small 43
+HEAD brats_wt convnext_base 43
+HEAD riga_cup dinov2_vitl14 43
+HEAD riga_cup clip_vitb32 43
+HEAD riga_cup resnet34 43
+HEAD riga_cup resnet101 43
+HEAD riga_cup convnext_small 43
+HEAD riga_cup convnext_base 43
+HEAD riga_disc dinov2_vitl14 43
+HEAD riga_disc clip_vitb32 43
+HEAD riga_disc resnet34 43
+HEAD riga_disc resnet101 43
+HEAD riga_disc convnext_small 43
+HEAD riga_disc convnext_base 43
+HEAD kvasir dinov2_vitl14 44
+HEAD kvasir clip_vitb32 44
+HEAD kvasir resnet34 44
+HEAD kvasir resnet101 44
+HEAD kvasir convnext_small 44
+HEAD kvasir convnext_base 44
+HEAD acdc_lv dinov2_vitl14 44
+HEAD acdc_lv clip_vitb32 44
+HEAD acdc_lv resnet34 44
+HEAD acdc_lv resnet101 44
+HEAD acdc_lv convnext_small 44
+HEAD acdc_lv convnext_base 44
+HEAD brats_wt dinov2_vitl14 44
+HEAD brats_wt clip_vitb32 44
+HEAD brats_wt resnet34 44
+HEAD brats_wt resnet101 44
+HEAD brats_wt convnext_small 44
+HEAD brats_wt convnext_base 44
+HEAD riga_cup dinov2_vitl14 44
+HEAD riga_cup clip_vitb32 44
+HEAD riga_cup resnet34 44
+HEAD riga_cup resnet101 44
+HEAD riga_cup convnext_small 44
+HEAD riga_cup convnext_base 44
+HEAD riga_disc dinov2_vitl14 44
+HEAD riga_disc clip_vitb32 44
+HEAD riga_disc resnet34 44
+HEAD riga_disc resnet101 44
+HEAD riga_disc convnext_small 44
+HEAD riga_disc convnext_base 44
+HEAD kvasir dinov2_vitl14 45
+HEAD kvasir clip_vitb32 45
+HEAD kvasir resnet34 45
+HEAD kvasir resnet101 45
+HEAD kvasir convnext_small 45
+HEAD kvasir convnext_base 45
+HEAD acdc_lv dinov2_vitl14 45
+HEAD acdc_lv clip_vitb32 45
+HEAD acdc_lv resnet34 45
+HEAD acdc_lv resnet101 45
+HEAD acdc_lv convnext_small 45
+HEAD acdc_lv convnext_base 45
+HEAD brats_wt dinov2_vitl14 45
+HEAD brats_wt clip_vitb32 45
+HEAD brats_wt resnet34 45
+HEAD brats_wt resnet101 45
+HEAD brats_wt convnext_small 45
+HEAD brats_wt convnext_base 45
+HEAD riga_cup dinov2_vitl14 45
+HEAD riga_cup clip_vitb32 45
+HEAD riga_cup resnet34 45
+HEAD riga_cup resnet101 45
+HEAD riga_cup convnext_small 45
+HEAD riga_cup convnext_base 45
+HEAD riga_disc dinov2_vitl14 45
+HEAD riga_disc clip_vitb32 45
+HEAD riga_disc resnet34 45
+HEAD riga_disc resnet101 45
+HEAD riga_disc convnext_small 45
+HEAD riga_disc convnext_base 45

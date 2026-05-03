@@ -1,0 +1,84 @@
+{
+  "hippocampus": {
+    "n_fms_all": 8,
+    "n_fms_functional": 7,
+    "mean_dice": {
+      "biomedclip": 0.8402546644210815,
+      "clip_vitl14": 1.2650867332875126e-11,
+      "convnext_tiny": 0.7320682406425476,
+      "dinov2_vitb14": 0.8139677047729492,
+      "dinov2_vits14": 0.7883422374725342,
+      "efficientnet_b0": 0.7263185381889343,
+      "resnet18": 0.5866522192955017,
+      "resnet50": 0.6547208428382874
+    },
+    "within_rbar": 0.940686047077179,
+    "cross_rbar": 0.21131505072116852,
+    "delta": 0.7293709963560104,
+    "recovery": {
+      "0.5": {
+        "mono_mean": 0.24129629629629626,
+        "diverse_grandmean": 0.7857976687043257,
+        "n_mono": 5,
+        "n_diverse": 35
+      },
+      "0.7": {
+        "mono_mean": 0.20571399731063597,
+        "diverse_grandmean": 0.5512582835017499,
+        "n_mono": 7,
+        "n_diverse": 35
+      },
+      "0.85": {
+        "mono_mean": 0.05172896289314217,
+        "diverse_grandmean": 0.05621528653354171,
+        "n_mono": 7,
+        "n_diverse": 35
+      }
+    },
+    "rho_mono_fail": 0.6821849304123793,
+    "rho_div_fail": 0.22960370595491186,
+    "M_eff_mono": 1.3129584970883421,
+    "M_eff_diverse": 2.3685301202051763
+  },
+  "isic2018": {
+    "n_fms_all": 8,
+    "n_fms_functional": 7,
+    "mean_dice": {
+      "biomedclip": 0.9077101945877075,
+      "clip_vitl14": 0.10578101873397827,
+      "convnext_tiny": 0.814699113368988,
+      "dinov2_vitb14": 0.9068502187728882,
+      "dinov2_vits14": 0.9103922843933105,
+      "efficientnet_b0": 0.8379382491111755,
+      "resnet18": 0.7533092498779297,
+      "resnet50": 0.8163609504699707
+    },
+    "within_rbar": 0.960679829120636,
+    "cross_rbar": 0.40575599670410156,
+    "delta": 0.5549238324165344,
+    "recovery": {
+      "0.5": {
+        "mono_mean": 0.18470418470418473,
+        "diverse_grandmean": 0.8022145296859257,
+        "n_mono": 7,
+        "n_diverse": 35
+      },
+      "0.7": {
+        "mono_mean": 0.0534297052154195,
+        "diverse_grandmean": 0.7134862422286427,
+        "n_mono": 7,
+        "n_diverse": 35
+      },
+      "0.85": {
+        "mono_mean": 0.09057136834230431,
+        "diverse_grandmean": 0.40002156456909194,
+        "n_mono": 7,
+        "n_diverse": 35
+      }
+    },
+    "rho_mono_fail": 0.8600058607527271,
+    "rho_div_fail": 0.3146435021013048,
+    "M_eff_mono": 1.1173129483562214,
+    "M_eff_diverse": 2.0576867264691403
+  }
+}

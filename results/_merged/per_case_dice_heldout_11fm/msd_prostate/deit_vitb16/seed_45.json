@@ -1,0 +1,28 @@
+{
+  "task": "msd_prostate",
+  "fm": "deit_vitb16",
+  "seed": 45,
+  "n_test": 6,
+  "test_ids": [
+    "prostate_13",
+    "prostate_31",
+    "prostate_32",
+    "prostate_41",
+    "prostate_42",
+    "prostate_47"
+  ],
+  "per_case_dice": [
+    0.0,
+    0.4751861095428467,
+    0.4189794063568115,
+    0.21025420725345612,
+    0.5668530464172363,
+    0.5898326635360718
+  ],
+  "mean_dice": 0.3768509328365326,
+  "cache_manifest_sha256": "ee15586f1a5bfd9effdecd96fb36b5838dad1a0f207191b3903a5b2aa4d1e82d",
+  "head_checkpoint_sha256": "a900445893f820f1ca6025b2116630b135894e24630a3f33c1322d3c308881ec",
+  "training_elapsed_s": 9.235651016235352,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

@@ -1,0 +1,275 @@
+EXTRACT kvasir dinov2_vitb14
+EXTRACT kvasir dinov2_vits14
+EXTRACT kvasir biomedclip
+EXTRACT kvasir clip_vitl14
+EXTRACT kvasir clip_vitb16
+EXTRACT kvasir mae_vitb16
+EXTRACT kvasir deit_vitb16
+EXTRACT kvasir convnext_tiny
+EXTRACT kvasir efficientnet_b0
+EXTRACT kvasir resnet50
+EXTRACT kvasir resnet18
+EXTRACT acdc_lv dinov2_vitb14
+EXTRACT acdc_lv dinov2_vits14
+EXTRACT acdc_lv biomedclip
+EXTRACT acdc_lv clip_vitl14
+EXTRACT acdc_lv clip_vitb16
+EXTRACT acdc_lv mae_vitb16
+EXTRACT acdc_lv deit_vitb16
+EXTRACT acdc_lv convnext_tiny
+EXTRACT acdc_lv efficientnet_b0
+EXTRACT acdc_lv resnet50
+EXTRACT acdc_lv resnet18
+EXTRACT brats_wt dinov2_vitb14
+EXTRACT brats_wt dinov2_vits14
+EXTRACT brats_wt biomedclip
+EXTRACT brats_wt clip_vitl14
+EXTRACT brats_wt clip_vitb16
+EXTRACT brats_wt mae_vitb16
+EXTRACT brats_wt deit_vitb16
+EXTRACT brats_wt convnext_tiny
+EXTRACT brats_wt efficientnet_b0
+EXTRACT brats_wt resnet50
+EXTRACT brats_wt resnet18
+EXTRACT riga_cup dinov2_vitb14
+EXTRACT riga_cup dinov2_vits14
+EXTRACT riga_cup biomedclip
+EXTRACT riga_cup clip_vitl14
+EXTRACT riga_cup clip_vitb16
+EXTRACT riga_cup mae_vitb16
+EXTRACT riga_cup deit_vitb16
+EXTRACT riga_cup convnext_tiny
+EXTRACT riga_cup efficientnet_b0
+EXTRACT riga_cup resnet50
+EXTRACT riga_cup resnet18
+EXTRACT riga_disc dinov2_vitb14
+EXTRACT riga_disc dinov2_vits14
+EXTRACT riga_disc biomedclip
+EXTRACT riga_disc clip_vitl14
+EXTRACT riga_disc clip_vitb16
+EXTRACT riga_disc mae_vitb16
+EXTRACT riga_disc deit_vitb16
+EXTRACT riga_disc convnext_tiny
+EXTRACT riga_disc efficientnet_b0
+EXTRACT riga_disc resnet50
+EXTRACT riga_disc resnet18
+HEAD kvasir dinov2_vitb14 42
+HEAD kvasir dinov2_vits14 42
+HEAD kvasir biomedclip 42
+HEAD kvasir clip_vitl14 42
+HEAD kvasir clip_vitb16 42
+HEAD kvasir mae_vitb16 42
+HEAD kvasir deit_vitb16 42
+HEAD kvasir convnext_tiny 42
+HEAD kvasir efficientnet_b0 42
+HEAD kvasir resnet50 42
+HEAD kvasir resnet18 42
+HEAD acdc_lv dinov2_vitb14 42
+HEAD acdc_lv dinov2_vits14 42
+HEAD acdc_lv biomedclip 42
+HEAD acdc_lv clip_vitl14 42
+HEAD acdc_lv clip_vitb16 42
+HEAD acdc_lv mae_vitb16 42
+HEAD acdc_lv deit_vitb16 42
+HEAD acdc_lv convnext_tiny 42
+HEAD acdc_lv efficientnet_b0 42
+HEAD acdc_lv resnet50 42
+HEAD acdc_lv resnet18 42
+HEAD brats_wt dinov2_vitb14 42
+HEAD brats_wt dinov2_vits14 42
+HEAD brats_wt biomedclip 42
+HEAD brats_wt clip_vitl14 42
+HEAD brats_wt clip_vitb16 42
+HEAD brats_wt mae_vitb16 42
+HEAD brats_wt deit_vitb16 42
+HEAD brats_wt convnext_tiny 42
+HEAD brats_wt efficientnet_b0 42
+HEAD brats_wt resnet50 42
+HEAD brats_wt resnet18 42
+HEAD riga_cup dinov2_vitb14 42
+HEAD riga_cup dinov2_vits14 42
+HEAD riga_cup biomedclip 42
+HEAD riga_cup clip_vitl14 42
+HEAD riga_cup clip_vitb16 42
+HEAD riga_cup mae_vitb16 42
+HEAD riga_cup deit_vitb16 42
+HEAD riga_cup convnext_tiny 42
+HEAD riga_cup efficientnet_b0 42
+HEAD riga_cup resnet50 42
+HEAD riga_cup resnet18 42
+HEAD riga_disc dinov2_vitb14 42
+HEAD riga_disc dinov2_vits14 42
+HEAD riga_disc biomedclip 42
+HEAD riga_disc clip_vitl14 42
+HEAD riga_disc clip_vitb16 42
+HEAD riga_disc mae_vitb16 42
+HEAD riga_disc deit_vitb16 42
+HEAD riga_disc convnext_tiny 42
+HEAD riga_disc efficientnet_b0 42
+HEAD riga_disc resnet50 42
+HEAD riga_disc resnet18 42
+HEAD kvasir dinov2_vitb14 43
+HEAD kvasir dinov2_vits14 43
+HEAD kvasir biomedclip 43
+HEAD kvasir clip_vitl14 43
+HEAD kvasir clip_vitb16 43
+HEAD kvasir mae_vitb16 43
+HEAD kvasir deit_vitb16 43
+HEAD kvasir convnext_tiny 43
+HEAD kvasir efficientnet_b0 43
+HEAD kvasir resnet50 43
+HEAD kvasir resnet18 43
+HEAD acdc_lv dinov2_vitb14 43
+HEAD acdc_lv dinov2_vits14 43
+HEAD acdc_lv biomedclip 43
+HEAD acdc_lv clip_vitl14 43
+HEAD acdc_lv clip_vitb16 43
+HEAD acdc_lv mae_vitb16 43
+HEAD acdc_lv deit_vitb16 43
+HEAD acdc_lv convnext_tiny 43
+HEAD acdc_lv efficientnet_b0 43
+HEAD acdc_lv resnet50 43
+HEAD acdc_lv resnet18 43
+HEAD brats_wt dinov2_vitb14 43
+HEAD brats_wt dinov2_vits14 43
+HEAD brats_wt biomedclip 43
+HEAD brats_wt clip_vitl14 43
+HEAD brats_wt clip_vitb16 43
+HEAD brats_wt mae_vitb16 43
+HEAD brats_wt deit_vitb16 43
+HEAD brats_wt convnext_tiny 43
+HEAD brats_wt efficientnet_b0 43
+HEAD brats_wt resnet50 43
+HEAD brats_wt resnet18 43
+HEAD riga_cup dinov2_vitb14 43
+HEAD riga_cup dinov2_vits14 43
+HEAD riga_cup biomedclip 43
+HEAD riga_cup clip_vitl14 43
+HEAD riga_cup clip_vitb16 43
+HEAD riga_cup mae_vitb16 43
+HEAD riga_cup deit_vitb16 43
+HEAD riga_cup convnext_tiny 43
+HEAD riga_cup efficientnet_b0 43
+HEAD riga_cup resnet50 43
+HEAD riga_cup resnet18 43
+HEAD riga_disc dinov2_vitb14 43
+HEAD riga_disc dinov2_vits14 43
+HEAD riga_disc biomedclip 43
+HEAD riga_disc clip_vitl14 43
+HEAD riga_disc clip_vitb16 43
+HEAD riga_disc mae_vitb16 43
+HEAD riga_disc deit_vitb16 43
+HEAD riga_disc convnext_tiny 43
+HEAD riga_disc efficientnet_b0 43
+HEAD riga_disc resnet50 43
+HEAD riga_disc resnet18 43
+HEAD kvasir dinov2_vitb14 44
+HEAD kvasir dinov2_vits14 44
+HEAD kvasir biomedclip 44
+HEAD kvasir clip_vitl14 44
+HEAD kvasir clip_vitb16 44
+HEAD kvasir mae_vitb16 44
+HEAD kvasir deit_vitb16 44
+HEAD kvasir convnext_tiny 44
+HEAD kvasir efficientnet_b0 44
+HEAD kvasir resnet50 44
+HEAD kvasir resnet18 44
+HEAD acdc_lv dinov2_vitb14 44
+HEAD acdc_lv dinov2_vits14 44
+HEAD acdc_lv biomedclip 44
+HEAD acdc_lv clip_vitl14 44
+HEAD acdc_lv clip_vitb16 44
+HEAD acdc_lv mae_vitb16 44
+HEAD acdc_lv deit_vitb16 44
+HEAD acdc_lv convnext_tiny 44
+HEAD acdc_lv efficientnet_b0 44
+HEAD acdc_lv resnet50 44
+HEAD acdc_lv resnet18 44
+HEAD brats_wt dinov2_vitb14 44
+HEAD brats_wt dinov2_vits14 44
+HEAD brats_wt biomedclip 44
+HEAD brats_wt clip_vitl14 44
+HEAD brats_wt clip_vitb16 44
+HEAD brats_wt mae_vitb16 44
+HEAD brats_wt deit_vitb16 44
+HEAD brats_wt convnext_tiny 44
+HEAD brats_wt efficientnet_b0 44
+HEAD brats_wt resnet50 44
+HEAD brats_wt resnet18 44
+HEAD riga_cup dinov2_vitb14 44
+HEAD riga_cup dinov2_vits14 44
+HEAD riga_cup biomedclip 44
+HEAD riga_cup clip_vitl14 44
+HEAD riga_cup clip_vitb16 44
+HEAD riga_cup mae_vitb16 44
+HEAD riga_cup deit_vitb16 44
+HEAD riga_cup convnext_tiny 44
+HEAD riga_cup efficientnet_b0 44
+HEAD riga_cup resnet50 44
+HEAD riga_cup resnet18 44
+HEAD riga_disc dinov2_vitb14 44
+HEAD riga_disc dinov2_vits14 44
+HEAD riga_disc biomedclip 44
+HEAD riga_disc clip_vitl14 44
+HEAD riga_disc clip_vitb16 44
+HEAD riga_disc mae_vitb16 44
+HEAD riga_disc deit_vitb16 44
+HEAD riga_disc convnext_tiny 44
+HEAD riga_disc efficientnet_b0 44
+HEAD riga_disc resnet50 44
+HEAD riga_disc resnet18 44
+HEAD kvasir dinov2_vitb14 45
+HEAD kvasir dinov2_vits14 45
+HEAD kvasir biomedclip 45
+HEAD kvasir clip_vitl14 45
+HEAD kvasir clip_vitb16 45
+HEAD kvasir mae_vitb16 45
+HEAD kvasir deit_vitb16 45
+HEAD kvasir convnext_tiny 45
+HEAD kvasir efficientnet_b0 45
+HEAD kvasir resnet50 45
+HEAD kvasir resnet18 45
+HEAD acdc_lv dinov2_vitb14 45
+HEAD acdc_lv dinov2_vits14 45
+HEAD acdc_lv biomedclip 45
+HEAD acdc_lv clip_vitl14 45
+HEAD acdc_lv clip_vitb16 45
+HEAD acdc_lv mae_vitb16 45
+HEAD acdc_lv deit_vitb16 45
+HEAD acdc_lv convnext_tiny 45
+HEAD acdc_lv efficientnet_b0 45
+HEAD acdc_lv resnet50 45
+HEAD acdc_lv resnet18 45
+HEAD brats_wt dinov2_vitb14 45
+HEAD brats_wt dinov2_vits14 45
+HEAD brats_wt biomedclip 45
+HEAD brats_wt clip_vitl14 45
+HEAD brats_wt clip_vitb16 45
+HEAD brats_wt mae_vitb16 45
+HEAD brats_wt deit_vitb16 45
+HEAD brats_wt convnext_tiny 45
+HEAD brats_wt efficientnet_b0 45
+HEAD brats_wt resnet50 45
+HEAD brats_wt resnet18 45
+HEAD riga_cup dinov2_vitb14 45
+HEAD riga_cup dinov2_vits14 45
+HEAD riga_cup biomedclip 45
+HEAD riga_cup clip_vitl14 45
+HEAD riga_cup clip_vitb16 45
+HEAD riga_cup mae_vitb16 45
+HEAD riga_cup deit_vitb16 45
+HEAD riga_cup convnext_tiny 45
+HEAD riga_cup efficientnet_b0 45
+HEAD riga_cup resnet50 45
+HEAD riga_cup resnet18 45
+HEAD riga_disc dinov2_vitb14 45
+HEAD riga_disc dinov2_vits14 45
+HEAD riga_disc biomedclip 45
+HEAD riga_disc clip_vitl14 45
+HEAD riga_disc clip_vitb16 45
+HEAD riga_disc mae_vitb16 45
+HEAD riga_disc deit_vitb16 45
+HEAD riga_disc convnext_tiny 45
+HEAD riga_disc efficientnet_b0 45
+HEAD riga_disc resnet50 45
+HEAD riga_disc resnet18 45

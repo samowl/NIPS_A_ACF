@@ -1,0 +1,130 @@
+{
+  "commit_sha": "not_recorded_for_artifact",
+  "diverse_pools_summary": {
+    "M_eff_mean": 2.1410836671905438,
+    "M_eff_std": 0.24369776510539742,
+    "n_fm_compositions": 210,
+    "n_seed_compositions": 53760,
+    "n_valid_compositions": 53760,
+    "pool_size_fms": 4,
+    "rho_fail_mean": 0.29779624936340104,
+    "rho_fail_std": 0.07459295545113129
+  },
+  "full_pool_diagnostic": {
+    "M_eff": 2.8046448143544764,
+    "n_fm_seed": 40,
+    "rho_fail": 0.3400527051271927
+  },
+  "generated_at": "2026-04-29T18:23:48Z",
+  "mono_pools": [
+    {
+      "M_eff": 1.0848065662576751,
+      "fm": "biomedclip",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8957644383855609
+    },
+    {
+      "M_eff": 1.089280107636924,
+      "fm": "clip_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8907166828060934
+    },
+    {
+      "M_eff": 1.1004806151125484,
+      "fm": "clip_vitl14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8782585066528447
+    },
+    {
+      "M_eff": 1.0566803037593395,
+      "fm": "convnext_tiny",
+      "n_fm_seed": 4,
+      "rho_fail": 0.9284800349955248
+    },
+    {
+      "M_eff": 1.07240075466984,
+      "fm": "deit_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.9099829619296503
+    },
+    {
+      "M_eff": 1.1135894308684215,
+      "fm": "dinov2_vitb14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8639960381330846
+    },
+    {
+      "M_eff": 1.1150495784904837,
+      "fm": "dinov2_vits14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8624281458453368
+    },
+    {
+      "M_eff": 1.566455928378929,
+      "fm": "efficientnet_b0",
+      "n_fm_seed": 4,
+      "rho_fail": 0.5178449916854585
+    },
+    {
+      "M_eff": 1.0543318386898166,
+      "fm": "mae_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.931290653541826
+    },
+    {
+      "M_eff": 1.1842665919235322,
+      "fm": "resnet50",
+      "n_fm_seed": 4,
+      "rho_fail": 0.7925392889515536
+    }
+  ],
+  "schema_version": "fmpool_clean_v1",
+  "source_files": [
+    "per_case_dice/acdc_lv/biomedclip/seed_42.json",
+    "per_case_dice/acdc_lv/biomedclip/seed_43.json",
+    "per_case_dice/acdc_lv/biomedclip/seed_44.json",
+    "per_case_dice/acdc_lv/biomedclip/seed_45.json",
+    "per_case_dice/acdc_lv/clip_vitb16/seed_42.json",
+    "per_case_dice/acdc_lv/clip_vitb16/seed_43.json",
+    "per_case_dice/acdc_lv/clip_vitb16/seed_44.json",
+    "per_case_dice/acdc_lv/clip_vitb16/seed_45.json",
+    "per_case_dice/acdc_lv/clip_vitl14/seed_42.json",
+    "per_case_dice/acdc_lv/clip_vitl14/seed_43.json",
+    "per_case_dice/acdc_lv/clip_vitl14/seed_44.json",
+    "per_case_dice/acdc_lv/clip_vitl14/seed_45.json",
+    "per_case_dice/acdc_lv/convnext_tiny/seed_42.json",
+    "per_case_dice/acdc_lv/convnext_tiny/seed_43.json",
+    "per_case_dice/acdc_lv/convnext_tiny/seed_44.json",
+    "per_case_dice/acdc_lv/convnext_tiny/seed_45.json",
+    "per_case_dice/acdc_lv/deit_vitb16/seed_42.json",
+    "per_case_dice/acdc_lv/deit_vitb16/seed_43.json",
+    "per_case_dice/acdc_lv/deit_vitb16/seed_44.json",
+    "per_case_dice/acdc_lv/deit_vitb16/seed_45.json",
+    "per_case_dice/acdc_lv/dinov2_vitb14/seed_42.json",
+    "per_case_dice/acdc_lv/dinov2_vitb14/seed_43.json",
+    "per_case_dice/acdc_lv/dinov2_vitb14/seed_44.json",
+    "per_case_dice/acdc_lv/dinov2_vitb14/seed_45.json",
+    "per_case_dice/acdc_lv/dinov2_vits14/seed_42.json",
+    "per_case_dice/acdc_lv/dinov2_vits14/seed_43.json",
+    "per_case_dice/acdc_lv/dinov2_vits14/seed_44.json",
+    "per_case_dice/acdc_lv/dinov2_vits14/seed_45.json",
+    "per_case_dice/acdc_lv/efficientnet_b0/seed_42.json",
+    "per_case_dice/acdc_lv/efficientnet_b0/seed_43.json",
+    "per_case_dice/acdc_lv/efficientnet_b0/seed_44.json",
+    "per_case_dice/acdc_lv/efficientnet_b0/seed_45.json",
+    "per_case_dice/acdc_lv/mae_vitb16/seed_42.json",
+    "per_case_dice/acdc_lv/mae_vitb16/seed_43.json",
+    "per_case_dice/acdc_lv/mae_vitb16/seed_44.json",
+    "per_case_dice/acdc_lv/mae_vitb16/seed_45.json",
+    "per_case_dice/acdc_lv/resnet18/seed_42.json",
+    "per_case_dice/acdc_lv/resnet18/seed_43.json",
+    "per_case_dice/acdc_lv/resnet18/seed_44.json",
+    "per_case_dice/acdc_lv/resnet18/seed_45.json",
+    "per_case_dice/acdc_lv/resnet50/seed_42.json",
+    "per_case_dice/acdc_lv/resnet50/seed_43.json",
+    "per_case_dice/acdc_lv/resnet50/seed_44.json",
+    "per_case_dice/acdc_lv/resnet50/seed_45.json"
+  ],
+  "task": "acdc_lv",
+  "tau": 0.85
+}

@@ -1,0 +1,146 @@
+{
+  "hippocampus": {
+    "task": "hippocampus",
+    "N": 130,
+    "functional_FMs": [
+      "biomedclip",
+      "convnext_tiny",
+      "dinov2_vitb14",
+      "dinov2_vits14",
+      "efficientnet_b0",
+      "resnet18",
+      "resnet50"
+    ],
+    "alpha": 0.1,
+    "tau": 0.85,
+    "n_boot": 50,
+    "diverse": {
+      "abstention_mean": 0.777090909090909,
+      "abstention_sd": 0.0802524941040299,
+      "risk_mean": 0.6941451980165247,
+      "risk_sd": 0.04539517085379738
+    },
+    "monoculture": {
+      "biomedclip": {
+        "abstention_mean": 0.7667272727272728,
+        "abstention_sd": 0.10015871701974484,
+        "risk_mean": 0.24041653899566845,
+        "risk_sd": 0.06134038396236946
+      },
+      "convnext_tiny": {
+        "abstention_mean": 0.7683636363636362,
+        "abstention_sd": 0.10079420159106457,
+        "risk_mean": 0.8198534061260446,
+        "risk_sd": 0.04118614854688047
+      },
+      "dinov2_vitb14": {
+        "abstention_mean": 0.774909090909091,
+        "abstention_sd": 0.08734012549029888,
+        "risk_mean": 0.33566871247172037,
+        "risk_sd": 0.04956698254045766
+      },
+      "dinov2_vits14": {
+        "abstention_mean": 0.7794545454545454,
+        "abstention_sd": 0.09030362009162696,
+        "risk_mean": 0.5072800282647982,
+        "risk_sd": 0.09512077679055209
+      },
+      "efficientnet_b0": {
+        "abstention_mean": 0.7523636363636363,
+        "abstention_sd": 0.08629298545561497,
+        "risk_mean": 0.8376179644882623,
+        "risk_sd": 0.03484599360142973
+      },
+      "resnet18": {
+        "abstention_mean": 0.7905454545454544,
+        "abstention_sd": 0.09670539738968825,
+        "risk_mean": 0.9552757573553824,
+        "risk_sd": 0.02615058437069181
+      },
+      "resnet50": {
+        "abstention_mean": 0.7970909090909092,
+        "abstention_sd": 0.08062647269460295,
+        "risk_mean": 0.95885832224758,
+        "risk_sd": 0.031625044064767446
+      }
+    },
+    "monoculture_grand_mean": {
+      "abstention_mean": 0.7756363636363637,
+      "abstention_sd": 0.09307822559698564,
+      "risk_mean": 0.6649958185642081,
+      "risk_sd": 0.2823010295001227
+    }
+  },
+  "isic2018": {
+    "task": "isic2018",
+    "N": 200,
+    "functional_FMs": [
+      "biomedclip",
+      "convnext_tiny",
+      "dinov2_vitb14",
+      "dinov2_vits14",
+      "efficientnet_b0",
+      "resnet18",
+      "resnet50"
+    ],
+    "alpha": 0.1,
+    "tau": 0.85,
+    "n_boot": 50,
+    "diverse": {
+      "abstention_mean": 0.7417777777777776,
+      "abstention_sd": 0.10448131736828525,
+      "risk_mean": 0.12935306395213886,
+      "risk_sd": 0.027226699354969873
+    },
+    "monoculture": {
+      "biomedclip": {
+        "abstention_mean": 0.7712222222222223,
+        "abstention_sd": 0.09576649843354523,
+        "risk_mean": 0.004241862597650293,
+        "risk_sd": 0.007224369948213278
+      },
+      "convnext_tiny": {
+        "abstention_mean": 0.7607777777777778,
+        "abstention_sd": 0.09147225174612339,
+        "risk_mean": 0.22978079546476546,
+        "risk_sd": 0.02757656559975076
+      },
+      "dinov2_vitb14": {
+        "abstention_mean": 0.7662222222222222,
+        "abstention_sd": 0.09734018240742674,
+        "risk_mean": 0.003342248342626675,
+        "risk_sd": 0.006318726335495498
+      },
+      "dinov2_vits14": {
+        "abstention_mean": 0.7807777777777777,
+        "abstention_sd": 0.07930414962754566,
+        "risk_mean": 0.0,
+        "risk_sd": 0.0
+      },
+      "efficientnet_b0": {
+        "abstention_mean": 0.7825555555555556,
+        "abstention_sd": 0.08871517748417902,
+        "risk_mean": 0.09661714724576828,
+        "risk_sd": 0.042797164308571035
+      },
+      "resnet18": {
+        "abstention_mean": 0.7768888888888889,
+        "abstention_sd": 0.09281842090479271,
+        "risk_mean": 0.6164762271283887,
+        "risk_sd": 0.034052133794964135
+      },
+      "resnet50": {
+        "abstention_mean": 0.7667777777777779,
+        "abstention_sd": 0.10039114859413345,
+        "risk_mean": 0.2673159792388059,
+        "risk_sd": 0.03891058541464386
+      }
+    },
+    "monoculture_grand_mean": {
+      "abstention_mean": 0.7721746031746032,
+      "abstention_sd": 0.09278703227568277,
+      "risk_mean": 0.17396775143114362,
+      "risk_sd": 0.20947837811147318
+    }
+  }
+}

@@ -1,0 +1,295 @@
+\documentclass{article}
+
+\usepackage[eandd]{neurips_2026}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{subcaption}
+\usepackage{siunitx}
+\usepackage{placeins}
+\usepackage{array}
+\usepackage{tabularx}
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{7pt plus 2pt minus 2pt}
+\setlength{\intextsep}{7pt plus 2pt minus 2pt}
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+\title{Auditing Correlated Failures in Frozen-Feature Pretrained-Encoder Pools for Medical Segmentation}
+
+\author{Anonymous Author(s)}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Medical segmentation ensembles are often credited with complementary failure coverage when independently trained members make different mistakes, but that assumption can fail when a pool reuses the same frozen pretrained encoder bundle and training recipe. We audit this evaluation gap in frozen/light-adaptation pretrained-encoder segmentation pipelines using per-case Dice-score correlation as the primary failure-dependence proxy. Across five primary task rows (Kvasir polyp, ACDC LV, BraTS foreground, RIGA Cup, RIGA Disc), a source pool of up to 11 pretrained encoder bundles $\times$ 4 decoder seeds yields same-bundle/recipe-dominated Table-1 same vs.\ cross-bundle/family Pearson gaps of $\Delta=0.261$--$0.638$ after a Dice $\geq0.30$ functional floor; all paired case and hierarchical bootstrap intervals exclude zero. The result is stable under floor sweeps, ICC(A,1), leave-one-out summaries, subject-level ACDC/BraTS sensitivity checks, quality-controlled pair regressions, and cross-fitted item-difficulty residualisation. Secondary pixel-error, lift, same-architecture-family ViT / different-pretraining, same-family cross-checkpoint, and same-backbone diagnostics locate the dependence structure but do not causally separate architecture, pretraining, and recipe effects. The claim is scoped to tested 2D frozen/light-adaptation pretrained-encoder pools and retrospective benchmark audits, not prompt-conditioned MedSAM, full segmentation pipelines, all ensembles, or clinical outcomes. The accompanying artifact includes per-case Dice traces, summary JSONs, metadata, hashes, scorer code, and selected diagnostic JSONs allowed by upstream redistribution constraints.
+\end{abstract}
+
+\section{Introduction}
+
+Ensemble-based safety arguments for medical AI rest on members making different mistakes. Deep ensembles \citep{lakshminarayanan2017deepens}, nnU-Net 5-fold validation \citep{isensee2021nnunet}, MC dropout \citep{gal2016mcdropout}, hyperparameter ensembles \citep{wenzel2020hyperparameter}, and majority voting are most useful when errors are complementary rather than perfectly shared \citep{tumer1996error}. Deep-ensemble theory motivates diversity but does not require literal statistical independence; we likewise do not test literal independence. We audit a benchmark-level question: in frozen or lightly adapted pretrained-encoder segmentation pipelines, do independently trained decoders actually make different errors?
+
+The medical-imaging supply chain now reuses a small set of foundation-model encoders and conventional pretrained backbones: DINOv2, CLIP/BiomedCLIP, SAM/MedSAM, ConvNeXt, EfficientNet, ResNet, and domain-specific pretrainings such as RETFound. A pool of ``different'' segmenters can therefore share backbone family, pretraining bundle, input statistics, and training recipe. This creates an evaluation gap: aggregate Dice and uncertainty scores can show whether members are accurate, but not whether the pool supplies independent failure coverage. We use \textbf{regime-specific monoculture} for this measured dependence pattern in a tested frozen/light-adaptation regime, not for every segmentation ensemble, prompt-conditioned MedSAM, full nnU-Net pipeline, or clinical outcome.
+
+Our primary contribution is a reusable E\&D audit protocol and released primary evidence bundle: a symmetric multi-seed same-bundle/recipe-dominated Table-1 same vs.\ cross-bundle/family Dice-correlation estimator with paired case and hierarchical bootstrap CIs, applied to five primary task rows from an up-to-11-bundle $\times$ 4-seed source pool. Our diagnostic contribution is a set of released quality-controlled pair-regression, same-architecture-family ViT / different-pretraining, same-family cross-checkpoint, cross-fitted item-difficulty residualisation, pixel/lift, $M_{\mathrm{eff}}$, same-backbone, adaptation, estimator-sensitivity, distribution-shift, and held-out probes that locate the dependence pattern without treating those probes as causal decomposition or standalone pool-selection rules. The appendix is organized by evidence role so that primary claims, diagnostics, robustness checks, and scope boundaries remain separated.
+
+\section{Related work}
+\label{sec:related}
+
+\textbf{Relation to prior work and scope of novelty.} Our risk framing follows algorithmic-monoculture and foundation-model ecosystem work \citep{kleinberg2021monoculture,bommasani2021foundation,bommasani2022picking,toups2023ecosystem}. The correlation gap we measure has modelling antecedents: trial-by-trial error consistency asks whether systems fail on the same inputs \citep{geirhos2020errorconsistency}, error correlations arise when deployed models share algorithms, datasets, or foundation models \citep{li2025quantifying}, shared training trajectories and weight-space basins can constrain checkpoint diversity \citep{fort2019loss,wortsman2022soups}, transfer/representation work studies what is reused across pretrained models \citep{neyshabur2020what,gontijolopes2022norep}, pretrained-model ensemble work treats pretraining as a possible diversity source \citep{deepensemble_transfer2020}, same-architecture models can align strongly across initializations \citep{kornblith2019similarity}, and predictive-diversity pathologies can limit deep-ensemble gains \citep{abe2023pathologies}. LLM monoculture audits \citep{jiang2025hivemind,kim2025correlated,gorecki2025monoculture,goel2025greatmodels} and null-model critiques \citep{subjectivity2026} motivate our estimator choices. Pathology-FM and precision-oncology studies provide adjacent evidence about center robustness, benchmark behavior, and complementary domain-specialised features \citep{dejong2025pathologyrobust,campanella2025clinical,luo2025elf,neidlinger2025benchmarking}. Our contribution is not the abstract claim that correlated errors exist; rather, we provide a released medical-segmentation audit of frozen-feature pretrained-encoder pools that distinguishes primary from diagnostic evidence and reports where same-checkpoint/recipe, same-architecture-family, and broader cross-family correlations appear or contract under a shared protocol.
+
+\textbf{Medical segmentation, pretrained/foundation-model benchmarks, and ensemble baselines.} nnU-Net, deep ensembles, MC dropout, adjacent uncertainty or parameter-efficient ensembles, and hyperparameter ensembles are usually evaluated through Dice, calibration, or uncertainty quality \citep{isensee2021nnunet,isensee2024revisit,lakshminarayanan2017deepens,gal2016mcdropout,mehrtash2020calibration,jungo2019reliability,loraensemble2024,d2ue2024}. General ensemble-diversity theory \citep{kuncheva2003diversity,ganaie2022ensemble,wood2024diversity} and medical-segmentation diversity or failure-detection studies \citep{georgescu2022dipe,zenk2024medseg} are closest methodologically, but they study adjacent diversity settings rather than the released frozen-encoder per-case co-failure audit studied here. Recent medical-segmentation benchmarks and robustness-specification work evaluate or discuss generic-vision probes, SAM medical-image evaluations, standardized segmentation datasets, promptable SAM adaptations, universal 3D/medical segmenters, task-specific robustness requirements, transferability estimation, and VFM segmentation benchmarking \citep{baharoon2024dinov2radiology,huang2024sammedical,medsegbench2024,sam,medsam2024,sammed2d2023,medicosam2025,zhu2024medsam2,ma2025medsam2,gu2025melba,he2025vista3d,kim2025showandsegment,xian2025robustness,yang2023ccfv,kerssies2024benchmark}. Our protocol is not a VFM performance benchmark or full fine-tuning comparison: it deliberately fixes frozen/light-adaptation probes to audit co-failure, while generic and medical FMs plus conventional pretrained backbones define the candidate universe and adjacent model classes. Promptable/universal models are adjacent to, but outside, our frozen-vision-encoder audit.
+
+\section{Formal setup and benchmark estimands}
+\label{sec:formal}
+
+\textbf{Pool and estimands.} Let $\mathcal{F}{=}\{F_1,\dots,F_K\}$ be the operational pretrained-encoder bundles used by the Table~\ref{tab:main} scorer. In the primary 11-bundle source pool, a bundle is the concrete released encoder / pretraining / input-statistic wrapper used for frozen-feature extraction; same-bundle decoder seeds form the main same group, and DINOv2-B$\times$DINOv2-S is the only recurring cross-checkpoint member of that group because both variants share the same upstream DINOv2 release and pretraining recipe. Other broad-family groupings (for example OpenAI CLIP sizes, ResNet sizes, and expanded DINOv2/ConvNeXt variants) are not folded into the Table~\ref{tab:main} primary estimator; they are separated in the released same-family cross-checkpoint diagnostic in Appendix~\ref{app:cross-checkpoint}. BiomedCLIP (ViT-B/16, biomedical image-text pretraining) is treated as a different bundle from DINOv2 despite being a ViT. A model is a tuple $(F_k, \sigma)$ (bundle, decoder seed) producing per-case Dice $D_{(k,\sigma)}(i, t)$. Appendix~\ref{app:arch-3task} and Appendix~\ref{app:cross-checkpoint} report released diagnostics that separate Table-1 product bundles, same-architecture-family ViT / different-pretraining, and broader same-family cross-checkpoint readouts; these clarify that a ``cross'' column can still contain broad architectural structure. For a pair of models $a{\neq}b$ we define $r_{a,b}(t){=}\mathrm{Pearson}_i [D_a(i,t), D_b(i,t)]$ (and a McGraw--Wong ICC(A,1) variant $\iota_{a,b}$ \citep{mcgraw1996forming}, chosen to penalise per-bundle Dice offsets that Pearson absorbs). The Table-1 same/cross means at task $t$ are the expectations of $r_{a,b}$ over pairs in the same group (same bundle, plus DINOv2-B/S) and the remaining cross group under this scorer, and $\Delta(t){=}\bar r_{\mathrm{same}}(t){-}\bar r_{\mathrm{cross}}(t)$ is the \emph{monoculture gap}. Secondary estimands: pixel-level error-mask Dice (computed the same way over binarised error masks) and joint-failure \emph{lift} over independence $L_{\text{mono}}(\tau){=}\Pr[\text{all fail} \mid\text{mono pool}] / \prod_m \Pr[\text{fail}_m \mid \tau]$.
+
+\textbf{Symmetric multi-seed averaging.} For each bundle pair we enumerate all $|\Sigma|^2{=}16$ seed combinations (4 per model) rather than seed-matched pairs, removing the one-seed-per-bundle noise that inflates ad-hoc gap estimates. Same-bundle averaging uses $\binom{|\Sigma|}{2}{=}6$ same-bundle seed pairs per $F_k$ plus the full $|\Sigma|^2$ on DINOv2-B$\times$DINOv2-S; the cross group uses all remaining Table-1 bundle pairs.
+
+\textbf{CI and scope.} A 3-level nested hierarchical bootstrap (Table-1 groups $\to$ seeds $\to$ cases, $B{=}2000$) yields 95\% CIs as the 2.5th/97.5th percentiles of bootstrap-sampled $\bar r_{\mathrm{same}}, \bar r_{\mathrm{cross}}, \Delta$. Zero-exclusion is reported as a sign-check rather than as population-level proof over all possible encoder bundles or families. The estimands assume a shared-decoder, shared-task pool and measure \emph{observed} correlation within such pools; a released CNN random-init diagnostic (Appendix~\ref{app:m9}) shows positive same-vs-cross structure without pretrained weights, so we report the pretrained-bundle gap descriptively rather than as a causal isolation of pretrained-weight effects. With a finite panel and task-specific post-floor pools, our hierarchical bootstrap has few-cluster bias in the \citet{cameron2008bootstrap} sense; we therefore also report paired case-only bootstrap CIs ($B{=}2000$) throughout and take agreement across the two as the informative CI.
+
+\textbf{Primary-group structural caveat.} The primary rows retain task-specific functional pools of 11/10/10/9/11 bundles after the Dice floor. In these pools, the Table~\ref{tab:main} ``same'' column is dominated by same-bundle, different-seed decoder-head pairs, with DINOv2-B$\times$DINOv2-S providing the only recurring same-family cross-checkpoint pair when both variants are functional. Thus the high same-group $\bar r$ values in Table~\ref{tab:main} ($0.834$--$0.959$) are best read as same-frozen-checkpoint/recipe-dominated dependence readouts, not a broad sample of many same-family cross-checkpoint comparisons. Section~\ref{sec:arch-vs-pretrain} and Appendix~\ref{app:arch-3task} report a 5-variant same-architecture-family ViT / different-pretraining diagnostic (DINOv2-B, BiomedCLIP, MAE-B, DeiT-B, CLIP-B) that measures cross-pretraining correlation under a shared broad architecture family and is the closest ``within-architecture-family, cross-pretraining'' control in this benchmark.
+
+\section{Experimental design}
+\label{sec:design}
+
+\paragraph{Datasets \& targets.} The five primary rows use predefined splits recorded in each JSON's \texttt{test\_ids}: Kvasir-SEG polyp \citep{kvasirseg} (loader-defined 880/120 image split; the released IDs are image-level file identifiers, with no patient/video identifiers available for patient-level duplicate clustering), RIGA\,+ cup/disc \citep{riga,riga_data} (BinRushed+MESSIDOR train, Magrabia (Magrabi Eye Center) source test, $n{=}95$; the released \texttt{test\_ids} enumerate the local loader-retained Magrabia source files, and source/subfolder labels are retained only for deterministic alignment), ACDC LV-positive ED/ES slices \citep{acdc} from public patients 001--100 (fold-0, $20$ patients, $n{=}361$ slices), and a BraTS 2024 GLI 2D FLAIR non-background foreground derivative \citep{brats2024gli,brats2024gli_challenge} (release key \texttt{brats\_wt}) that keeps up to the top-10 axial slices per held-out subject by foreground area, with a minimum 64 positive pixels and a subject-level 80/20 split using NumPy seed 42 ($n{=}3{,}228$ test slices from 324 subjects). The BraTS count is $12$ below the $324{\times}10$ maximum because three held-out subjects have fewer than ten eligible foreground-positive slices after the 64-pixel filter (3, 6, and 9 slices). Because this target is \texttt{seg>0} and includes the BraTS-GLI resection-cavity label, it is not the official 3D BraTS WT challenge target.
+
+\paragraph{Encoder bundles.} \emph{Generic pretrained-encoder bundles} (11, mixing foundation-model encoders and conventional pretrained backbones): DINOv2-B/S, BiomedCLIP, CLIP ViT-L/14, CLIP ViT-B/16, MAE ViT-B/16, DeiT ViT-B/16, ConvNeXt-T, EfficientNet-B0, ResNet-50/18. Here ``CLIP ViT-L/14'' denotes the bundle's preserved OpenCLIP \texttt{ViT-L-14/openai} dense-token loader, not OpenAI \texttt{clip.load} inference parity; strict QuickGELU parity would be a separate sensitivity loader. \emph{Medical-domain encoder probe:} MedSAM vision-encoder-only (SAM ViT-B; prompt encoder and mask decoder discarded) is reported as a secondary boundary probe on RIGA/Kvasir/ACDC. RETFound support is documented as a gated-checkpoint path, but RETFound cells are not reported because the checkpoint/authentication was unavailable for the reported artifact run.
+
+\paragraph{Protocol.} The primary protocol resizes images and masks to $224{\times}224$, applies encoder-specific upstream normalisation (ImageNet-style statistics for DINOv2/MAE/DeiT/torchvision CNNs and OpenAI CLIP statistics for CLIP/BiomedCLIP), freezes the encoder, and trains a $1{\times}1$-conv decoder with Adam $10^{-3}$ for 30 epochs, batch 16, and BCE loss on the binary primary rows. Table~\ref{tab:main} starts from the 11-bundle generic source pool where cells are available and applies the estimator's Dice${\geq}0.30$ functional floor to remove non-segmenting, near-constant traces: Kvasir retains 11 bundles, ACDC 10, BraTS foreground 10, RIGA Cup 9, and RIGA Disc 11. This floor is a test-trace-based analytic convention chosen for functional-pool definition, not a training filter, ingestion filter, or pre-registered hypothesis threshold; Table~\ref{tab:main} is therefore conditional on the post-floor analytic pool, and Appendix~\ref{app:audit-sensitivity} reports no-floor and stricter-floor sensitivity with retained pool counts. The MedSAM sensitivity is a secondary encoder-only boundary probe, not part of the primary pool or a prompt-conditioned MedSAM evaluation.
+
+\section{Main result: same-frozen-checkpoint pools show higher co-failure correlation}
+\label{sec:main}
+
+\begin{table}[h]
+  \caption{\textbf{Same-bundle/recipe vs.\ Table-1 cross-bundle/family per-case Dice correlation across the five primary medical segmentation task rows.} Values are Pearson $\bar r$ outputs from \texttt{results/\_merged/paper\_table.json}. Symmetric multi-seed averaging uses completed decoder-seed combinations per bundle pair. The same column is dominated by same-bundle seed pairs plus the DINOv2-B/S pair; broader same-family cross-checkpoint groupings are diagnostic rows in Appendix~\ref{app:cross-checkpoint}. The Bundles column reports the functional bundle count after the Dice${\geq}0.30$ floor, not the nominal source pool size.}
+  \label{tab:main}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{3.2pt}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrccccc}
+    \toprule
+    Task row & Unit $N$ & Bundles & $\rho_{\text{same}}$ & $\rho_{\text{cross}}$ & $\Delta$ & Case CI$^{\S}$ & Hier CI$^{\P}$ \\
+    \midrule
+    Kvasir polyp & image 120 & 11 & 0.958 & 0.697 & 0.261 & [0.211,0.320] & [0.174,0.378] \\
+    ACDC LV & slice 361$^{\ddagger}$ & 10 & 0.959 & 0.639 & 0.321 & [0.289,0.355] & [0.211,0.435] \\
+    BraTS foreground$^{\dag}$ & slice 3,228$^{\star}$ & 10 & 0.938 & 0.623 & 0.315 & [0.302,0.329] & [0.224,0.425] \\
+    RIGA Cup & fundus 95 & 9 & 0.834 & 0.361 & 0.473 & [0.395,0.556] & [0.280,0.780] \\
+    RIGA Disc & fundus 95 & 11 & 0.870 & 0.232 & 0.638 & [0.569,0.687] & [0.475,0.831] \\
+    \bottomrule
+  \end{tabular*}
+  \\[2pt]
+  {\footnotesize $^{\S}$ Case-level paired bootstrap from \texttt{gap\_ci95\_case} ($B{=}2{,}000$), conditional on the functional pool shown. $^{\P}$ Hierarchical bootstrap over Table-1 grouping and seed clusters from \texttt{gap\_ci95\_hier}; it is the more conservative finite-pool interval, and all hierarchical CIs exclude zero. $\Delta{=}\rho_{\text{same}}{-}\rho_{\text{cross}}$ (Pearson). $^{\ddagger}$20 ACDC patients. $^{\star}$324 BraTS subjects. $^{\dag}$BraTS uses the completed 11-bundle source pool for the 2D FLAIR \texttt{seg>0} derivative; ResNet-18 is below the Dice floor, leaving 10 post-floor bundles.}
+\end{table}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.96\linewidth]{../figures/fig1_hero.pdf}
+  \caption{\textbf{Illustrative secondary spatial and lift diagnostics, not primary evidence.} This figure is illustrative; no panel supplies the primary Table~\ref{tab:main} evidence. \textbf{(a)}~Single-case illustrations (RIGA Cup, upper; BraTS foreground, lower) compare four DINOv2-B decoder seeds with four diverse backbones; red=false positives, blue=false negatives, green=GT boundary. \textbf{(b)}~Pixel-level error-mask Dice on secondary, non-case-identical aggregate rows (RIGA Cup/Disc $N{=}224$, ACDC LV $N{=}90$, Kvasir $N{=}300$). \textbf{(c)}~Selected matched-size joint-failure lift ratios; sparse rows are descriptive. Panels (b--c) are released aggregate diagnostics rather than the primary per-case-Dice rows in Table~\ref{tab:main}; the submission artifact distributes summary statistics rather than raw masks or full prediction caches.}
+  \label{fig:hero}
+\end{figure}
+
+Across four imaging domains and five task rows, same-group per-case Dice correlation is high ($0.834$--$0.959$) while the Table-1 cross group is lower ($0.232$--$0.697$). Every case-level CI excludes zero, and the more conservative hierarchical bootstrap remains positive. Table~\ref{tab:main-robustness} summarizes three main-text sensitivity checks: subject aggregation for slice-derived rows, quality-controlled pair regression, and distinct-checkpoint same-family decomposition.
+
+\begin{table}[h]
+  \caption{\textbf{Main robustness checks for the primary rows.} Quality-control $\beta_{\mathrm{same}}$ is the same-group coefficient in a pair-level OLS diagnostic controlling for pair mean Dice, absolute mean-Dice difference, average per-case variance, and absolute variance difference. Subject aggregation applies only to slice-derived ACDC/BraTS rows. Expanded-grid xckpt--cross is the same-family cross-checkpoint diagnostic from Appendix~\ref{app:cross-checkpoint}, not the Table~\ref{tab:main} analytic-pool cross-family stratum. All intervals are case-bootstrap CIs.}
+  \label{tab:main-robustness}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{3.0pt}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccc}
+    \toprule
+    Task & Quality-control $\beta_{\mathrm{same}}$ & Subject-aggregated $\Delta$ & Expanded-grid xckpt--cross \\
+    \midrule
+    Kvasir polyp & 0.169 [0.124, 0.220] & -- & 0.080 [0.043, 0.122] \\
+    ACDC LV & 0.208 [0.175, 0.242] & 0.262 [0.151, 0.413] & 0.134 [0.113, 0.155] \\
+    BraTS foreground & 0.224 [0.210, 0.239] & 0.214 [0.182, 0.251] & 0.093 [0.085, 0.100] \\
+    RIGA Cup & 0.372 [0.297, 0.456] & -- & 0.267 [0.204, 0.332] \\
+    RIGA Disc & 0.582 [0.495, 0.639] & -- & 0.227 [0.149, 0.293] \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+
+\textbf{Estimator robustness.} A released CPU-only sensitivity file (\texttt{results/\_merged/diagnostics/audit\_sensitivity.json}) recomputes the primary Pearson gap under a functional-floor sweep, an ICC(A,1) alternative, leave-one-bundle/task-out summaries, and a random family-label permutation stress test. A second released diagnostic (\texttt{quality\_controlled\_pairs.json}) fits the pair-level OLS check in Table~\ref{tab:main-robustness}; the same-group coefficient stays positive on all five rows ($0.169$--$0.582$). At the paper's Dice${\geq}0.30$ floor the five-task mean gap is $0.401$ (leave-one-task-out means $0.342$--$0.437$); every task remains positive at the stricter Dice${\geq}0.40$ floor where the pool is non-empty, ICC gaps are larger than Pearson gaps, and in $1000$ random-label permutations the observed row gap is exceeded with rank fraction $0.001$ (Appendix~\ref{app:audit-sensitivity}). Because family labels are not a clean exchangeable sampling design, we treat these as estimator-stability evidence, not as independent experiments or population-level $p$-values.
+
+\textbf{Spatial and lift readouts.} Secondary, non-case-identical aggregate diagnostics are qualitatively consistent with the Table~\ref{tab:main} ordering in pixel and threshold space: same-family pairwise error-mask Dice is $0.80$--$0.87$ versus $0.32$--$0.40$ cross-family on RIGA Cup/Disc ($N{=}224$), ACDC LV ($N{=}90$), and Kvasir ($N{=}300$) rows (Fig.~\ref{fig:hero}b, Appendix~\ref{sec:pixerror-app}, and Appendix~\ref{sec:kvasir-app}), and matched-size diverse pools have lower lift than same-bundle pools in selected joint-failure diagnostics (Fig.~\ref{fig:hero}c; Appendix~\ref{sec:matched-app}). These diagnostics are released only as aggregate JSONs, not as raw masks or full prediction caches. Sparse rare-event rows are reported as descriptive rather than headline statistics.
+
+\textbf{Item-difficulty diagnostic.} Following the warning that monoculture claims depend on the null model \citep{subjectivity2026}, we residualise per-case Dice against held-out item-difficulty estimates. The naive all-bundle difficulty regressor leaks the response and inflates $\Delta$. A released all-row cross-fitted diagnostic estimates each trace's item-difficulty regressor from traces outside that trace's broad upstream family, then recomputes the Table-1 same/cross rule on residuals; residualised gaps remain positive on all five rows ($\Delta=0.830$--$0.976$, all case-bootstrap intervals exclude zero; Appendix~\ref{app:diffleak}). This is a robustness diagnostic, not a symmetric causal adjustment: under this particular held-out residualisation, item difficulty does not absorb the measured separation.
+
+\subsection{Limited ViT diagnostic: cross-pretraining correlations remain intermediate}
+\label{sec:arch-vs-pretrain}
+A natural Kornblith-type concern \citep{kornblith2019similarity} is that two ViTs produce similar representations \emph{because they share architecture family}, not because they share pretraining. We partially control broad architecture family with a 5-variant ViT pool---DINOv2-B (SSL on LVD-142M), BiomedCLIP (CLIP on biomed image-text), MAE-B (ImageNet MAE), DeiT-B (ImageNet supervised), OpenAI CLIP-B---trained with the identical frozen $1{\times}1$-conv probe (Table~\ref{tab:arch-confound}). The released aggregate covers RIGA Cup and ACDC LV. In the functional-filtered readouts, same-architecture-family ViT / different-pretraining pairs sit below the same-bundle decoder-seed floor but above the primary cross-family reference. In this limited diagnostic, that pattern is consistent with both architecture family and pretraining bundle affecting correlation, but it does not identify their separate causal contributions.
+
+\begin{table}[h]
+  \caption{\textbf{Same-architecture-family ViT / different-pretraining diagnostic.}
+  Same-architecture-family ViT cross-pretraining lies below the same-bundle seed floor; after functional filtering where needed, it remains above the primary cross-family reference. This is consistent with architecture family and pretraining bundle leaving measurable signal in this grid, not a causal decomposition.}
+  \label{tab:arch-confound}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{3.2pt}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llccccc}
+    \toprule
+    Dataset & ViT subset & Func. ViTs & Seed floor & ViT cross-pretrain & Primary cross ref. & Seed-floor gap \\
+    \midrule
+    RIGA Cup & all 5 ViTs & 5/5 & 0.968 & 0.680 & 0.361 & 0.288 \\
+    ACDC LV & CLIP-B dropped$^{\dag}$ & 4/5 & 0.988 & 0.807 & 0.639 & 0.182 \\
+    \bottomrule
+  \end{tabular*}
+  \\[2pt]
+  {\footnotesize Values are from \texttt{results/\_merged/diagnostics/r7\_arch\_confound\_analysis.json} and \texttt{paper\_table.json}. $^{\dag}$The all-5 ACDC same-architecture-family ViT cross-pretraining value is $0.631$ because CLIP-B is nonfunctional on ACDC (mean Dice $0.205$); the functional-filtered readout is $0.807$. ViT$\times$CNN subcells are kept as appendix diagnostics and are not used as main-table numeric evidence.}
+\end{table}
+
+Because the primary same column is dominated by same-bundle decoder-seed pairs, we also release a CPU-only same-family cross-checkpoint decomposition over the five primary rows (Appendix~\ref{app:cross-checkpoint}). It separates the same-bundle seed floor, distinct checkpoints within broad upstream families (DINOv2-S/B, OpenAI CLIP-B/L, ResNet-18/50 when functional), and cross-family pairs. The distinct-checkpoint same-family minus cross-family gap remains positive on all five rows ($0.080$--$0.267$), while staying well below the same-bundle seed floor. Thus the primary effect is strongest for shared checkpoints and recipes, but the released traces do not collapse to a same-decoder-seed artifact.
+
+\section{Same-backbone controls and mechanism limits}
+\label{sec:controls}
+
+\begin{table}[t]
+  \caption{\textbf{Released same-backbone diagnostics.} These rows ask whether common same-backbone or same-bundle levers reduce the measured dependence; they are diagnostic comparisons, not dose-matched causal effects.}
+  \label{tab:controls}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabularx}{\linewidth}{p{0.20\linewidth}p{0.22\linewidth}Yp{0.20\linewidth}}
+    \toprule
+    Control & Released source & Main readout & Cautious interpretation \\
+    \midrule
+    Head-capacity sweep (M3), RIGA Cup & \texttt{per\_case\_dice\_m3}, App.~\ref{app:m3} & 4 heads, 769--3.94M params; Dice 0.725--0.848; cross-head same-bundle $\bar r{=}0.690$ (range 0.510--0.896) & Head design changes accuracy and some pairwise $r$, but stays above primary RIGA cross-family $\bar r{=}0.361$. \\
+    UNet-skip decoder replication & \texttt{m4\_unet\_summary.json}, App.~\ref{app:unet} & 20 cells; Dice 0.806--0.902; seed-pair $r{=}0.774$--0.979 & Stronger skip head improves accuracy but does not make same-backbone pools look cross-family. \\
+    MC dropout, DINOv2-B/RIGA Cup & \texttt{per\_case\_dice\_m22}, App.~\ref{app:m22} & MC $\bar r{=}0.947,0.925,0.893$ for $p{=}0.1,0.2,0.4$ & Weak decorrelation lever; largest tested drop is about 0.10. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\textbf{(C1) Head architecture/capacity.} The released head-capacity and UNet-skip decoder controls change accuracy and reduce some pairwise correlations, but their same-backbone correlations remain above the primary RIGA cross-family reference. Thus decoder capacity does not eliminate the measured gap in these released diagnostics.
+
+\textbf{(C2) Stochastic/adaptation levers.} MC dropout is a weak same-bundle lever in the released RIGA Cup diagnostic. Bootstrap-bagging and M15 fold-reslicing are appendix diagnostics with different sampling surfaces; M15 is a single-seed split-stability check, not a within-fold vs cross-fold same-backbone estimator. Unbundled full-fine-tuning and LoRA mechanism probes are kept only as transparency notes and are not used as bundle-supported evidence.
+
+\textbf{(C3) Medical-domain encoder-only probe.} A MedSAM image-encoder-only sensitivity is described in Appendix~\ref{app:medsam-note} and released as an aggregate diagnostic summary rather than primary evidence. The probe strips MedSAM's prompt encoder and mask decoder, so it is not a fair evaluation of prompt-conditioned MedSAM as released. RETFound is documented only as a gated-checkpoint path; without the gated checkpoint/authentication, we do not report RETFound rows or use them to support the claims.
+
+\section{Evidence taxonomy and scope boundaries}
+\label{sec:evidence-taxonomy}
+
+Same-backbone perturbations are useful but incomplete in our measurements. Data bootstrap-bagging reduces within-pool $\bar r$ by only $0.05$--$0.12$, the released M15 fold-reslicing diagnostic keeps cross-bundle $\bar r$ stable across held-out folds but has only one seed per fold, and the released MC-dropout diagnostic is a weak same-bundle lever (Appendices~\ref{sec:samebb}, \ref{app:nnunet}, \ref{app:m22}). Released and explicitly labelled appendix diagnostics suggest that shared pretrained weights are not the only source of dependence, while the same-architecture-family ViT and CNN random-init readouts indicate that pretraining, architecture, and shared recipe effects remain entangled in this benchmark rather than collapsing to a single identified mechanism (Appendices~\ref{app:m9}, \ref{app:arch-3task}).
+
+The strongest caution is the full-pipeline boundary. The nnU-Net v2 2D/3D complements are seeded task-level runs using custom trainer subclasses and task-level splits; the RIGA rows are not case-identical to the Magrabia-source held-out frozen-encoder row. They are descriptive scope checks rather than official nnU-Net benchmark claims, case-identical baselines, or causal decompositions. Appendix~\ref{app:3dfm} reports an unbundled 3D segmentation-architecture pilot as appendix scope context only, not as primary evidence.
+
+\begin{table}[!htbp]
+  \caption{\textbf{What is primary, what is diagnostic, and what is a scope boundary.} Detailed appendix sections preserve the distinction between primary evidentiary results, mechanism diagnostics, and scope checks.}
+  \label{tab:evidence-taxonomy}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{p{0.20\linewidth}p{0.32\linewidth}p{0.38\linewidth}}
+    \toprule
+    Evidence role & Bundle support & Interpretation \\
+    \midrule
+    Primary frozen-encoder audit & Per-case Dice, \texttt{paper\_table.json}, \texttt{within\_cross/*.json} & Primary main claim: five task rows give $\Delta=0.261$--$0.638$ for frozen/light-adaptation 2D pretrained-encoder pools under the Table-1 grouping. \\
+    Estimator robustness & \texttt{audit\_sensitivity.json}; \texttt{quality\_controlled\_pairs.json}; \texttt{item\_difficulty\_robustness.json} & Stability checks only: floor/ICC/leave-one-out/permutation, pair-quality controls, and cross-fitted item-difficulty residualisation; no new training evidence. \\
+    Architecture/pretraining and cross-checkpoint diagnostics & \texttt{r7\_arch\_confound\_analysis.json}; \texttt{cross\_checkpoint\_family.json} & Same-architecture-family ViT / different-pretraining and same-family cross-checkpoint rows lie between seed floor and primary cross-family reference; unbundled cross-architecture probes are labelled separately and not used as support. \\
+    Same-backbone levers & Released M3/M4/M22 traces plus selected aggregate diagnostic summaries; unbundled probes are explicitly labelled and not used as support & These weaken simple alternatives but are heterogeneous and not dose-matched causal effects. \\
+    Full-pipeline complements & Released nnU-Net JSONs; unbundled 3D segmentation-architecture pilot reported only as appendix scope context & Boundary evidence: nnU-Net complements give much smaller gaps, while the 3D pilot is not included in the submission artifact; do not generalize the 2D frozen-encoder result to all segmentation ensembles. \\
+    Held-out stress test & Aggregate held-out JSONs only; no case CIs for the held-out aggregator & External-validity diagnostic: the 11-bundle stress test gives large direction-positive Hippocampus/ISIC rows, a tiny-$N$ positive Prostate row, a near-zero Spleen row, and a Heart floor failure; held-out rows remain secondary scope evidence. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Discussion}
+\label{sec:discussion}
+
+\textbf{Practical reading.} Treat a same-bundle 2D frozen-feature pool as potentially $M_{\mathrm{eff}}\ll M$ until an in-domain audit shows otherwise. In our released rows, diverse $M{=}4$ pools yield $M_{\mathrm{eff}}$ from $2.05$ (Kvasir) to $2.97$ (RIGA Disc) under the paper's equicorrelation readout at $\tau=0.85$, rather than $4$; same-bundle seed pools yield $M_{\mathrm{eff}}$ near $1$ under the same readout (Appendix~\ref{app:meff}). $M_{\mathrm{eff}}$ is only a dependence readout, so it should be paired with marginal-Dice floors and matched-quality comparisons before any pool-selection decision.
+
+\textbf{Limitations.} The evidence is retrospective and benchmark-based. We do not measure clinician behavior, diagnoses, patient outcomes, prompt-conditioned MedSAM, broad cross-demographic shifts, or case-identical full-pipeline baselines for every primary row. The BraTS foreground row is a 2D derivative of the 2024 GLI release rather than the official 3D BraTS challenge target, and all primary rows are finite 11-bundle-panel audits after a task-specific functional floor applied to the evaluation traces. This is not a VFM performance benchmark, SOTA segmentation benchmark, or full fine-tuning study; the frozen/light-adaptation design is chosen to audit co-failure under a controlled readout. Table~\ref{tab:main} is the confirmatory evidence surface; secondary threshold, lift, pool-selection, and held-out rows are exploratory diagnostics rather than multiplicity-adjusted confirmatory tests. CKA and the random-effects representation are descriptive tools, not causal proofs.
+
+\textbf{What the evaluation supports.} The evaluation supports the narrower claim that, in the tested 2D frozen/light-adaptation regime, same-bundle decoder-seed pools should not be credited as independent failure sources without an in-domain co-failure audit. Cross-bundle/family pools reduce but do not eliminate dependence. The artifact is intended for reproducing the reported dependence estimators and auditing fixed derived traces; it is not evidence of clinical safety, demographic fairness, diagnostic accuracy, or deployable pool-selection performance without separate in-domain validation.
+
+\textbf{Release.}\label{sec:pool-completion} The artifact bundle includes primary per-case Dice JSONs, summary tables, code, artifact metadata/manifests, hashes, and selected appendix/diagnostic aggregate JSONs. It does not introduce a new raw dataset; the released JSONs are derived trace artifacts that retain upstream de-identified alignment identifiers and source labels, including subject/patient/slice IDs and RIGA source/gender-coded path labels, solely for deterministic alignment and subject-level resampling. Users should not attempt re-identification or patient-level profiling. The bundle does not include raw medical images, raw masks, direct identifiers, full prediction caches, or held-out raw prediction arrays; raw data and checkpoints remain governed by upstream licenses and DUAs.
+
+\section{Artifact and reproducibility scope}
+\label{sec:repro-contract}
+
+The artifact supports auditing the numerical claims from fixed derived traces
+without including raw medical images, raw masks, or prediction caches.
+Table~\ref{tab:claim-artifact-map} maps each class of main-text evidence to its
+released files and recomputation path. The mapping is intentionally
+conservative: primary claims are reproducible from per-case Dice traces, while
+mechanism, pixel, lift, held-out, and full-pipeline rows are labelled as
+diagnostics or scope boundaries when their raw masks, prediction arrays, or
+case-identical comparators are not included. This separation is part of
+the E\&D contribution: the artifact makes the evidentiary status of each result
+explicit without requiring readers to reconstruct it from appendix provenance.
+
+\begin{table}[h]
+  \caption{\textbf{Main claim-to-artifact map.} Every primary main-text
+  number is tied to a released JSON or a CPU-only scorer. Aggregate-only
+  diagnostics are marked as such rather than promoted to primary evidence.}
+  \label{tab:claim-artifact-map}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{p{0.25\linewidth}p{0.31\linewidth}p{0.36\linewidth}}
+    \toprule
+    Claim/readout & Released source & Recompute / limitation \\
+    \midrule
+    Primary same-vs-cross gaps, CIs, and post-floor pools &
+    \texttt{paper\_table.json}, \texttt{within\_cross/*.json},
+    \texttt{per\_case\_dice/*.json} &
+    \texttt{compute\_all.py}; case IDs and per-case Dice are included,
+    raw images and masks are not. \\
+    Subject, floor, ICC, permutation, and quality-control robustness &
+    \texttt{subject\_level/*.json}, \texttt{audit\_sensitivity.json},
+    \texttt{quality\_controlled\_pairs.json} &
+    \texttt{compute\_all.py}, \texttt{compute\_audit\_sensitivity.py},
+    \texttt{compute\_quality\_controlled\_pairs.py}; these are estimator
+    checks, not new training runs. \\
+    Item-difficulty and cross-checkpoint diagnostics &
+    \texttt{item\_difficulty\_robustness.json},
+    \texttt{cross\_checkpoint\_family.json},
+    \texttt{r7\_arch\_confound\_analysis.json} &
+    \texttt{compute\_item\_difficulty\_robustness.py} and
+    \texttt{compute\_cross\_checkpoint\_family.py}; diagnostic evidence for
+    alternative explanations, not causal identification. \\
+    Pixel/lift, same-backbone, held-out, and nnU-Net scope rows &
+    \texttt{diagnostics/pixel\_error/*.json},
+    \texttt{diagnostics/matched\_lift/*.json}, appendix trace trees,
+    \texttt{nnunet/*.json} &
+    Aggregate or task-level support only where raw masks/prediction caches or
+    case-identical full-pipeline comparators are not included. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The artifact reproduction script recomputes the primary scorer and the CPU-only
+appendix scorers used by the main-text robustness checks, including the
+item-difficulty diagnostic. Separately, the SHA-256 manifest covers the
+released artifact files, and the metadata files document the released trace/code
+artifact rather than a standalone dataset release. These mechanics do not make
+the study fully reproducible from raw data; rather, they make the released
+evidence auditable at the level at which the claims are made.
+
+\newpage
+{\small
+\bibliographystyle{plainnat}
+\bibliography{references}
+}
+
+\FloatBarrier
+\appendix
+\renewcommand{\thesection}{A\arabic{section}}
+\input{appendix_ED9.tex}
+
+\FloatBarrier
+\input{checklist.tex}
+
+\end{document}

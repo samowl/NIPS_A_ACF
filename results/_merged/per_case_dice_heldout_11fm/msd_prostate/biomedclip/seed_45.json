@@ -1,0 +1,28 @@
+{
+  "task": "msd_prostate",
+  "fm": "biomedclip",
+  "seed": 45,
+  "n_test": 6,
+  "test_ids": [
+    "prostate_13",
+    "prostate_31",
+    "prostate_32",
+    "prostate_41",
+    "prostate_42",
+    "prostate_47"
+  ],
+  "per_case_dice": [
+    0.02292650006711483,
+    0.7237709164619446,
+    0.6626865863800049,
+    0.8451471924781799,
+    0.9016881585121155,
+    0.8798612952232361
+  ],
+  "mean_dice": 0.672680139541626,
+  "cache_manifest_sha256": "f7161a38d7ca0864656f038b9ccdc834266c7bcee40c03a2e4a393c6042da266",
+  "head_checkpoint_sha256": "ca8a9ea5fc0b575c0eb0b80bf5a530ce629667fb779546eb125bf1e288636fd8",
+  "training_elapsed_s": 10.046463012695312,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

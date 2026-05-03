@@ -1,0 +1,28 @@
+{
+  "task": "msd_prostate",
+  "fm": "dinov2_vitb14",
+  "seed": 44,
+  "n_test": 6,
+  "test_ids": [
+    "prostate_13",
+    "prostate_31",
+    "prostate_32",
+    "prostate_41",
+    "prostate_42",
+    "prostate_47"
+  ],
+  "per_case_dice": [
+    0.7617477178573608,
+    0.6328543424606323,
+    0.7718839645385742,
+    0.7022805213928223,
+    0.8664150834083557,
+    0.8817157745361328
+  ],
+  "mean_dice": 0.7694829106330872,
+  "cache_manifest_sha256": "4799d121706823d95dfaeef065b28d09706c742379a0ae9abdd1fba56de39cb2",
+  "head_checkpoint_sha256": "a8c8648b4fb0bd4485d57c96f361019ac05c8870666a64c8c5e4acd83316ff37",
+  "training_elapsed_s": 9.080132722854614,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

@@ -1,0 +1,16 @@
+M3 linear_1x1 riga_cup dinov2_vitb14 42
+M3 linear_1x1 riga_cup dinov2_vitb14 43
+M3 linear_1x1 riga_cup biomedclip 42
+M3 linear_1x1 riga_cup biomedclip 43
+M3 mlp_2layer riga_cup dinov2_vitb14 42
+M3 mlp_2layer riga_cup dinov2_vitb14 43
+M3 mlp_2layer riga_cup biomedclip 42
+M3 mlp_2layer riga_cup biomedclip 43
+M3 unet_lite riga_cup dinov2_vitb14 42
+M3 unet_lite riga_cup dinov2_vitb14 43
+M3 unet_lite riga_cup biomedclip 42
+M3 unet_lite riga_cup biomedclip 43
+M3 transformer_decoder riga_cup dinov2_vitb14 42
+M3 transformer_decoder riga_cup dinov2_vitb14 43
+M3 transformer_decoder riga_cup biomedclip 42
+M3 transformer_decoder riga_cup biomedclip 43

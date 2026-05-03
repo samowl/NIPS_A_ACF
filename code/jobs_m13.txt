@@ -1,0 +1,40 @@
+EXTRACT riga_cup_ood_messidor dinov2_vitb14
+EXTRACT riga_cup_ood_messidor dinov2_vits14
+EXTRACT riga_cup_ood_messidor biomedclip
+EXTRACT riga_cup_ood_messidor clip_vitl14
+EXTRACT riga_cup_ood_messidor convnext_tiny
+EXTRACT riga_cup_ood_messidor efficientnet_b0
+EXTRACT riga_cup_ood_messidor resnet50
+EXTRACT riga_cup_ood_messidor resnet18
+HEAD riga_cup_ood_messidor dinov2_vitb14 42
+HEAD riga_cup_ood_messidor dinov2_vits14 42
+HEAD riga_cup_ood_messidor biomedclip 42
+HEAD riga_cup_ood_messidor clip_vitl14 42
+HEAD riga_cup_ood_messidor convnext_tiny 42
+HEAD riga_cup_ood_messidor efficientnet_b0 42
+HEAD riga_cup_ood_messidor resnet50 42
+HEAD riga_cup_ood_messidor resnet18 42
+HEAD riga_cup_ood_messidor dinov2_vitb14 43
+HEAD riga_cup_ood_messidor dinov2_vits14 43
+HEAD riga_cup_ood_messidor biomedclip 43
+HEAD riga_cup_ood_messidor clip_vitl14 43
+HEAD riga_cup_ood_messidor convnext_tiny 43
+HEAD riga_cup_ood_messidor efficientnet_b0 43
+HEAD riga_cup_ood_messidor resnet50 43
+HEAD riga_cup_ood_messidor resnet18 43
+HEAD riga_cup_ood_messidor dinov2_vitb14 44
+HEAD riga_cup_ood_messidor dinov2_vits14 44
+HEAD riga_cup_ood_messidor biomedclip 44
+HEAD riga_cup_ood_messidor clip_vitl14 44
+HEAD riga_cup_ood_messidor convnext_tiny 44
+HEAD riga_cup_ood_messidor efficientnet_b0 44
+HEAD riga_cup_ood_messidor resnet50 44
+HEAD riga_cup_ood_messidor resnet18 44
+HEAD riga_cup_ood_messidor dinov2_vitb14 45
+HEAD riga_cup_ood_messidor dinov2_vits14 45
+HEAD riga_cup_ood_messidor biomedclip 45
+HEAD riga_cup_ood_messidor clip_vitl14 45
+HEAD riga_cup_ood_messidor convnext_tiny 45
+HEAD riga_cup_ood_messidor efficientnet_b0 45
+HEAD riga_cup_ood_messidor resnet50 45
+HEAD riga_cup_ood_messidor resnet18 45

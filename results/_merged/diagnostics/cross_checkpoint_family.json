@@ -1,0 +1,1204 @@
+{
+  "bootstrap_b": 2000,
+  "bootstrap_seed": 0,
+  "description": "Diagnostic decomposition of per-case Dice correlation into same-FM decoder-seed floor, distinct-checkpoint same broad family, and cross-family strata. This is not the primary within/cross estimator; it tests the structural caveat that primary within pairs are dominated by same-FM seeds.",
+  "family_group_rule": "DINOv2 variants, OpenAI CLIP variants, ResNet variants, ConvNeXt variants, EfficientNet variants, MAE variants, and DeiT variants are broad-family groups when multiple checkpoints are present; BiomedCLIP remains separate from OpenAI CLIP.",
+  "rows": [
+    {
+      "case_bootstrap_ci95": {
+        "cross_family": [
+          0.6406144967634633,
+          0.7473790804004369
+        ],
+        "same_family_cross_checkpoint": [
+          0.7332768387640757,
+          0.8157270661663474
+        ],
+        "same_fm_seed_floor": [
+          0.9834705991974263,
+          0.9891045069275506
+        ],
+        "seed_floor_minus_cross": [
+          0.24132302984573467,
+          0.3446307589647728
+        ],
+        "seed_floor_minus_xcheckpoint": [
+          0.17234429044750904,
+          0.25066149719980063
+        ],
+        "xcheckpoint_minus_cross": [
+          0.04348000128961495,
+          0.1222334671219625
+        ]
+      },
+      "family_groups_after_floor": {
+        "biomedclip": [
+          "biomedclip"
+        ],
+        "convnext": [
+          "convnext_base",
+          "convnext_small",
+          "convnext_tiny"
+        ],
+        "deit": [
+          "deit_vitb16"
+        ],
+        "dinov2": [
+          "dinov2_vitb14",
+          "dinov2_vitl14",
+          "dinov2_vits14"
+        ],
+        "efficientnet": [
+          "efficientnet_b0"
+        ],
+        "mae": [
+          "mae_vitb16"
+        ],
+        "openai_clip": [
+          "clip_vitb16",
+          "clip_vitb32",
+          "clip_vitl14"
+        ],
+        "resnet": [
+          "resnet101",
+          "resnet18",
+          "resnet34",
+          "resnet50"
+        ]
+      },
+      "fms_kept_after_floor": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitb32",
+        "clip_vitl14",
+        "convnext_base",
+        "convnext_small",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vitl14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet101",
+        "resnet18",
+        "resnet34",
+        "resnet50"
+      ],
+      "functional_floor": 0.3,
+      "n_test": 120,
+      "point": {
+        "cross_family": {
+          "example_pairs": [
+            "biomedclip:42--clip_vitb16:42",
+            "biomedclip:42--clip_vitb16:43",
+            "biomedclip:42--clip_vitb16:44",
+            "biomedclip:42--clip_vitb16:45",
+            "biomedclip:42--clip_vitb32:42",
+            "biomedclip:42--clip_vitb32:43",
+            "biomedclip:42--clip_vitb32:44",
+            "biomedclip:42--clip_vitb32:45"
+          ],
+          "n_finite_pairs": 1936,
+          "n_pairs": 1936,
+          "rbar": 0.6973812919287101
+        },
+        "gaps": {
+          "seed_floor_minus_cross": 0.2892674871416858,
+          "seed_floor_minus_xcheckpoint": 0.20918172102153842,
+          "xcheckpoint_minus_cross": 0.0800857661201474
+        },
+        "same_family_cross_checkpoint": {
+          "example_pairs": [
+            "clip_vitb16:42--clip_vitb32:42",
+            "clip_vitb16:42--clip_vitb32:43",
+            "clip_vitb16:42--clip_vitb32:44",
+            "clip_vitb16:42--clip_vitb32:45",
+            "clip_vitb16:42--clip_vitl14:42",
+            "clip_vitb16:42--clip_vitl14:43",
+            "clip_vitb16:42--clip_vitl14:44",
+            "clip_vitb16:42--clip_vitl14:45"
+          ],
+          "n_finite_pairs": 240,
+          "n_pairs": 240,
+          "rbar": 0.7774670580488575
+        },
+        "same_fm_seed_floor": {
+          "example_pairs": [
+            "biomedclip:42--biomedclip:43",
+            "biomedclip:42--biomedclip:44",
+            "biomedclip:42--biomedclip:45",
+            "biomedclip:43--biomedclip:44",
+            "biomedclip:43--biomedclip:45",
+            "biomedclip:44--biomedclip:45",
+            "clip_vitb16:42--clip_vitb16:43",
+            "clip_vitb16:42--clip_vitb16:44"
+          ],
+          "n_finite_pairs": 102,
+          "n_pairs": 102,
+          "rbar": 0.9866487790703959
+        }
+      },
+      "source_file_count": 68,
+      "source_files": [
+        "per_case_dice/kvasir/biomedclip/seed_42.json",
+        "per_case_dice/kvasir/biomedclip/seed_43.json",
+        "per_case_dice/kvasir/biomedclip/seed_44.json",
+        "per_case_dice/kvasir/biomedclip/seed_45.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_42.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_43.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_44.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_45.json",
+        "per_case_dice/kvasir/clip_vitb32/seed_42.json",
+        "per_case_dice/kvasir/clip_vitb32/seed_43.json",
+        "per_case_dice/kvasir/clip_vitb32/seed_44.json",
+        "per_case_dice/kvasir/clip_vitb32/seed_45.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_42.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_43.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_44.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_45.json",
+        "per_case_dice/kvasir/convnext_base/seed_42.json",
+        "per_case_dice/kvasir/convnext_base/seed_43.json",
+        "per_case_dice/kvasir/convnext_base/seed_44.json",
+        "per_case_dice/kvasir/convnext_base/seed_45.json",
+        "per_case_dice/kvasir/convnext_small/seed_42.json",
+        "per_case_dice/kvasir/convnext_small/seed_43.json",
+        "per_case_dice/kvasir/convnext_small/seed_44.json",
+        "per_case_dice/kvasir/convnext_small/seed_45.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_42.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_43.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_44.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_45.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_42.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_43.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_44.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_45.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_42.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_43.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_44.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_45.json",
+        "per_case_dice/kvasir/dinov2_vitl14/seed_42.json",
+        "per_case_dice/kvasir/dinov2_vitl14/seed_43.json",
+        "per_case_dice/kvasir/dinov2_vitl14/seed_44.json",
+        "per_case_dice/kvasir/dinov2_vitl14/seed_45.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_42.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_43.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_44.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_45.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_42.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_43.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_44.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_45.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_42.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_43.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_44.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_45.json",
+        "per_case_dice/kvasir/resnet101/seed_42.json",
+        "per_case_dice/kvasir/resnet101/seed_43.json",
+        "per_case_dice/kvasir/resnet101/seed_44.json",
+        "per_case_dice/kvasir/resnet101/seed_45.json",
+        "per_case_dice/kvasir/resnet18/seed_42.json",
+        "per_case_dice/kvasir/resnet18/seed_43.json",
+        "per_case_dice/kvasir/resnet18/seed_44.json",
+        "per_case_dice/kvasir/resnet18/seed_45.json",
+        "per_case_dice/kvasir/resnet34/seed_42.json",
+        "per_case_dice/kvasir/resnet34/seed_43.json",
+        "per_case_dice/kvasir/resnet34/seed_44.json",
+        "per_case_dice/kvasir/resnet34/seed_45.json",
+        "per_case_dice/kvasir/resnet50/seed_42.json",
+        "per_case_dice/kvasir/resnet50/seed_43.json",
+        "per_case_dice/kvasir/resnet50/seed_44.json",
+        "per_case_dice/kvasir/resnet50/seed_45.json"
+      ],
+      "subject_aggregated": null,
+      "task": "kvasir"
+    },
+    {
+      "case_bootstrap_ci95": {
+        "cross_family": [
+          0.5775901303180156,
+          0.6506237412195912
+        ],
+        "same_family_cross_checkpoint": [
+          0.716975332181012,
+          0.7801011968521889
+        ],
+        "same_fm_seed_floor": [
+          0.9843899719444058,
+          0.9881461491715954
+        ],
+        "seed_floor_minus_cross": [
+          0.3369538475350274,
+          0.40892100389009944
+        ],
+        "seed_floor_minus_xcheckpoint": [
+          0.20712487913803374,
+          0.2689192060225506
+        ],
+        "xcheckpoint_minus_cross": [
+          0.11328687767220855,
+          0.1545216656152876
+        ]
+      },
+      "family_groups_after_floor": {
+        "biomedclip": [
+          "biomedclip"
+        ],
+        "convnext": [
+          "convnext_base",
+          "convnext_small",
+          "convnext_tiny"
+        ],
+        "deit": [
+          "deit_vitb16"
+        ],
+        "dinov2": [
+          "dinov2_vitb14",
+          "dinov2_vitl14",
+          "dinov2_vits14"
+        ],
+        "efficientnet": [
+          "efficientnet_b0"
+        ],
+        "mae": [
+          "mae_vitb16"
+        ],
+        "openai_clip": [
+          "clip_vitb16",
+          "clip_vitb32",
+          "clip_vitl14"
+        ],
+        "resnet": [
+          "resnet101",
+          "resnet50"
+        ]
+      },
+      "fms_kept_after_floor": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitb32",
+        "clip_vitl14",
+        "convnext_base",
+        "convnext_small",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vitl14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet101",
+        "resnet50"
+      ],
+      "functional_floor": 0.3,
+      "n_test": 361,
+      "point": {
+        "cross_family": {
+          "example_pairs": [
+            "biomedclip:42--clip_vitb16:42",
+            "biomedclip:42--clip_vitb16:43",
+            "biomedclip:42--clip_vitb16:44",
+            "biomedclip:42--clip_vitb16:45",
+            "biomedclip:42--clip_vitb32:42",
+            "biomedclip:42--clip_vitb32:43",
+            "biomedclip:42--clip_vitb32:44",
+            "biomedclip:42--clip_vitb32:45"
+          ],
+          "n_finite_pairs": 1520,
+          "n_pairs": 1520,
+          "rbar": 0.615727901129401
+        },
+        "gaps": {
+          "seed_floor_minus_cross": 0.37069965877267697,
+          "seed_floor_minus_xcheckpoint": 0.23661157731543825,
+          "xcheckpoint_minus_cross": 0.13408808145723872
+        },
+        "same_family_cross_checkpoint": {
+          "example_pairs": [
+            "clip_vitb16:42--clip_vitb32:42",
+            "clip_vitb16:42--clip_vitb32:43",
+            "clip_vitb16:42--clip_vitb32:44",
+            "clip_vitb16:42--clip_vitb32:45",
+            "clip_vitb16:42--clip_vitl14:42",
+            "clip_vitb16:42--clip_vitl14:43",
+            "clip_vitb16:42--clip_vitl14:44",
+            "clip_vitb16:42--clip_vitl14:45"
+          ],
+          "n_finite_pairs": 160,
+          "n_pairs": 160,
+          "rbar": 0.7498159825866397
+        },
+        "same_fm_seed_floor": {
+          "example_pairs": [
+            "biomedclip:42--biomedclip:43",
+            "biomedclip:42--biomedclip:44",
+            "biomedclip:42--biomedclip:45",
+            "biomedclip:43--biomedclip:44",
+            "biomedclip:43--biomedclip:45",
+            "biomedclip:44--biomedclip:45",
+            "clip_vitb16:42--clip_vitb16:43",
+            "clip_vitb16:42--clip_vitb16:44"
+          ],
+          "n_finite_pairs": 90,
+          "n_pairs": 90,
+          "rbar": 0.986427559902078
+        }
+      },
+      "source_file_count": 68,
+      "source_files": [
+        "per_case_dice/acdc_lv/biomedclip/seed_42.json",
+        "per_case_dice/acdc_lv/biomedclip/seed_43.json",
+        "per_case_dice/acdc_lv/biomedclip/seed_44.json",
+        "per_case_dice/acdc_lv/biomedclip/seed_45.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_42.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_43.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_44.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_45.json",
+        "per_case_dice/acdc_lv/clip_vitb32/seed_42.json",
+        "per_case_dice/acdc_lv/clip_vitb32/seed_43.json",
+        "per_case_dice/acdc_lv/clip_vitb32/seed_44.json",
+        "per_case_dice/acdc_lv/clip_vitb32/seed_45.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_42.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_43.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_44.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_45.json",
+        "per_case_dice/acdc_lv/convnext_base/seed_42.json",
+        "per_case_dice/acdc_lv/convnext_base/seed_43.json",
+        "per_case_dice/acdc_lv/convnext_base/seed_44.json",
+        "per_case_dice/acdc_lv/convnext_base/seed_45.json",
+        "per_case_dice/acdc_lv/convnext_small/seed_42.json",
+        "per_case_dice/acdc_lv/convnext_small/seed_43.json",
+        "per_case_dice/acdc_lv/convnext_small/seed_44.json",
+        "per_case_dice/acdc_lv/convnext_small/seed_45.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_42.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_43.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_44.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_45.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_42.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_43.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_44.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_45.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_42.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_43.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_44.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_45.json",
+        "per_case_dice/acdc_lv/dinov2_vitl14/seed_42.json",
+        "per_case_dice/acdc_lv/dinov2_vitl14/seed_43.json",
+        "per_case_dice/acdc_lv/dinov2_vitl14/seed_44.json",
+        "per_case_dice/acdc_lv/dinov2_vitl14/seed_45.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_42.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_43.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_44.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_45.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_42.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_43.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_44.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_45.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_42.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_43.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_44.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_45.json",
+        "per_case_dice/acdc_lv/resnet101/seed_42.json",
+        "per_case_dice/acdc_lv/resnet101/seed_43.json",
+        "per_case_dice/acdc_lv/resnet101/seed_44.json",
+        "per_case_dice/acdc_lv/resnet101/seed_45.json",
+        "per_case_dice/acdc_lv/resnet18/seed_42.json",
+        "per_case_dice/acdc_lv/resnet18/seed_43.json",
+        "per_case_dice/acdc_lv/resnet18/seed_44.json",
+        "per_case_dice/acdc_lv/resnet18/seed_45.json",
+        "per_case_dice/acdc_lv/resnet34/seed_42.json",
+        "per_case_dice/acdc_lv/resnet34/seed_43.json",
+        "per_case_dice/acdc_lv/resnet34/seed_44.json",
+        "per_case_dice/acdc_lv/resnet34/seed_45.json",
+        "per_case_dice/acdc_lv/resnet50/seed_42.json",
+        "per_case_dice/acdc_lv/resnet50/seed_43.json",
+        "per_case_dice/acdc_lv/resnet50/seed_44.json",
+        "per_case_dice/acdc_lv/resnet50/seed_45.json"
+      ],
+      "subject_aggregated": {
+        "case_bootstrap_ci95": {
+          "cross_family": [
+            0.5518511371964403,
+            0.8287093360740615
+          ],
+          "same_family_cross_checkpoint": [
+            0.8019098890515288,
+            0.9292092838245928
+          ],
+          "same_fm_seed_floor": [
+            0.9909290740798814,
+            0.9964461037210537
+          ],
+          "seed_floor_minus_cross": [
+            0.1670087475318304,
+            0.4393317344828048
+          ],
+          "seed_floor_minus_xcheckpoint": [
+            0.06653192310961929,
+            0.18919591874915567
+          ],
+          "xcheckpoint_minus_cross": [
+            0.09078063342141968,
+            0.2619808326345716
+          ]
+        },
+        "cluster_unit": "ACDC patient",
+        "n_units": 20,
+        "point": {
+          "cross_family": {
+            "example_pairs": [
+              "biomedclip:42--clip_vitb16:42",
+              "biomedclip:42--clip_vitb16:43",
+              "biomedclip:42--clip_vitb16:44",
+              "biomedclip:42--clip_vitb16:45",
+              "biomedclip:42--clip_vitb32:42",
+              "biomedclip:42--clip_vitb32:43",
+              "biomedclip:42--clip_vitb32:44",
+              "biomedclip:42--clip_vitb32:45"
+            ],
+            "n_finite_pairs": 1520,
+            "n_pairs": 1520,
+            "rbar": 0.7147575916912383
+          },
+          "gaps": {
+            "seed_floor_minus_cross": 0.27960359022193726,
+            "seed_floor_minus_xcheckpoint": 0.11403634538364804,
+            "xcheckpoint_minus_cross": 0.16556724483828922
+          },
+          "same_family_cross_checkpoint": {
+            "example_pairs": [
+              "clip_vitb16:42--clip_vitb32:42",
+              "clip_vitb16:42--clip_vitb32:43",
+              "clip_vitb16:42--clip_vitb32:44",
+              "clip_vitb16:42--clip_vitb32:45",
+              "clip_vitb16:42--clip_vitl14:42",
+              "clip_vitb16:42--clip_vitl14:43",
+              "clip_vitb16:42--clip_vitl14:44",
+              "clip_vitb16:42--clip_vitl14:45"
+            ],
+            "n_finite_pairs": 160,
+            "n_pairs": 160,
+            "rbar": 0.8803248365295275
+          },
+          "same_fm_seed_floor": {
+            "example_pairs": [
+              "biomedclip:42--biomedclip:43",
+              "biomedclip:42--biomedclip:44",
+              "biomedclip:42--biomedclip:45",
+              "biomedclip:43--biomedclip:44",
+              "biomedclip:43--biomedclip:45",
+              "biomedclip:44--biomedclip:45",
+              "clip_vitb16:42--clip_vitb16:43",
+              "clip_vitb16:42--clip_vitb16:44"
+            ],
+            "n_finite_pairs": 90,
+            "n_pairs": 90,
+            "rbar": 0.9943611819131756
+          }
+        }
+      },
+      "task": "acdc_lv"
+    },
+    {
+      "case_bootstrap_ci95": {
+        "cross_family": [
+          0.5741341737986844,
+          0.6032383782819557
+        ],
+        "same_family_cross_checkpoint": [
+          0.6690293636334695,
+          0.6940155672476391
+        ],
+        "same_fm_seed_floor": [
+          0.9762699374752857,
+          0.9780652361254866
+        ],
+        "seed_floor_minus_cross": [
+          0.37432496853145963,
+          0.40269868626921457
+        ],
+        "seed_floor_minus_xcheckpoint": [
+          0.28368758117509757,
+          0.30741656005099016
+        ],
+        "xcheckpoint_minus_cross": [
+          0.0850223163522503,
+          0.09990594371476823
+        ]
+      },
+      "family_groups_after_floor": {
+        "biomedclip": [
+          "biomedclip"
+        ],
+        "convnext": [
+          "convnext_base",
+          "convnext_small",
+          "convnext_tiny"
+        ],
+        "deit": [
+          "deit_vitb16"
+        ],
+        "dinov2": [
+          "dinov2_vitb14",
+          "dinov2_vitl14",
+          "dinov2_vits14"
+        ],
+        "efficientnet": [
+          "efficientnet_b0"
+        ],
+        "mae": [
+          "mae_vitb16"
+        ],
+        "openai_clip": [
+          "clip_vitb16",
+          "clip_vitb32",
+          "clip_vitl14"
+        ],
+        "resnet": [
+          "resnet101",
+          "resnet34",
+          "resnet50"
+        ]
+      },
+      "fms_kept_after_floor": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitb32",
+        "clip_vitl14",
+        "convnext_base",
+        "convnext_small",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vitl14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet101",
+        "resnet34",
+        "resnet50"
+      ],
+      "functional_floor": 0.3,
+      "n_test": 3228,
+      "point": {
+        "cross_family": {
+          "example_pairs": [
+            "biomedclip:42--clip_vitb16:42",
+            "biomedclip:42--clip_vitb16:43",
+            "biomedclip:42--clip_vitb16:44",
+            "biomedclip:42--clip_vitb16:45",
+            "biomedclip:42--clip_vitb32:42",
+            "biomedclip:42--clip_vitb32:43",
+            "biomedclip:42--clip_vitb32:44",
+            "biomedclip:42--clip_vitb32:45"
+          ],
+          "n_finite_pairs": 1728,
+          "n_pairs": 1728,
+          "rbar": 0.58903742294516
+        },
+        "gaps": {
+          "seed_floor_minus_cross": 0.3881420378167987,
+          "seed_floor_minus_xcheckpoint": 0.29561563403103575,
+          "xcheckpoint_minus_cross": 0.09252640378576293
+        },
+        "same_family_cross_checkpoint": {
+          "example_pairs": [
+            "clip_vitb16:42--clip_vitb32:42",
+            "clip_vitb16:42--clip_vitb32:43",
+            "clip_vitb16:42--clip_vitb32:44",
+            "clip_vitb16:42--clip_vitb32:45",
+            "clip_vitb16:42--clip_vitl14:42",
+            "clip_vitb16:42--clip_vitl14:43",
+            "clip_vitb16:42--clip_vitl14:44",
+            "clip_vitb16:42--clip_vitl14:45"
+          ],
+          "n_finite_pairs": 192,
+          "n_pairs": 192,
+          "rbar": 0.681563826730923
+        },
+        "same_fm_seed_floor": {
+          "example_pairs": [
+            "biomedclip:42--biomedclip:43",
+            "biomedclip:42--biomedclip:44",
+            "biomedclip:42--biomedclip:45",
+            "biomedclip:43--biomedclip:44",
+            "biomedclip:43--biomedclip:45",
+            "biomedclip:44--biomedclip:45",
+            "clip_vitb16:42--clip_vitb16:43",
+            "clip_vitb16:42--clip_vitb16:44"
+          ],
+          "n_finite_pairs": 96,
+          "n_pairs": 96,
+          "rbar": 0.9771794607619587
+        }
+      },
+      "source_file_count": 68,
+      "source_files": [
+        "per_case_dice/brats_wt/biomedclip/seed_42.json",
+        "per_case_dice/brats_wt/biomedclip/seed_43.json",
+        "per_case_dice/brats_wt/biomedclip/seed_44.json",
+        "per_case_dice/brats_wt/biomedclip/seed_45.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_42.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_43.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_44.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_45.json",
+        "per_case_dice/brats_wt/clip_vitb32/seed_42.json",
+        "per_case_dice/brats_wt/clip_vitb32/seed_43.json",
+        "per_case_dice/brats_wt/clip_vitb32/seed_44.json",
+        "per_case_dice/brats_wt/clip_vitb32/seed_45.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_42.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_43.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_44.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_45.json",
+        "per_case_dice/brats_wt/convnext_base/seed_42.json",
+        "per_case_dice/brats_wt/convnext_base/seed_43.json",
+        "per_case_dice/brats_wt/convnext_base/seed_44.json",
+        "per_case_dice/brats_wt/convnext_base/seed_45.json",
+        "per_case_dice/brats_wt/convnext_small/seed_42.json",
+        "per_case_dice/brats_wt/convnext_small/seed_43.json",
+        "per_case_dice/brats_wt/convnext_small/seed_44.json",
+        "per_case_dice/brats_wt/convnext_small/seed_45.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_42.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_43.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_44.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_45.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_42.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_43.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_44.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_45.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_42.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_43.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_44.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_45.json",
+        "per_case_dice/brats_wt/dinov2_vitl14/seed_42.json",
+        "per_case_dice/brats_wt/dinov2_vitl14/seed_43.json",
+        "per_case_dice/brats_wt/dinov2_vitl14/seed_44.json",
+        "per_case_dice/brats_wt/dinov2_vitl14/seed_45.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_42.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_43.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_44.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_45.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_42.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_43.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_44.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_45.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_42.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_43.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_44.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_45.json",
+        "per_case_dice/brats_wt/resnet101/seed_42.json",
+        "per_case_dice/brats_wt/resnet101/seed_43.json",
+        "per_case_dice/brats_wt/resnet101/seed_44.json",
+        "per_case_dice/brats_wt/resnet101/seed_45.json",
+        "per_case_dice/brats_wt/resnet18/seed_42.json",
+        "per_case_dice/brats_wt/resnet18/seed_43.json",
+        "per_case_dice/brats_wt/resnet18/seed_44.json",
+        "per_case_dice/brats_wt/resnet18/seed_45.json",
+        "per_case_dice/brats_wt/resnet34/seed_42.json",
+        "per_case_dice/brats_wt/resnet34/seed_43.json",
+        "per_case_dice/brats_wt/resnet34/seed_44.json",
+        "per_case_dice/brats_wt/resnet34/seed_45.json",
+        "per_case_dice/brats_wt/resnet50/seed_42.json",
+        "per_case_dice/brats_wt/resnet50/seed_43.json",
+        "per_case_dice/brats_wt/resnet50/seed_44.json",
+        "per_case_dice/brats_wt/resnet50/seed_45.json"
+      ],
+      "subject_aggregated": {
+        "case_bootstrap_ci95": {
+          "cross_family": [
+            0.6853356076035815,
+            0.7616218824098063
+          ],
+          "same_family_cross_checkpoint": [
+            0.7971470604320072,
+            0.847391882941737
+          ],
+          "same_fm_seed_floor": [
+            0.9858074561124897,
+            0.9892340264516366
+          ],
+          "seed_floor_minus_cross": [
+            0.22725295902224596,
+            0.3006432108686166
+          ],
+          "seed_floor_minus_xcheckpoint": [
+            0.14180768646863262,
+            0.18939614018245932
+          ],
+          "xcheckpoint_minus_cross": [
+            0.07802040362887872,
+            0.11898541523686573
+          ]
+        },
+        "cluster_unit": "BraTS subject",
+        "n_units": 324,
+        "point": {
+          "cross_family": {
+            "example_pairs": [
+              "biomedclip:42--clip_vitb16:42",
+              "biomedclip:42--clip_vitb16:43",
+              "biomedclip:42--clip_vitb16:44",
+              "biomedclip:42--clip_vitb16:45",
+              "biomedclip:42--clip_vitb32:42",
+              "biomedclip:42--clip_vitb32:43",
+              "biomedclip:42--clip_vitb32:44",
+              "biomedclip:42--clip_vitb32:45"
+            ],
+            "n_finite_pairs": 1728,
+            "n_pairs": 1728,
+            "rbar": 0.7260779224542596
+          },
+          "gaps": {
+            "seed_floor_minus_cross": 0.26162525624339017,
+            "seed_floor_minus_xcheckpoint": 0.1637976973974532,
+            "xcheckpoint_minus_cross": 0.09782755884593697
+          },
+          "same_family_cross_checkpoint": {
+            "example_pairs": [
+              "clip_vitb16:42--clip_vitb32:42",
+              "clip_vitb16:42--clip_vitb32:43",
+              "clip_vitb16:42--clip_vitb32:44",
+              "clip_vitb16:42--clip_vitb32:45",
+              "clip_vitb16:42--clip_vitl14:42",
+              "clip_vitb16:42--clip_vitl14:43",
+              "clip_vitb16:42--clip_vitl14:44",
+              "clip_vitb16:42--clip_vitl14:45"
+            ],
+            "n_finite_pairs": 192,
+            "n_pairs": 192,
+            "rbar": 0.8239054813001966
+          },
+          "same_fm_seed_floor": {
+            "example_pairs": [
+              "biomedclip:42--biomedclip:43",
+              "biomedclip:42--biomedclip:44",
+              "biomedclip:42--biomedclip:45",
+              "biomedclip:43--biomedclip:44",
+              "biomedclip:43--biomedclip:45",
+              "biomedclip:44--biomedclip:45",
+              "clip_vitb16:42--clip_vitb16:43",
+              "clip_vitb16:42--clip_vitb16:44"
+            ],
+            "n_finite_pairs": 96,
+            "n_pairs": 96,
+            "rbar": 0.9877031786976498
+          }
+        }
+      },
+      "task": "brats_wt"
+    },
+    {
+      "case_bootstrap_ci95": {
+        "cross_family": [
+          0.1962587987450409,
+          0.34803044159022267
+        ],
+        "same_family_cross_checkpoint": [
+          0.45636643077763156,
+          0.6142638804935981
+        ],
+        "same_fm_seed_floor": [
+          0.9574005076341421,
+          0.9686423123255156
+        ],
+        "seed_floor_minus_cross": [
+          0.6188593835859365,
+          0.7645251778496287
+        ],
+        "seed_floor_minus_xcheckpoint": [
+          0.3505524873405879,
+          0.5040758852436135
+        ],
+        "xcheckpoint_minus_cross": [
+          0.20437873854219774,
+          0.3316221374932749
+        ]
+      },
+      "family_groups_after_floor": {
+        "biomedclip": [
+          "biomedclip"
+        ],
+        "convnext": [
+          "convnext_base",
+          "convnext_small"
+        ],
+        "deit": [
+          "deit_vitb16"
+        ],
+        "dinov2": [
+          "dinov2_vitb14",
+          "dinov2_vitl14",
+          "dinov2_vits14"
+        ],
+        "efficientnet": [
+          "efficientnet_b0"
+        ],
+        "mae": [
+          "mae_vitb16"
+        ],
+        "openai_clip": [
+          "clip_vitb16",
+          "clip_vitb32",
+          "clip_vitl14"
+        ],
+        "resnet": [
+          "resnet101",
+          "resnet50"
+        ]
+      },
+      "fms_kept_after_floor": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitb32",
+        "clip_vitl14",
+        "convnext_base",
+        "convnext_small",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vitl14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet101",
+        "resnet50"
+      ],
+      "functional_floor": 0.3,
+      "n_test": 95,
+      "point": {
+        "cross_family": {
+          "example_pairs": [
+            "biomedclip:42--clip_vitb16:42",
+            "biomedclip:42--clip_vitb16:43",
+            "biomedclip:42--clip_vitb16:44",
+            "biomedclip:42--clip_vitb16:45",
+            "biomedclip:42--clip_vitb32:42",
+            "biomedclip:42--clip_vitb32:43",
+            "biomedclip:42--clip_vitb32:44",
+            "biomedclip:42--clip_vitb32:45"
+          ],
+          "n_finite_pairs": 1328,
+          "n_pairs": 1328,
+          "rbar": 0.27057129212841274
+        },
+        "gaps": {
+          "seed_floor_minus_cross": 0.6928326405291965,
+          "seed_floor_minus_xcheckpoint": 0.4259518389757332,
+          "xcheckpoint_minus_cross": 0.2668808015534632
+        },
+        "same_family_cross_checkpoint": {
+          "example_pairs": [
+            "clip_vitb16:42--clip_vitb32:42",
+            "clip_vitb16:42--clip_vitb32:43",
+            "clip_vitb16:42--clip_vitb32:44",
+            "clip_vitb16:42--clip_vitb32:45",
+            "clip_vitb16:42--clip_vitl14:42",
+            "clip_vitb16:42--clip_vitl14:43",
+            "clip_vitb16:42--clip_vitl14:44",
+            "clip_vitb16:42--clip_vitl14:45"
+          ],
+          "n_finite_pairs": 128,
+          "n_pairs": 128,
+          "rbar": 0.537452093681876
+        },
+        "same_fm_seed_floor": {
+          "example_pairs": [
+            "biomedclip:42--biomedclip:43",
+            "biomedclip:42--biomedclip:44",
+            "biomedclip:42--biomedclip:45",
+            "biomedclip:43--biomedclip:44",
+            "biomedclip:43--biomedclip:45",
+            "biomedclip:44--biomedclip:45",
+            "clip_vitb16:42--clip_vitb16:43",
+            "clip_vitb16:42--clip_vitb16:44"
+          ],
+          "n_finite_pairs": 84,
+          "n_pairs": 84,
+          "rbar": 0.9634039326576092
+        }
+      },
+      "source_file_count": 68,
+      "source_files": [
+        "per_case_dice/riga_cup/biomedclip/seed_42.json",
+        "per_case_dice/riga_cup/biomedclip/seed_43.json",
+        "per_case_dice/riga_cup/biomedclip/seed_44.json",
+        "per_case_dice/riga_cup/biomedclip/seed_45.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_42.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_43.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_44.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_45.json",
+        "per_case_dice/riga_cup/clip_vitb32/seed_42.json",
+        "per_case_dice/riga_cup/clip_vitb32/seed_43.json",
+        "per_case_dice/riga_cup/clip_vitb32/seed_44.json",
+        "per_case_dice/riga_cup/clip_vitb32/seed_45.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_42.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_43.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_44.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_45.json",
+        "per_case_dice/riga_cup/convnext_base/seed_42.json",
+        "per_case_dice/riga_cup/convnext_base/seed_43.json",
+        "per_case_dice/riga_cup/convnext_base/seed_44.json",
+        "per_case_dice/riga_cup/convnext_base/seed_45.json",
+        "per_case_dice/riga_cup/convnext_small/seed_42.json",
+        "per_case_dice/riga_cup/convnext_small/seed_43.json",
+        "per_case_dice/riga_cup/convnext_small/seed_44.json",
+        "per_case_dice/riga_cup/convnext_small/seed_45.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_42.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_43.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_44.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_45.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_42.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_43.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_44.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_45.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_42.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_43.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_44.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_45.json",
+        "per_case_dice/riga_cup/dinov2_vitl14/seed_42.json",
+        "per_case_dice/riga_cup/dinov2_vitl14/seed_43.json",
+        "per_case_dice/riga_cup/dinov2_vitl14/seed_44.json",
+        "per_case_dice/riga_cup/dinov2_vitl14/seed_45.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_42.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_43.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_44.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_45.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_42.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_43.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_44.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_45.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_42.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_43.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_44.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_45.json",
+        "per_case_dice/riga_cup/resnet101/seed_42.json",
+        "per_case_dice/riga_cup/resnet101/seed_43.json",
+        "per_case_dice/riga_cup/resnet101/seed_44.json",
+        "per_case_dice/riga_cup/resnet101/seed_45.json",
+        "per_case_dice/riga_cup/resnet18/seed_42.json",
+        "per_case_dice/riga_cup/resnet18/seed_43.json",
+        "per_case_dice/riga_cup/resnet18/seed_44.json",
+        "per_case_dice/riga_cup/resnet18/seed_45.json",
+        "per_case_dice/riga_cup/resnet34/seed_42.json",
+        "per_case_dice/riga_cup/resnet34/seed_43.json",
+        "per_case_dice/riga_cup/resnet34/seed_44.json",
+        "per_case_dice/riga_cup/resnet34/seed_45.json",
+        "per_case_dice/riga_cup/resnet50/seed_42.json",
+        "per_case_dice/riga_cup/resnet50/seed_43.json",
+        "per_case_dice/riga_cup/resnet50/seed_44.json",
+        "per_case_dice/riga_cup/resnet50/seed_45.json"
+      ],
+      "subject_aggregated": null,
+      "task": "riga_cup"
+    },
+    {
+      "case_bootstrap_ci95": {
+        "cross_family": [
+          0.148870589039423,
+          0.2444033660840091
+        ],
+        "same_family_cross_checkpoint": [
+          0.3452242025462169,
+          0.49195499271896
+        ],
+        "same_fm_seed_floor": [
+          0.9666408807243587,
+          0.9746660210202125
+        ],
+        "seed_floor_minus_cross": [
+          0.7267702144184186,
+          0.8214027979336254
+        ],
+        "seed_floor_minus_xcheckpoint": [
+          0.4810764119412223,
+          0.6240408469156761
+        ],
+        "xcheckpoint_minus_cross": [
+          0.14869629341483417,
+          0.2930972762799493
+        ]
+      },
+      "family_groups_after_floor": {
+        "biomedclip": [
+          "biomedclip"
+        ],
+        "convnext": [
+          "convnext_base",
+          "convnext_small",
+          "convnext_tiny"
+        ],
+        "deit": [
+          "deit_vitb16"
+        ],
+        "dinov2": [
+          "dinov2_vitb14",
+          "dinov2_vitl14",
+          "dinov2_vits14"
+        ],
+        "efficientnet": [
+          "efficientnet_b0"
+        ],
+        "mae": [
+          "mae_vitb16"
+        ],
+        "openai_clip": [
+          "clip_vitb16",
+          "clip_vitb32",
+          "clip_vitl14"
+        ],
+        "resnet": [
+          "resnet101",
+          "resnet18",
+          "resnet34",
+          "resnet50"
+        ]
+      },
+      "fms_kept_after_floor": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitb32",
+        "clip_vitl14",
+        "convnext_base",
+        "convnext_small",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vitl14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet101",
+        "resnet18",
+        "resnet34",
+        "resnet50"
+      ],
+      "functional_floor": 0.3,
+      "n_test": 95,
+      "point": {
+        "cross_family": {
+          "example_pairs": [
+            "biomedclip:42--clip_vitb16:42",
+            "biomedclip:42--clip_vitb16:43",
+            "biomedclip:42--clip_vitb16:44",
+            "biomedclip:42--clip_vitb16:45",
+            "biomedclip:42--clip_vitb32:42",
+            "biomedclip:42--clip_vitb32:43",
+            "biomedclip:42--clip_vitb32:44",
+            "biomedclip:42--clip_vitb32:45"
+          ],
+          "n_finite_pairs": 1936,
+          "n_pairs": 1936,
+          "rbar": 0.19365525797118133
+        },
+        "gaps": {
+          "seed_floor_minus_cross": 0.7773984375312201,
+          "seed_floor_minus_xcheckpoint": 0.5502137787510744,
+          "xcheckpoint_minus_cross": 0.2271846587801457
+        },
+        "same_family_cross_checkpoint": {
+          "example_pairs": [
+            "clip_vitb16:42--clip_vitb32:42",
+            "clip_vitb16:42--clip_vitb32:43",
+            "clip_vitb16:42--clip_vitb32:44",
+            "clip_vitb16:42--clip_vitb32:45",
+            "clip_vitb16:42--clip_vitl14:42",
+            "clip_vitb16:42--clip_vitl14:43",
+            "clip_vitb16:42--clip_vitl14:44",
+            "clip_vitb16:42--clip_vitl14:45"
+          ],
+          "n_finite_pairs": 240,
+          "n_pairs": 240,
+          "rbar": 0.42083991675132704
+        },
+        "same_fm_seed_floor": {
+          "example_pairs": [
+            "biomedclip:42--biomedclip:43",
+            "biomedclip:42--biomedclip:44",
+            "biomedclip:42--biomedclip:45",
+            "biomedclip:43--biomedclip:44",
+            "biomedclip:43--biomedclip:45",
+            "biomedclip:44--biomedclip:45",
+            "clip_vitb16:42--clip_vitb16:43",
+            "clip_vitb16:42--clip_vitb16:44"
+          ],
+          "n_finite_pairs": 102,
+          "n_pairs": 102,
+          "rbar": 0.9710536955024014
+        }
+      },
+      "source_file_count": 68,
+      "source_files": [
+        "per_case_dice/riga_disc/biomedclip/seed_42.json",
+        "per_case_dice/riga_disc/biomedclip/seed_43.json",
+        "per_case_dice/riga_disc/biomedclip/seed_44.json",
+        "per_case_dice/riga_disc/biomedclip/seed_45.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_42.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_43.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_44.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_45.json",
+        "per_case_dice/riga_disc/clip_vitb32/seed_42.json",
+        "per_case_dice/riga_disc/clip_vitb32/seed_43.json",
+        "per_case_dice/riga_disc/clip_vitb32/seed_44.json",
+        "per_case_dice/riga_disc/clip_vitb32/seed_45.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_42.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_43.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_44.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_45.json",
+        "per_case_dice/riga_disc/convnext_base/seed_42.json",
+        "per_case_dice/riga_disc/convnext_base/seed_43.json",
+        "per_case_dice/riga_disc/convnext_base/seed_44.json",
+        "per_case_dice/riga_disc/convnext_base/seed_45.json",
+        "per_case_dice/riga_disc/convnext_small/seed_42.json",
+        "per_case_dice/riga_disc/convnext_small/seed_43.json",
+        "per_case_dice/riga_disc/convnext_small/seed_44.json",
+        "per_case_dice/riga_disc/convnext_small/seed_45.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_42.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_43.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_44.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_45.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_42.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_43.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_44.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_45.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_42.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_43.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_44.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_45.json",
+        "per_case_dice/riga_disc/dinov2_vitl14/seed_42.json",
+        "per_case_dice/riga_disc/dinov2_vitl14/seed_43.json",
+        "per_case_dice/riga_disc/dinov2_vitl14/seed_44.json",
+        "per_case_dice/riga_disc/dinov2_vitl14/seed_45.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_42.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_43.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_44.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_45.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_42.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_43.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_44.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_45.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_42.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_43.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_44.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_45.json",
+        "per_case_dice/riga_disc/resnet101/seed_42.json",
+        "per_case_dice/riga_disc/resnet101/seed_43.json",
+        "per_case_dice/riga_disc/resnet101/seed_44.json",
+        "per_case_dice/riga_disc/resnet101/seed_45.json",
+        "per_case_dice/riga_disc/resnet18/seed_42.json",
+        "per_case_dice/riga_disc/resnet18/seed_43.json",
+        "per_case_dice/riga_disc/resnet18/seed_44.json",
+        "per_case_dice/riga_disc/resnet18/seed_45.json",
+        "per_case_dice/riga_disc/resnet34/seed_42.json",
+        "per_case_dice/riga_disc/resnet34/seed_43.json",
+        "per_case_dice/riga_disc/resnet34/seed_44.json",
+        "per_case_dice/riga_disc/resnet34/seed_45.json",
+        "per_case_dice/riga_disc/resnet50/seed_42.json",
+        "per_case_dice/riga_disc/resnet50/seed_43.json",
+        "per_case_dice/riga_disc/resnet50/seed_44.json",
+        "per_case_dice/riga_disc/resnet50/seed_45.json"
+      ],
+      "subject_aggregated": null,
+      "task": "riga_disc"
+    }
+  ],
+  "schema_version": "cross_checkpoint_family_v1"
+}

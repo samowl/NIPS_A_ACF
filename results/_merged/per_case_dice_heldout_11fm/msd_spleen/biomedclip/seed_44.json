@@ -1,0 +1,32 @@
+{
+  "task": "msd_spleen",
+  "fm": "biomedclip",
+  "seed": 44,
+  "n_test": 8,
+  "test_ids": [
+    "spleen_16",
+    "spleen_17",
+    "spleen_19",
+    "spleen_28",
+    "spleen_3",
+    "spleen_56",
+    "spleen_63",
+    "spleen_9"
+  ],
+  "per_case_dice": [
+    1.0,
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0
+  ],
+  "mean_dice": 0.5,
+  "cache_manifest_sha256": "bef2118d6d2bbacec81642c7900e742f0e132ba186415aa1e7dd36b14f214e00",
+  "head_checkpoint_sha256": "ae2c3a8190c06e73c03c6e2d788e427d9db839efc7c4efe12a20f995b869d64e",
+  "training_elapsed_s": 10.60552430152893,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

@@ -1,0 +1,130 @@
+{
+  "commit_sha": "not_recorded_for_artifact",
+  "diverse_pools_summary": {
+    "M_eff_mean": 2.2449259355973217,
+    "M_eff_std": 0.32053504253233916,
+    "n_fm_compositions": 210,
+    "n_seed_compositions": 53760,
+    "n_valid_compositions": 53760,
+    "pool_size_fms": 4,
+    "rho_fail_mean": 0.27315344934928204,
+    "rho_fail_std": 0.08922370531848416
+  },
+  "full_pool_diagnostic": {
+    "M_eff": 2.982148875213,
+    "n_fm_seed": 40,
+    "rho_fail": 0.31828580985868404
+  },
+  "generated_at": "2026-04-29T18:23:48Z",
+  "mono_pools": [
+    {
+      "M_eff": 1.110155264208931,
+      "fm": "biomedclip",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8676998701469326
+    },
+    {
+      "M_eff": 1.0325202942573573,
+      "fm": "clip_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.9580052880468273
+    },
+    {
+      "M_eff": 1.1009104594480337,
+      "fm": "clip_vitl14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8777854473909684
+    },
+    {
+      "M_eff": 1.0966027597035761,
+      "fm": "convnext_tiny",
+      "n_fm_seed": 4,
+      "rho_fail": 0.882542991557321
+    },
+    {
+      "M_eff": 1.060024087322969,
+      "fm": "deit_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.9244997190273837
+    },
+    {
+      "M_eff": 1.1127313872609261,
+      "fm": "dinov2_vitb14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8649193164956932
+    },
+    {
+      "M_eff": 1.0735526606000194,
+      "fm": "dinov2_vits14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.9086489021614023
+    },
+    {
+      "M_eff": 1.1654439262361365,
+      "fm": "efficientnet_b0",
+      "n_fm_seed": 4,
+      "rho_fail": 0.810722852741105
+    },
+    {
+      "M_eff": 1.037969778897988,
+      "fm": "mae_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.9512255820032313
+    },
+    {
+      "M_eff": 1.5048489032000663,
+      "fm": "resnet50",
+      "n_fm_seed": 4,
+      "rho_fail": 0.5526913901442168
+    }
+  ],
+  "schema_version": "fmpool_clean_v1",
+  "source_files": [
+    "per_case_dice/brats_wt/biomedclip/seed_42.json",
+    "per_case_dice/brats_wt/biomedclip/seed_43.json",
+    "per_case_dice/brats_wt/biomedclip/seed_44.json",
+    "per_case_dice/brats_wt/biomedclip/seed_45.json",
+    "per_case_dice/brats_wt/clip_vitb16/seed_42.json",
+    "per_case_dice/brats_wt/clip_vitb16/seed_43.json",
+    "per_case_dice/brats_wt/clip_vitb16/seed_44.json",
+    "per_case_dice/brats_wt/clip_vitb16/seed_45.json",
+    "per_case_dice/brats_wt/clip_vitl14/seed_42.json",
+    "per_case_dice/brats_wt/clip_vitl14/seed_43.json",
+    "per_case_dice/brats_wt/clip_vitl14/seed_44.json",
+    "per_case_dice/brats_wt/clip_vitl14/seed_45.json",
+    "per_case_dice/brats_wt/convnext_tiny/seed_42.json",
+    "per_case_dice/brats_wt/convnext_tiny/seed_43.json",
+    "per_case_dice/brats_wt/convnext_tiny/seed_44.json",
+    "per_case_dice/brats_wt/convnext_tiny/seed_45.json",
+    "per_case_dice/brats_wt/deit_vitb16/seed_42.json",
+    "per_case_dice/brats_wt/deit_vitb16/seed_43.json",
+    "per_case_dice/brats_wt/deit_vitb16/seed_44.json",
+    "per_case_dice/brats_wt/deit_vitb16/seed_45.json",
+    "per_case_dice/brats_wt/dinov2_vitb14/seed_42.json",
+    "per_case_dice/brats_wt/dinov2_vitb14/seed_43.json",
+    "per_case_dice/brats_wt/dinov2_vitb14/seed_44.json",
+    "per_case_dice/brats_wt/dinov2_vitb14/seed_45.json",
+    "per_case_dice/brats_wt/dinov2_vits14/seed_42.json",
+    "per_case_dice/brats_wt/dinov2_vits14/seed_43.json",
+    "per_case_dice/brats_wt/dinov2_vits14/seed_44.json",
+    "per_case_dice/brats_wt/dinov2_vits14/seed_45.json",
+    "per_case_dice/brats_wt/efficientnet_b0/seed_42.json",
+    "per_case_dice/brats_wt/efficientnet_b0/seed_43.json",
+    "per_case_dice/brats_wt/efficientnet_b0/seed_44.json",
+    "per_case_dice/brats_wt/efficientnet_b0/seed_45.json",
+    "per_case_dice/brats_wt/mae_vitb16/seed_42.json",
+    "per_case_dice/brats_wt/mae_vitb16/seed_43.json",
+    "per_case_dice/brats_wt/mae_vitb16/seed_44.json",
+    "per_case_dice/brats_wt/mae_vitb16/seed_45.json",
+    "per_case_dice/brats_wt/resnet18/seed_42.json",
+    "per_case_dice/brats_wt/resnet18/seed_43.json",
+    "per_case_dice/brats_wt/resnet18/seed_44.json",
+    "per_case_dice/brats_wt/resnet18/seed_45.json",
+    "per_case_dice/brats_wt/resnet50/seed_42.json",
+    "per_case_dice/brats_wt/resnet50/seed_43.json",
+    "per_case_dice/brats_wt/resnet50/seed_44.json",
+    "per_case_dice/brats_wt/resnet50/seed_45.json"
+  ],
+  "task": "brats_wt",
+  "tau": 0.85
+}

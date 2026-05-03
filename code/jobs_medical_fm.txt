@@ -1,0 +1,40 @@
+EXTRACT riga_cup retfound_vitl16
+EXTRACT riga_cup medsam_vitb16
+EXTRACT riga_disc retfound_vitl16
+EXTRACT riga_disc medsam_vitb16
+EXTRACT acdc_lv retfound_vitl16
+EXTRACT acdc_lv medsam_vitb16
+EXTRACT kvasir retfound_vitl16
+EXTRACT kvasir medsam_vitb16
+HEAD riga_cup retfound_vitl16 42
+HEAD riga_cup medsam_vitb16 42
+HEAD riga_disc retfound_vitl16 42
+HEAD riga_disc medsam_vitb16 42
+HEAD acdc_lv retfound_vitl16 42
+HEAD acdc_lv medsam_vitb16 42
+HEAD kvasir retfound_vitl16 42
+HEAD kvasir medsam_vitb16 42
+HEAD riga_cup retfound_vitl16 43
+HEAD riga_cup medsam_vitb16 43
+HEAD riga_disc retfound_vitl16 43
+HEAD riga_disc medsam_vitb16 43
+HEAD acdc_lv retfound_vitl16 43
+HEAD acdc_lv medsam_vitb16 43
+HEAD kvasir retfound_vitl16 43
+HEAD kvasir medsam_vitb16 43
+HEAD riga_cup retfound_vitl16 44
+HEAD riga_cup medsam_vitb16 44
+HEAD riga_disc retfound_vitl16 44
+HEAD riga_disc medsam_vitb16 44
+HEAD acdc_lv retfound_vitl16 44
+HEAD acdc_lv medsam_vitb16 44
+HEAD kvasir retfound_vitl16 44
+HEAD kvasir medsam_vitb16 44
+HEAD riga_cup retfound_vitl16 45
+HEAD riga_cup medsam_vitb16 45
+HEAD riga_disc retfound_vitl16 45
+HEAD riga_disc medsam_vitb16 45
+HEAD acdc_lv retfound_vitl16 45
+HEAD acdc_lv medsam_vitb16 45
+HEAD kvasir retfound_vitl16 45
+HEAD kvasir medsam_vitb16 45

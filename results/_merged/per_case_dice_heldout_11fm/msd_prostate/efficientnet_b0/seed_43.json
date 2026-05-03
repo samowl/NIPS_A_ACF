@@ -1,0 +1,28 @@
+{
+  "task": "msd_prostate",
+  "fm": "efficientnet_b0",
+  "seed": 43,
+  "n_test": 6,
+  "test_ids": [
+    "prostate_13",
+    "prostate_31",
+    "prostate_32",
+    "prostate_41",
+    "prostate_42",
+    "prostate_47"
+  ],
+  "per_case_dice": [
+    0.0,
+    0.478703111410141,
+    0.0889701396226883,
+    0.03500473126769066,
+    0.8696428537368774,
+    0.44310954213142395
+  ],
+  "mean_dice": 0.3192383944988251,
+  "cache_manifest_sha256": "dbfa869a06a5930e44a5eaed0435e153beac4cca1e8284e4c7055da54828f279",
+  "head_checkpoint_sha256": "4dcfd2301c1c2ea9aa173d6be5b3ffef25af92762a480a1cb24bd57cbd4b1d43",
+  "training_elapsed_s": 8.187424421310425,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

@@ -1,0 +1,55 @@
+EXTRACT isic2018 dinov2_vitb14
+EXTRACT isic2018 dinov2_vits14
+EXTRACT isic2018 biomedclip
+EXTRACT isic2018 clip_vitl14
+EXTRACT isic2018 clip_vitb16
+EXTRACT isic2018 mae_vitb16
+EXTRACT isic2018 deit_vitb16
+EXTRACT isic2018 convnext_tiny
+EXTRACT isic2018 efficientnet_b0
+EXTRACT isic2018 resnet50
+EXTRACT isic2018 resnet18
+HEAD isic2018 dinov2_vitb14 42
+HEAD isic2018 dinov2_vits14 42
+HEAD isic2018 biomedclip 42
+HEAD isic2018 clip_vitl14 42
+HEAD isic2018 clip_vitb16 42
+HEAD isic2018 mae_vitb16 42
+HEAD isic2018 deit_vitb16 42
+HEAD isic2018 convnext_tiny 42
+HEAD isic2018 efficientnet_b0 42
+HEAD isic2018 resnet50 42
+HEAD isic2018 resnet18 42
+HEAD isic2018 dinov2_vitb14 43
+HEAD isic2018 dinov2_vits14 43
+HEAD isic2018 biomedclip 43
+HEAD isic2018 clip_vitl14 43
+HEAD isic2018 clip_vitb16 43
+HEAD isic2018 mae_vitb16 43
+HEAD isic2018 deit_vitb16 43
+HEAD isic2018 convnext_tiny 43
+HEAD isic2018 efficientnet_b0 43
+HEAD isic2018 resnet50 43
+HEAD isic2018 resnet18 43
+HEAD isic2018 dinov2_vitb14 44
+HEAD isic2018 dinov2_vits14 44
+HEAD isic2018 biomedclip 44
+HEAD isic2018 clip_vitl14 44
+HEAD isic2018 clip_vitb16 44
+HEAD isic2018 mae_vitb16 44
+HEAD isic2018 deit_vitb16 44
+HEAD isic2018 convnext_tiny 44
+HEAD isic2018 efficientnet_b0 44
+HEAD isic2018 resnet50 44
+HEAD isic2018 resnet18 44
+HEAD isic2018 dinov2_vitb14 45
+HEAD isic2018 dinov2_vits14 45
+HEAD isic2018 biomedclip 45
+HEAD isic2018 clip_vitl14 45
+HEAD isic2018 clip_vitb16 45
+HEAD isic2018 mae_vitb16 45
+HEAD isic2018 deit_vitb16 45
+HEAD isic2018 convnext_tiny 45
+HEAD isic2018 efficientnet_b0 45
+HEAD isic2018 resnet50 45
+HEAD isic2018 resnet18 45

@@ -1,0 +1,12 @@
+HEAD_MC riga_cup dinov2_vitb14 42 0.1
+HEAD_MC riga_cup dinov2_vitb14 43 0.1
+HEAD_MC riga_cup dinov2_vitb14 44 0.1
+HEAD_MC riga_cup dinov2_vitb14 45 0.1
+HEAD_MC riga_cup dinov2_vitb14 42 0.2
+HEAD_MC riga_cup dinov2_vitb14 43 0.2
+HEAD_MC riga_cup dinov2_vitb14 44 0.2
+HEAD_MC riga_cup dinov2_vitb14 45 0.2
+HEAD_MC riga_cup dinov2_vitb14 42 0.4
+HEAD_MC riga_cup dinov2_vitb14 43 0.4
+HEAD_MC riga_cup dinov2_vitb14 44 0.4
+HEAD_MC riga_cup dinov2_vitb14 45 0.4

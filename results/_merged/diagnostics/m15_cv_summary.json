@@ -1,0 +1,317 @@
+{
+  "generated_at": "2026-05-02T16:31:52Z",
+  "results_root": "results/_merged",
+  "schema_version": "fmpool_m15_cv_summary_v1",
+  "tasks": {
+    "acdc_lv": {
+      "cross_bundle_rbar_mean": 0.5653969435476075,
+      "cross_bundle_rbar_std": 0.015295160539828448,
+      "fms": [
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "biomedclip",
+        "clip_vitl14",
+        "convnext_tiny",
+        "efficientnet_b0",
+        "resnet50",
+        "resnet18"
+      ],
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "per_fold": [
+        {
+          "cross_bundle_rbar": 0.5800625283299465,
+          "fold": 0,
+          "mean_dice_by_fm": {
+            "biomedclip": 0.6918478706990913,
+            "clip_vitl14": 0.6534272442646635,
+            "convnext_tiny": 0.4574244382179799,
+            "dinov2_vitb14": 0.7108841791563252,
+            "dinov2_vits14": 0.6840917760263767,
+            "efficientnet_b0": 0.29875282384648694,
+            "resnet18": 0.29685875798002853,
+            "resnet50": 0.4095266185826016
+          },
+          "n_cross_bundle_pairs": 28,
+          "n_val": 361,
+          "pool_mean_dice": 0.5253517135966943
+        },
+        {
+          "cross_bundle_rbar": 0.5479678965610247,
+          "fold": 1,
+          "mean_dice_by_fm": {
+            "biomedclip": 0.6883596282533772,
+            "clip_vitl14": 0.6321672315816166,
+            "convnext_tiny": 0.3861407135419873,
+            "dinov2_vitb14": 0.6979179308123764,
+            "dinov2_vits14": 0.696124631356794,
+            "efficientnet_b0": 0.3025894780169989,
+            "resnet18": 0.15193417543593712,
+            "resnet50": 0.3236535700410859
+          },
+          "n_cross_bundle_pairs": 28,
+          "n_val": 366,
+          "pool_mean_dice": 0.4848609198800217
+        },
+        {
+          "cross_bundle_rbar": 0.5829349715842419,
+          "fold": 2,
+          "mean_dice_by_fm": {
+            "biomedclip": 0.6388251865093554,
+            "clip_vitl14": 0.5761990078304171,
+            "convnext_tiny": 0.388485171326299,
+            "dinov2_vitb14": 0.6768267127557606,
+            "dinov2_vits14": 0.6448763427490056,
+            "efficientnet_b0": 0.30101052491138525,
+            "resnet18": 0.23563967151141862,
+            "resnet50": 0.33203622139517575
+          },
+          "n_cross_bundle_pairs": 28,
+          "n_val": 394,
+          "pool_mean_dice": 0.47423735487360213
+        },
+        {
+          "cross_bundle_rbar": 0.558318175385049,
+          "fold": 3,
+          "mean_dice_by_fm": {
+            "biomedclip": 0.7164011822858649,
+            "clip_vitl14": 0.6432087205958827,
+            "convnext_tiny": 0.42990963115626385,
+            "dinov2_vitb14": 0.7179366696711341,
+            "dinov2_vits14": 0.6813524258576525,
+            "efficientnet_b0": 0.341731339290119,
+            "resnet18": 0.2211079018752232,
+            "resnet50": 0.41050624683696807
+          },
+          "n_cross_bundle_pairs": 28,
+          "n_val": 349,
+          "pool_mean_dice": 0.5202692646961387
+        },
+        {
+          "cross_bundle_rbar": 0.5577011458777755,
+          "fold": 4,
+          "mean_dice_by_fm": {
+            "biomedclip": 0.6838131778482237,
+            "clip_vitl14": 0.6480368558515811,
+            "convnext_tiny": 0.3928400698443737,
+            "dinov2_vitb14": 0.6971631460112228,
+            "dinov2_vits14": 0.6982156380393801,
+            "efficientnet_b0": 0.3833613879634233,
+            "resnet18": 0.219786887513143,
+            "resnet50": 0.3045559470833158
+          },
+          "n_cross_bundle_pairs": 28,
+          "n_val": 338,
+          "pool_mean_dice": 0.503471638769333
+        }
+      ],
+      "pool_mean_dice_mean": 0.501638178363158,
+      "pool_mean_dice_std": 0.02205159993286157,
+      "protocol": "8 bundles x 5 folds x one decoder seed; per-fold cross-bundle correlation on the held-out fold",
+      "seed": 42,
+      "source_files": [
+        "per_case_dice_m15/acdc_lv/biomedclip/fold_0_seed_42.json",
+        "per_case_dice_m15/acdc_lv/biomedclip/fold_1_seed_42.json",
+        "per_case_dice_m15/acdc_lv/biomedclip/fold_2_seed_42.json",
+        "per_case_dice_m15/acdc_lv/biomedclip/fold_3_seed_42.json",
+        "per_case_dice_m15/acdc_lv/biomedclip/fold_4_seed_42.json",
+        "per_case_dice_m15/acdc_lv/clip_vitl14/fold_0_seed_42.json",
+        "per_case_dice_m15/acdc_lv/clip_vitl14/fold_1_seed_42.json",
+        "per_case_dice_m15/acdc_lv/clip_vitl14/fold_2_seed_42.json",
+        "per_case_dice_m15/acdc_lv/clip_vitl14/fold_3_seed_42.json",
+        "per_case_dice_m15/acdc_lv/clip_vitl14/fold_4_seed_42.json",
+        "per_case_dice_m15/acdc_lv/convnext_tiny/fold_0_seed_42.json",
+        "per_case_dice_m15/acdc_lv/convnext_tiny/fold_1_seed_42.json",
+        "per_case_dice_m15/acdc_lv/convnext_tiny/fold_2_seed_42.json",
+        "per_case_dice_m15/acdc_lv/convnext_tiny/fold_3_seed_42.json",
+        "per_case_dice_m15/acdc_lv/convnext_tiny/fold_4_seed_42.json",
+        "per_case_dice_m15/acdc_lv/dinov2_vitb14/fold_0_seed_42.json",
+        "per_case_dice_m15/acdc_lv/dinov2_vitb14/fold_1_seed_42.json",
+        "per_case_dice_m15/acdc_lv/dinov2_vitb14/fold_2_seed_42.json",
+        "per_case_dice_m15/acdc_lv/dinov2_vitb14/fold_3_seed_42.json",
+        "per_case_dice_m15/acdc_lv/dinov2_vitb14/fold_4_seed_42.json",
+        "per_case_dice_m15/acdc_lv/dinov2_vits14/fold_0_seed_42.json",
+        "per_case_dice_m15/acdc_lv/dinov2_vits14/fold_1_seed_42.json",
+        "per_case_dice_m15/acdc_lv/dinov2_vits14/fold_2_seed_42.json",
+        "per_case_dice_m15/acdc_lv/dinov2_vits14/fold_3_seed_42.json",
+        "per_case_dice_m15/acdc_lv/dinov2_vits14/fold_4_seed_42.json",
+        "per_case_dice_m15/acdc_lv/efficientnet_b0/fold_0_seed_42.json",
+        "per_case_dice_m15/acdc_lv/efficientnet_b0/fold_1_seed_42.json",
+        "per_case_dice_m15/acdc_lv/efficientnet_b0/fold_2_seed_42.json",
+        "per_case_dice_m15/acdc_lv/efficientnet_b0/fold_3_seed_42.json",
+        "per_case_dice_m15/acdc_lv/efficientnet_b0/fold_4_seed_42.json",
+        "per_case_dice_m15/acdc_lv/resnet18/fold_0_seed_42.json",
+        "per_case_dice_m15/acdc_lv/resnet18/fold_1_seed_42.json",
+        "per_case_dice_m15/acdc_lv/resnet18/fold_2_seed_42.json",
+        "per_case_dice_m15/acdc_lv/resnet18/fold_3_seed_42.json",
+        "per_case_dice_m15/acdc_lv/resnet18/fold_4_seed_42.json",
+        "per_case_dice_m15/acdc_lv/resnet50/fold_0_seed_42.json",
+        "per_case_dice_m15/acdc_lv/resnet50/fold_1_seed_42.json",
+        "per_case_dice_m15/acdc_lv/resnet50/fold_2_seed_42.json",
+        "per_case_dice_m15/acdc_lv/resnet50/fold_3_seed_42.json",
+        "per_case_dice_m15/acdc_lv/resnet50/fold_4_seed_42.json"
+      ],
+      "task": "acdc_lv"
+    },
+    "riga_cup": {
+      "cross_bundle_rbar_mean": 0.31526436756620557,
+      "cross_bundle_rbar_std": 0.035310504806805074,
+      "fms": [
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "biomedclip",
+        "clip_vitl14",
+        "convnext_tiny",
+        "efficientnet_b0",
+        "resnet50",
+        "resnet18"
+      ],
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "per_fold": [
+        {
+          "cross_bundle_rbar": 0.35910153749367224,
+          "fold": 0,
+          "mean_dice_by_fm": {
+            "biomedclip": 0.7980447287527507,
+            "clip_vitl14": 0.6704347064131059,
+            "convnext_tiny": 0.4372826508658894,
+            "dinov2_vitb14": 0.742636421482835,
+            "dinov2_vits14": 0.6929938694174658,
+            "efficientnet_b0": 0.6115560454110172,
+            "resnet18": 0.39964148297830915,
+            "resnet50": 0.3506158526389916
+          },
+          "n_cross_bundle_pairs": 28,
+          "n_val": 149,
+          "pool_mean_dice": 0.5879007197450455
+        },
+        {
+          "cross_bundle_rbar": 0.316542815386804,
+          "fold": 1,
+          "mean_dice_by_fm": {
+            "biomedclip": 0.8036382738375824,
+            "clip_vitl14": 0.6811089623194413,
+            "convnext_tiny": 0.38286850563463,
+            "dinov2_vitb14": 0.7861156725643466,
+            "dinov2_vits14": 0.7224960821186936,
+            "efficientnet_b0": 0.6105076641956931,
+            "resnet18": 0.44164881927911315,
+            "resnet50": 0.4746965557300086
+          },
+          "n_cross_bundle_pairs": 28,
+          "n_val": 149,
+          "pool_mean_dice": 0.6128850669599386
+        },
+        {
+          "cross_bundle_rbar": 0.3247063159721008,
+          "fold": 2,
+          "mean_dice_by_fm": {
+            "biomedclip": 0.809911190263377,
+            "clip_vitl14": 0.7052423047939403,
+            "convnext_tiny": 0.4257888383163302,
+            "dinov2_vitb14": 0.7664389493281409,
+            "dinov2_vits14": 0.7304263189935044,
+            "efficientnet_b0": 0.5973394122099717,
+            "resnet18": 0.5004678798695689,
+            "resnet50": 0.3997077383976055
+          },
+          "n_cross_bundle_pairs": 28,
+          "n_val": 149,
+          "pool_mean_dice": 0.6169153290215548
+        },
+        {
+          "cross_bundle_rbar": 0.31524893627091716,
+          "fold": 3,
+          "mean_dice_by_fm": {
+            "biomedclip": 0.7833443263533132,
+            "clip_vitl14": 0.6867204857552611,
+            "convnext_tiny": 0.3987208295476017,
+            "dinov2_vitb14": 0.7879901448352225,
+            "dinov2_vits14": 0.7283225657555881,
+            "efficientnet_b0": 0.6161455729063725,
+            "resnet18": 0.47653223523532584,
+            "resnet50": 0.44776728875730376
+          },
+          "n_cross_bundle_pairs": 28,
+          "n_val": 149,
+          "pool_mean_dice": 0.6156929311432486
+        },
+        {
+          "cross_bundle_rbar": 0.2607222327075335,
+          "fold": 4,
+          "mean_dice_by_fm": {
+            "biomedclip": 0.7791053644708685,
+            "clip_vitl14": 0.6658497396604838,
+            "convnext_tiny": 0.4617218515360602,
+            "dinov2_vitb14": 0.7621567392268697,
+            "dinov2_vits14": 0.7175316343939787,
+            "efficientnet_b0": 0.5688516380441552,
+            "resnet18": 0.4427211537231169,
+            "resnet50": 0.5224661616194755
+          },
+          "n_cross_bundle_pairs": 28,
+          "n_val": 148,
+          "pool_mean_dice": 0.615050535334376
+        }
+      ],
+      "pool_mean_dice_mean": 0.6096889164408327,
+      "pool_mean_dice_std": 0.012267406835679832,
+      "protocol": "8 bundles x 5 folds x one decoder seed; per-fold cross-bundle correlation on the held-out fold",
+      "seed": 42,
+      "source_files": [
+        "per_case_dice_m15/riga_cup/biomedclip/fold_0_seed_42.json",
+        "per_case_dice_m15/riga_cup/biomedclip/fold_1_seed_42.json",
+        "per_case_dice_m15/riga_cup/biomedclip/fold_2_seed_42.json",
+        "per_case_dice_m15/riga_cup/biomedclip/fold_3_seed_42.json",
+        "per_case_dice_m15/riga_cup/biomedclip/fold_4_seed_42.json",
+        "per_case_dice_m15/riga_cup/clip_vitl14/fold_0_seed_42.json",
+        "per_case_dice_m15/riga_cup/clip_vitl14/fold_1_seed_42.json",
+        "per_case_dice_m15/riga_cup/clip_vitl14/fold_2_seed_42.json",
+        "per_case_dice_m15/riga_cup/clip_vitl14/fold_3_seed_42.json",
+        "per_case_dice_m15/riga_cup/clip_vitl14/fold_4_seed_42.json",
+        "per_case_dice_m15/riga_cup/convnext_tiny/fold_0_seed_42.json",
+        "per_case_dice_m15/riga_cup/convnext_tiny/fold_1_seed_42.json",
+        "per_case_dice_m15/riga_cup/convnext_tiny/fold_2_seed_42.json",
+        "per_case_dice_m15/riga_cup/convnext_tiny/fold_3_seed_42.json",
+        "per_case_dice_m15/riga_cup/convnext_tiny/fold_4_seed_42.json",
+        "per_case_dice_m15/riga_cup/dinov2_vitb14/fold_0_seed_42.json",
+        "per_case_dice_m15/riga_cup/dinov2_vitb14/fold_1_seed_42.json",
+        "per_case_dice_m15/riga_cup/dinov2_vitb14/fold_2_seed_42.json",
+        "per_case_dice_m15/riga_cup/dinov2_vitb14/fold_3_seed_42.json",
+        "per_case_dice_m15/riga_cup/dinov2_vitb14/fold_4_seed_42.json",
+        "per_case_dice_m15/riga_cup/dinov2_vits14/fold_0_seed_42.json",
+        "per_case_dice_m15/riga_cup/dinov2_vits14/fold_1_seed_42.json",
+        "per_case_dice_m15/riga_cup/dinov2_vits14/fold_2_seed_42.json",
+        "per_case_dice_m15/riga_cup/dinov2_vits14/fold_3_seed_42.json",
+        "per_case_dice_m15/riga_cup/dinov2_vits14/fold_4_seed_42.json",
+        "per_case_dice_m15/riga_cup/efficientnet_b0/fold_0_seed_42.json",
+        "per_case_dice_m15/riga_cup/efficientnet_b0/fold_1_seed_42.json",
+        "per_case_dice_m15/riga_cup/efficientnet_b0/fold_2_seed_42.json",
+        "per_case_dice_m15/riga_cup/efficientnet_b0/fold_3_seed_42.json",
+        "per_case_dice_m15/riga_cup/efficientnet_b0/fold_4_seed_42.json",
+        "per_case_dice_m15/riga_cup/resnet18/fold_0_seed_42.json",
+        "per_case_dice_m15/riga_cup/resnet18/fold_1_seed_42.json",
+        "per_case_dice_m15/riga_cup/resnet18/fold_2_seed_42.json",
+        "per_case_dice_m15/riga_cup/resnet18/fold_3_seed_42.json",
+        "per_case_dice_m15/riga_cup/resnet18/fold_4_seed_42.json",
+        "per_case_dice_m15/riga_cup/resnet50/fold_0_seed_42.json",
+        "per_case_dice_m15/riga_cup/resnet50/fold_1_seed_42.json",
+        "per_case_dice_m15/riga_cup/resnet50/fold_2_seed_42.json",
+        "per_case_dice_m15/riga_cup/resnet50/fold_3_seed_42.json",
+        "per_case_dice_m15/riga_cup/resnet50/fold_4_seed_42.json"
+      ],
+      "task": "riga_cup"
+    }
+  }
+}

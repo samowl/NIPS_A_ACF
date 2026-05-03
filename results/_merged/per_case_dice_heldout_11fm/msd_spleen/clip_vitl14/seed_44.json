@@ -1,0 +1,32 @@
+{
+  "task": "msd_spleen",
+  "fm": "clip_vitl14",
+  "seed": 44,
+  "n_test": 8,
+  "test_ids": [
+    "spleen_16",
+    "spleen_17",
+    "spleen_19",
+    "spleen_28",
+    "spleen_3",
+    "spleen_56",
+    "spleen_63",
+    "spleen_9"
+  ],
+  "per_case_dice": [
+    1.0,
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0
+  ],
+  "mean_dice": 0.5,
+  "cache_manifest_sha256": "a80afcdc9ca86079024377d66c6074e19053aee8cb8b806253339f7c0957294c",
+  "head_checkpoint_sha256": "11610af5d4b1117ae2973dcc13c509d6cd865e73d3fc88f2c9bc6f57f31b5698",
+  "training_elapsed_s": 10.580768823623657,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

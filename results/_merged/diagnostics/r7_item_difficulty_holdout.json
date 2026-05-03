@@ -1,0 +1,790 @@
+{
+  "cup": {
+    "holdout_splits": [
+      {
+        "trial_seed": 42,
+        "A_fms": [
+          "dinov2_vitb14",
+          "dinov2_vits14",
+          "convnext_tiny",
+          "resnet50"
+        ],
+        "B_fms": [
+          "resnet18",
+          "clip_vitl14",
+          "efficientnet_b0",
+          "biomedclip"
+        ],
+        "grouping": "family",
+        "within": 0.8743873238563538,
+        "cross": 0.051216620951890945,
+        "delta": 0.8231707029044628
+      },
+      {
+        "trial_seed": 42,
+        "A_fms": [
+          "dinov2_vitb14",
+          "dinov2_vits14",
+          "convnext_tiny",
+          "resnet50"
+        ],
+        "B_fms": [
+          "resnet18",
+          "clip_vitl14",
+          "efficientnet_b0",
+          "biomedclip"
+        ],
+        "grouping": "strict",
+        "within": 0.8743873238563538,
+        "cross": 0.051216620951890945,
+        "delta": 0.8231707029044628
+      },
+      {
+        "trial_seed": 42,
+        "A_fms": [
+          "resnet18",
+          "clip_vitl14",
+          "efficientnet_b0",
+          "biomedclip"
+        ],
+        "B_fms": [
+          "dinov2_vitb14",
+          "dinov2_vits14",
+          "convnext_tiny",
+          "resnet50"
+        ],
+        "grouping": "family",
+        "within": 0.8259651064872742,
+        "cross": 0.17839081585407257,
+        "delta": 0.6475742906332016
+      },
+      {
+        "trial_seed": 42,
+        "A_fms": [
+          "resnet18",
+          "clip_vitl14",
+          "efficientnet_b0",
+          "biomedclip"
+        ],
+        "B_fms": [
+          "dinov2_vitb14",
+          "dinov2_vits14",
+          "convnext_tiny",
+          "resnet50"
+        ],
+        "grouping": "strict",
+        "within": 0.9251773953437805,
+        "cross": 0.2615167796611786,
+        "delta": 0.6636606156826019
+      },
+      {
+        "trial_seed": 43,
+        "A_fms": [
+          "resnet50",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet18"
+        ],
+        "B_fms": [
+          "clip_vitl14",
+          "dinov2_vits14",
+          "biomedclip",
+          "dinov2_vitb14"
+        ],
+        "grouping": "family",
+        "within": 0.827221691608429,
+        "cross": 0.34535104036331177,
+        "delta": 0.4818706512451172
+      },
+      {
+        "trial_seed": 43,
+        "A_fms": [
+          "resnet50",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet18"
+        ],
+        "B_fms": [
+          "clip_vitl14",
+          "dinov2_vits14",
+          "biomedclip",
+          "dinov2_vitb14"
+        ],
+        "grouping": "strict",
+        "within": 0.9155908226966858,
+        "cross": 0.4035705029964447,
+        "delta": 0.5120203197002411
+      },
+      {
+        "trial_seed": 43,
+        "A_fms": [
+          "clip_vitl14",
+          "dinov2_vits14",
+          "biomedclip",
+          "dinov2_vitb14"
+        ],
+        "B_fms": [
+          "resnet50",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet18"
+        ],
+        "grouping": "family",
+        "within": 0.9077730178833008,
+        "cross": 0.36378440260887146,
+        "delta": 0.5439886152744293
+      },
+      {
+        "trial_seed": 43,
+        "A_fms": [
+          "clip_vitl14",
+          "dinov2_vits14",
+          "biomedclip",
+          "dinov2_vitb14"
+        ],
+        "B_fms": [
+          "resnet50",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet18"
+        ],
+        "grouping": "strict",
+        "within": 0.9077730178833008,
+        "cross": 0.36378440260887146,
+        "delta": 0.5439886152744293
+      },
+      {
+        "trial_seed": 44,
+        "A_fms": [
+          "dinov2_vitb14",
+          "biomedclip",
+          "convnext_tiny",
+          "efficientnet_b0"
+        ],
+        "B_fms": [
+          "dinov2_vits14",
+          "clip_vitl14",
+          "resnet18",
+          "resnet50"
+        ],
+        "grouping": "family",
+        "within": 0.8685346245765686,
+        "cross": 0.11028564721345901,
+        "delta": 0.7582489773631096
+      },
+      {
+        "trial_seed": 44,
+        "A_fms": [
+          "dinov2_vitb14",
+          "biomedclip",
+          "convnext_tiny",
+          "efficientnet_b0"
+        ],
+        "B_fms": [
+          "dinov2_vits14",
+          "clip_vitl14",
+          "resnet18",
+          "resnet50"
+        ],
+        "grouping": "strict",
+        "within": 0.8685346245765686,
+        "cross": 0.11028564721345901,
+        "delta": 0.7582489773631096
+      },
+      {
+        "trial_seed": 44,
+        "A_fms": [
+          "dinov2_vits14",
+          "clip_vitl14",
+          "resnet18",
+          "resnet50"
+        ],
+        "B_fms": [
+          "dinov2_vitb14",
+          "biomedclip",
+          "convnext_tiny",
+          "efficientnet_b0"
+        ],
+        "grouping": "family",
+        "within": 0.9309832453727722,
+        "cross": 0.27411630749702454,
+        "delta": 0.6568669378757477
+      },
+      {
+        "trial_seed": 44,
+        "A_fms": [
+          "dinov2_vits14",
+          "clip_vitl14",
+          "resnet18",
+          "resnet50"
+        ],
+        "B_fms": [
+          "dinov2_vitb14",
+          "biomedclip",
+          "convnext_tiny",
+          "efficientnet_b0"
+        ],
+        "grouping": "strict",
+        "within": 0.9309832453727722,
+        "cross": 0.27411630749702454,
+        "delta": 0.6568669378757477
+      },
+      {
+        "trial_seed": 45,
+        "A_fms": [
+          "resnet18",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet50"
+        ],
+        "B_fms": [
+          "biomedclip",
+          "clip_vitl14",
+          "dinov2_vitb14",
+          "dinov2_vits14"
+        ],
+        "grouping": "family",
+        "within": 0.827221691608429,
+        "cross": 0.34535104036331177,
+        "delta": 0.4818706512451172
+      },
+      {
+        "trial_seed": 45,
+        "A_fms": [
+          "resnet18",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet50"
+        ],
+        "B_fms": [
+          "biomedclip",
+          "clip_vitl14",
+          "dinov2_vitb14",
+          "dinov2_vits14"
+        ],
+        "grouping": "strict",
+        "within": 0.9155908226966858,
+        "cross": 0.4035705327987671,
+        "delta": 0.5120202898979187
+      },
+      {
+        "trial_seed": 45,
+        "A_fms": [
+          "biomedclip",
+          "clip_vitl14",
+          "dinov2_vitb14",
+          "dinov2_vits14"
+        ],
+        "B_fms": [
+          "resnet18",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet50"
+        ],
+        "grouping": "family",
+        "within": 0.9077730178833008,
+        "cross": 0.36378440260887146,
+        "delta": 0.5439886152744293
+      },
+      {
+        "trial_seed": 45,
+        "A_fms": [
+          "biomedclip",
+          "clip_vitl14",
+          "dinov2_vitb14",
+          "dinov2_vits14"
+        ],
+        "B_fms": [
+          "resnet18",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet50"
+        ],
+        "grouping": "strict",
+        "within": 0.9077730178833008,
+        "cross": 0.36378440260887146,
+        "delta": 0.5439886152744293
+      },
+      {
+        "trial_seed": 46,
+        "A_fms": [
+          "resnet18",
+          "dinov2_vits14",
+          "biomedclip",
+          "clip_vitl14"
+        ],
+        "B_fms": [
+          "efficientnet_b0",
+          "resnet50",
+          "convnext_tiny",
+          "dinov2_vitb14"
+        ],
+        "grouping": "family",
+        "within": 0.9249916076660156,
+        "cross": 0.2190944403409958,
+        "delta": 0.7058971673250198
+      },
+      {
+        "trial_seed": 46,
+        "A_fms": [
+          "resnet18",
+          "dinov2_vits14",
+          "biomedclip",
+          "clip_vitl14"
+        ],
+        "B_fms": [
+          "efficientnet_b0",
+          "resnet50",
+          "convnext_tiny",
+          "dinov2_vitb14"
+        ],
+        "grouping": "strict",
+        "within": 0.9249916076660156,
+        "cross": 0.2190944403409958,
+        "delta": 0.7058971673250198
+      },
+      {
+        "trial_seed": 46,
+        "A_fms": [
+          "efficientnet_b0",
+          "resnet50",
+          "convnext_tiny",
+          "dinov2_vitb14"
+        ],
+        "B_fms": [
+          "resnet18",
+          "dinov2_vits14",
+          "biomedclip",
+          "clip_vitl14"
+        ],
+        "grouping": "family",
+        "within": 0.8725994229316711,
+        "cross": 0.12730444967746735,
+        "delta": 0.7452949732542038
+      },
+      {
+        "trial_seed": 46,
+        "A_fms": [
+          "efficientnet_b0",
+          "resnet50",
+          "convnext_tiny",
+          "dinov2_vitb14"
+        ],
+        "B_fms": [
+          "resnet18",
+          "dinov2_vits14",
+          "biomedclip",
+          "clip_vitl14"
+        ],
+        "grouping": "strict",
+        "within": 0.8725994229316711,
+        "cross": 0.12730444967746735,
+        "delta": 0.7452949732542038
+      }
+    ],
+    "holdout_mean_family": 0.6388771582394839,
+    "holdout_range_family": [
+      0.4818706512451172,
+      0.8231707029044628
+    ],
+    "holdout_mean_strict": 0.6465157214552164,
+    "holdout_range_strict": [
+      0.5120202898979187,
+      0.8231707029044628
+    ]
+  },
+  "acdc": {
+    "holdout_splits": [
+      {
+        "trial_seed": 42,
+        "A_fms": [
+          "dinov2_vitb14",
+          "dinov2_vits14",
+          "convnext_tiny",
+          "resnet50"
+        ],
+        "B_fms": [
+          "resnet18",
+          "clip_vitl14",
+          "efficientnet_b0",
+          "biomedclip"
+        ],
+        "grouping": "family",
+        "within": 0.5989047884941101,
+        "cross": 0.07722736895084381,
+        "delta": 0.5216774195432663
+      },
+      {
+        "trial_seed": 42,
+        "A_fms": [
+          "dinov2_vitb14",
+          "dinov2_vits14",
+          "convnext_tiny",
+          "resnet50"
+        ],
+        "B_fms": [
+          "resnet18",
+          "clip_vitl14",
+          "efficientnet_b0",
+          "biomedclip"
+        ],
+        "grouping": "strict",
+        "within": 0.5989047884941101,
+        "cross": 0.07722736895084381,
+        "delta": 0.5216774195432663
+      },
+      {
+        "trial_seed": 42,
+        "A_fms": [
+          "resnet18",
+          "clip_vitl14",
+          "efficientnet_b0",
+          "biomedclip"
+        ],
+        "B_fms": [
+          "dinov2_vitb14",
+          "dinov2_vits14",
+          "convnext_tiny",
+          "resnet50"
+        ],
+        "grouping": "family",
+        "within": 0.7744934558868408,
+        "cross": -0.16678321361541748,
+        "delta": 0.9412766695022583
+      },
+      {
+        "trial_seed": 42,
+        "A_fms": [
+          "resnet18",
+          "clip_vitl14",
+          "efficientnet_b0",
+          "biomedclip"
+        ],
+        "B_fms": [
+          "dinov2_vitb14",
+          "dinov2_vits14",
+          "convnext_tiny",
+          "resnet50"
+        ],
+        "grouping": "strict",
+        "within": 0.8553802371025085,
+        "cross": -0.030125468969345093,
+        "delta": 0.8855057060718536
+      },
+      {
+        "trial_seed": 43,
+        "A_fms": [
+          "resnet50",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet18"
+        ],
+        "B_fms": [
+          "clip_vitl14",
+          "dinov2_vits14",
+          "biomedclip",
+          "dinov2_vitb14"
+        ],
+        "grouping": "family",
+        "within": 0.7212027311325073,
+        "cross": 0.17443904280662537,
+        "delta": 0.546763688325882
+      },
+      {
+        "trial_seed": 43,
+        "A_fms": [
+          "resnet50",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet18"
+        ],
+        "B_fms": [
+          "clip_vitl14",
+          "dinov2_vits14",
+          "biomedclip",
+          "dinov2_vitb14"
+        ],
+        "grouping": "strict",
+        "within": 0.7486914992332458,
+        "cross": 0.2586941719055176,
+        "delta": 0.48999732732772827
+      },
+      {
+        "trial_seed": 43,
+        "A_fms": [
+          "clip_vitl14",
+          "dinov2_vits14",
+          "biomedclip",
+          "dinov2_vitb14"
+        ],
+        "B_fms": [
+          "resnet50",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet18"
+        ],
+        "grouping": "family",
+        "within": 0.6782839894294739,
+        "cross": 0.20593440532684326,
+        "delta": 0.4723495841026306
+      },
+      {
+        "trial_seed": 43,
+        "A_fms": [
+          "clip_vitl14",
+          "dinov2_vits14",
+          "biomedclip",
+          "dinov2_vitb14"
+        ],
+        "B_fms": [
+          "resnet50",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet18"
+        ],
+        "grouping": "strict",
+        "within": 0.6782839894294739,
+        "cross": 0.20593440532684326,
+        "delta": 0.4723495841026306
+      },
+      {
+        "trial_seed": 44,
+        "A_fms": [
+          "dinov2_vitb14",
+          "biomedclip",
+          "convnext_tiny",
+          "efficientnet_b0"
+        ],
+        "B_fms": [
+          "dinov2_vits14",
+          "clip_vitl14",
+          "resnet18",
+          "resnet50"
+        ],
+        "grouping": "family",
+        "within": 0.5366054773330688,
+        "cross": -0.04320913553237915,
+        "delta": 0.579814612865448
+      },
+      {
+        "trial_seed": 44,
+        "A_fms": [
+          "dinov2_vitb14",
+          "biomedclip",
+          "convnext_tiny",
+          "efficientnet_b0"
+        ],
+        "B_fms": [
+          "dinov2_vits14",
+          "clip_vitl14",
+          "resnet18",
+          "resnet50"
+        ],
+        "grouping": "strict",
+        "within": 0.5366054773330688,
+        "cross": -0.04320913553237915,
+        "delta": 0.579814612865448
+      },
+      {
+        "trial_seed": 44,
+        "A_fms": [
+          "dinov2_vits14",
+          "clip_vitl14",
+          "resnet18",
+          "resnet50"
+        ],
+        "B_fms": [
+          "dinov2_vitb14",
+          "biomedclip",
+          "convnext_tiny",
+          "efficientnet_b0"
+        ],
+        "grouping": "family",
+        "within": 0.9477851390838623,
+        "cross": 0.29661107063293457,
+        "delta": 0.6511740684509277
+      },
+      {
+        "trial_seed": 44,
+        "A_fms": [
+          "dinov2_vits14",
+          "clip_vitl14",
+          "resnet18",
+          "resnet50"
+        ],
+        "B_fms": [
+          "dinov2_vitb14",
+          "biomedclip",
+          "convnext_tiny",
+          "efficientnet_b0"
+        ],
+        "grouping": "strict",
+        "within": 0.9477851390838623,
+        "cross": 0.29661107063293457,
+        "delta": 0.6511740684509277
+      },
+      {
+        "trial_seed": 45,
+        "A_fms": [
+          "resnet18",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet50"
+        ],
+        "B_fms": [
+          "biomedclip",
+          "clip_vitl14",
+          "dinov2_vitb14",
+          "dinov2_vits14"
+        ],
+        "grouping": "family",
+        "within": 0.7212027311325073,
+        "cross": 0.17443904280662537,
+        "delta": 0.546763688325882
+      },
+      {
+        "trial_seed": 45,
+        "A_fms": [
+          "resnet18",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet50"
+        ],
+        "B_fms": [
+          "biomedclip",
+          "clip_vitl14",
+          "dinov2_vitb14",
+          "dinov2_vits14"
+        ],
+        "grouping": "strict",
+        "within": 0.7486913800239563,
+        "cross": 0.2586941421031952,
+        "delta": 0.4899972379207611
+      },
+      {
+        "trial_seed": 45,
+        "A_fms": [
+          "biomedclip",
+          "clip_vitl14",
+          "dinov2_vitb14",
+          "dinov2_vits14"
+        ],
+        "B_fms": [
+          "resnet18",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet50"
+        ],
+        "grouping": "family",
+        "within": 0.6782839894294739,
+        "cross": 0.20593440532684326,
+        "delta": 0.4723495841026306
+      },
+      {
+        "trial_seed": 45,
+        "A_fms": [
+          "biomedclip",
+          "clip_vitl14",
+          "dinov2_vitb14",
+          "dinov2_vits14"
+        ],
+        "B_fms": [
+          "resnet18",
+          "convnext_tiny",
+          "efficientnet_b0",
+          "resnet50"
+        ],
+        "grouping": "strict",
+        "within": 0.6782839894294739,
+        "cross": 0.20593440532684326,
+        "delta": 0.4723495841026306
+      },
+      {
+        "trial_seed": 46,
+        "A_fms": [
+          "resnet18",
+          "dinov2_vits14",
+          "biomedclip",
+          "clip_vitl14"
+        ],
+        "B_fms": [
+          "efficientnet_b0",
+          "resnet50",
+          "convnext_tiny",
+          "dinov2_vitb14"
+        ],
+        "grouping": "family",
+        "within": 0.8249688744544983,
+        "cross": -0.023267723619937897,
+        "delta": 0.8482365980744362
+      },
+      {
+        "trial_seed": 46,
+        "A_fms": [
+          "resnet18",
+          "dinov2_vits14",
+          "biomedclip",
+          "clip_vitl14"
+        ],
+        "B_fms": [
+          "efficientnet_b0",
+          "resnet50",
+          "convnext_tiny",
+          "dinov2_vitb14"
+        ],
+        "grouping": "strict",
+        "within": 0.8249688744544983,
+        "cross": -0.023267723619937897,
+        "delta": 0.8482365980744362
+      },
+      {
+        "trial_seed": 46,
+        "A_fms": [
+          "efficientnet_b0",
+          "resnet50",
+          "convnext_tiny",
+          "dinov2_vitb14"
+        ],
+        "B_fms": [
+          "resnet18",
+          "dinov2_vits14",
+          "biomedclip",
+          "clip_vitl14"
+        ],
+        "grouping": "family",
+        "within": 0.62251877784729,
+        "cross": -0.012338314205408096,
+        "delta": 0.6348570920526981
+      },
+      {
+        "trial_seed": 46,
+        "A_fms": [
+          "efficientnet_b0",
+          "resnet50",
+          "convnext_tiny",
+          "dinov2_vitb14"
+        ],
+        "B_fms": [
+          "resnet18",
+          "dinov2_vits14",
+          "biomedclip",
+          "clip_vitl14"
+        ],
+        "grouping": "strict",
+        "within": 0.62251877784729,
+        "cross": -0.012338314205408096,
+        "delta": 0.6348570920526981
+      }
+    ],
+    "holdout_mean_family": 0.621526300534606,
+    "holdout_range_family": [
+      0.4723495841026306,
+      0.9412766695022583
+    ],
+    "holdout_mean_strict": 0.6045959230512381,
+    "holdout_range_strict": [
+      0.4723495841026306,
+      0.8855057060718536
+    ]
+  }
+}

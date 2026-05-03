@@ -1,0 +1,124 @@
+{
+  "commit_sha": "not_recorded_for_artifact",
+  "diverse_pools_summary": {
+    "M_eff_mean": 2.4261406998497645,
+    "M_eff_std": 0.6286524582054202,
+    "n_fm_compositions": 126,
+    "n_seed_compositions": 32256,
+    "n_valid_compositions": 31488,
+    "pool_size_fms": 4,
+    "rho_fail_mean": 0.2457390538571566,
+    "rho_fail_std": 0.12121535407817939
+  },
+  "full_pool_diagnostic": {
+    "M_eff": 3.033864427481574,
+    "n_fm_seed": 36,
+    "rho_fail": 0.31045869395294895
+  },
+  "generated_at": "2026-04-29T18:23:48Z",
+  "mono_pools": [
+    {
+      "M_eff": 1.0965292428055033,
+      "fm": "biomedclip",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8826245100908506
+    },
+    {
+      "M_eff": 1.0,
+      "fm": "clip_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 1.0
+    },
+    {
+      "M_eff": 1.1007546902688405,
+      "fm": "clip_vitl14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8779568343312617
+    },
+    {
+      "M_eff": 1.129525727348752,
+      "fm": "deit_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.8471031109634805
+    },
+    {
+      "M_eff": 1.0388039671436613,
+      "fm": "dinov2_vitb14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.950194045753909
+    },
+    {
+      "M_eff": 1.371948556428534,
+      "fm": "dinov2_vits14",
+      "n_fm_seed": 4,
+      "rho_fail": 0.6385204049761233
+    },
+    {
+      "M_eff": null,
+      "fm": "efficientnet_b0",
+      "n_fm_seed": 4,
+      "rho_fail": null
+    },
+    {
+      "M_eff": 1.3759435568771896,
+      "fm": "mae_vitb16",
+      "n_fm_seed": 4,
+      "rho_fail": 0.6356986641415024
+    },
+    {
+      "M_eff": null,
+      "fm": "resnet50",
+      "n_fm_seed": 4,
+      "rho_fail": null
+    }
+  ],
+  "schema_version": "fmpool_clean_v1",
+  "source_files": [
+    "per_case_dice/riga_cup/biomedclip/seed_42.json",
+    "per_case_dice/riga_cup/biomedclip/seed_43.json",
+    "per_case_dice/riga_cup/biomedclip/seed_44.json",
+    "per_case_dice/riga_cup/biomedclip/seed_45.json",
+    "per_case_dice/riga_cup/clip_vitb16/seed_42.json",
+    "per_case_dice/riga_cup/clip_vitb16/seed_43.json",
+    "per_case_dice/riga_cup/clip_vitb16/seed_44.json",
+    "per_case_dice/riga_cup/clip_vitb16/seed_45.json",
+    "per_case_dice/riga_cup/clip_vitl14/seed_42.json",
+    "per_case_dice/riga_cup/clip_vitl14/seed_43.json",
+    "per_case_dice/riga_cup/clip_vitl14/seed_44.json",
+    "per_case_dice/riga_cup/clip_vitl14/seed_45.json",
+    "per_case_dice/riga_cup/convnext_tiny/seed_42.json",
+    "per_case_dice/riga_cup/convnext_tiny/seed_43.json",
+    "per_case_dice/riga_cup/convnext_tiny/seed_44.json",
+    "per_case_dice/riga_cup/convnext_tiny/seed_45.json",
+    "per_case_dice/riga_cup/deit_vitb16/seed_42.json",
+    "per_case_dice/riga_cup/deit_vitb16/seed_43.json",
+    "per_case_dice/riga_cup/deit_vitb16/seed_44.json",
+    "per_case_dice/riga_cup/deit_vitb16/seed_45.json",
+    "per_case_dice/riga_cup/dinov2_vitb14/seed_42.json",
+    "per_case_dice/riga_cup/dinov2_vitb14/seed_43.json",
+    "per_case_dice/riga_cup/dinov2_vitb14/seed_44.json",
+    "per_case_dice/riga_cup/dinov2_vitb14/seed_45.json",
+    "per_case_dice/riga_cup/dinov2_vits14/seed_42.json",
+    "per_case_dice/riga_cup/dinov2_vits14/seed_43.json",
+    "per_case_dice/riga_cup/dinov2_vits14/seed_44.json",
+    "per_case_dice/riga_cup/dinov2_vits14/seed_45.json",
+    "per_case_dice/riga_cup/efficientnet_b0/seed_42.json",
+    "per_case_dice/riga_cup/efficientnet_b0/seed_43.json",
+    "per_case_dice/riga_cup/efficientnet_b0/seed_44.json",
+    "per_case_dice/riga_cup/efficientnet_b0/seed_45.json",
+    "per_case_dice/riga_cup/mae_vitb16/seed_42.json",
+    "per_case_dice/riga_cup/mae_vitb16/seed_43.json",
+    "per_case_dice/riga_cup/mae_vitb16/seed_44.json",
+    "per_case_dice/riga_cup/mae_vitb16/seed_45.json",
+    "per_case_dice/riga_cup/resnet18/seed_42.json",
+    "per_case_dice/riga_cup/resnet18/seed_43.json",
+    "per_case_dice/riga_cup/resnet18/seed_44.json",
+    "per_case_dice/riga_cup/resnet18/seed_45.json",
+    "per_case_dice/riga_cup/resnet50/seed_42.json",
+    "per_case_dice/riga_cup/resnet50/seed_43.json",
+    "per_case_dice/riga_cup/resnet50/seed_44.json",
+    "per_case_dice/riga_cup/resnet50/seed_45.json"
+  ],
+  "task": "riga_cup",
+  "tau": 0.85
+}

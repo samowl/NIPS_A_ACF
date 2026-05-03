@@ -1,0 +1,114 @@
+{
+  "bootstrap_b": 2000,
+  "bootstrap_seed": 0,
+  "fms_kept_after_floor": [
+    "clip_vitl14",
+    "convnext_tiny",
+    "dinov2_vitb14",
+    "dinov2_vits14",
+    "efficientnet_b0",
+    "resnet18",
+    "resnet50"
+  ],
+  "functional_floor": 0.3,
+  "n_test": 361,
+  "per_fm": [
+    {
+      "fm": "clip_vitl14",
+      "max_dice": 0.7122552854388209,
+      "mean_dice": 0.7109713844382242,
+      "min_dice": 0.7093149012991761,
+      "n_seeds": 4
+    },
+    {
+      "fm": "convnext_tiny",
+      "max_dice": 0.5368713202765031,
+      "mean_dice": 0.5359992221542157,
+      "min_dice": 0.5355349776162212,
+      "n_seeds": 4
+    },
+    {
+      "fm": "dinov2_vitb14",
+      "max_dice": 0.742082681558469,
+      "mean_dice": 0.7399099122131776,
+      "min_dice": 0.7373235000715361,
+      "n_seeds": 4
+    },
+    {
+      "fm": "dinov2_vits14",
+      "max_dice": 0.7186509353673689,
+      "mean_dice": 0.715951562016155,
+      "min_dice": 0.7141737768405899,
+      "n_seeds": 4
+    },
+    {
+      "fm": "efficientnet_b0",
+      "max_dice": 0.4281472798712278,
+      "mean_dice": 0.4222615425047817,
+      "min_dice": 0.4101223136469918,
+      "n_seeds": 4
+    },
+    {
+      "fm": "resnet18",
+      "max_dice": 0.4006305788579162,
+      "mean_dice": 0.38868727003900755,
+      "min_dice": 0.37590018037120987,
+      "n_seeds": 4
+    },
+    {
+      "fm": "resnet50",
+      "max_dice": 0.44364528430992134,
+      "mean_dice": 0.440697816136542,
+      "min_dice": 0.4386786283580767,
+      "n_seeds": 4
+    }
+  ],
+  "pool": "7-FM x 4-seed (28 members)",
+  "protocol": "M14 standard segmentation-recipe sensitivity: frozen encoder, Dice+BCE loss, horizontal flip and +/-15 degree rotation augmentation, 224x224 input.",
+  "schema_version": "m14_clinical_summary_v1",
+  "source_files": [
+    "per_case_dice_m14/acdc_lv/clip_vitl14/seed_42.json",
+    "per_case_dice_m14/acdc_lv/clip_vitl14/seed_43.json",
+    "per_case_dice_m14/acdc_lv/clip_vitl14/seed_44.json",
+    "per_case_dice_m14/acdc_lv/clip_vitl14/seed_45.json",
+    "per_case_dice_m14/acdc_lv/convnext_tiny/seed_42.json",
+    "per_case_dice_m14/acdc_lv/convnext_tiny/seed_43.json",
+    "per_case_dice_m14/acdc_lv/convnext_tiny/seed_44.json",
+    "per_case_dice_m14/acdc_lv/convnext_tiny/seed_45.json",
+    "per_case_dice_m14/acdc_lv/dinov2_vitb14/seed_42.json",
+    "per_case_dice_m14/acdc_lv/dinov2_vitb14/seed_43.json",
+    "per_case_dice_m14/acdc_lv/dinov2_vitb14/seed_44.json",
+    "per_case_dice_m14/acdc_lv/dinov2_vitb14/seed_45.json",
+    "per_case_dice_m14/acdc_lv/dinov2_vits14/seed_42.json",
+    "per_case_dice_m14/acdc_lv/dinov2_vits14/seed_43.json",
+    "per_case_dice_m14/acdc_lv/dinov2_vits14/seed_44.json",
+    "per_case_dice_m14/acdc_lv/dinov2_vits14/seed_45.json",
+    "per_case_dice_m14/acdc_lv/efficientnet_b0/seed_42.json",
+    "per_case_dice_m14/acdc_lv/efficientnet_b0/seed_43.json",
+    "per_case_dice_m14/acdc_lv/efficientnet_b0/seed_44.json",
+    "per_case_dice_m14/acdc_lv/efficientnet_b0/seed_45.json",
+    "per_case_dice_m14/acdc_lv/resnet18/seed_42.json",
+    "per_case_dice_m14/acdc_lv/resnet18/seed_43.json",
+    "per_case_dice_m14/acdc_lv/resnet18/seed_44.json",
+    "per_case_dice_m14/acdc_lv/resnet18/seed_45.json",
+    "per_case_dice_m14/acdc_lv/resnet50/seed_42.json",
+    "per_case_dice_m14/acdc_lv/resnet50/seed_43.json",
+    "per_case_dice_m14/acdc_lv/resnet50/seed_44.json",
+    "per_case_dice_m14/acdc_lv/resnet50/seed_45.json"
+  ],
+  "source_protocol_values": [
+    "m14_clinical_v1"
+  ],
+  "task": "acdc_lv",
+  "within_cross": {
+    "cross": 0.6239947419591425,
+    "gap": 0.32570869555833926,
+    "gap_ci95_case": [
+      0.29071050001426874,
+      0.365687871913716
+    ],
+    "n_cross_pairs": 320,
+    "n_within_pairs": 58,
+    "within": 0.9497034375174818
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "bootstrap_b": 2000,
+  "bootstrap_seed": 0,
+  "fms_kept_after_floor": [
+    "clip_vitl14",
+    "convnext_tiny",
+    "dinov2_vitb14",
+    "dinov2_vits14",
+    "efficientnet_b0",
+    "resnet18",
+    "resnet50"
+  ],
+  "functional_floor": 0.3,
+  "n_test": 95,
+  "per_fm": [
+    {
+      "fm": "clip_vitl14",
+      "max_dice": 0.724967297441081,
+      "mean_dice": 0.7204994998480144,
+      "min_dice": 0.7121596355187265,
+      "n_seeds": 4
+    },
+    {
+      "fm": "convnext_tiny",
+      "max_dice": 0.5885272298988543,
+      "mean_dice": 0.5831990602965418,
+      "min_dice": 0.5776953361536327,
+      "n_seeds": 4
+    },
+    {
+      "fm": "dinov2_vitb14",
+      "max_dice": 0.7648680486177143,
+      "mean_dice": 0.7583912396901532,
+      "min_dice": 0.7530951976776123,
+      "n_seeds": 4
+    },
+    {
+      "fm": "dinov2_vits14",
+      "max_dice": 0.7368028016466843,
+      "mean_dice": 0.7329644855700042,
+      "min_dice": 0.7306809406531485,
+      "n_seeds": 4
+    },
+    {
+      "fm": "efficientnet_b0",
+      "max_dice": 0.6289618889752188,
+      "mean_dice": 0.6257343001761718,
+      "min_dice": 0.6238332580578955,
+      "n_seeds": 4
+    },
+    {
+      "fm": "resnet18",
+      "max_dice": 0.5502699336527209,
+      "mean_dice": 0.5261821362873889,
+      "min_dice": 0.48774116013297125,
+      "n_seeds": 4
+    },
+    {
+      "fm": "resnet50",
+      "max_dice": 0.629792172187253,
+      "mean_dice": 0.6178881041705608,
+      "min_dice": 0.6058809170597478,
+      "n_seeds": 4
+    }
+  ],
+  "pool": "7-FM x 4-seed (28 members)",
+  "protocol": "M14 standard segmentation-recipe sensitivity: frozen encoder, Dice+BCE loss, horizontal flip and +/-15 degree rotation augmentation, 224x224 input.",
+  "schema_version": "m14_clinical_summary_v1",
+  "source_files": [
+    "per_case_dice_m14/riga_cup/clip_vitl14/seed_42.json",
+    "per_case_dice_m14/riga_cup/clip_vitl14/seed_43.json",
+    "per_case_dice_m14/riga_cup/clip_vitl14/seed_44.json",
+    "per_case_dice_m14/riga_cup/clip_vitl14/seed_45.json",
+    "per_case_dice_m14/riga_cup/convnext_tiny/seed_42.json",
+    "per_case_dice_m14/riga_cup/convnext_tiny/seed_43.json",
+    "per_case_dice_m14/riga_cup/convnext_tiny/seed_44.json",
+    "per_case_dice_m14/riga_cup/convnext_tiny/seed_45.json",
+    "per_case_dice_m14/riga_cup/dinov2_vitb14/seed_42.json",
+    "per_case_dice_m14/riga_cup/dinov2_vitb14/seed_43.json",
+    "per_case_dice_m14/riga_cup/dinov2_vitb14/seed_44.json",
+    "per_case_dice_m14/riga_cup/dinov2_vitb14/seed_45.json",
+    "per_case_dice_m14/riga_cup/dinov2_vits14/seed_42.json",
+    "per_case_dice_m14/riga_cup/dinov2_vits14/seed_43.json",
+    "per_case_dice_m14/riga_cup/dinov2_vits14/seed_44.json",
+    "per_case_dice_m14/riga_cup/dinov2_vits14/seed_45.json",
+    "per_case_dice_m14/riga_cup/efficientnet_b0/seed_42.json",
+    "per_case_dice_m14/riga_cup/efficientnet_b0/seed_43.json",
+    "per_case_dice_m14/riga_cup/efficientnet_b0/seed_44.json",
+    "per_case_dice_m14/riga_cup/efficientnet_b0/seed_45.json",
+    "per_case_dice_m14/riga_cup/resnet18/seed_42.json",
+    "per_case_dice_m14/riga_cup/resnet18/seed_43.json",
+    "per_case_dice_m14/riga_cup/resnet18/seed_44.json",
+    "per_case_dice_m14/riga_cup/resnet18/seed_45.json",
+    "per_case_dice_m14/riga_cup/resnet50/seed_42.json",
+    "per_case_dice_m14/riga_cup/resnet50/seed_43.json",
+    "per_case_dice_m14/riga_cup/resnet50/seed_44.json",
+    "per_case_dice_m14/riga_cup/resnet50/seed_45.json"
+  ],
+  "source_protocol_values": [
+    "m14_clinical_v1"
+  ],
+  "task": "riga_cup",
+  "within_cross": {
+    "cross": 0.5561125112425721,
+    "gap": 0.3471126268080149,
+    "gap_ci95_case": [
+      0.27454283261936857,
+      0.42778403661897624
+    ],
+    "n_cross_pairs": 320,
+    "n_within_pairs": 58,
+    "within": 0.903225138050587
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "target": "cup",
+  "n_fms": 8,
+  "n_seeds": 4,
+  "n_test": 224,
+  "n_mono_pairs": 48,
+  "n_diverse_pairs": 448,
+  "dilate_radius": 5,
+  "mono": {
+    "err_dice_uncond": 0.8507159787130606,
+    "err_dice_cond": 0.8507159787130606,
+    "err_jacc": 0.7526412007118141,
+    "fp_dice": 0.8501923193707848,
+    "fn_dice": 0.7826622704933179,
+    "bnd_dice": 0.8654246068054237,
+    "p_both_perfect_E": 0.0
+  },
+  "diverse": {
+    "err_dice_uncond": 0.3658281466971865,
+    "err_dice_cond": 0.3658281466971865,
+    "err_jacc": 0.23767032679401565,
+    "fp_dice": 0.3974148517138339,
+    "fn_dice": 0.2561196599794283,
+    "bnd_dice": 0.43497966648459996,
+    "p_both_perfect_E": 0.0
+  },
+  "gap": {
+    "err_dice_uncond": 0.4848878320158741,
+    "err_dice_cond": 0.4848878320158741,
+    "err_jacc": 0.5149708739177984,
+    "fp_dice": 0.45277746765695087,
+    "fn_dice": 0.5265426105138896,
+    "bnd_dice": 0.4304449403208237
+  },
+  "gap_ci": {
+    "err_dice_uncond": [
+      0.47939461151108886,
+      0.49065089579378834
+    ],
+    "err_dice_uncond_P_leq_0": 0.0,
+    "err_dice_cond": [
+      0.47922414026641685,
+      0.4903928173787071
+    ],
+    "err_dice_cond_P_leq_0": 0.0
+  }
+}

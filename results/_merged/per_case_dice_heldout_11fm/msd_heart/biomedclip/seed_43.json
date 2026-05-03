@@ -1,0 +1,24 @@
+{
+  "task": "msd_heart",
+  "fm": "biomedclip",
+  "seed": 43,
+  "n_test": 4,
+  "test_ids": [
+    "la_014",
+    "la_017",
+    "la_022",
+    "la_023"
+  ],
+  "per_case_dice": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mean_dice": 0.0,
+  "cache_manifest_sha256": "13c11973039162a216bc071a61866519d6b5fdd1c549375607123d2534b16110",
+  "head_checkpoint_sha256": "b63a27a1b6ae0881b98a9142ad8b8cdba67ef026832a4c1321d4e3d8ed66599f",
+  "training_elapsed_s": 10.315717935562134,
+  "use_amp_bf16": true,
+  "schema_version": "feat_cache_v1"
+}

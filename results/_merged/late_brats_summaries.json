@@ -1,0 +1,322 @@
+{
+  "bootstrap_b": 2000,
+  "bootstrap_seed": 0,
+  "functional_floor": 0.3,
+  "m19_train_size": {
+    "cells": [
+      {
+        "fm": "biomedclip",
+        "mean_dice": 0.6714354157447815,
+        "n_train_total": 12893,
+        "n_train_used": 1289,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.1/brats_wt/biomedclip/seed_42.json",
+        "train_frac": 0.1
+      },
+      {
+        "fm": "clip_vitl14",
+        "mean_dice": 0.6515659689903259,
+        "n_train_total": 12893,
+        "n_train_used": 1289,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.1/brats_wt/clip_vitl14/seed_42.json",
+        "train_frac": 0.1
+      },
+      {
+        "fm": "dinov2_vitb14",
+        "mean_dice": 0.7208873629570007,
+        "n_train_total": 12893,
+        "n_train_used": 1289,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.1/brats_wt/dinov2_vitb14/seed_42.json",
+        "train_frac": 0.1
+      },
+      {
+        "fm": "efficientnet_b0",
+        "mean_dice": 0.4176260530948639,
+        "n_train_total": 12893,
+        "n_train_used": 1289,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.1/brats_wt/efficientnet_b0/seed_42.json",
+        "train_frac": 0.1
+      },
+      {
+        "fm": "resnet50",
+        "mean_dice": 0.4326903223991394,
+        "n_train_total": 12893,
+        "n_train_used": 1289,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.1/brats_wt/resnet50/seed_42.json",
+        "train_frac": 0.1
+      },
+      {
+        "fm": "biomedclip",
+        "mean_dice": 0.7330105900764465,
+        "n_train_total": 12893,
+        "n_train_used": 3223,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.25/brats_wt/biomedclip/seed_42.json",
+        "train_frac": 0.25
+      },
+      {
+        "fm": "clip_vitl14",
+        "mean_dice": 0.681783139705658,
+        "n_train_total": 12893,
+        "n_train_used": 3223,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.25/brats_wt/clip_vitl14/seed_42.json",
+        "train_frac": 0.25
+      },
+      {
+        "fm": "dinov2_vitb14",
+        "mean_dice": 0.7504384517669678,
+        "n_train_total": 12893,
+        "n_train_used": 3223,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.25/brats_wt/dinov2_vitb14/seed_42.json",
+        "train_frac": 0.25
+      },
+      {
+        "fm": "efficientnet_b0",
+        "mean_dice": 0.45539921522140503,
+        "n_train_total": 12893,
+        "n_train_used": 3223,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.25/brats_wt/efficientnet_b0/seed_42.json",
+        "train_frac": 0.25
+      },
+      {
+        "fm": "resnet50",
+        "mean_dice": 0.48675015568733215,
+        "n_train_total": 12893,
+        "n_train_used": 3223,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.25/brats_wt/resnet50/seed_42.json",
+        "train_frac": 0.25
+      },
+      {
+        "fm": "biomedclip",
+        "mean_dice": 0.7227941751480103,
+        "n_train_total": 12893,
+        "n_train_used": 6446,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.5/brats_wt/biomedclip/seed_42.json",
+        "train_frac": 0.5
+      },
+      {
+        "fm": "clip_vitl14",
+        "mean_dice": 0.7017161250114441,
+        "n_train_total": 12893,
+        "n_train_used": 6446,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.5/brats_wt/clip_vitl14/seed_42.json",
+        "train_frac": 0.5
+      },
+      {
+        "fm": "dinov2_vitb14",
+        "mean_dice": 0.7511395215988159,
+        "n_train_total": 12893,
+        "n_train_used": 6446,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.5/brats_wt/dinov2_vitb14/seed_42.json",
+        "train_frac": 0.5
+      },
+      {
+        "fm": "efficientnet_b0",
+        "mean_dice": 0.435527503490448,
+        "n_train_total": 12893,
+        "n_train_used": 6446,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.5/brats_wt/efficientnet_b0/seed_42.json",
+        "train_frac": 0.5
+      },
+      {
+        "fm": "resnet50",
+        "mean_dice": 0.4988390803337097,
+        "n_train_total": 12893,
+        "n_train_used": 6446,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac0.5/brats_wt/resnet50/seed_42.json",
+        "train_frac": 0.5
+      },
+      {
+        "fm": "biomedclip",
+        "mean_dice": 0.7135880589485168,
+        "n_train_total": 12893,
+        "n_train_used": 12893,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac1.0/brats_wt/biomedclip/seed_42.json",
+        "train_frac": 1.0
+      },
+      {
+        "fm": "clip_vitl14",
+        "mean_dice": 0.6894879341125488,
+        "n_train_total": 12893,
+        "n_train_used": 12893,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac1.0/brats_wt/clip_vitl14/seed_42.json",
+        "train_frac": 1.0
+      },
+      {
+        "fm": "dinov2_vitb14",
+        "mean_dice": 0.7369932532310486,
+        "n_train_total": 12893,
+        "n_train_used": 12893,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac1.0/brats_wt/dinov2_vitb14/seed_42.json",
+        "train_frac": 1.0
+      },
+      {
+        "fm": "efficientnet_b0",
+        "mean_dice": 0.45828109979629517,
+        "n_train_total": 12893,
+        "n_train_used": 12893,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac1.0/brats_wt/efficientnet_b0/seed_42.json",
+        "train_frac": 1.0
+      },
+      {
+        "fm": "resnet50",
+        "mean_dice": 0.48594924807548523,
+        "n_train_total": 12893,
+        "n_train_used": 12893,
+        "seed": 42,
+        "source_file": "per_case_dice_m19/frac1.0/brats_wt/resnet50/seed_42.json",
+        "train_frac": 1.0
+      }
+    ],
+    "note": "M19 is an accuracy/saturation diagnostic only; with one seed per FM it is not a within-vs-cross dependence estimator.",
+    "per_fraction": [
+      {
+        "max_dice": 0.7208873629570007,
+        "mean_dice": 0.5788410246372223,
+        "min_dice": 0.4176260530948639,
+        "n_cells": 5,
+        "train_frac": 0.1
+      },
+      {
+        "max_dice": 0.7504384517669678,
+        "mean_dice": 0.6214763104915619,
+        "min_dice": 0.45539921522140503,
+        "n_cells": 5,
+        "train_frac": 0.25
+      },
+      {
+        "max_dice": 0.7511395215988159,
+        "mean_dice": 0.6220032811164856,
+        "min_dice": 0.435527503490448,
+        "n_cells": 5,
+        "train_frac": 0.5
+      },
+      {
+        "max_dice": 0.7369932532310486,
+        "mean_dice": 0.6168599188327789,
+        "min_dice": 0.45828109979629517,
+        "n_cells": 5,
+        "train_frac": 1.0
+      }
+    ],
+    "pool": "5-FM completed-cache subset, seed 42",
+    "protocol": "Cache-based single-seed training-size sweep over the five BraTS foreground FMs with completed feature caches.",
+    "task": "brats_wt"
+  },
+  "m20_multimodal": {
+    "n_subjects": 324,
+    "n_test": 3228,
+    "per_fm": [
+      {
+        "fm": "biomedclip",
+        "max_dice": 0.7391590752694848,
+        "mean_dice": 0.7125059530759581,
+        "min_dice": 0.6692081126199788,
+        "n_seeds": 4
+      },
+      {
+        "fm": "clip_vitl14",
+        "max_dice": 0.6919746823873443,
+        "mean_dice": 0.686235273100217,
+        "min_dice": 0.68233726632232,
+        "n_seeds": 4
+      },
+      {
+        "fm": "dinov2_vitb14",
+        "max_dice": 0.7213692126257283,
+        "mean_dice": 0.7027282053286905,
+        "min_dice": 0.6748753566544978,
+        "n_seeds": 4
+      },
+      {
+        "fm": "dinov2_vits14",
+        "max_dice": 0.7136707016525968,
+        "mean_dice": 0.7017188740926404,
+        "min_dice": 0.6898616953135371,
+        "n_seeds": 4
+      },
+      {
+        "fm": "resnet50",
+        "max_dice": 0.4731932698880352,
+        "mean_dice": 0.4604972844335118,
+        "min_dice": 0.4387010051711616,
+        "n_seeds": 4
+      }
+    ],
+    "pool": "5-FM x 4-seed (20 members)",
+    "protocol": "BraTS 2024 GLI 2D multimodal RGB derivative: R=t1c, G=t2w, B=t2f/FLAIR; same subject-level split and top-10 foreground-area slice selection as brats_wt.",
+    "source_files": [
+      "per_case_dice/brats_wt_multimodal/biomedclip/seed_42.json",
+      "per_case_dice/brats_wt_multimodal/biomedclip/seed_43.json",
+      "per_case_dice/brats_wt_multimodal/biomedclip/seed_44.json",
+      "per_case_dice/brats_wt_multimodal/biomedclip/seed_45.json",
+      "per_case_dice/brats_wt_multimodal/clip_vitl14/seed_42.json",
+      "per_case_dice/brats_wt_multimodal/clip_vitl14/seed_43.json",
+      "per_case_dice/brats_wt_multimodal/clip_vitl14/seed_44.json",
+      "per_case_dice/brats_wt_multimodal/clip_vitl14/seed_45.json",
+      "per_case_dice/brats_wt_multimodal/dinov2_vitb14/seed_42.json",
+      "per_case_dice/brats_wt_multimodal/dinov2_vitb14/seed_43.json",
+      "per_case_dice/brats_wt_multimodal/dinov2_vitb14/seed_44.json",
+      "per_case_dice/brats_wt_multimodal/dinov2_vitb14/seed_45.json",
+      "per_case_dice/brats_wt_multimodal/dinov2_vits14/seed_42.json",
+      "per_case_dice/brats_wt_multimodal/dinov2_vits14/seed_43.json",
+      "per_case_dice/brats_wt_multimodal/dinov2_vits14/seed_44.json",
+      "per_case_dice/brats_wt_multimodal/dinov2_vits14/seed_45.json",
+      "per_case_dice/brats_wt_multimodal/resnet50/seed_42.json",
+      "per_case_dice/brats_wt_multimodal/resnet50/seed_43.json",
+      "per_case_dice/brats_wt_multimodal/resnet50/seed_44.json",
+      "per_case_dice/brats_wt_multimodal/resnet50/seed_45.json"
+    ],
+    "task": "brats_wt_multimodal",
+    "within_cross_case": {
+      "cross": 0.6544852314975087,
+      "gap": 0.24938061459941718,
+      "gap_ci95_case": [
+        0.2375291460474496,
+        0.2623631602219765
+      ],
+      "n_cross_pairs": 144,
+      "n_within_pairs": 46,
+      "within": 0.9038658460969259
+    },
+    "within_cross_case_cluster_bootstrap": {
+      "cross": 0.6544852314975087,
+      "gap": 0.24938061459941718,
+      "gap_ci95_cluster_bootstrap": [
+        0.22051924436942208,
+        0.28132884648606954
+      ],
+      "n_subjects": 324,
+      "within": 0.9038658460969259
+    },
+    "within_cross_subject_aggregated": {
+      "cross": 0.772117411326718,
+      "gap": 0.17406059191643475,
+      "gap_ci95_subject_bootstrap": [
+        0.1452141236517485,
+        0.20594108705135278
+      ],
+      "n_cross_pairs": 144,
+      "n_within_pairs": 46,
+      "within": 0.9461780032431527
+    }
+  },
+  "schema_version": "late_brats_summaries_v1"
+}

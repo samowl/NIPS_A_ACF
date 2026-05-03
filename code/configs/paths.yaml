@@ -1,0 +1,10 @@
+# Raw dataset root. Override with the FMPOOL_DATA_ROOT env var.
+# Default is an example path; set FMPOOL_DATA_ROOT for your machine.
+data_root: data/raw
+
+# Per-task sub-paths, relative to data_root.
+datasets:
+  kvasir: Kvasir-SEG
+  acdc: ACDC
+  brats: brats2024_gli
+  riga: RIGA/RIGAPlus
