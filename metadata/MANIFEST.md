@@ -44,6 +44,7 @@ repository. The artifact is organized around `code/`, `paper/`,
 | `code/scripts/compute_cross_checkpoint_family.py` | CPU-only diagnostic scorer that separates same-bundle seed, same-family cross-checkpoint, and cross-family correlations. |
 | `code/scripts/compute_quality_controlled_pairs.py` | CPU-only pair-level diagnostic scorer controlling correlation for marginal quality and variance features. |
 | `code/scripts/compute_item_difficulty_robustness.py` | CPU-only all-row item-difficulty residualisation scorer. |
+| `code/scripts/compute_failure_event_summary.py` | CPU-only five-task binary failure-event same/cross diagnostic scorer. |
 | `code/scripts/compute_distshift.py` | CPU-only RIGA ID/MESSIDOR fixed-pool distribution-shift scorer. |
 | `code/scripts/compute_tau_sweep.py` | CPU-only appendix conditional-recovery tau-sweep scorer. |
 | `code/scripts/compute_threshold_table.py` | CPU-only RIGA Cup empirical-threshold failure-correlation scorer. |
@@ -75,7 +76,7 @@ All paper-table primary rows are generated from `results/_merged/`.
 | `results/_merged/subject_level/*.json` | 2 JSONs | ACDC/BraTS patient-or-subject cluster sensitivity. |
 | `results/_merged/calibration_split/*.json` | 5 JSONs | Split-half sensitivity only; not the primary protocol. |
 | `results/_merged/nnunet/*.json` | 3 JSONs | Released nnU-Net v2 task-level 2D/3D complement summaries used as scope-boundary evidence. |
-| `results/_merged/diagnostics/` | 27 JSONs | Selected aggregate JSONs for secondary pixel-error, matched-lift, architecture, same-family cross-checkpoint, quality-controlled pair regression, item-difficulty, distribution-shift, tau-sweep, threshold, M15 split-reslicing, held-out, MedSAM-probe, and estimator-sensitivity diagnostics. Raw masks, NPZ traces, and full prediction caches are not redistributed. |
+| `results/_merged/diagnostics/` | 28 JSONs | Selected aggregate JSONs for secondary pixel-error, matched-lift, architecture, same-family cross-checkpoint, quality-controlled pair regression, item-difficulty, binary failure-event, distribution-shift, tau-sweep, threshold, M15 split-reslicing, held-out, MedSAM-probe, and estimator-sensitivity diagnostics. Raw masks, NPZ traces, and full prediction caches are not redistributed. |
 | `results/_merged/per_case_dice_heldout_11fm/` | 220 JSONs | Released held-out stress-test per-case Dice traces consumed by `compute_heldout_11fm_summary.py`. |
 | `results/_merged/paper_table.json` | 1 JSON | Consolidated table-ready primary rows. |
 | `results/_merged/provenance_summary.json` | 1 JSON | Task-level source counts, case units, cluster units, and analytic pools. |
@@ -219,6 +220,15 @@ PYTHONPATH=code/src python3 code/scripts/compute_item_difficulty_robustness.py \
   --results-root results/_merged \
   --out "$OUT_DIR/item_difficulty_robustness.json" \
   --n-boot 2000 --seed 0
+```
+
+The binary failure-event diagnostic is recomputed by:
+
+```bash
+PYTHONPATH=code/src python3 code/scripts/compute_failure_event_summary.py \
+  --results-root results/_merged \
+  --out "$OUT_DIR/failure_event_summary.json" \
+  --n-boot 1000 --seed 0
 ```
 
 The distribution-shift, tau-sweep, threshold, M15 fold-reslicing, and held-out

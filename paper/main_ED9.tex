@@ -37,7 +37,7 @@
 \maketitle
 
 \begin{abstract}
-Medical segmentation ensembles are often treated as providing complementary failure coverage, yet many contemporary pools are built from repeated uses of the same pretrained encoder bundles, input statistics, and training recipes. We provide an E\&D audit protocol for this setting: measure case-level co-failure by per-case Dice-score correlation, separate same-bundle/recipe pairs from cross-bundle/family pairs, and release the traces needed to recompute the audit. Across five primary task rows (Kvasir polyp, ACDC LV, BraTS foreground, RIGA Cup, RIGA Disc), a source pool of up to 11 pretrained encoder bundles $\times$ 4 decoder seeds yields same-vs-cross Pearson gaps of $\Delta=0.261$--$0.638$ after a Dice $\geq0.30$ functional floor; all paired case and hierarchical bootstrap intervals exclude zero. The result remains positive under floor sweeps, ICC(A,1), leave-one-out summaries, subject-level ACDC/BraTS checks, quality-controlled pair regressions, and cross-fitted item-difficulty residualisation. The practical implication is that extra decoder seeds or near-duplicate frozen-encoder bundles should not be counted as independent failure evidence without an in-domain co-failure audit. Secondary pixel-error, lift, same-architecture-family ViT / different-pretraining, same-family cross-checkpoint, and same-backbone diagnostics locate where the dependence appears, while leaving causal separation of architecture, pretraining, and recipe outside the supported claim. The artifact includes per-case Dice traces, summary JSONs, metadata, hashes, scorer code, and selected diagnostic JSONs allowed by upstream redistribution constraints.
+Medical segmentation ensembles are often treated as providing complementary failure coverage, yet many contemporary pools are built from repeated uses of the same pretrained encoder bundles, input statistics, and training recipes. We provide an E\&D audit protocol for this setting: measure case-level co-failure by per-case Dice-score correlation, separate same-bundle/recipe pairs from cross-bundle/family pairs, and release the traces needed to recompute the audit. Across five primary task rows (Kvasir polyp, ACDC LV, BraTS foreground, RIGA Cup, RIGA Disc), a source pool of up to 11 pretrained encoder bundles $\times$ 4 decoder seeds yields same-vs-cross Pearson gaps of $\Delta=0.261$--$0.638$ after a Dice $\geq0.30$ functional floor; all paired case and hierarchical bootstrap intervals exclude zero. The result remains positive under floor sweeps, calibration-selected pools, binary failure-event thresholds, ICC(A,1), subject-level ACDC/BraTS checks, quality-controlled pair regressions, and cross-fitted item-difficulty residualisation. The practical implication is that extra decoder seeds or near-duplicate frozen-encoder bundles should not be counted as independent failure evidence without an in-domain co-failure audit. Secondary pixel-error, lift, same-architecture-family ViT / different-pretraining, same-family cross-checkpoint, and same-backbone diagnostics locate where the dependence appears, while leaving causal separation of architecture, pretraining, and recipe outside the supported claim. The artifact includes per-case Dice traces, summary JSONs, metadata, hashes, scorer code, and selected diagnostic JSONs allowed by upstream redistribution constraints.
 \end{abstract}
 
 \section{Introduction}
@@ -105,27 +105,27 @@ Our primary contribution is a reusable E\&D audit protocol and released primary 
   \label{fig:hero}
 \end{figure}
 
-Across four imaging domains and five task rows, same-group per-case Dice correlation is high ($0.834$--$0.959$) while the Table-1 cross group is lower ($0.232$--$0.697$). Every case-level CI excludes zero, and the more conservative hierarchical bootstrap remains positive. Table~\ref{tab:main-robustness} summarizes three main-text sensitivity checks: subject aggregation for slice-derived rows, quality-controlled pair regression, and distinct-checkpoint same-family decomposition.
+Across four imaging domains and five task rows, same-group per-case Dice correlation is high ($0.834$--$0.959$) while the Table-1 cross group is lower ($0.232$--$0.697$). Every case-level CI excludes zero, and the more conservative hierarchical bootstrap remains positive. Table~\ref{tab:main-robustness} summarizes four main-text sensitivity checks: a calibration-selected functional pool evaluated on disjoint cases, a binary failure-event readout at the empirical $P_{33}$ threshold, quality-controlled pair regression, and distinct-checkpoint same-family decomposition.
 
 \begin{table}[h]
-  \caption{\textbf{Main robustness checks for the primary rows.} Quality-control $\beta_{\mathrm{same}}$ is the same-group coefficient in a pair-level OLS diagnostic controlling for pair mean Dice, absolute mean-Dice difference, average per-case variance, and absolute variance difference. Subject aggregation applies only to slice-derived ACDC/BraTS rows. Expanded-grid xckpt--cross is the same-family cross-checkpoint diagnostic from Appendix~\ref{app:cross-checkpoint}, not the Table~\ref{tab:main} analytic-pool cross-family stratum. All intervals are case-bootstrap CIs.}
+  \caption{\textbf{Main robustness checks for the primary rows.} Cal.-split $\Delta$ selects functional bundles on a deterministic calibration subset and evaluates the same/cross gap on disjoint cases. $P_{33}$ fail $\phi$ gap is the same/cross gap in binary failure-event correlation at the empirical 33rd percentile of post-floor model-case Dice. Quality-control $\beta_{\mathrm{same}}$ is the same-group coefficient in a pair-level OLS diagnostic controlling for marginal quality and variance. Expanded-grid xckpt--cross is the same-family cross-checkpoint diagnostic from Appendix~\ref{app:cross-checkpoint}, not the Table~\ref{tab:main} analytic-pool cross-family stratum.}
   \label{tab:main-robustness}
   \centering\scriptsize
-  \setlength{\tabcolsep}{3.0pt}
-  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccc}
+  \setlength{\tabcolsep}{2.4pt}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccc}
     \toprule
-    Task & Quality-control $\beta_{\mathrm{same}}$ & Subject-aggregated $\Delta$ & Expanded-grid xckpt--cross \\
+    Task & Cal.-split $\Delta$ & $P_{33}$ fail $\phi$ gap & QC $\beta_{\mathrm{same}}$ & Xckpt--cross \\
     \midrule
-    Kvasir polyp & 0.169 [0.124, 0.220] & -- & 0.080 [0.043, 0.122] \\
-    ACDC LV & 0.208 [0.175, 0.242] & 0.262 [0.151, 0.413] & 0.134 [0.113, 0.155] \\
-    BraTS foreground & 0.224 [0.210, 0.239] & 0.214 [0.182, 0.251] & 0.093 [0.085, 0.100] \\
-    RIGA Cup & 0.372 [0.297, 0.456] & -- & 0.267 [0.204, 0.332] \\
-    RIGA Disc & 0.582 [0.495, 0.639] & -- & 0.227 [0.149, 0.293] \\
+    Kvasir polyp & 0.250 & 0.329 & 0.169 & 0.080 \\
+    ACDC LV & 0.350 & 0.386 & 0.208 & 0.134 \\
+    BraTS foreground & 0.307 & 0.413 & 0.224 & 0.093 \\
+    RIGA Cup & 0.478 & 0.453 & 0.372 & 0.267 \\
+    RIGA Disc & 0.630 & 0.578 & 0.582 & 0.227 \\
     \bottomrule
   \end{tabular*}
 \end{table}
 
-\textbf{Estimator robustness.} A released CPU-only sensitivity file (\texttt{results/\_merged/diagnostics/audit\_sensitivity.json}) recomputes the primary Pearson gap under a functional-floor sweep, an ICC(A,1) alternative, leave-one-bundle/task-out summaries, and a random family-label permutation stress test. A second released diagnostic (\texttt{quality\_controlled\_pairs.json}) fits the pair-level OLS check in Table~\ref{tab:main-robustness}; the same-group coefficient stays positive on all five rows ($0.169$--$0.582$). At the paper's Dice${\geq}0.30$ floor the five-task mean gap is $0.401$ (leave-one-task-out means $0.342$--$0.437$); every task remains positive at the stricter Dice${\geq}0.40$ floor where the pool is non-empty, ICC gaps are larger than Pearson gaps, and in $1000$ random-label permutations the observed row gap is exceeded with rank fraction $0.001$ (Appendix~\ref{app:audit-sensitivity}). Because family labels are not a clean exchangeable sampling design, we treat these as estimator-stability evidence, not as independent experiments or population-level $p$-values.
+\textbf{Estimator robustness.} A released CPU-only sensitivity file (\texttt{results/\_merged/diagnostics/audit\_sensitivity.json}) recomputes the primary Pearson gap under a functional-floor sweep, an ICC(A,1) alternative, leave-one-bundle/task-out summaries, and a random family-label permutation stress test. The split-half calibration diagnostic selects the functional pool on held-out calibration units and evaluates on disjoint units; the five evaluation gaps remain positive ($0.250$--$0.630$). A binary failure-event diagnostic (\texttt{failure\_event\_summary.json}) reduces the concern that the result is only a continuous-Dice-trace correlation: at the empirical $P_{33}$ failure threshold, same--cross event-correlation gaps are $0.329$--$0.578$, and all case-bootstrap intervals exclude zero. A third released diagnostic (\texttt{quality\_controlled\_pairs.json}) fits the pair-level OLS check in Table~\ref{tab:main-robustness}; the same-group coefficient stays positive on all five rows ($0.169$--$0.582$). At the paper's Dice${\geq}0.30$ floor the five-task mean gap is $0.401$ (leave-one-task-out means $0.342$--$0.437$); every task remains positive at the stricter Dice${\geq}0.40$ floor where the pool is non-empty, ICC gaps are larger than Pearson gaps, and in $1000$ random-label permutations the observed row gap is exceeded with rank fraction $0.001$ (Appendix~\ref{app:audit-sensitivity}). Because family labels are not a clean exchangeable sampling design, we treat these as estimator-stability evidence, not as independent experiments or population-level $p$-values.
 
 \textbf{Spatial and lift readouts.} Figure~\ref{fig:hero} explains why a case-level audit is needed: visually similar failures and joint-threshold failures can persist even when members have separate decoder seeds. In the released aggregate diagnostics, same-family pairwise error-mask Dice is $0.80$--$0.87$ versus $0.32$--$0.40$ cross-family on RIGA Cup/Disc ($N{=}224$), ACDC LV ($N{=}90$), and Kvasir ($N{=}300$) rows (Fig.~\ref{fig:hero}b, Appendix~\ref{sec:pixerror-app}, and Appendix~\ref{sec:kvasir-app}), and matched-size diverse pools have lower lift than same-bundle pools in selected joint-failure diagnostics (Fig.~\ref{fig:hero}c; Appendix~\ref{sec:matched-app}). These readouts are released only as aggregate JSONs, not as raw masks or full prediction caches, so sparse rare-event rows are descriptive rather than headline statistics.
 
@@ -197,7 +197,7 @@ The strongest caution is the full-pipeline boundary. The nnU-Net v2 2D/3D comple
     Evidence role & Bundle support & Interpretation \\
     \midrule
     Primary frozen-encoder audit & Per-case Dice, \texttt{paper\_table.json}, \texttt{within\_cross/*.json} & Primary main claim: five task rows give $\Delta=0.261$--$0.638$ for frozen/light-adaptation 2D pretrained-encoder pools under the Table-1 grouping. \\
-    Estimator robustness & \texttt{audit\_sensitivity.json}; \texttt{quality\_controlled\_pairs.json}; \texttt{item\_difficulty\_robustness.json} & Stability checks only: floor/ICC/leave-one-out/permutation, pair-quality controls, and cross-fitted item-difficulty residualisation; no new training evidence. \\
+    Estimator and event robustness & \texttt{audit\_sensitivity.json}; \texttt{quality\_controlled\_pairs.json}; \texttt{failure\_event\_summary.json}; \texttt{item\_difficulty\_robustness.json} & Stability checks only: floor/ICC/leave-one-out/permutation, pair-quality controls, binary failure-event readouts, and cross-fitted item-difficulty residualisation; no new training evidence. \\
     Architecture/pretraining and cross-checkpoint diagnostics & \texttt{r7\_arch\_confound\_analysis.json}; \texttt{cross\_checkpoint\_family.json} & Same-architecture-family ViT / different-pretraining and same-family cross-checkpoint rows lie between seed floor and primary cross-family reference; unbundled cross-architecture probes are labelled separately and not used as support. \\
     Same-backbone levers & Released M3/M4/M22 traces plus selected aggregate diagnostic summaries; unbundled probes are explicitly labelled and not used as support & These weaken simple alternatives but are heterogeneous and not dose-matched causal effects. \\
     Full-pipeline complements & Released nnU-Net JSONs; unbundled 3D segmentation-architecture pilot reported only as appendix scope context & Boundary evidence: nnU-Net complements give much smaller gaps, while the 3D pilot is not included in the submission artifact; do not generalize the 2D frozen-encoder result to all segmentation ensembles. \\
@@ -247,10 +247,11 @@ explicit without requiring readers to reconstruct it from appendix provenance.
     \texttt{per\_case\_dice/*.json} &
     \texttt{compute\_all.py}; case IDs and per-case Dice are included,
     raw images and masks are not. \\
-    Subject, floor, ICC, permutation, and quality-control robustness &
+    Subject, floor, ICC, permutation, event, and quality-control robustness &
     \texttt{subject\_level/*.json}, \texttt{audit\_sensitivity.json},
-    \texttt{quality\_controlled\_pairs.json} &
+    \texttt{failure\_event\_summary.json}, \texttt{quality\_controlled\_pairs.json} &
     \texttt{compute\_all.py}, \texttt{compute\_audit\_sensitivity.py},
+    \texttt{compute\_failure\_event\_summary.py},
     \texttt{compute\_quality\_controlled\_pairs.py}; these are estimator
     checks, not new training runs. \\
     Item-difficulty and cross-checkpoint diagnostics &
@@ -270,35 +271,12 @@ explicit without requiring readers to reconstruct it from appendix provenance.
   \end{tabular}
 \end{table}
 
-The artifact reproduction script recomputes the primary scorer and the CPU-only
-appendix scorers used by the main-text robustness checks, including the
-item-difficulty diagnostic. Separately, the SHA-256 manifest covers the
-released artifact files, and the metadata files document the released trace/code
-artifact rather than a standalone dataset release. These mechanics do not make
-the study fully reproducible from raw data; rather, they make the released
-evidence auditable at the level at which the claims are made.
-
-\textbf{Audit contract.} The released trace level is also the unit at which the
-paper's claims should be checked. The primary claim is falsified or confirmed by
-recomputing the case-aligned same/cross bundle correlations, the functional
-pools, and the reported intervals from the listed per-case Dice files. Numbers
-that are not supported at that level are explicitly labelled diagnostic or
-scope-boundary evidence instead of being promoted to Table~\ref{tab:main}.
-This convention makes the benchmark useful even when upstream data-use
-agreements prevent redistribution of raw scans, masks, checkpoints, or dense
-prediction caches.
-
-\textbf{What future audits should report.} The practical reporting unit is not
-only mean Dice, but the dependence structure induced by the pool construction:
-which bundles are counted as same, which pairs are counted as cross, which
-traces survive the functional floor, and whether the same-vs-cross gap remains
-under subject aggregation or item-difficulty residualisation. A future pool can
-therefore reuse this protocol without adopting our exact encoders: report the
-case alignment, pair taxonomy, marginal quality floor, uncertainty intervals,
-and remaining non-released components. The resulting number is not a universal
-threshold for safe deployment; it is a compact audit readout of whether extra
-decoder seeds or near-duplicate pretrained bundles are being counted as
-independent failure coverage.
+The artifact reproduction script recomputes the primary scorer and CPU-only
+appendix scorers used by the main-text robustness checks. The SHA-256 manifest
+covers the released files, and the metadata describes the trace/code artifact
+rather than a standalone raw dataset. These mechanics do not make the study
+fully reproducible from raw data; they make the released evidence auditable at
+the level at which the claims are made.
 
 \newpage
 {\small

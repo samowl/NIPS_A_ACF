@@ -37,8 +37,9 @@ Additional audit outputs:
   on RIGA Disc, ACDC LV, and a staged 400-image ISIC-2018 diagnostic split.
 - `results/_merged/diagnostics/`: selected aggregate JSONs for secondary
   pixel-error, matched-lift, architecture, difficulty, held-out, MedSAM-probe,
-  quality-controlled pair regression, item-difficulty, distribution-shift,
-  tau-sweep, threshold, M15 split-reslicing, and estimator-sensitivity diagnostics.
+  quality-controlled pair regression, item-difficulty, binary failure-event,
+  distribution-shift, tau-sweep, threshold, M15 split-reslicing, and
+  estimator-sensitivity diagnostics.
 - `results/_merged/per_case_dice_heldout_11fm/`: released held-out stress-test
   per-case Dice traces consumed by `compute_heldout_11fm_summary.py`.
 - `results/_merged/provenance_summary.json`: per-task source-file counts and
@@ -208,6 +209,15 @@ PYTHONPATH=code/src python3 code/scripts/compute_item_difficulty_robustness.py \
   --n-boot 2000 --seed 0
 ```
 
+The five-task binary failure-event diagnostic is recomputed by:
+
+```bash
+PYTHONPATH=code/src python3 code/scripts/compute_failure_event_summary.py \
+  --results-root results/_merged \
+  --out "$OUT_DIR/failure_event_summary.json" \
+  --n-boot 1000 --seed 0
+```
+
 For a single artifact smoke test covering the primary scorer and released
 appendix summary scorers, run:
 
@@ -259,6 +269,7 @@ JSON files drive the paper tables.
 | Functional-floor sweep, ICC(A,1), leave-one-out, permutation stress test | `results/_merged/diagnostics/audit_sensitivity.json` | `code/scripts/compute_audit_sensitivity.py` |
 | Quality-controlled pair regression in the main robustness table | `results/_merged/diagnostics/quality_controlled_pairs.json` | `code/scripts/compute_quality_controlled_pairs.py` |
 | Cross-fitted item-difficulty residualisation | `results/_merged/diagnostics/item_difficulty_robustness.json` | `code/scripts/compute_item_difficulty_robustness.py` |
+| Binary failure-event same/cross diagnostic | `results/_merged/diagnostics/failure_event_summary.json` | `code/scripts/compute_failure_event_summary.py` |
 | Same-family cross-checkpoint decomposition | `results/_merged/diagnostics/cross_checkpoint_family.json` and expanded `per_case_dice/` traces | `code/scripts/compute_cross_checkpoint_family.py` |
 | Distribution-shift diagnostic | `results/_merged/diagnostics/distshift_riga_messidor.json`, `results/_merged/per_case_dice/riga_cup_ood_messidor/*.json` | `code/scripts/compute_distshift.py` |
 | Tau-sweep and RIGA threshold diagnostics | `results/_merged/diagnostics/tau_sweep.json`, `results/_merged/diagnostics/threshold_table_riga_cup.json` | `code/scripts/compute_tau_sweep.py`; `code/scripts/compute_threshold_table.py` |

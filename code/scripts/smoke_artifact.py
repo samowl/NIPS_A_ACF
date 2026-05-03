@@ -369,6 +369,28 @@ def main(argv: list[str] | None = None) -> int:
         _run(
             [
                 sys.executable,
+                "code/scripts/compute_failure_event_summary.py",
+                "--results-root",
+                str(results_root),
+                "--out",
+                str(tmp / "failure_event_summary.json"),
+                "--n-boot",
+                "1000",
+                "--seed",
+                "0",
+            ],
+            root,
+            tmp,
+        )
+        _compare_file(
+            root,
+            "results/_merged/diagnostics/failure_event_summary.json",
+            tmp / "failure_event_summary.json",
+        )
+
+        _run(
+            [
+                sys.executable,
                 "code/scripts/compute_m15_cv_summary.py",
                 "--results-root",
                 str(results_root),

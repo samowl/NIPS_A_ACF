@@ -1,0 +1,783 @@
+{
+  "bootstrap_B": 1000,
+  "bootstrap_seed": 0,
+  "description": "Binary failure-event same/cross diagnostic computed from released per-case Dice traces after the Table-1 functional floor.",
+  "generated_at": "2026-05-03T20:21:22Z",
+  "percentiles": [
+    25,
+    33,
+    50
+  ],
+  "results_root": "results/_merged",
+  "same_group_rule": "same FM plus DINOv2-B/S, matching the Table-1 grouping",
+  "schema_version": "fmpool_failure_event_summary_v1",
+  "summary": {
+    "all_p33_gap_cis_exclude_zero": true,
+    "p33_gap_range": [
+      0.3287043489786947,
+      0.5778095541162561
+    ],
+    "p33_joint_fail_ratio_range": [
+      1.2901365130468307,
+      2.075339250184436
+    ]
+  },
+  "task_rows": {
+    "acdc_lv": {
+      "fms_after_floor": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitl14",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet50"
+      ],
+      "functional_floor": 0.3,
+      "n_cases": 361,
+      "n_members_after_floor": 40,
+      "rows": [
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 1009
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.35597551993879334,
+            0.43181912097323055
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.3938056788763584,
+            1.6316599606604119
+          ],
+          "cross_fail_phi": 0.5038355931035192,
+          "cross_joint_fail_rate": 0.14037710904054396,
+          "gap_fail_phi": 0.3930747891033385,
+          "joint_fail_rate_ratio": 1.491930296646426,
+          "n_cross_pairs": 704,
+          "n_cross_valid_phi_pairs": 704,
+          "n_same_pairs": 76,
+          "n_same_valid_phi_pairs": 76,
+          "percentile": 25,
+          "same_fail_phi": 0.8969103822068577,
+          "same_joint_fail_rate": 0.20943286193322644,
+          "threshold": 0.358223594725132
+        },
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 1009
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.3542816578157292,
+            0.4183655907690017
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.3169027385084386,
+            1.4921793329238435
+          ],
+          "cross_fail_phi": 0.4889573256748958,
+          "cross_joint_fail_rate": 0.19915874464870312,
+          "gap_fail_phi": 0.3863129312244399,
+          "joint_fail_rate_ratio": 1.3903429917280605,
+          "n_cross_pairs": 704,
+          "n_cross_valid_phi_pairs": 704,
+          "n_same_pairs": 76,
+          "n_same_valid_phi_pairs": 76,
+          "percentile": 33,
+          "same_fail_phi": 0.8752702568993357,
+          "same_joint_fail_rate": 0.27689896486368276,
+          "threshold": 0.5479132229089737
+        },
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 1009
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.4009954519019746,
+            0.4655888624068396
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.2285715846943808,
+            1.3242744108196998
+          ],
+          "cross_fail_phi": 0.4206494564041869,
+          "cross_joint_fail_rate": 0.3405352870813397,
+          "gap_fail_phi": 0.43467648563353617,
+          "joint_fail_rate_ratio": 1.271978374499424,
+          "n_cross_pairs": 704,
+          "n_cross_valid_phi_pairs": 704,
+          "n_same_pairs": 76,
+          "n_same_valid_phi_pairs": 76,
+          "percentile": 50,
+          "same_fail_phi": 0.855325942037723,
+          "same_joint_fail_rate": 0.4331535209214171,
+          "threshold": 0.71856290102005
+        }
+      ],
+      "source_files": [
+        "per_case_dice/acdc_lv/biomedclip/seed_42.json",
+        "per_case_dice/acdc_lv/biomedclip/seed_43.json",
+        "per_case_dice/acdc_lv/biomedclip/seed_44.json",
+        "per_case_dice/acdc_lv/biomedclip/seed_45.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_42.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_43.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_44.json",
+        "per_case_dice/acdc_lv/clip_vitb16/seed_45.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_42.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_43.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_44.json",
+        "per_case_dice/acdc_lv/clip_vitl14/seed_45.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_42.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_43.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_44.json",
+        "per_case_dice/acdc_lv/convnext_tiny/seed_45.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_42.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_43.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_44.json",
+        "per_case_dice/acdc_lv/deit_vitb16/seed_45.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_42.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_43.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_44.json",
+        "per_case_dice/acdc_lv/dinov2_vitb14/seed_45.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_42.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_43.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_44.json",
+        "per_case_dice/acdc_lv/dinov2_vits14/seed_45.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_42.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_43.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_44.json",
+        "per_case_dice/acdc_lv/efficientnet_b0/seed_45.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_42.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_43.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_44.json",
+        "per_case_dice/acdc_lv/mae_vitb16/seed_45.json",
+        "per_case_dice/acdc_lv/resnet18/seed_42.json",
+        "per_case_dice/acdc_lv/resnet18/seed_43.json",
+        "per_case_dice/acdc_lv/resnet18/seed_44.json",
+        "per_case_dice/acdc_lv/resnet18/seed_45.json",
+        "per_case_dice/acdc_lv/resnet50/seed_42.json",
+        "per_case_dice/acdc_lv/resnet50/seed_43.json",
+        "per_case_dice/acdc_lv/resnet50/seed_44.json",
+        "per_case_dice/acdc_lv/resnet50/seed_45.json"
+      ],
+      "task": "acdc_lv",
+      "threshold_definition": "empirical percentile over all model-case Dice values in the post-floor functional task pool"
+    },
+    "brats_wt": {
+      "fms_after_floor": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitl14",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet50"
+      ],
+      "functional_floor": 0.3,
+      "n_cases": 3228,
+      "n_members_after_floor": 40,
+      "rows": [
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 2018
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.38757633089218246,
+            0.4127233848233367
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.5388316509440672,
+            1.6284411333400421
+          ],
+          "cross_fail_phi": 0.43663220657519464,
+          "cross_joint_fail_rate": 0.12814497789230594,
+          "gap_fail_phi": 0.4000358783730442,
+          "joint_fail_rate_ratio": 1.580657468657651,
+          "n_cross_pairs": 704,
+          "n_cross_valid_phi_pairs": 704,
+          "n_same_pairs": 76,
+          "n_same_valid_phi_pairs": 76,
+          "percentile": 25,
+          "same_fail_phi": 0.8366680849482389,
+          "same_joint_fail_rate": 0.20255331637644297,
+          "threshold": 0.5678592612717234
+        },
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 2018
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.40115279584965885,
+            0.42490287765468726
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.4365153393232923,
+            1.4956505916635316
+          ],
+          "cross_fail_phi": 0.42530943195882803,
+          "cross_joint_fail_rate": 0.18652442759378166,
+          "gap_fail_phi": 0.41272846473317065,
+          "joint_fail_rate_ratio": 1.4660072431295874,
+          "n_cross_pairs": 704,
+          "n_cross_valid_phi_pairs": 704,
+          "n_same_pairs": 76,
+          "n_same_valid_phi_pairs": 76,
+          "percentile": 33,
+          "same_fail_phi": 0.8380378966919987,
+          "same_joint_fail_rate": 0.2734461618730842,
+          "threshold": 0.6362124015664385
+        },
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 2018
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.4149512596262336,
+            0.4346480918084121
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.2622778724796633,
+            1.2923984731137494
+          ],
+          "cross_fail_phi": 0.40923063664038306,
+          "cross_joint_fail_rate": 0.33842329545454547,
+          "gap_fail_phi": 0.42468145347190067,
+          "joint_fail_rate_ratio": 1.2767524235836414,
+          "n_cross_pairs": 704,
+          "n_cross_valid_phi_pairs": 704,
+          "n_same_pairs": 76,
+          "n_same_valid_phi_pairs": 76,
+          "percentile": 50,
+          "same_fail_phi": 0.8339120901122837,
+          "same_joint_fail_rate": 0.4320827626687537,
+          "threshold": 0.7223767891381672
+        }
+      ],
+      "source_files": [
+        "per_case_dice/brats_wt/biomedclip/seed_42.json",
+        "per_case_dice/brats_wt/biomedclip/seed_43.json",
+        "per_case_dice/brats_wt/biomedclip/seed_44.json",
+        "per_case_dice/brats_wt/biomedclip/seed_45.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_42.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_43.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_44.json",
+        "per_case_dice/brats_wt/clip_vitb16/seed_45.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_42.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_43.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_44.json",
+        "per_case_dice/brats_wt/clip_vitl14/seed_45.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_42.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_43.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_44.json",
+        "per_case_dice/brats_wt/convnext_tiny/seed_45.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_42.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_43.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_44.json",
+        "per_case_dice/brats_wt/deit_vitb16/seed_45.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_42.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_43.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_44.json",
+        "per_case_dice/brats_wt/dinov2_vitb14/seed_45.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_42.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_43.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_44.json",
+        "per_case_dice/brats_wt/dinov2_vits14/seed_45.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_42.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_43.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_44.json",
+        "per_case_dice/brats_wt/efficientnet_b0/seed_45.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_42.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_43.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_44.json",
+        "per_case_dice/brats_wt/mae_vitb16/seed_45.json",
+        "per_case_dice/brats_wt/resnet18/seed_42.json",
+        "per_case_dice/brats_wt/resnet18/seed_43.json",
+        "per_case_dice/brats_wt/resnet18/seed_44.json",
+        "per_case_dice/brats_wt/resnet18/seed_45.json",
+        "per_case_dice/brats_wt/resnet50/seed_42.json",
+        "per_case_dice/brats_wt/resnet50/seed_43.json",
+        "per_case_dice/brats_wt/resnet50/seed_44.json",
+        "per_case_dice/brats_wt/resnet50/seed_45.json"
+      ],
+      "task": "brats_wt",
+      "threshold_definition": "empirical percentile over all model-case Dice values in the post-floor functional task pool"
+    },
+    "kvasir": {
+      "fms_after_floor": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitl14",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet18",
+        "resnet50"
+      ],
+      "functional_floor": 0.3,
+      "n_cases": 120,
+      "n_members_after_floor": 44,
+      "rows": [
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 0
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.2629817908433048,
+            0.38669381829835164
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.2466161411698042,
+            1.5607204077658057
+          ],
+          "cross_fail_phi": 0.5570140125243654,
+          "cross_joint_fail_rate": 0.1550925925925926,
+          "gap_fail_phi": 0.3222837062047972,
+          "joint_fail_rate_ratio": 1.3590098289042594,
+          "n_cross_pairs": 864,
+          "n_cross_valid_phi_pairs": 864,
+          "n_same_pairs": 82,
+          "n_same_valid_phi_pairs": 82,
+          "percentile": 25,
+          "same_fail_phi": 0.8792977187291626,
+          "same_joint_fail_rate": 0.21077235772357725,
+          "threshold": 0.5568915158510208
+        },
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 0
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.27758532300424066,
+            0.3880977887942224
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.2091892098184902,
+            1.4457915433236785
+          ],
+          "cross_fail_phi": 0.5398398546525447,
+          "cross_joint_fail_rate": 0.215991512345679,
+          "gap_fail_phi": 0.3287043489786947,
+          "joint_fail_rate_ratio": 1.2901365130468307,
+          "n_cross_pairs": 864,
+          "n_cross_valid_phi_pairs": 864,
+          "n_same_pairs": 82,
+          "n_same_valid_phi_pairs": 82,
+          "percentile": 33,
+          "same_fail_phi": 0.8685442036312394,
+          "same_joint_fail_rate": 0.2786585365853658,
+          "threshold": 0.6592763394117356
+        },
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 0
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.35048512153888817,
+            0.46282453101546084
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.1621320232419796,
+            1.311052982622277
+          ],
+          "cross_fail_phi": 0.45453234834730694,
+          "cross_joint_fail_rate": 0.35077160493827164,
+          "gap_fail_phi": 0.4093897227893898,
+          "joint_fail_rate_ratio": 1.226100672797313,
+          "n_cross_pairs": 864,
+          "n_cross_valid_phi_pairs": 864,
+          "n_same_pairs": 82,
+          "n_same_valid_phi_pairs": 82,
+          "percentile": 50,
+          "same_fail_phi": 0.8639220711366967,
+          "same_joint_fail_rate": 0.4300813008130081,
+          "threshold": 0.769371509552002
+        }
+      ],
+      "source_files": [
+        "per_case_dice/kvasir/biomedclip/seed_42.json",
+        "per_case_dice/kvasir/biomedclip/seed_43.json",
+        "per_case_dice/kvasir/biomedclip/seed_44.json",
+        "per_case_dice/kvasir/biomedclip/seed_45.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_42.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_43.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_44.json",
+        "per_case_dice/kvasir/clip_vitb16/seed_45.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_42.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_43.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_44.json",
+        "per_case_dice/kvasir/clip_vitl14/seed_45.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_42.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_43.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_44.json",
+        "per_case_dice/kvasir/convnext_tiny/seed_45.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_42.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_43.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_44.json",
+        "per_case_dice/kvasir/deit_vitb16/seed_45.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_42.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_43.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_44.json",
+        "per_case_dice/kvasir/dinov2_vitb14/seed_45.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_42.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_43.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_44.json",
+        "per_case_dice/kvasir/dinov2_vits14/seed_45.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_42.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_43.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_44.json",
+        "per_case_dice/kvasir/efficientnet_b0/seed_45.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_42.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_43.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_44.json",
+        "per_case_dice/kvasir/mae_vitb16/seed_45.json",
+        "per_case_dice/kvasir/resnet18/seed_42.json",
+        "per_case_dice/kvasir/resnet18/seed_43.json",
+        "per_case_dice/kvasir/resnet18/seed_44.json",
+        "per_case_dice/kvasir/resnet18/seed_45.json",
+        "per_case_dice/kvasir/resnet50/seed_42.json",
+        "per_case_dice/kvasir/resnet50/seed_43.json",
+        "per_case_dice/kvasir/resnet50/seed_44.json",
+        "per_case_dice/kvasir/resnet50/seed_45.json"
+      ],
+      "task": "kvasir",
+      "threshold_definition": "empirical percentile over all model-case Dice values in the post-floor functional task pool"
+    },
+    "riga_cup": {
+      "fms_after_floor": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitl14",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet50"
+      ],
+      "functional_floor": 0.3,
+      "n_cases": 95,
+      "n_members_after_floor": 36,
+      "rows": [
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 3027
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.4094609314590602,
+            0.5444736045951256
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.7672314773931246,
+            2.6921503788276517
+          ],
+          "cross_fail_phi": 0.20963720658477772,
+          "cross_joint_fail_rate": 0.08259398496240603,
+          "gap_fail_phi": 0.47253367933538215,
+          "joint_fail_rate_ratio": 2.1210741920801093,
+          "n_cross_pairs": 560,
+          "n_cross_valid_phi_pairs": 560,
+          "n_same_pairs": 70,
+          "n_same_valid_phi_pairs": 70,
+          "percentile": 25,
+          "same_fail_phi": 0.6821708859201598,
+          "same_joint_fail_rate": 0.17518796992481206,
+          "threshold": 0.5127940028905869
+        },
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 3027
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.3990812200361176,
+            0.5085549347843653
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.497449321045218,
+            1.9555286028121708
+          ],
+          "cross_fail_phi": 0.25328291511514317,
+          "cross_joint_fail_rate": 0.14390977443609024,
+          "gap_fail_phi": 0.45284963165727227,
+          "joint_fail_rate_ratio": 1.6927899686520371,
+          "n_cross_pairs": 560,
+          "n_cross_valid_phi_pairs": 560,
+          "n_same_pairs": 70,
+          "n_same_valid_phi_pairs": 70,
+          "percentile": 33,
+          "same_fail_phi": 0.7061325467724154,
+          "same_joint_fail_rate": 0.24360902255639094,
+          "threshold": 0.5750679457187653
+        },
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 3027
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.42542166672324844,
+            0.5289870638610727
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.2786478891600817,
+            1.4712984131570246
+          ],
+          "cross_fail_phi": 0.264086216478343,
+          "cross_joint_fail_rate": 0.30407894736842106,
+          "gap_fail_phi": 0.47917087437859035,
+          "joint_fail_rate_ratio": 1.3649007850652162,
+          "n_cross_pairs": 560,
+          "n_cross_valid_phi_pairs": 560,
+          "n_same_pairs": 70,
+          "n_same_valid_phi_pairs": 70,
+          "percentile": 50,
+          "same_fail_phi": 0.7432570908569334,
+          "same_joint_fail_rate": 0.4150375939849624,
+          "threshold": 0.6863156855106354
+        }
+      ],
+      "source_files": [
+        "per_case_dice/riga_cup/biomedclip/seed_42.json",
+        "per_case_dice/riga_cup/biomedclip/seed_43.json",
+        "per_case_dice/riga_cup/biomedclip/seed_44.json",
+        "per_case_dice/riga_cup/biomedclip/seed_45.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_42.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_43.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_44.json",
+        "per_case_dice/riga_cup/clip_vitb16/seed_45.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_42.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_43.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_44.json",
+        "per_case_dice/riga_cup/clip_vitl14/seed_45.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_42.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_43.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_44.json",
+        "per_case_dice/riga_cup/convnext_tiny/seed_45.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_42.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_43.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_44.json",
+        "per_case_dice/riga_cup/deit_vitb16/seed_45.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_42.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_43.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_44.json",
+        "per_case_dice/riga_cup/dinov2_vitb14/seed_45.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_42.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_43.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_44.json",
+        "per_case_dice/riga_cup/dinov2_vits14/seed_45.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_42.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_43.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_44.json",
+        "per_case_dice/riga_cup/efficientnet_b0/seed_45.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_42.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_43.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_44.json",
+        "per_case_dice/riga_cup/mae_vitb16/seed_45.json",
+        "per_case_dice/riga_cup/resnet18/seed_42.json",
+        "per_case_dice/riga_cup/resnet18/seed_43.json",
+        "per_case_dice/riga_cup/resnet18/seed_44.json",
+        "per_case_dice/riga_cup/resnet18/seed_45.json",
+        "per_case_dice/riga_cup/resnet50/seed_42.json",
+        "per_case_dice/riga_cup/resnet50/seed_43.json",
+        "per_case_dice/riga_cup/resnet50/seed_44.json",
+        "per_case_dice/riga_cup/resnet50/seed_45.json"
+      ],
+      "task": "riga_cup",
+      "threshold_definition": "empirical percentile over all model-case Dice values in the post-floor functional task pool"
+    },
+    "riga_disc": {
+      "fms_after_floor": [
+        "biomedclip",
+        "clip_vitb16",
+        "clip_vitl14",
+        "convnext_tiny",
+        "deit_vitb16",
+        "dinov2_vitb14",
+        "dinov2_vits14",
+        "efficientnet_b0",
+        "mae_vitb16",
+        "resnet18",
+        "resnet50"
+      ],
+      "functional_floor": 0.3,
+      "n_cases": 95,
+      "n_members_after_floor": 44,
+      "rows": [
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 4036
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.5199234363866274,
+            0.6950358993236165
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            2.316215030249128,
+            2.9828667832892424
+          ],
+          "cross_fail_phi": 0.12374405524450581,
+          "cross_joint_fail_rate": 0.07105263157894737,
+          "gap_fail_phi": 0.5975544013360092,
+          "joint_fail_rate_ratio": 2.6196928635953025,
+          "n_cross_pairs": 864,
+          "n_cross_valid_phi_pairs": 704,
+          "n_same_pairs": 82,
+          "n_same_valid_phi_pairs": 76,
+          "percentile": 25,
+          "same_fail_phi": 0.7212984565805151,
+          "same_joint_fail_rate": 0.18613607188703465,
+          "threshold": 0.8357824832201004
+        },
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 4036
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.5106178403087102,
+            0.6308231735354741
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.8992438624854295,
+            2.314743267466396
+          ],
+          "cross_fail_phi": 0.12549853648901202,
+          "cross_joint_fail_rate": 0.11962719298245615,
+          "gap_fail_phi": 0.5778095541162561,
+          "joint_fail_rate_ratio": 2.075339250184436,
+          "n_cross_pairs": 864,
+          "n_cross_valid_phi_pairs": 784,
+          "n_same_pairs": 82,
+          "n_same_valid_phi_pairs": 77,
+          "percentile": 33,
+          "same_fail_phi": 0.7033080906052681,
+          "same_joint_fail_rate": 0.24826700898587933,
+          "threshold": 0.8572026693820953
+        },
+        {
+          "bootstrap": {
+            "B_completed_gap": 1000,
+            "B_completed_ratio": 1000,
+            "B_requested": 1000,
+            "seed": 4036
+          },
+          "case_bootstrap_95ci_gap_fail_phi": [
+            0.5276691185079266,
+            0.6521414955878712
+          ],
+          "case_bootstrap_95ci_joint_fail_rate_ratio": [
+            1.3995997389432404,
+            1.6034652616236835
+          ],
+          "cross_fail_phi": 0.11045571877546075,
+          "cross_joint_fail_rate": 0.2651437621832359,
+          "gap_fail_phi": 0.5893206315298929,
+          "joint_fail_rate_ratio": 1.4945751516054884,
+          "n_cross_pairs": 864,
+          "n_cross_valid_phi_pairs": 864,
+          "n_same_pairs": 82,
+          "n_same_valid_phi_pairs": 82,
+          "percentile": 50,
+          "same_fail_phi": 0.6997763503053537,
+          "same_joint_fail_rate": 0.3962772785622593,
+          "threshold": 0.8907449245452881
+        }
+      ],
+      "source_files": [
+        "per_case_dice/riga_disc/biomedclip/seed_42.json",
+        "per_case_dice/riga_disc/biomedclip/seed_43.json",
+        "per_case_dice/riga_disc/biomedclip/seed_44.json",
+        "per_case_dice/riga_disc/biomedclip/seed_45.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_42.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_43.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_44.json",
+        "per_case_dice/riga_disc/clip_vitb16/seed_45.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_42.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_43.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_44.json",
+        "per_case_dice/riga_disc/clip_vitl14/seed_45.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_42.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_43.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_44.json",
+        "per_case_dice/riga_disc/convnext_tiny/seed_45.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_42.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_43.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_44.json",
+        "per_case_dice/riga_disc/deit_vitb16/seed_45.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_42.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_43.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_44.json",
+        "per_case_dice/riga_disc/dinov2_vitb14/seed_45.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_42.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_43.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_44.json",
+        "per_case_dice/riga_disc/dinov2_vits14/seed_45.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_42.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_43.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_44.json",
+        "per_case_dice/riga_disc/efficientnet_b0/seed_45.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_42.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_43.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_44.json",
+        "per_case_dice/riga_disc/mae_vitb16/seed_45.json",
+        "per_case_dice/riga_disc/resnet18/seed_42.json",
+        "per_case_dice/riga_disc/resnet18/seed_43.json",
+        "per_case_dice/riga_disc/resnet18/seed_44.json",
+        "per_case_dice/riga_disc/resnet18/seed_45.json",
+        "per_case_dice/riga_disc/resnet50/seed_42.json",
+        "per_case_dice/riga_disc/resnet50/seed_43.json",
+        "per_case_dice/riga_disc/resnet50/seed_44.json",
+        "per_case_dice/riga_disc/resnet50/seed_45.json"
+      ],
+      "task": "riga_disc",
+      "threshold_definition": "empirical percentile over all model-case Dice values in the post-floor functional task pool"
+    }
+  }
+}
