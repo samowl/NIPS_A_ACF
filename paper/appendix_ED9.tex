@@ -1184,6 +1184,44 @@ exact GPU-hour total.
 \end{table}
 
 \begin{table}[!htbp]
+  \caption{\textbf{Trace-level claim-to-artifact map.} The artifact supports recomputation of primary audit statistics from derived per-case Dice traces. It does not reproduce raw-image training unless users separately obtain upstream datasets and checkpoints. Aggregate-only diagnostics are marked as such rather than promoted to primary evidence; exact commands and checksums are in \texttt{README.md}, \texttt{metadata/MANIFEST.md}, and \texttt{metadata/SHA256SUMS}.}
+  \label{tab:claim-artifact-map}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{p{0.25\linewidth}p{0.31\linewidth}p{0.36\linewidth}}
+    \toprule
+    Claim/readout & Released source & Recompute / limitation \\
+    \midrule
+    Primary same-vs-cross gaps, CIs, and post-floor pools &
+    \texttt{paper\_table.json}, \texttt{within\_cross/*.json},
+    \texttt{per\_case\_dice/*.json} &
+    \texttt{PYTHONPATH=code/src python3 code/scripts/smoke\_artifact.py}; case IDs and per-case Dice are included,
+    raw images and masks are not; trace-level recomputation only. \\
+    Subject, floor, ICC, permutation, event, and quality-control robustness &
+    \texttt{subject\_level/*.json}, \texttt{audit\_sensitivity.json},
+    \texttt{failure\_event\_summary.json}, \texttt{quality\_controlled\_pairs.json} &
+    \texttt{smoke\_artifact.py} calls \texttt{compute\_all.py}, \texttt{compute\_audit\_sensitivity.py},
+    \texttt{compute\_failure\_event\_summary.py},
+    \texttt{compute\_quality\_controlled\_pairs.py}; these are estimator
+    checks, not new training runs. \\
+    Item-difficulty and cross-checkpoint diagnostics &
+    \texttt{item\_difficulty\_robustness.json},
+    \texttt{cross\_checkpoint\_family.json},
+    \texttt{r7\_arch\_confound\_analysis.json} &
+    \texttt{compute\_item\_difficulty\_robustness.py} and
+    \texttt{compute\_cross\_checkpoint\_family.py}; diagnostic evidence for
+    alternative explanations, not causal identification. \\
+    Pixel/lift, same-backbone, held-out, and nnU-Net scope rows &
+    \texttt{diagnostics/pixel\_error/*.json},
+    \texttt{diagnostics/matched\_lift/*.json}, appendix trace trees,
+    \texttt{nnunet/*.json} &
+    Aggregate or task-level support only where raw masks/prediction caches or
+    case-identical full-pipeline comparators are not included. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
   \caption{\textbf{Trace inventory and analytic-pool provenance.}
   \texttt{Merged} counts all completed (bundle, decoder-seed) JSON entries under
   \texttt{results/\_merged/per\_case\_dice}; Table~\ref{tab:main} uses the
