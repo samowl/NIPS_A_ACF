@@ -15,7 +15,7 @@ Source: `results/_merged/paper_table.json` and `results/_merged/m_eff/*.json`.
 `M_eff` is a tau=0.85 failure-indicator equicorrelation diagnostic, not a
 literal independent-member count or standalone pool-selection objective.
 
-| Task | Post-floor analytic pool | Test units | Gap Delta | Diverse M=4 M_eff (diagnostic) |
+| Task | Filtered functional pool | Test units | Gap Delta | Diverse M=4 M_eff (diagnostic) |
 |---|---:|---:|---:|---:|
 | Kvasir polyp | 11 bundles / 44 members | 120 images | 0.261 | 2.05 |
 | ACDC LV | 10 bundles / 40 members | 361 slices / 20 patients | 0.321 | 2.14 |
@@ -29,7 +29,7 @@ Additional audit outputs:
 - `results/_merged/calibration_split/`: split-half sensitivity only; not the
   primary protocol.
 - `results/_merged/nnunet/`: seeded nnU-Net v2 2D/3D task-level
-  complements used as scope-boundary diagnostics; these use custom
+  complements used as limited-scope diagnostics; these use custom
   seed-injection trainers and are not official nnU-Net benchmark results or
   case-identical baselines for the primary frozen-encoder rows.
 - `results/_merged/per_case_dice_m14/`: Dice+BCE+augmentation frozen-encoder
@@ -38,12 +38,12 @@ Additional audit outputs:
 - `results/_merged/diagnostics/`: selected aggregate JSONs for secondary
   pixel-error, matched-lift, architecture, difficulty, held-out, MedSAM-probe,
   quality-controlled pair regression, item-difficulty, binary failure-event,
-  distribution-shift, tau-sweep, threshold, M15 split-reslicing, and
+  distribution-shift, tau-sweep, threshold, split-reslicing, and
   estimator-sensitivity diagnostics.
 - `results/_merged/per_case_dice_heldout_11fm/`: released held-out stress-test
   per-case Dice traces consumed by `compute_heldout_11fm_summary.py`.
 - `results/_merged/provenance_summary.json`: per-task source-file counts and
-  post-floor analytic pools.
+  filtered functional pools.
 
 ## Directory Layout
 
@@ -87,7 +87,7 @@ Additional audit outputs:
 │   ├── per_case_dice_adapted/
 │   ├── nnunet/
 │   ├── diagnostics/
-│   └── per_case_dice_m{3,4,14,15,19,22}/
+│   └── additional appendix trace directories
 ├── metadata/
 │   ├── MANIFEST.md
 │   └── SHA256SUMS
@@ -98,7 +98,7 @@ Additional audit outputs:
 Single-command artifact verification:
 
 ```bash
-PYTHONPATH=code/src python3 code/scripts/smoke_artifact.py
+PYTHONPATH=code/src python3 code/scripts/verify_artifact.py
 ```
 
 The bundle ships the per-case Dice JSONs consumed by the paper. The primary
@@ -134,7 +134,7 @@ This regenerates:
 - `paper_table.json`
 - `provenance_summary.json`
 
-The Appendix M4 UNet-skip diagnostic table is recomputed separately from the
+The appendix UNet-skip diagnostic table is recomputed separately from the
 released two-seed traces:
 
 ```bash
@@ -143,8 +143,8 @@ PYTHONPATH=code/src python3 code/scripts/compute_m4_table.py \
   --out "$OUT_DIR/m4_unet_summary.json"
 ```
 
-The late BraTS appendix diagnostics (M19 train-size sweep and M20 multimodal
-RGB derivative) are recomputed from their released traces with:
+The BraTS appendix train-size and multimodal RGB diagnostics are recomputed
+from their released traces with:
 
 ```bash
 PYTHONPATH=code/src python3 code/scripts/compute_late_brats_summaries.py \
@@ -152,7 +152,7 @@ PYTHONPATH=code/src python3 code/scripts/compute_late_brats_summaries.py \
   --out "$OUT_DIR/late_brats_summaries.json"
 ```
 
-The M14 loss/augmentation sensitivity appendix diagnostic is recomputed from
+The loss/augmentation sensitivity appendix diagnostic is recomputed from
 released traces task-by-task. The `m14_clinical_summary.json` file is the
 RIGA Cup summary; task-specific summaries are also released for RIGA
 Disc, ACDC LV, and the staged ISIC-2018 diagnostic split:
@@ -222,11 +222,11 @@ PYTHONPATH=code/src python3 code/scripts/compute_failure_event_summary.py \
   --n-boot 1000 --seed 0
 ```
 
-For a single artifact smoke test covering the primary scorer and released
+For a single artifact verification covering the primary scorer and released
 appendix summary scorers, run:
 
 ```bash
-PYTHONPATH=code/src python3 code/scripts/smoke_artifact.py
+PYTHONPATH=code/src python3 code/scripts/verify_artifact.py
 ```
 
 Training from raw images requires obtaining the upstream datasets under their
@@ -268,7 +268,7 @@ JSON files drive the paper tables.
 
 | Paper claim/readout | Released source artifacts | Recompute command |
 |---|---|---|
-| Primary same-vs-cross Table 1 gaps, CIs, post-floor pools | `results/_merged/paper_table.json`, `results/_merged/within_cross/*.json`, `results/_merged/per_case_dice/*.json` | `code/scripts/compute_all.py` |
+| Primary same-vs-cross Table 1 gaps, CIs, filtered functional pools | `results/_merged/paper_table.json`, `results/_merged/within_cross/*.json`, `results/_merged/per_case_dice/*.json` | `code/scripts/compute_all.py` |
 | ACDC/BraTS subject-level sensitivity and split-half sensitivity | `results/_merged/subject_level/*.json`, `results/_merged/calibration_split/*.json` | `code/scripts/compute_all.py` |
 | Functional-floor sweep, ICC(A,1), leave-one-out, permutation stress test | `results/_merged/diagnostics/audit_sensitivity.json` | `code/scripts/compute_audit_sensitivity.py` |
 | Quality-controlled pair regression in the main robustness table | `results/_merged/diagnostics/quality_controlled_pairs.json` | `code/scripts/compute_quality_controlled_pairs.py` |
@@ -277,11 +277,11 @@ JSON files drive the paper tables.
 | Same-family cross-checkpoint decomposition | `results/_merged/diagnostics/cross_checkpoint_family.json` and expanded `per_case_dice/` traces | `code/scripts/compute_cross_checkpoint_family.py` |
 | Distribution-shift diagnostic | `results/_merged/diagnostics/distshift_riga_messidor.json`, `results/_merged/per_case_dice/riga_cup_ood_messidor/*.json` | `code/scripts/compute_distshift.py` |
 | Tau-sweep and RIGA threshold diagnostics | `results/_merged/diagnostics/tau_sweep.json`, `results/_merged/diagnostics/threshold_table_riga_cup.json` | `code/scripts/compute_tau_sweep.py`; `code/scripts/compute_threshold_table.py` |
-| M15 fold-reslicing diagnostic | `results/_merged/diagnostics/m15_cv_summary.json`, `results/_merged/per_case_dice_m15/**/*.json` | `code/scripts/compute_m15_cv_summary.py` |
+| Fold-reslicing diagnostic | `results/_merged/diagnostics/m15_cv_summary.json`, `results/_merged/per_case_dice_m15/**/*.json` | `code/scripts/compute_m15_cv_summary.py` |
 | Held-out 11-FM stress test | `results/_merged/diagnostics/heldout_11fm_summary.json`, `results/_merged/per_case_dice_heldout_11fm/**/*.json` | `code/scripts/compute_heldout_11fm_summary.py` |
 | Pixel-error and matched-lift diagnostics | `results/_merged/diagnostics/pixel_error/*.json`, `results/_merged/diagnostics/matched_lift/*.json` | Released aggregate JSONs only; raw masks/caches are not redistributed |
-| Same-backbone and appendix matrix diagnostics | `results/_merged/per_case_dice_m{3,4,14,15,19,22}/`, `results/_merged/m4_unet_summary.json`, `results/_merged/late_brats_summaries.json`, `results/_merged/m14_*summary*.json` | Dedicated appendix scripts listed above |
-| nnU-Net scope-boundary complements | `results/_merged/nnunet/*.json` | Released task-level JSONs only; optional seeded trainers are documented under `code/scripts/` |
+| Same-backbone and appendix scope diagnostics | Appendix trace directories and bundled summary JSONs under `results/_merged/` | Dedicated appendix scripts listed above |
+| nnU-Net limited-scope complements | `results/_merged/nnunet/*.json` | Released task-level JSONs only; optional seeded trainers are documented under `code/scripts/` |
 
 ## License
 

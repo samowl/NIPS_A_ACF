@@ -4,11 +4,11 @@
 The appendix is organised by evidentiary role rather than by experiment
 chronology. It starts with companion readouts, then documents primary
 estimators, uncertainty, task-level sources, and estimator sensitivity. Middle
-sections collect mechanism diagnostics and same-backbone perturbation diagnostics; later
+sections collect mechanism diagnostics and same-backbone perturbation analyses; later
 sections cover adaptation, data swaps, segmentation-pipeline variants,
 distribution shift, operational metrics, held-out stress tests, and
 $M_{\text{eff}}$. The final sections record artifact metadata and additional
-matrix diagnostics. Secondary rows are retained only when they qualify or
+scope analyses. Secondary rows are retained only when they qualify or
 explain a paper claim, and their captions state when they use non-primary pools
 or splits. Unless explicitly marked primary or sourced from the primary
 \texttt{results/\_merged} summaries, appendix values are diagnostic rather than
@@ -37,13 +37,13 @@ FM identifier.
     Mechanism diagnostics & Same-architecture-family ViT / different-pretraining,
     CKA, random-effects, and
     item-difficulty null analyses. \\
-    Same-backbone perturbation diagnostics & Matched-size/quality-gated pool checks, decoder capacity, UNet skips,
+    Same-backbone perturbation analyses & Matched-size/quality-gated pool checks, decoder capacity, UNet skips,
     fixed-backbone folds, MC dropout, released CNN random-init, and labelled scope-limited probes. \\
-    Scope boundaries & nnU-Net complements, unbundled 3D pilot, BraTS sparse-target
+    Scope boundaries & nnU-Net complements, 3D pilot, BraTS sparse-target
     sensitivities, loss/augmentation sensitivity, distribution shift, and held-out failures. \\
     Operational metrics & Conditional recovery, matched-$M$ lift, lift ceiling,
     pool-selection probes, and $M_{\text{eff}}$. \\
-    Artifact record & Bundle manifest, artifact metadata, requirements, and
+    Artifact documentation & Bundle manifest, artifact metadata, requirements, and
     trace inventory. \\
     \bottomrule
   \end{tabular}
@@ -59,7 +59,7 @@ headline claims.
 
 \textbf{CKA.} We computed CKA only as a descriptive feature-similarity readout.
 The saved partial-regression coefficient artifact is not included in the
-submission artifact, so we do not use partial-regression $p$-values or coefficients
+supplementary artifact, so we do not use partial-regression $p$-values or coefficients
 as formal evidence. The main paper relies on pixel-level failure overlap and
 per-case Dice correlation for mechanism-adjacent interpretation, and treats CKA
 as a qualitative companion variable rather than as a standalone causal mediator.
@@ -68,7 +68,7 @@ as a qualitative companion variable rather than as a standalone causal mediator.
 majority consensus as ground truth for both RIGA Cup and RIGA Disc, matching the
 released RIGA per-case Dice traces. RIGA also distributes individual
 ophthalmologist masks, but individual-rater replay artifacts are not included in
-the submission artifact. The consensus Cup and Disc rows are therefore the only RIGA
+the supplementary artifact. The consensus Cup and Disc rows are therefore the only RIGA
 annotation-source evidence used by the manuscript.
 
 \textbf{Probability-map diagnostics.} The artifact releases per-case Dice traces
@@ -117,11 +117,11 @@ Table~\ref{tab:main} reports 95\% CIs from a three-level nested hierarchical boo
     RIGA Cup  & 9-bundle  & 0.834 & 0.361 & 0.473 [0.395, 0.556] \\
     RIGA Disc & 11-bundle & 0.870 & 0.232 & 0.638 [0.569, 0.687] \\
     \bottomrule
-    \multicolumn{5}{p{0.86\linewidth}}{\footnotesize $^{\dag}$ Completed 11-bundle source pool with 10 post-floor bundles; see Appendix~\ref{app:brats-bootstrap-caveat} for slice-vs-subject resampling caveats.} \\
+    \multicolumn{5}{p{0.86\linewidth}}{\footnotesize $^{\dag}$ Completed 11-bundle source pool with 10 retained bundles after functional-floor filtering; see Appendix~\ref{app:brats-bootstrap-caveat} for slice-vs-subject resampling caveats.} \\
   \end{tabular}
 \end{table}
 
-\paragraph{BraTS foreground pool reconciliation.} The headline BraTS foreground result is the 10-bundle Table~\ref{tab:main} value of $\Delta{=}0.315$ [0.302, 0.329] (case-level CI), from the completed 11-bundle source pool with 10 post-floor bundles (BiomedCLIP, CLIP-B/16, CLIP-L/14, ConvNeXt-T, DeiT-B/16, DINOv2-B/S, EfficientNet-B0, MAE-B/16, ResNet-50; ResNet-18 is below the Dice floor). Source: \texttt{results/\_merged/paper\_table.json}. Subset diagnostics whose exact aggregate files are not included in the submission artifact are omitted from the released numeric evidence. The headline reported throughout the main text and abstract is therefore the Table~\ref{tab:main} value.
+\paragraph{BraTS foreground pool reconciliation.} The headline BraTS foreground result is the 10-bundle Table~\ref{tab:main} value of $\Delta{=}0.315$ [0.302, 0.329] (case-level CI), from the completed 11-bundle source pool with 10 retained bundles after functional-floor filtering (BiomedCLIP, CLIP-B/16, CLIP-L/14, ConvNeXt-T, DeiT-B/16, DINOv2-B/S, EfficientNet-B0, MAE-B/16, ResNet-50; ResNet-18 is below the Dice floor). Source: \texttt{results/\_merged/paper\_table.json}. Subset diagnostics whose exact aggregate files are not included in the supplementary artifact are omitted from the released numeric evidence. The headline reported throughout the main text and abstract is therefore the Table~\ref{tab:main} value.
 
 All gap CIs strictly exclude zero under the case-level bootstrap, matching the family/seed-level CIs in the main text.
 
@@ -141,7 +141,7 @@ permutation control.
 \begin{table}[!htbp]
   \caption{\textbf{Estimator sensitivity on primary traces.} Pearson values are the
   Table~\ref{tab:main} point estimates at the Dice${\geq}0.30$ floor. ICC(A,1)
-  is an alternate agreement statistic on the same post-floor members. The floor
+  is an alternate agreement statistic on the same retained members. The floor
   range reports the minimum/maximum Pearson gap over
   $\{0,0.20,0.25,0.30,0.35,0.40\}$ where the pool is non-empty. The permutation
   note reports a non-exchangeable random family-label stress test over completed
@@ -212,7 +212,7 @@ floor and the gap on exactly the same cases.
 
 A possible alternative explanation is that same-FM pairs have higher correlation
 merely because they have matched marginal quality. We therefore add a CPU-only
-diagnostic that uses the same released post-floor per-case Dice traces as Table~\ref{tab:main}
+diagnostic that uses the same released per-case Dice traces retained by Table~\ref{tab:main}
 and fits a pair-level OLS model:
 \[
 r_{ab} \sim I_{\mathrm{same}} + \bar D_{ab} + |\Delta \bar D_{ab}|
@@ -264,7 +264,7 @@ lift with support flags is in Appendix~\ref{sec:matched-app}.
 \begin{table}[!htbp]
   \caption{\textbf{Binary failure-event diagnostic at the empirical
   $P_{33}$ threshold.} Failure is defined as per-case Dice below the 33rd
-  percentile of all model-case Dice values in the post-floor functional pool.
+  percentile of all model-case Dice values after functional-floor filtering.
   $\phi$ is binary-event Pearson correlation averaged over same-group or
   Table-1 cross-group pairs. Joint fail same/cross is the pairwise joint-failure
   probability averaged over the corresponding model-trace pairs. CIs are case-bootstrap intervals for the
@@ -433,7 +433,7 @@ The Table~\ref{tab:main} BraTS foreground row is a BraTS 2024 GLI 2D FLAIR deriv
 \section{BraTS sparse-class filtering caveat and released diagnostics}
 \label{app:brats-ablations}
 
-Per-class BraTS sensitivity can be inflated by sparse labels: if a class is absent from a slice, empty-vs-empty Dice can return a perfect score and obscure the foreground-error structure that matters for a segmentation audit. For this reason, the primary BraTS row uses the foreground derivative \texttt{seg>0} rather than a sparse NCR-only target. NCR filtering diagnostics from a separate sparse-class sweep are not used as numeric evidence here because their exact aggregate files are not included in the submission artifact. The released BraTS foreground train-size and multimodal diagnostics are instead reported later as M19 and M20 (Appendices~\ref{app:m19}--\ref{app:m20}) from \texttt{results/\_merged/late\_brats\_summaries.json}.
+Per-class BraTS sensitivity can be inflated by sparse labels: if a class is absent from a slice, empty-vs-empty Dice can return a perfect score and obscure the foreground-error structure that matters for a segmentation audit. For this reason, the primary BraTS row uses the foreground derivative \texttt{seg>0} rather than a sparse NCR-only target. NCR filtering diagnostics from a separate sparse-class sweep are not used as numeric evidence here because their exact aggregate files are not included in the supplementary artifact. The released BraTS foreground train-size and multimodal diagnostics are instead reported later in Appendices~\ref{app:m19}--\ref{app:m20} from \texttt{results/\_merged/late\_brats\_summaries.json}.
 
 \section{Mechanism-probe scope}
 \label{sec:acdc-detail}
@@ -443,7 +443,7 @@ Per-class BraTS sensitivity can be inflated by sparse labels: if a class is abse
 \label{app:crossarch}
 
 This block keeps released diagnostics separate from exploratory mechanism probes
-whose source prediction caches are not included in the submission artifact. Only released traces
+whose source prediction caches are not included in the supplementary artifact. Only released traces
 or aggregate JSONs are used as numerical support. The shared reading is
 descriptive: same-backbone perturbations can reduce correlation, but the released
 diagnostics do not make same-backbone pools behave like the primary cross-family
@@ -457,7 +457,7 @@ diagnostic in Appendix~\ref{app:arch-3task} and the expanded same-family
 cross-checkpoint decomposition in Appendix~\ref{app:cross-checkpoint}.
 
 \textbf{Random-init probes.} DINOv2-B random-initialisation probes used
-secondary splits and source prediction caches that are not included in the submission artifact. The
+secondary splits and source prediction caches that are not included in the supplementary artifact. The
 released no-pretraining evidence in this bundle is limited to the CNN random-init
 diagnostic in Appendix~\ref{app:m9}, which should be read as a descriptive
 same-recipe sanity check rather than a causal isolation of architecture,
@@ -465,10 +465,10 @@ optimiser, and data effects.
 
 \textbf{LoRA and cross-architecture probes.} LoRA probes and ViT-B
 cross-architecture random-init sweeps require source prediction caches and
-aggregate summary files that are not included in the submission artifact. We do not tabulate
+aggregate summary files that are not included in the supplementary artifact. We do not tabulate
 their values or use them as bundle-supported evidence. The released
 same-backbone levers are the head-capacity sweep, UNet-skip replication,
-fold-reslicing diagnostic, CNN random-init diagnostic, and M22 MC dropout.
+fold-reslicing diagnostic, CNN random-init diagnostic, and MC dropout.
 
 \section{Same-backbone, different-data bootstrap-bagging audit}
 \label{sec:samebb}
@@ -520,12 +520,12 @@ protocol from Section~\ref{sec:design}.
 \section{UNet-with-skip decoder replication}
 \label{app:unet}
 
-The paper's primary decoder is a $1{\times}1$ conv with $C{+}1$ trainable parameters for $C$ frozen channels (for example, 769 parameters for a 768-channel feature map), which is close to a linear probe on frozen features. Dense decoders with skip connections---nnU-Net, U-Net, SegFormer---are closer to deployed medical segmentation. We therefore ran a separate M4 diagnostic in which the frozen backbone is unchanged but the head is replaced by a multi-scale UNet-style decoder over four encoder feature levels. This is a \emph{two-seed diagnostic grid} (seeds 42/43), not an inferential table with the same status as the four-seed primary pool; the reported correlation is the single seed-pair Pearson coefficient for each cell.
+The paper's primary decoder is a $1{\times}1$ conv with $C{+}1$ trainable parameters for $C$ frozen channels (for example, 769 parameters for a 768-channel feature map), which is close to a linear probe on frozen features. Dense decoders with skip connections---nnU-Net, U-Net, SegFormer---are closer to deployed medical segmentation. We therefore ran a separate diagnostic in which the frozen backbone is unchanged but the head is replaced by a multi-scale UNet-style decoder over four encoder feature levels. This is a \emph{two-seed diagnostic grid} (seeds 42/43), not an inferential table with the same status as the four-seed primary pool; the reported correlation is the single seed-pair Pearson coefficient for each cell.
 
 \textbf{Architecture.} For hierarchical CNNs (ConvNeXt-T, ResNet-50) the decoder uses the native feature pyramid as skip sources; for ViT-style encoders (DINOv2-B/S and BiomedCLIP ViT) it uses sampled intermediate token maps reassembled into a four-level pyramid. The released head first applies lateral $1{\times}1$ projections to a common decoder width, then runs a top-down bilinear-upsample path with three additive skip merges (deep $\to$ mid $\to$ shallow $\to$ shallowest), two conv-BN-ReLU blocks after each merge, a final conv-BN-ReLU after upsampling to the output grid, and a final $1{\times}1$ output conv. Training matches the frozen-feature recipe where possible: Adam lr $10^{-3}$, batch 16, 30 epochs, BCE, seeds $\{42,43\}$.
 
 \begin{table}[!htbp]
-  \caption{\textbf{Two-seed UNet-skip same-backbone diagnostic.} Each cell uses the two completed seeds 42/43 from \texttt{results/\_merged/per\_case\_dice\_m4}; ``seed-pair $r$'' is therefore one Pearson coefficient, not a bootstrapped four-seed within-family estimate. Primary Table~\ref{tab:main} cross references are Kvasir 0.697, ACDC 0.639, RIGA Cup 0.361, and BraTS foreground 0.623.}
+  \caption{\textbf{Two-seed UNet-skip same-backbone diagnostic.} Each cell uses the two completed seeds 42/43 from the released UNet-skip trace tree; ``seed-pair $r$'' is therefore one Pearson coefficient, not a bootstrapped four-seed within-family estimate. Primary Table~\ref{tab:main} cross references are Kvasir 0.697, ACDC 0.639, RIGA Cup 0.361, and BraTS foreground 0.623.}
   \label{tab:unet}
   \centering\scriptsize
   \setlength{\tabcolsep}{3pt}
@@ -560,19 +560,19 @@ The paper's primary decoder is a $1{\times}1$ conv with $C{+}1$ trainable parame
   \end{tabular}
 \end{table}
 
-\textbf{Finding.} M4 improves mean Dice substantially over several weak $1{\times}1$ probe cells, but it does not remove same-backbone co-failure: across the 20 evaluated cells, the seed-pair correlation remains $0.774$--$0.979$. On rows where the matched $1{\times}1$ seeds 42/43 are both available, UNet-skip usually lowers seed-pair $r$ modestly, but the effect is heterogeneous: Kvasir ResNet-50 drops $0.973{\to}0.774$, while RIGA Cup DINOv2-B is flat ($0.965{\to}0.967$) and RIGA Cup ResNet-50 increases ($0.908{\to}0.952$). The BraTS cells are consistent with the same boundary: DINOv2-B/S UNet-skip reaches mean Dice $0.875$--$0.877$, but seed-pair $r$ remains $0.886$--$0.936$. Thus the conclusion is narrower than a decoder-family claim: a stronger skip decoder can improve accuracy and sometimes reduce seed correlation, but under this frozen-backbone two-seed grid it does not make same-backbone pools resemble the cross-family references in Table~\ref{tab:main}. A full nnU-Net v2 $5$-fold audit on RIGA Cup is reported in Appendix~\ref{app:nnunet}.
+\textbf{Finding.} The UNet-skip head improves mean Dice substantially over several weak $1{\times}1$ probe cells, but it does not remove same-backbone co-failure: across the 20 evaluated cells, the seed-pair correlation remains $0.774$--$0.979$. On rows where the matched $1{\times}1$ seeds 42/43 are both available, UNet-skip usually lowers seed-pair $r$ modestly, but the effect is heterogeneous: Kvasir ResNet-50 drops $0.973{\to}0.774$, while RIGA Cup DINOv2-B is flat ($0.965{\to}0.967$) and RIGA Cup ResNet-50 increases ($0.908{\to}0.952$). The BraTS cells are consistent with the same boundary: DINOv2-B/S UNet-skip reaches mean Dice $0.875$--$0.877$, but seed-pair $r$ remains $0.886$--$0.936$. Thus the conclusion is narrower than a decoder-family claim: a stronger skip decoder can improve accuracy and sometimes reduce seed correlation, but under this frozen-backbone two-seed grid it does not make same-backbone pools resemble the cross-family references in Table~\ref{tab:main}. A full nnU-Net v2 $5$-fold audit on RIGA Cup is reported in Appendix~\ref{app:nnunet}.
 
 
 
 \section{Fold-reslicing and nnU-Net complements}
 \label{app:nnunet}
 
-\textbf{Motivation.} nnU-Net \citep{isensee2021nnunet} is the de facto standard for medical image segmentation; its 5-fold cross-validation ensemble is a routinely-used uncertainty / robustness baseline. The full nnU-Net pipeline is \emph{self-configuring} (2D/3D selection, preprocessing, patch-based sampling, default geometric/intensity augmentation, cascaded network, post-processing). We keep two evidence surfaces separate: (i) the released M15 frozen-feature fold-reslicing diagnostic, which tests split sensitivity with one decoder seed per fold and therefore cannot estimate within-fold versus cross-fold same-backbone pairs; and (ii) released task-level nnU-Net summary JSONs, which are full-pipeline complements but not case-identical contrasts to the primary FM rows.
+\textbf{Motivation.} nnU-Net \citep{isensee2021nnunet} is the de facto standard for medical image segmentation; its 5-fold cross-validation ensemble is a routinely-used uncertainty / robustness baseline. The full nnU-Net pipeline is \emph{self-configuring} (2D/3D selection, preprocessing, patch-based sampling, default geometric/intensity augmentation, cascaded network, post-processing). We keep two evidence surfaces separate: (i) the released frozen-feature fold-reslicing diagnostic, which tests split sensitivity with one decoder seed per fold and therefore cannot estimate within-fold versus cross-fold same-backbone pairs; and (ii) released task-level nnU-Net summary JSONs, which are full-pipeline complements but not case-identical contrasts to the primary FM rows.
 
-\textbf{Released M15 fold-reslicing design.} M15 re-slices the frozen-feature cache into $5$ folds and reruns the 8-bundle pool $\{$DINOv2-B/S, BiomedCLIP, CLIP-L, ConvNeXt-T, EfficientNet-B0, ResNet-50/18$\}$ on ACDC LV and RIGA Cup, single seed per fold cell. Because the released artifact contains one seed per fold, this diagnostic reports per-fold cross-bundle $\bar r$ and pool-mean Dice, not a 20-decoder fixed-backbone within/cross estimator. Source: \texttt{results/\_merged/diagnostics/m15\_cv\_summary.json}, regenerated by \texttt{code/scripts/compute\_m15\_cv\_summary.py}.
+\textbf{Released fold-reslicing design.} This diagnostic re-slices the frozen-feature cache into $5$ folds and reruns the 8-bundle pool $\{$DINOv2-B/S, BiomedCLIP, CLIP-L, ConvNeXt-T, EfficientNet-B0, ResNet-50/18$\}$ on ACDC LV and RIGA Cup, single seed per fold cell. Because the released artifact contains one seed per fold, this diagnostic reports per-fold cross-bundle $\bar r$ and pool-mean Dice, not a 20-decoder fixed-backbone within/cross estimator. The released artifact provides the corresponding fold-reslicing summary and scorer.
 
 \begin{table}[!htbp]
-  \caption{\textbf{M15 fold-reslicing cross-bundle stability, one seed/fold.} 8 bundles $\times$ 5 folds; single seed per fold cell. Cross-bundle $\bar r$ is the Pearson correlation averaged over the 28 bundle pairs on the held-out fold. This table cannot support within-fold versus cross-fold same-backbone claims.}
+  \caption{\textbf{Fold-reslicing cross-bundle stability, one seed/fold.} 8 bundles $\times$ 5 folds; single seed per fold cell. Cross-bundle $\bar r$ is the Pearson correlation averaged over the 28 bundle pairs on the held-out fold. This table cannot support within-fold versus cross-fold same-backbone claims.}
   \label{tab:m15-fold}
   \centering\small
   \begin{tabular}{lrrrrrr}
@@ -585,13 +585,13 @@ The paper's primary decoder is a $1{\times}1$ conv with $C{+}1$ trainable parame
   \end{tabular}
 \end{table}
 
-\textbf{Finding.} Train/test split sensitivity is small in this fold-reslicing check: cross-fold pool-mean Dice is stable (ACDC $0.502 \pm 0.022$; Cup $0.610 \pm 0.012$), and per-fold cross-bundle $\bar r$ is stable across folds (ACDC $0.565 \pm 0.015$; Cup $0.315 \pm 0.035$). This supports only the narrower statement that the cross-bundle diagnostic is not dominated by one particular 5-fold re-slicing. It does \emph{not} support a claim about within-fold vs cross-fold same-backbone decorrelation, because those pair types require multiple decoder seeds per fold that are not present in the released M15 traces.
+\textbf{Finding.} Train/test split sensitivity is small in this fold-reslicing check: cross-fold pool-mean Dice is stable (ACDC $0.502 \pm 0.022$; Cup $0.610 \pm 0.012$), and per-fold cross-bundle $\bar r$ is stable across folds (ACDC $0.565 \pm 0.015$; Cup $0.315 \pm 0.035$). This supports only the narrower statement that the cross-bundle diagnostic is not dominated by one particular 5-fold re-slicing. It does \emph{not} support a claim about within-fold vs cross-fold same-backbone decorrelation, because those pair types require multiple decoder seeds per fold that are not present in the released traces.
 
 \paragraph{Full nnU-Net v2 complement.} To complement the frozen-feature proxy above and answer whether nnU-Net's full self-configuring pipeline decorrelates the pool more, we trained the full nnU-Net v2 2D U-Net on RIGA Cup with a $520/224$ split, using the generated v2 2D \texttt{nnUNetPlans} configuration after \texttt{nnUNetv2\_plan\_and\_preprocess} (self-configured preprocessing and architecture, official default augmentation/loss schedule, $250$ iterations per epoch). This split differs from the Magrabia-source held-out FM row and is therefore a task-level complement. We train two seeds per fold via custom \texttt{nnUNetTrainerSeed13\_100epochs} and \texttt{nnUNetTrainerSeed37\_100epochs} subclasses that pre-seed \texttt{random}, \texttt{np.random}, \texttt{torch}, and \texttt{cuda} before any nnU-Net sampler touches the RNG; each is trained for $100$ nnU-Net-epochs ($25{,}000$ iterations on two A100s in parallel), then all $5\times 2{=}10$ models predict on the held-out $224$-image test set via \texttt{nnUNetv2\_predict} and per-case Dice is computed against the held-out labels staged in \texttt{labelsTr}. The local nnU-Net export used a split-index file to enumerate held-out IDs; the artifact bundle releases the summary arrays/JSONs for this complement but not that local split manifest.
 
 Across all $10$ models the mean Dice is $0.949\pm 0.001$ (exceeding any of our frozen-feature FM$+1{\times}1$-conv combinations on RIGA Cup). The pairwise per-case Dice $\bar{r}$ is $0.972$ within-fold over the $5$ same-fold different-seed pairs and $0.925$ cross-fold over the $40$ different-fold any-seed pairs, with $\Delta_{\mathrm{within-cross}}{=}0.047$ and a case-level bootstrap $95\%$ CI of $[0.030, 0.069]$ that excludes zero. Full nnU-Net v2 is structurally a same-architecture, different-training-data ensemble on one 2D PlainConvUNet, so it is not comparable in kind to the primary frozen-FM cross-family reference, which swaps encoder bundles. The scoped conclusion is therefore: \emph{within this task-level same-architecture nnU-Net complement, fold identity leaves a small but positive correlation gap}; we do not claim nnU-Net substitutes for or surpasses backbone-family diversification. The $100$-epoch budget, single-task coverage, and 2D-only scope are closed in Appendix~\ref{app:w1-scope} (1000-epoch retrain on the same RIGA Cup setup; 3D fullres nnU-Net on ACDC; higher-resolution/Dice+BCE/aug frozen-FM replication).
 
-\paragraph{Data-swap comparison caveat.} Appendix~\ref{sec:samebb} reports bootstrap-bagging within-pool decorrelation with four decoder seeds per bootstrap replicate. M15 instead reports single-seed cross-bundle correlations across held-out folds. These diagnostics both stress training data/split sensitivity, but they are not dose-matched estimators and are not combined into a causal ranking.
+\paragraph{Data-swap comparison caveat.} Appendix~\ref{sec:samebb} reports bootstrap-bagging within-pool decorrelation with four decoder seeds per bootstrap replicate. The fold-reslicing row instead reports single-seed cross-bundle correlations across held-out folds. These diagnostics both stress training data/split sensitivity, but they are not dose-matched estimators and are not combined into a causal ranking.
 
 
 \section{Segmentation-recipe and nnU-Net scope audit}
@@ -603,7 +603,7 @@ Our main protocol uses $224{\times}224$ 2D inputs, frozen backbone, $1{\times}1$
 Training nnU-Net v2 in its self-configuring \texttt{3d\_fullres} setting on ACDC with a seed-42 $105{/}45$-patient split (210 training, 90 test volumes) using \texttt{nnUNetTrainerSeed\{13,37\}\_1000epochs} (seed injected in \texttt{on\_train\_start} before sampler initialisation) gives 10 fully-trained 3D models across 5 folds. \texttt{nnUNetv2\_predict} on all 90 held-out volumes yields per-case Dice on mean foreground and per class. Across 10 models the mean Dice is $0.920 \pm 0.001$, within the range reported for strong nnU-Net baselines on ACDC. On per-case mean Dice the within-fold (5 pairs) vs cross-fold (40 pairs) gap is $\Delta{=}0.043$ [0.021, 0.085] with within $\bar r{=}0.978$ and cross $\bar r{=}0.935$; per class, $\Delta_{\mathrm{RV}}{=}0.041$ [0.011, 0.110], $\Delta_{\mathrm{Myo}}{=}0.029$ [0.017, 0.046], $\Delta_{\mathrm{LV}}{=}0.067$ [0.033, 0.098]. The artifact bundle releases the aggregate summary for this 150-patient complement but not the exact split manifest; the released public ACDC converter targets patients 001--100 for the primary 2D row. We therefore treat this 3D row as a task-level scope summary rather than a from-bundle training recipe. In this ACDC nnU-Net complement, the 2D$\to$3D fullres shift changes the small fold-gap regime by less than $0.01$ relative to the 2D 100-epoch baseline ($\Delta{=}0.047$ in Appendix~\ref{app:nnunet}).
 
 \paragraph{Loss / augmentation axis: RIGA Cup frozen-FM at encoder-native $224{\times}224$.}
-We retrain the seven-bundle M14 RIGA Cup subset (DINOv2-B/S, CLIP ViT-L/14, ConvNeXt-T, EfficientNet-B0, ResNet-50/18) with four seeds each under a more standard segmentation loss/augmentation recipe: encoder-native input size $224{\times}224$, composite soft Dice$+$BCE loss, paired random horizontal flip and rotation $\pm 15^\circ$, for 30 epochs. The frozen encoder wrappers use $224{\times}224$ inputs; we therefore treat this as a loss/augmentation test, not a resolution test. All other factors (frozen backbone, $1{\times}1$-conv segmentation head, Adam $10^{-3}$) match the main protocol.
+We retrain the seven-bundle RIGA Cup subset (DINOv2-B/S, CLIP ViT-L/14, ConvNeXt-T, EfficientNet-B0, ResNet-50/18) with four seeds each under a more standard segmentation loss/augmentation recipe: encoder-native input size $224{\times}224$, composite soft Dice$+$BCE loss, paired random horizontal flip and rotation $\pm 15^\circ$, for 30 epochs. The frozen encoder wrappers use $224{\times}224$ inputs; we therefore treat this as a loss/augmentation test, not a resolution test. All other factors (frozen backbone, $1{\times}1$-conv segmentation head, Adam $10^{-3}$) match the main protocol.
 Per-FM mean Dice ranges from $0.526$ (ResNet-18) to $0.758$ (DINOv2-B). Under the same symmetric estimator used for the main table, within-family $\bar r$ is $0.903$ (58 within pairs, including same-FM seed pairs and DINOv2-B$\times$S), cross-FM $\bar r$ is $0.556$ (320 cross pairs), and the within/cross gap is $\Delta{=}0.347$ [0.275, 0.428]. The gap is smaller than the main RIGA Cup interval ($0.473$ [0.395, 0.556]) but remains positive; loss/augmentation changes do not remove the gap.
 
 \paragraph{Training-length axis: full nnU-Net v2 at the 1000-epoch default on RIGA Cup.}
@@ -613,7 +613,7 @@ We retrain the 10-model RIGA Cup 2D nnU-Net pool from Appendix~\ref{app:nnunet} 
 Across these scope analyses, the frozen-FM loss/augmentation row remains in the same large-gap regime as the RIGA Cup main row, while the same-architecture nnU-Net fold axis remains in the small-gap regime ($\Delta \approx 0.04$). Because the nnU-Net RIGA rows use a different split, the synthesis is a task-level scope check rather than a paired case-identical comparison. These rows do not support a simpler explanation that the main-table pattern is solely an artifact of BCE loss, no augmentation, short training, or the tested full-pipeline nnU-Net complements.
 
 \begin{table}[!htbp]
-  \caption{\textbf{Scope audit across recipe and nnU-Net complements.} Rows are not all case-identical and should not be compared as a controlled ablation. The table asks whether selected recipe changes remove the qualitative gap. The frozen-reference row uses the same seven candidate FMs as the Dice+BCE+augmentation row before the primary functional-floor exclusion; the primary post-floor RIGA Cup row is Table~\ref{tab:main}. The RIGA nnU-Net rows use a different 520/224 split and are not case-identical comparisons to the Magrabia-source held-out FM row.}
+  \caption{\textbf{Scope audit across recipe and nnU-Net complements.} Rows are not all case-identical and should not be compared as a controlled ablation. The table asks whether selected recipe changes remove the qualitative gap. The frozen-reference row uses the same seven candidate FMs as the Dice+BCE+augmentation row before the primary functional-floor exclusion; the primary filtered RIGA Cup row is Table~\ref{tab:main}. The RIGA nnU-Net rows use a different 520/224 split and are not case-identical comparisons to the Magrabia-source held-out FM row.}
   \label{tab:w1-scope}
   \centering\scriptsize
   \setlength{\tabcolsep}{2.5pt}
@@ -715,14 +715,14 @@ Across these scope analyses, the frozen-FM loss/augmentation row remains in the 
   \end{tabular}
 \end{table}
 
-\textbf{Held-out estimator note.} Split-stability and alternate-estimator numerical summaries whose exact aggregate files are not included in the submission artifact are omitted from the numeric evidence. This section therefore relies on the released 11-bundle held-out aggregate and the released operational JSONs listed above.
+\textbf{Held-out estimator note.} Split-stability and alternate-estimator numerical summaries whose exact aggregate files are not included in the supplementary artifact are omitted from the numeric evidence. This section therefore relies on the released 11-bundle held-out aggregate and the released operational JSONs listed above.
 
 \textbf{ISIC-2018 single-subset note.} The ISIC-2018 row above is a single random $N{=}400$-image subset of the ISIC-2018 Task 1 training release with $N{=}80$ held-out test cases under a seed-42 80/20 split. We do not report an independent replication of this subset; a fully random redraw of the subset or use of the official ISIC evaluation server would be a natural next step but is out of scope for this paper.
 
 \section{MC dropout diagnostic scope}
 \label{app:mcdrop}
 
-An unbundled MC-dropout probe suggested lower any-draw correlations, but its traces are not included in the submission artifact and its scorer differs from the released M22 averaged-readout diagnostic. We therefore do not tabulate it or use it as evidence. The released MC-dropout diagnostic is Appendix~\ref{app:m22}: under the deterministic-vs-MC-averaged readout, $p{=}0.1$--$0.4$ reduces within-FM $\bar r$ only from roughly $0.97$--$0.99$ to $0.95$--$0.89$, so MC dropout is a weak within-family lever in this diagnostic and does not approach the tested backbone-family swap.
+A separate MC-dropout probe suggested lower any-draw correlations, but its traces are not included in the supplementary artifact and its scorer differs from the released averaged-readout diagnostic. We therefore do not tabulate it or use it as evidence. The released MC-dropout diagnostic is Appendix~\ref{app:m22}: under the deterministic-vs-MC-averaged readout, $p{=}0.1$--$0.4$ reduces within-FM $\bar r$ only from roughly $0.97$--$0.99$ to $0.95$--$0.89$, so MC dropout is a weak within-family lever in this diagnostic and does not approach the tested backbone-family swap.
 
 
 
@@ -730,7 +730,7 @@ An unbundled MC-dropout probe suggested lower any-draw correlations, but its tra
 \label{app:ftsweep}
 
 RIGA Cup full fine-tuning epoch-sweep traces and aggregate summaries are not
-included in the submission artifact. We therefore do not tabulate those values or use them as
+included in the supplementary artifact. We therefore do not tabulate those values or use them as
 numerical evidence. The released adaptation evidence is limited to
 released traces and summaries named elsewhere in the appendix, including a small
 set of ACDC DINOv2-B full-fine-tuning provenance traces but not the RIGA
@@ -742,7 +742,7 @@ claims.
 \label{app:lever}
 
 \begin{table}[!htbp]
-  \caption{\textbf{Qualitative index of same-backbone and scope diagnostics}. Rows are heterogeneous and not CI-comparable; the table is a navigation aid, not an ordered causal hierarchy. The RIGA-oriented map is anchored on the DINOv2-B 4-seed baseline ($\bar{r}{\approx}0.96$) unless marked. Unbundled LoRA, full-FT epoch-sweep, and ViT random-init probes are omitted.}
+  \caption{\textbf{Qualitative index of same-backbone and scope diagnostics}. Rows are heterogeneous and not CI-comparable; the table is a navigation aid, not an ordered causal hierarchy. The RIGA-oriented map is anchored on the DINOv2-B 4-seed baseline ($\bar{r}{\approx}0.96$) unless marked. LoRA, full-fine-tuning epoch-sweep, and ViT random-init probes whose traces are not distributed are omitted.}
   \label{tab:lever}
   \centering\scriptsize
   \setlength{\tabcolsep}{2.5pt}
@@ -752,11 +752,11 @@ claims.
     \midrule
     Mono baseline (same FM, 4 seeds)                       & $0.96$                           & $0.00$                       & RIGA diagnostic baseline \\
     UNet-skip decoder (5 backbones, 4 tasks)               & $0.774$--$0.979$                 & heterogeneous                & Appx.~\ref{app:unet}, Tab.~\ref{tab:unet} \\
-    M15 fold-reslicing cross-bundle check                  & $0.315$--$0.565$                 & split-stable                 & Appx.~\ref{app:nnunet}; \texttt{m15\_cv\_summary.json} \\
+    Fold-reslicing cross-bundle check                      & $0.315$--$0.565$                 & split-stable                 & Appx.~\ref{app:nnunet}; released summary \\
     MC dropout $p{=}0.1$--$0.4$                            & $0.89$--$0.95$                   & $-0.02$ to $-0.10$           & Appx.~\ref{app:m22} \\
     Same-backbone bootstrap-bagging                        & $0.85$--$0.92$                   & $-0.05$ to $-0.12$           & Fig.~\ref{fig:phase3} \\
     RIGA cross-vendor shift                                & OOD w/c $0.743/0.390$             & gap $0.353$; $\Delta_{\mathrm{gap}}{-}0.024$ & Appx.~\ref{app:distshift} \\
-    Decoder capacity sweep (M3 average)                    & $\sim 0.69$                      & $\sim -0.27$                 & Appx.~\ref{app:m3} \\
+    Decoder capacity sweep                                 & $\sim 0.69$                      & $\sim -0.27$                 & Appx.~\ref{app:m3} \\
     \midrule
     \textbf{Cross-family pretrained 8-bundle pool}         & $\mathbf{0.38}$~[$0.29$,~$0.46$] & $\mathbf{-0.58}$             & RIGA mechanism diagnostic \\
     \bottomrule
@@ -769,7 +769,7 @@ claims.
 \label{app:lofo}
 
 Leave-one-family-out summaries were used as exploratory robustness checks, but the
-exact aggregate source is not included in the submission artifact. We therefore omit the
+exact aggregate source is not included in the supplementary artifact. We therefore omit the
 numeric table from the released evidence record. The primary
 robustness check for the primary rows is the released
 \texttt{diagnostics/audit\_sensitivity.json}, which includes leave-one-task and
@@ -799,12 +799,12 @@ Only the ACDC $2.8\times$ row is adequately supported by the $N\cdot\mathbb{E}[\
 
 \section{3D segmentation-architecture pilot}
 \label{app:3dfm}
-This section provides scope context only. Its per-case outputs and scorer version are not included in the submission artifact, so the pilot is not used as primary evidence for Table~\ref{tab:main}, the abstract, or the released artifact claims. It motivates why we avoid generalizing the frozen 2D FM-pool result to 3D segmentation-architecture pools.
+This section provides scope context only. Its per-case outputs and scorer version are not included in the supplementary artifact, so the pilot is not used as primary evidence for Table~\ref{tab:main}, the abstract, or the released artifact claims. It motivates why we avoid generalizing the frozen 2D FM-pool result to 3D segmentation-architecture pools.
 
 We assembled a 3D segmentation-architecture pool for BraTS 2024 3D volumes (271 subjects, 216/55 train/test, seed 42) using three architectures in the implementation path: SegResNet (optionally initialised from the MONAI BraTS bundle), DynUNet (random-init), and UNETR (random-init). SwinUNETR random-init pilot cells were included initially but dropped after degenerate predictions across all seeds. For each retained (architecture, seed $\in\{42,43,44,45\}$) cell, the pilot trained the full MONAI segmentation model for 100 epochs with Adam $10^{-3}$ and BCE loss; UNETR-style models used sliding-window inference where required by memory. Reported at three filter modes:
 
 \begin{table}[!htbp]
-  \caption{\textbf{Unbundled 3D pilot for scope context only.} Per-case outputs and scorer version are not included in the submission artifact; this table must not be used as evidence for the abstract or main result. Three functional-filter modes are applied uniformly in the pilot. Strict filter (Dice $\geq 0.50$) retains only SegResNet pretrained and DynUNet random-init and yields $\Delta{=}0.045$, substantially below the 2D BraTS foreground $\Delta{=}0.315$.}
+  \caption{\textbf{3D pilot for scope context only.} Per-case outputs and scorer version are not included in the supplementary artifact; this table is excluded from the abstract and main-result evidence. Three functional-filter modes are applied uniformly in the pilot. Strict filter (Dice $\geq 0.50$) retains only SegResNet pretrained and DynUNet random-init and yields $\Delta{=}0.045$, substantially below the 2D BraTS foreground $\Delta{=}0.315$.}
   \label{tab:3dfm}
   \centering\scriptsize
   \setlength{\tabcolsep}{3pt}
@@ -827,7 +827,7 @@ We assembled a 3D segmentation-architecture pool for BraTS 2024 3D volumes (271 
 \label{app:matched-recipe}
 \label{app:matched-recipe-acdc}
 
-Matched-recipe adaptation factorials require source prediction caches and aggregate summary JSONs that are not included in the submission artifact. We therefore do not tabulate those values and do not use them as bundle-supported evidence. The released adaptation evidence is limited to explicit released traces under \texttt{per\_case\_dice\_adapted} and the aggregate summaries named in the surrounding appendix sections.
+Matched-recipe adaptation factorials require source prediction caches and aggregate summary JSONs that are not included in the supplementary artifact. We therefore do not tabulate those values and do not use them as artifact-supported evidence. The released adaptation evidence is limited to explicit released traces under \texttt{per\_case\_dice\_adapted} and the aggregate summaries named in the surrounding appendix sections.
 
 
 \section{Item-difficulty residualisation and held-out nulls}
@@ -939,7 +939,7 @@ the audit; it is \emph{not} a literal independent-member count.
   \caption{\textbf{Threshold-specific effective pool-size diagnostic at $\tau{=}0.85$.}
   $M_{\text{eff}}$ uses an equicorrelation approximation for binary failure
   indicators and is not a literal independent-member count. Same-bundle pools are each FM's completed decoder seeds. Diverse rows enumerate
-  every 4-bundle composition of the post-floor functional pool and every available
+  every 4-bundle composition of the filtered functional pool and every available
   one-seed-per-FM tuple. Undefined zero-variance failure-correlation tuples are
   excluded rather than imputed. Source: \texttt{results/\_merged/m\_eff/*.json}.}
   \label{tab:meff}
@@ -1033,7 +1033,7 @@ $a + p$ contributing after $u$ is removed.
 The main-text Table~\ref{tab:arch-confound} reports the released 5-variant
 same-architecture-family ViT / different-pretraining diagnostic on Cup and ACDC. A secondary
 Kvasir-SEG replication used the same 5 ViT-B variants, but its aggregate JSON is
-not distributed with the submission artifact, so it is not tabulated as released
+not distributed with the supplementary artifact, so it is not tabulated as released
 evidence here.
 
 \begin{table}[!htbp]
@@ -1130,7 +1130,7 @@ available in the released trace bundle, so we do not claim patient-level
 duplicate control for that row. RIGA Cup/Disc rows retain Magrabia source-path
 labels such as \texttt{Magrabia/MagrabiFemale/image1.tif} and
 \texttt{Magrabia/MagrabiaMale/image46.tif}; these labels are used only to make
-the $n{=}95$ Magrabia-source test split auditable and must not be used for
+the $n{=}95$ Magrabia-source test split auditable and are not intended for
 individual profiling.
 
 \paragraph{Encoder-loader boundary.}
@@ -1146,7 +1146,7 @@ claim about official OpenAI CLIP inference accuracy. The code keeps this loader
 unchanged so that the released per-case traces remain reproducible.
 
 \paragraph{Compute and environment scope.}
-The artifact-verification path is CPU-only: \texttt{smoke\_artifact.py} and the
+The artifact-verification path is CPU-only: the bundled verification script and the
 individual \texttt{compute\_*} scripts read released JSON traces and finish in
 minutes on a typical workstation. Raw-image reproduction is heavier and requires
 separate upstream data/checkpoint access. The reported training runs used a
@@ -1169,7 +1169,7 @@ exact GPU-hour total.
     Reproduction target & Required compute & Notes \\
     \midrule
     Primary and diagnostic summary JSONs & CPU, minutes-scale & Run
-    \texttt{PYTHONPATH=code/src python3 code/scripts/smoke\_artifact.py}; no
+    \texttt{PYTHONPATH=code/src python3 code/scripts/verify\_artifact.py}; no
     raw images, checkpoints, Torch, or GPU required. \\
     Frozen-feature primary traces from raw data & A100-80GB/A6000/L40S-class GPU
     plus local storage for upstream data and features & Feature extraction is
@@ -1177,7 +1177,7 @@ exact GPU-hour total.
     epochs and is comparatively lightweight. \\
     Appendix architecture, adaptation, and nnU-Net complements & Same cluster
     GPU classes; optional MONAI/nnU-Net environments where applicable & These
-    are diagnostic or scope-boundary runs. The bundled trace-level artifact is
+    are diagnostic or limited-scope runs. The bundled trace-level artifact is
     sufficient to recompute reported released summaries without rerunning them. \\
     \bottomrule
   \end{tabularx}
@@ -1192,15 +1192,15 @@ exact GPU-hour total.
     \toprule
     Claim/readout & Released source & Recompute / limitation \\
     \midrule
-    Primary same-vs-cross gaps, CIs, and post-floor pools &
+    Primary same-vs-cross gaps, CIs, and filtered functional pools &
     \texttt{paper\_table.json}, \texttt{within\_cross/*.json},
     \texttt{per\_case\_dice/*.json} &
-    \texttt{PYTHONPATH=code/src python3 code/scripts/smoke\_artifact.py}; case IDs and per-case Dice are included,
+    \texttt{PYTHONPATH=code/src python3 code/scripts/verify\_artifact.py}; case IDs and per-case Dice are included,
     raw images and masks are not; trace-level recomputation only. \\
     Subject, floor, ICC, permutation, event, and quality-control robustness &
     \texttt{subject\_level/*.json}, \texttt{audit\_sensitivity.json},
     \texttt{failure\_event\_summary.json}, \texttt{quality\_controlled\_pairs.json} &
-    \texttt{smoke\_artifact.py} calls \texttt{compute\_all.py}, \texttt{compute\_audit\_sensitivity.py},
+    The verification script calls \texttt{compute\_all.py}, \texttt{compute\_audit\_sensitivity.py},
     \texttt{compute\_failure\_event\_summary.py},
     \texttt{compute\_quality\_controlled\_pairs.py}; these are estimator
     checks, not new training runs. \\
@@ -1213,7 +1213,7 @@ exact GPU-hour total.
     alternative explanations, not causal identification. \\
     Pixel/lift, same-backbone, held-out, and nnU-Net scope rows &
     \texttt{diagnostics/pixel\_error/*.json},
-    \texttt{diagnostics/matched\_lift/*.json}, appendix trace trees,
+    \texttt{diagnostics/matched\_lift/*.json}, appendix trace files,
     \texttt{nnunet/*.json} &
     Aggregate or task-level support only where raw masks/prediction caches or
     case-identical full-pipeline comparators are not included. \\
@@ -1225,7 +1225,7 @@ exact GPU-hour total.
   \caption{\textbf{Trace inventory and analytic-pool provenance.}
   \texttt{Merged} counts all completed (bundle, decoder-seed) JSON entries under
   \texttt{results/\_merged/per\_case\_dice}; Table~\ref{tab:main} uses the
-  original 44-trace primary source subset and applies the post-floor analytic
+  original 44-trace primary source subset and applies the functional-floor
   pool shown in the final column. Same/cross pair counts for the analytic pool
   are reported in Table~\ref{tab:main}.}
   \label{tab:release-manifest}
@@ -1256,20 +1256,19 @@ table is \texttt{within\_cross/*.json}, especially the \texttt{pool} and
 \texttt{fms\_kept\_after\_floor} fields.
 
 \paragraph{What else is in the bundle.} In addition to the primary
-\texttt{per\_case\_dice} tree, the bundle includes merged ablation JSON trees
-(\texttt{per\_case\_dice\_m3}, \texttt{per\_case\_dice\_m4},
-\texttt{per\_case\_dice\_m14}, \texttt{per\_case\_dice\_m15},
-  \texttt{per\_case\_dice\_m19}, \texttt{per\_case\_dice\_m22},
-  \texttt{per\_case\_dice/brats\_wt\_multimodal}, released random-init adapted-head traces, and a small set of ACDC DINOv2-B full-FT provenance traces),
-  selected aggregate diagnostic JSONs under \texttt{results/\_merged/diagnostics},
-  plus code sufficient to inspect and regenerate the included primary summaries
-  and the M4/M19/M20 appendix summaries. Appendix-only diagnostics not
-  listed here, raw prediction arrays, and full pixel-mask caches are not included
-  in the supplement and are treated as reported diagnostics rather than
-  fully bundled reproduction targets.
+\texttt{per\_case\_dice} tree, the bundle includes released trace trees for
+decoder capacity, UNet-skip decoding, loss/augmentation sensitivity,
+fold-reslicing, BraTS train-size, MC dropout, BraTS multimodal input,
+random-init adapted heads, and a small set of ACDC DINOv2-B full-fine-tuning
+provenance traces. It also includes selected aggregate diagnostic JSONs under
+\texttt{results/\_merged/diagnostics} plus code sufficient to inspect and
+regenerate the included primary summaries and appendix summaries. Appendix-only
+diagnostics not listed here, raw prediction arrays, and full pixel-mask caches
+are not included in the supplement and are treated as reported diagnostics
+rather than fully bundled reproduction targets.
 
-\paragraph{What is not in the bundle and why.} Raw medical images, raw GT
-labels, feature caches, and full prediction NPZ caches are not included.
+\paragraph{What is not in the bundle and why.} Raw medical images, raw labels,
+feature caches, and full prediction NPZ caches are not included.
 For restricted datasets such as BraTS, the release is limited to derived
 per-case Dice and aggregate dependence readouts; users must obtain the raw data
 from the upstream provider. Larger derived caches and fuller split manifests are
@@ -1278,24 +1277,21 @@ not included in the released artifact.
 \section{Additional mechanism and scope diagnostics}
 \label{app:matrix-extra}
 
-This section reports seven matrix diagnostics (M3, M9, M14, M15, M19, M20, and
-M22) that close scope axes around the main result. Sources are individual
-per-case Dice JSONs under
-\texttt{results/\_merged/per\_case\_dice\_m\{3,14,15,19,22\}/},
-\texttt{results/\_merged/per\_case\_dice/brats\_wt\_multimodal/}, and
-\texttt{results/\_merged/per\_case\_dice\_adapted/rand\_init/}. The BraTS
-summaries are generated by
-\texttt{code/scripts/compute\_late\_brats\_summaries.py}. All numbers are
+This section reports seven additional scope analyses that close axes around the
+main result: decoder capacity, random-initialized CNNs, loss/augmentation,
+fold-reslicing, BraTS train-size, BraTS multimodal input, and MC dropout. The
+released artifact contains the corresponding per-case Dice traces and the
+CPU-only summary scripts used for these appendix tables. All numbers are
 computed directly from the per-case traces; per-FM means use seed averaging
 where multiple seeds are present, and Pearson $\bar r$ is symmetric multi-seed.
 
-\subsection{Decoder-capacity sweep (M3)}
+\subsection{Decoder-capacity sweep}
 \label{app:m3}
 
 We rerun the Section~\ref{sec:controls} (C1) decoder sweep at four explicit head designs spanning $769$ to $3.94$M trainable parameters: \texttt{linear\_1x1}, \texttt{mlp\_2layer}, \texttt{unet\_lite}, and \texttt{transformer\_decoder}. Two FMs (DINOv2-B, BiomedCLIP) $\times$ two seeds $\{42, 43\}$ on RIGA Cup. Across the $\sim 5{,}000{\times}$ capacity range, pool-mean Dice ranges over $0.725$--$0.848$ but cross-decoder within-FM Pearson $\bar r$ remains $0.69$ on average ($n{=}48$ pairs across the four head designs and the two FMs)---above the RIGA Cup functional-pool cross-family reference of $0.361$ (Table~\ref{tab:main}). Head capacity changes accuracy and some correlations, but does not eliminate same-backbone co-failure in this diagnostic.
 
 \begin{table}[!htbp]
-  \caption{\textbf{M3 head-capacity sweep on RIGA Cup} (2 FMs $\times$ 2 seeds, 30-epoch frozen probe). Pool-mean Dice and trainable-parameter count per head design; the diagnostic's within-FM cross-head correlation summary is $\bar r{=}0.690$ (range 0.510--0.896), above the Table~\ref{tab:main} RIGA Cup cross reference of 0.361.}
+  \caption{\textbf{Head-capacity sweep on RIGA Cup} (2 FMs $\times$ 2 seeds, 30-epoch frozen probe). Pool-mean Dice and trainable-parameter count per head design; the diagnostic's within-FM cross-head correlation summary is $\bar r{=}0.690$ (range 0.510--0.896), above the Table~\ref{tab:main} RIGA Cup cross reference of 0.361.}
   \label{tab:m3}
   \centering\small
   \begin{tabular}{lrr}
@@ -1310,7 +1306,7 @@ We rerun the Section~\ref{sec:controls} (C1) decoder sweep at four explicit head
   \end{tabular}
 \end{table}
 
-\subsection{Random-init CNN decorrelation (M9)}
+\subsection{Random-init CNN decorrelation}
 \label{app:m9}
 
 To check whether within-vs-cross structure persists in the absence of pretraining, we rerun the released random-init diagnostic on two CNN backbones (ConvNeXt-Tiny, ResNet-50) trained from scratch, $8$ seeds $\{42{-}49\}$, on ACDC LV and RIGA Cup. Even with no shared pretraining, within-FM (cross-seed) $\bar r$ stays clearly above cross-FM (different-architecture) $\bar r$: $0.916$ vs.\ $0.830$ on ACDC LV ($\Delta{=}0.086$), $0.841$ vs.\ $0.720$ on RIGA Cup ($\Delta{=}0.121$). The gap is much smaller than the frozen-FM Table~\ref{tab:main} numbers ($0.834/0.361$ on Cup, $\Delta{=}0.473$), but it is still positive, consistent with architecture and shared recipe contributing to within-vs-cross structure in this diagnostic.
@@ -1329,13 +1325,13 @@ To check whether within-vs-cross structure persists in the absence of pretrainin
   \end{tabular}
 \end{table}
 
-\subsection{Loss/augmentation sensitivity (M14)}
+\subsection{Loss/augmentation sensitivity}
 \label{app:m14}
 
-The Section~\ref{sec:design} protocol uses BCE loss, $224$ inputs, no augmentation. To check whether the gap survives a closer-to-standard frozen-head loss/augmentation recipe, we evaluate the seven-bundle subset $\{$DINOv2-B/S, CLIP-L, ConvNeXt-T, EfficientNet-B0, ResNet-50/18$\}$ $\times$ 4 seeds with combined soft Dice+BCE loss and paired $\{$hflip, rot$\pm 15^{\circ}\}$ augmentation. All runs still keep the encoder frozen, use the same $1{\times}1$-conv decoder, Adam $10^{-3}$, and encoder-native $224{\times}224$ input; this is not a full clinical segmentation pipeline. The original RIGA Cup M14 row remains the primary loss/augmentation diagnostic in Appendix~\ref{app:w1-scope}; we also report three task-level diagnostic extensions (RIGA Disc, ACDC LV, and an ISIC-2018 Task 1 fixed 400-image held-out subset) to check whether the positive gap is an isolated Cup result. ISIC here is a supplementary per-case Dice diagnostic on a fixed 400-image subset and is not the official ISIC challenge test/server protocol or threshold-Jaccard leaderboard score.
+The Section~\ref{sec:design} protocol uses BCE loss, $224$ inputs, no augmentation. To check whether the gap survives a closer-to-standard frozen-head loss/augmentation recipe, we evaluate the seven-bundle subset $\{$DINOv2-B/S, CLIP-L, ConvNeXt-T, EfficientNet-B0, ResNet-50/18$\}$ $\times$ 4 seeds with combined soft Dice+BCE loss and paired $\{$hflip, rot$\pm 15^{\circ}\}$ augmentation. All runs still keep the encoder frozen, use the same $1{\times}1$-conv decoder, Adam $10^{-3}$, and encoder-native $224{\times}224$ input; this is not a full clinical segmentation pipeline. The original RIGA Cup row remains the primary loss/augmentation diagnostic in Appendix~\ref{app:w1-scope}; we also report three task-level diagnostic extensions (RIGA Disc, ACDC LV, and an ISIC-2018 Task 1 fixed 400-image held-out subset) to check whether the positive gap is an isolated Cup result. ISIC here is a supplementary per-case Dice diagnostic on a fixed 400-image subset and is not the official ISIC challenge test/server protocol or threshold-Jaccard leaderboard score.
 
 \begin{table}[!htbp]
-  \caption{\textbf{M14 loss/augmentation sensitivity on RIGA Cup, 7 FMs $\times$ 4 seeds.} This is a closer-to-standard frozen-head recipe using Dice+BCE and simple augmentation, not a full clinical segmentation pipeline; all rows remain frozen $1{\times}1$ heads at $224{\times}224$. Per-FM seed-averaged Dice; pool $\bar r$ at the bottom. CLIP-L uses the same caveated OpenCLIP \texttt{ViT-L-14/openai} dense-token wrapper as the primary bundle.}
+  \caption{\textbf{Loss/augmentation sensitivity on RIGA Cup, 7 FMs $\times$ 4 seeds.} This is a closer-to-standard frozen-head recipe using Dice+BCE and simple augmentation, not a full clinical segmentation pipeline; all rows remain frozen $1{\times}1$ heads at $224{\times}224$. Per-FM seed-averaged Dice; pool $\bar r$ at the bottom. CLIP-L uses the same caveated OpenCLIP \texttt{ViT-L-14/openai} dense-token wrapper as the primary bundle.}
   \label{tab:m14}
   \centering\small
   \begin{tabular}{lrr}
@@ -1356,7 +1352,7 @@ The Section~\ref{sec:design} protocol uses BCE loss, $224$ inputs, no augmentati
 \end{table}
 
 \begin{table}[!htbp]
-  \caption{\textbf{M14 task-level extensions.} Same seven-bundle, four-seed frozen-head Dice+BCE+augmentation recipe as Table~\ref{tab:m14}. These rows are not primary rows. Dice columns summarise per-bundle seed-averaged Dice across the seven bundles. The ISIC row is a fixed 400-image-subset held-out diagnostic, not the official ISIC test/server evaluation.}
+  \caption{\textbf{Task-level loss/augmentation extensions.} Same seven-bundle, four-seed frozen-head Dice+BCE+augmentation recipe as Table~\ref{tab:m14}. These rows are not primary rows. Dice columns summarise per-bundle seed-averaged Dice across the seven bundles. The ISIC row is a fixed 400-image-subset held-out diagnostic, not the official ISIC test/server evaluation.}
   \label{tab:m14-ext}
   \centering\small
   \begin{tabular}{lrrrrrr}
@@ -1371,23 +1367,23 @@ The Section~\ref{sec:design} protocol uses BCE loss, $224$ inputs, no augmentati
   \end{tabular}
 \end{table}
 
-Across all four M14 rows, the Dice+BCE+augmentation recipe leaves a positive within-vs-cross gap ($\Delta=0.326$--$0.617$). The magnitude varies by task: ACDC remains lower accuracy and lower-gap than the RIGA/ISIC rows, while RIGA Disc shows the largest extension gap. These rows are treated as scope checks rather than primary evidence because they use a seven-FM subset and, for ISIC, a fixed subset/split; they indicate that the simplified BCE/no-augmentation protocol is not the sole source of the co-failure signal.
+Across all four loss/augmentation rows, the Dice+BCE+augmentation recipe leaves a positive within-vs-cross gap ($\Delta=0.326$--$0.617$). The magnitude varies by task: ACDC remains lower accuracy and lower-gap than the RIGA/ISIC rows, while RIGA Disc shows the largest extension gap. These rows are treated as scope checks rather than primary evidence because they use a seven-FM subset and, for ISIC, a fixed subset/split; they indicate that the simplified BCE/no-augmentation protocol is not the sole source of the co-failure signal.
 
-\subsection{Five-fold CV robustness (M15)}
+\subsection{Five-fold CV robustness}
 \label{app:m15}
 
-M15 is reported with the nnU-Net complements in Appendix~\ref{app:nnunet}
-and Table~\ref{tab:m15-fold}. The key scope point is that the released M15
-artifact has one decoder seed per fold; it supports split-stability of
+The fold-reslicing analysis is reported with the nnU-Net complements in
+Appendix~\ref{app:nnunet} and Table~\ref{tab:m15-fold}. The key scope point is
+that the released artifact has one decoder seed per fold; it supports split-stability of
 cross-bundle $\bar r$, not a within-fold vs cross-fold same-backbone estimator.
 
-\subsection{BraTS foreground train-size sweep (M19)}
+\subsection{BraTS foreground train-size sweep}
 \label{app:m19}
 
-M19 is a train-size diagnostic over the five BraTS foreground bundles with completed feature caches (DINOv2-B, BiomedCLIP, CLIP-L/14, EfficientNet-B0, ResNet-50). It uses one decoder seed (42) and fractions $\{0.10,0.25,0.50,1.00\}$ of the same cached training set, so it is an \emph{accuracy/saturation} check rather than a within-vs-cross dependence estimator. The result is non-monotone: the 5-bundle mean Dice rises from $0.579$ at 10\% to $0.621$--$0.622$ at 25--50\%, then stays flat/slightly lower at full data ($0.617$). Thus, in this cached five-bundle subset, adding more 2D FLAIR slices improves the weakest low-data setting but does not by itself create a new high-performing, decorrelated pool; the correlation claim still has to be audited directly rather than inferred from sample size.
+This train-size diagnostic covers the five BraTS foreground bundles with completed feature caches (DINOv2-B, BiomedCLIP, CLIP-L/14, EfficientNet-B0, ResNet-50). It uses one decoder seed (42) and fractions $\{0.10,0.25,0.50,1.00\}$ of the same cached training set, so it is an \emph{accuracy/saturation} check rather than a within-vs-cross dependence estimator. The result is non-monotone: the 5-bundle mean Dice rises from $0.579$ at 10\% to $0.621$--$0.622$ at 25--50\%, then stays flat/slightly lower at full data ($0.617$). Thus, in this cached five-bundle subset, adding more 2D FLAIR slices improves the weakest low-data setting but does not by itself create a new high-performing, decorrelated pool; the correlation claim still has to be audited directly rather than inferred from sample size.
 
 \begin{table}[!htbp]
-  \caption{\textbf{M19 BraTS train-size accuracy/saturation diagnostic, one seed only} (5 cached bundles, seed 42). Mean/min/max Dice are across bundles at each train fraction; this table does not estimate within/cross dependence because each bundle has one seed.}
+  \caption{\textbf{BraTS train-size accuracy/saturation diagnostic, one seed only} (5 cached bundles, seed 42). Mean/min/max Dice are across bundles at each train fraction; this table does not estimate within/cross dependence because each bundle has one seed.}
   \label{tab:m19}
   \centering\small
   \begin{tabular}{lrrrr}
@@ -1402,15 +1398,15 @@ M19 is a train-size diagnostic over the five BraTS foreground bundles with compl
   \end{tabular}
 \end{table}
 
-\subsection{BraTS multimodal RGB derivative (M20)}
+\subsection{BraTS multimodal RGB derivative}
 \label{app:m20}
 
-M20 checks whether the BraTS foreground co-failure signal is an artifact of using a unimodal FLAIR derivative. We build a deliberately simple three-channel 2D derivative with the same held-out subjects and top-10 foreground-area slice rule as Table~\ref{tab:main}, but pack three MRI modalities into RGB channels: R=T1c, G=T2w, B=T2-FLAIR. This is \emph{not} the official 3D BraTS challenge protocol; it is a controlled frozen-feature stress test of the input-channel choice.
+This analysis checks whether the BraTS foreground co-failure signal is an artifact of using a unimodal FLAIR derivative. We build a deliberately simple three-channel 2D derivative with the same held-out subjects and top-10 foreground-area slice rule as Table~\ref{tab:main}, but pack three MRI modalities into RGB channels: R=T1c, G=T2w, B=T2-FLAIR. This is \emph{not} the official 3D BraTS challenge protocol; it is a controlled frozen-feature stress test of the input-channel choice.
 
 The evaluated grid contains 20 cells (5 FMs $\times$ 4 seeds). Multimodal input narrows the dependence gap relative to the unimodal Table~\ref{tab:main} BraTS row, but does not remove it: case-level within $\bar r{=}0.904$, cross $\bar r{=}0.654$, $\Delta{=}0.249$ [0.238, 0.262]. Aggregating each subject's slices before correlation gives within $\bar r{=}0.946$, cross $\bar r{=}0.772$, $\Delta{=}0.174$. The conservative interpretation is therefore narrower than ``BraTS input modality does not matter'': adding T1c/T2w raises cross-family agreement and shrinks the gap, yet same-backbone/family dependence remains positive under the same frozen-head audit.
 
 \begin{table}[!htbp]
-  \caption{\textbf{M20 simple three-channel BraTS 2D derivative} (R=T1c, G=T2w, B=T2-FLAIR; 5 FMs $\times$ 4 seeds). This is the same 2D frozen-head audit, not the official 3D BraTS multimodal challenge protocol. Dice is seed-averaged by FM; dependence uses the same Pearson estimator as Table~\ref{tab:main}.}
+  \caption{\textbf{Simple three-channel BraTS 2D derivative} (R=T1c, G=T2w, B=T2-FLAIR; 5 FMs $\times$ 4 seeds). This is the same 2D frozen-head audit, not the official 3D BraTS multimodal challenge protocol. Dice is seed-averaged by FM; dependence uses the same Pearson estimator as Table~\ref{tab:main}.}
   \label{tab:m20}
   \centering\small
   \begin{tabular}{lrrrr}
@@ -1429,13 +1425,13 @@ The evaluated grid contains 20 cells (5 FMs $\times$ 4 seeds). Multimodal input 
   \end{tabular}
 \end{table}
 
-\subsection{MC dropout as a within-family decorrelator (M22)}
+\subsection{MC dropout as a within-family decorrelator}
 \label{app:m22}
 
 A natural pool-design question is whether MC dropout \citep{gal2016mcdropout} can act as a lightweight within-family decorrelation lever. We rerun DINOv2-B on RIGA Cup with three dropout rates $p\in\{0.1, 0.2, 0.4\}$, $4$ seeds, $10$ MC samples per case. The deterministic within-FM cross-seed $\bar r{\approx}0.97$--$0.99$; under MC averaging, $\bar r$ drops to $0.95$ ($p{=}0.1$), $0.93$ ($p{=}0.2$), $0.89$ ($p{=}0.4$). The largest tested drop is $\approx 0.10$ and remains materially smaller than the same-architecture-family ViT-vs-primary-cross separation seen on Cup (Table~\ref{tab:arch-confound}). MC dropout is therefore a weak within-family lever in this diagnostic; consistent with Appendix~\ref{sec:adaptation}, it does not approach the architecture-family separation.
 
 \begin{table}[!htbp]
-  \caption{\textbf{M22 MC-dropout diagnostic.} DINOv2-B/RIGA Cup with four seeds and 10 MC samples per case; correlations are computed on MC-averaged per-case Dice. MC dropout provides modest decorrelation but remains far above the Table~\ref{tab:main} RIGA Cup cross-family reference of 0.361. Diagnostic only.}
+  \caption{\textbf{MC-dropout diagnostic.} DINOv2-B/RIGA Cup with four seeds and 10 MC samples per case; correlations are computed on MC-averaged per-case Dice. MC dropout provides modest decorrelation but remains far above the Table~\ref{tab:main} RIGA Cup cross-family reference of 0.361. Diagnostic only.}
   \label{tab:m22}
   \centering\small
   \begin{tabular}{lrrrr}

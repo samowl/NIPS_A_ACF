@@ -29,7 +29,7 @@ Command:
 
 ```bash
 python3 -m pip install -r requirements.txt
-PYTHONPATH=code/src python3 code/scripts/smoke_artifact.py
+PYTHONPATH=code/src python3 code/scripts/verify_artifact.py
 ```
 
 Expected output:

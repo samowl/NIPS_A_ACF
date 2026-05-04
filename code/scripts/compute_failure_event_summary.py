@@ -201,7 +201,7 @@ def _summarize_task(
         "functional_floor": float(ca.FUNCTIONAL_FLOOR),
         "threshold_definition": (
             "empirical percentile over all model-case Dice values in the "
-            "post-floor functional task pool"
+            "functional pool retained after Dice-floor filtering"
         ),
         "fms_after_floor": sorted({fm for fm, _seed in per_case}),
         "n_members_after_floor": int(len(per_case)),

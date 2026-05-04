@@ -60,11 +60,11 @@ PYTHONPATH=code/src python3 code/scripts/compute_cross_checkpoint_family.py \
   --out "$OUT_DIR/cross_checkpoint_family.json"
 ```
 
-The combined smoke test runs all artifact-verification scorers and compares their stable
+The combined verification command runs all artifact-verification scorers and compares their stable
 JSON outputs to the bundled summaries:
 
 ```bash
-PYTHONPATH=code/src python3 code/scripts/smoke_artifact.py
+PYTHONPATH=code/src python3 code/scripts/verify_artifact.py
 ```
 
 ## Code Contents
@@ -72,7 +72,7 @@ PYTHONPATH=code/src python3 code/scripts/smoke_artifact.py
 - `src/fmpool/estimators.py`: Dice, within/cross Pearson, functional floor,
   case/bootstrap estimators, subject-cluster bootstrap, and `M_eff`.
 - `scripts/compute_all.py`: single analysis driver for released JSON traces.
-- `scripts/smoke_artifact.py`: one-command smoke test for the released
+- `scripts/verify_artifact.py`: one-command verification for the released
   summary artifact.
 - `scripts/compute_audit_sensitivity.py`: CPU-only functional-floor, ICC,
   leave-one-out, and permutation negative-control scorer for the appendix.
@@ -126,7 +126,7 @@ summaries under `results/_merged/nnunet/`.
 ## Released JSON Contract
 
 Primary per-case Dice JSONs carry `task`, `fm`, `seed`, `test_ids`, and
-`per_case_dice`; M15 fold-reslicing traces carry `val_ids` for held-out fold
+`per_case_dice`; fold-reslicing traces carry `val_ids` for held-out fold
 alignment. The analysis outputs add `schema_version`,
 `generated_at`, `commit_sha`, and `source_files` so each summary row can be
 traced back to the exact input JSONs.
@@ -135,8 +135,8 @@ per-case traces and does not require raw images or GPU training.
 
 The regenerated primary rows currently cover:
 
-- `kvasir`: 120 test images, 11 post-floor FMs.
-- `acdc_lv`: 361 LV-positive slices from 20 patients, 10 post-floor FMs.
-- `brats_wt`: 3,228 slices from 324 subjects, 10 post-floor FMs / 40 members.
-- `riga_cup`: 95 images, 9 post-floor FMs.
-- `riga_disc`: 95 images, 11 post-floor FMs / 44 members.
+- `kvasir`: 120 test images, 11 retained FMs after functional-floor filtering.
+- `acdc_lv`: 361 LV-positive slices from 20 patients, 10 retained FMs.
+- `brats_wt`: 3,228 slices from 324 subjects, 10 retained FMs / 40 members.
+- `riga_cup`: 95 images, 9 retained FMs.
+- `riga_disc`: 95 images, 11 retained FMs / 44 members.

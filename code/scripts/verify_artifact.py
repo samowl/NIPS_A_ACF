@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One-command artifact smoke test.
+"""One-command artifact verification.
 
 Runs the released CPU-only summary scorers into a scratch directory and
 compares their outputs with the bundled JSON summaries. The test intentionally
@@ -21,7 +21,7 @@ from typing import Any
 
 IGNORE_KEYS = {"generated_at", "commit_sha", "results_root", "per_case_root"}
 FLOAT_TOL = 1e-12
-M14_TASKS = ("riga_cup", "riga_disc", "acdc_lv", "isic2018")
+LOSS_AUG_TASKS = ("riga_cup", "riga_disc", "acdc_lv", "isic2018")
 
 
 def _load_json(path: Path) -> Any:
@@ -104,7 +104,7 @@ def main(argv: list[str] | None = None) -> int:
     if not results_root.is_dir():
         raise SystemExit(f"missing results root: {results_root}")
 
-    with tempfile.TemporaryDirectory(prefix="fmpool_artifact_smoke_") as tmp_name:
+    with tempfile.TemporaryDirectory(prefix="fmpool_artifact_verify_") as tmp_name:
         tmp = Path(tmp_name)
         _run(
             [
@@ -189,7 +189,7 @@ def main(argv: list[str] | None = None) -> int:
         _compare_file(root, "results/_merged/m14_clinical_summary.json", tmp / "m14_clinical_summary.json")
 
         m14_task_outputs: dict[str, Path] = {}
-        for task in M14_TASKS:
+        for task in LOSS_AUG_TASKS:
             out = tmp / f"m14_clinical_summary_{task}.json"
             _run(
                 [
@@ -214,7 +214,9 @@ def main(argv: list[str] | None = None) -> int:
 
         extension = {
             "schema_version": "m14_clinical_extension_summary_v1",
-            "tasks": {task: _load_json(m14_task_outputs[task]) for task in M14_TASKS},
+            "tasks": {
+                task: _load_json(m14_task_outputs[task]) for task in LOSS_AUG_TASKS
+            },
         }
         extension_out = tmp / "m14_clinical_extension_summary.json"
         extension_out.write_text(json.dumps(extension, indent=2, sort_keys=True) + "\n")
@@ -425,13 +427,13 @@ def main(argv: list[str] | None = None) -> int:
         )
 
         if args.keep_tmp:
-            keep = root / "_artifact_smoke_tmp"
+            keep = root / "_artifact_verify_tmp"
             if keep.exists():
                 raise SystemExit(f"refusing to overwrite existing {keep}")
             tmp.rename(keep)
             print(f"kept scratch outputs at {keep}")
 
-    print("FMPOOL_ARTIFACT_SMOKE_OK")
+    print("FMPOOL_ARTIFACT_VERIFY_OK")
     return 0
 
 

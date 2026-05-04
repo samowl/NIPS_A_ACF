@@ -2,7 +2,7 @@
   "bootstrap_B": 1000,
   "bootstrap_seed": 0,
   "description": "Binary failure-event same/cross diagnostic computed from released per-case Dice traces after the Table-1 functional floor.",
-  "generated_at": "2026-05-03T20:21:22Z",
+  "generated_at": "2026-05-04T23:33:49Z",
   "percentiles": [
     25,
     33,
@@ -172,7 +172,7 @@
         "per_case_dice/acdc_lv/resnet50/seed_45.json"
       ],
       "task": "acdc_lv",
-      "threshold_definition": "empirical percentile over all model-case Dice values in the post-floor functional task pool"
+      "threshold_definition": "empirical percentile over all model-case Dice values in the functional pool retained after Dice-floor filtering"
     },
     "brats_wt": {
       "fms_after_floor": [
@@ -323,7 +323,7 @@
         "per_case_dice/brats_wt/resnet50/seed_45.json"
       ],
       "task": "brats_wt",
-      "threshold_definition": "empirical percentile over all model-case Dice values in the post-floor functional task pool"
+      "threshold_definition": "empirical percentile over all model-case Dice values in the functional pool retained after Dice-floor filtering"
     },
     "kvasir": {
       "fms_after_floor": [
@@ -475,7 +475,7 @@
         "per_case_dice/kvasir/resnet50/seed_45.json"
       ],
       "task": "kvasir",
-      "threshold_definition": "empirical percentile over all model-case Dice values in the post-floor functional task pool"
+      "threshold_definition": "empirical percentile over all model-case Dice values in the functional pool retained after Dice-floor filtering"
     },
     "riga_cup": {
       "fms_after_floor": [
@@ -625,7 +625,7 @@
         "per_case_dice/riga_cup/resnet50/seed_45.json"
       ],
       "task": "riga_cup",
-      "threshold_definition": "empirical percentile over all model-case Dice values in the post-floor functional task pool"
+      "threshold_definition": "empirical percentile over all model-case Dice values in the functional pool retained after Dice-floor filtering"
     },
     "riga_disc": {
       "fms_after_floor": [
@@ -777,7 +777,7 @@
         "per_case_dice/riga_disc/resnet50/seed_45.json"
       ],
       "task": "riga_disc",
-      "threshold_definition": "empirical percentile over all model-case Dice values in the post-floor functional task pool"
+      "threshold_definition": "empirical percentile over all model-case Dice values in the functional pool retained after Dice-floor filtering"
     }
   }
 }
