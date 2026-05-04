@@ -36,14 +36,14 @@ The regenerated primary source pool contains up to 11 generic frozen FMs:
 DINOv2-B/14, DINOv2-S/14, BiomedCLIP, CLIP ViT-B/16, CLIP ViT-L/14,
 ConvNeXt-T, EfficientNet-B0, ResNet-50, ResNet-18, MAE ViT-B/16, and
 DeiT ViT-B/16. BraTS foreground now has the completed 11-FM source pool;
-ResNet-18 falls below the Dice floor, leaving 10 post-floor FMs / 40 seed
+ResNet-18 falls below the Dice floor, leaving 10 retained FMs / 40 seed
 members. RIGA Disc also uses the completed 11-FM source pool.
 
 The paper applies a Dice >= 0.30 functional floor downstream in the estimator
 with `scope="per_fm"`. Input `source_files` may therefore include more completed
-JSONs than the analytic post-floor pool.
+JSONs than the retained functional pool.
 
-Current post-floor primary pools:
+Current retained primary pools:
 
 | Task | Source JSONs | Analytic pool |
 |---|---:|---|
@@ -77,7 +77,7 @@ M_eff = M / (1 + (M - 1) * rho_fail)
 where `rho_fail` is the mean pairwise Pearson correlation of binary failure
 indicators `(Dice < tau)` at `tau=0.85`. Undefined zero-variance failure
 correlations are not imputed. Diverse-pool summaries enumerate every 4-FM
-composition of the post-floor functional pool and every available one-seed-per-FM
+composition of the retained functional pool and every available one-seed-per-FM
 tuple.
 
 ## Analysis Outputs

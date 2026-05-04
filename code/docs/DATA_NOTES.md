@@ -26,9 +26,9 @@ checkpoints, feature caches, or large prediction caches.
 
 The Dice >= 0.30 functional floor is applied downstream by the estimator, not by
 deleting input traces. Consequently, source-file counts can exceed the analytic
-post-floor pool reported in the paper.
+functional pool reported in the paper.
 
-Current post-floor analytic pools:
+Current retained functional pools:
 
 - Kvasir: 11 FMs / 44 members.
 - ACDC LV: 10 FMs / 40 members.

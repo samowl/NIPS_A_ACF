@@ -14,7 +14,7 @@ Workers should translate ADAPT lines into::
 Cell counts (paper §8 / appendix tables):
 
     M6  : 6 LoRA configs   x 4 seeds  x 1 task              = 24
-    M7  : 4 full-FT epochs x 4 seeds  x 1 (task, FM)        = 16
+    M7  : 4 full-fine-tuning epochs x 4 seeds  x 1 (task, FM) = 16
     M8  : 1 FM x 8 seeds   x 3 tasks                        = 24
     M9  : 2 FMs x 8 seeds  x 2 tasks                        = 32
     M10 : 6 LoRA configs   x 4 seeds  x (RIGA-Cup, BiomedCLIP) = 24
