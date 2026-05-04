@@ -1,0 +1,15 @@
+name: nips-acf-trace-audit
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy
+  - scipy
+  - scikit-learn
+  - statsmodels
+  - pandas
+  - pyyaml
+  - pip:
+      - -r requirements.txt

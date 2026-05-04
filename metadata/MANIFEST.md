@@ -14,6 +14,10 @@ repository. The artifact is organized around `code/`, `paper/`,
 |---|---|
 | `README.md` | Bundle overview, headline numbers, regeneration command. |
 | `LICENSE` | Apache-2.0 licence for released code/metadata authored for this bundle. |
+| `ARTIFACT_README.md` | Short trace-level reproduction and governance guide. |
+| `DATA_CARD.md` | Derived trace resource data card for intended use, non-use, and upstream constraints. |
+| `environment.yml` | Conda environment helper for artifact inspection. |
+| `requirements.txt` | Root pip requirements shim for lightweight artifact checks. |
 
 ## Paper
 
@@ -51,7 +55,7 @@ repository. The artifact is organized around `code/`, `paper/`,
 | `code/scripts/compute_m15_cv_summary.py` | CPU-only M15 single-seed 5-fold split-reslicing scorer. |
 | `code/scripts/compute_m4_table.py` | Appendix M4 UNet-skip table scorer from released two-seed traces. |
 | `code/scripts/compute_late_brats_summaries.py` | Late BraTS appendix scorer for M19/M20 released traces. |
-| `code/scripts/compute_m14_summary.py` | M14 standard segmentation-recipe scorer for the released task-level traces. |
+| `code/scripts/compute_m14_summary.py` | M14 loss/augmentation sensitivity scorer for the released task-level traces. |
 | `code/scripts/smoke_artifact.py` | One-command smoke test for the released summary artifact. |
 | `code/scripts/install_nnunet_seeded_trainers.py` | Optional no-training setup/verification helper that exposes seeded nnU-Net trainers through official nnU-Net discovery. |
 | `code/scripts/train_*.py`, `code/scripts/extract_features.py` | Training and feature-extraction provenance scripts. |
@@ -80,7 +84,7 @@ All paper-table primary rows are generated from `results/_merged/`.
 | `results/_merged/per_case_dice_heldout_11fm/` | 220 JSONs | Released held-out stress-test per-case Dice traces consumed by `compute_heldout_11fm_summary.py`. |
 | `results/_merged/paper_table.json` | 1 JSON | Consolidated table-ready primary rows. |
 | `results/_merged/provenance_summary.json` | 1 JSON | Task-level source counts, case units, cluster units, and analytic pools. |
-| `results/_merged/per_case_dice_m14/` | 112 JSONs | M14 Dice+BCE+augmentation clinical-recipe traces: RIGA Cup plus task-level extensions on RIGA Disc, ACDC LV, and a local 400-image ISIC-2018 diagnostic split. |
+| `results/_merged/per_case_dice_m14/` | 112 JSONs | M14 Dice+BCE+augmentation loss/augmentation sensitivity traces: RIGA Cup plus task-level extensions on RIGA Disc, ACDC LV, and a local 400-image ISIC-2018 diagnostic split. |
 | `results/_merged/m14_clinical_summary.json` and `results/_merged/m14_clinical_summary_{riga_cup,riga_disc,acdc_lv,isic2018}.json` | 5 JSONs | M14 task-specific summaries plus the historical RIGA Cup summary filename. |
 | `results/_merged/m14_clinical_extension_summary.json` | 1 JSON | Combined M14 extension summary over the released task-level diagnostic splits. |
 | `results/_merged/per_case_dice_adapted/` and `results/_merged/per_case_dice_m{3,4,15,19,22}/` | Appendix/matrix JSONs | Robustness and appendix matrix traces; adapted traces are limited to the released full-FT/random-init files. |
@@ -101,6 +105,9 @@ Current primary analytic pools after the Dice >= 0.30 functional floor:
 |---|---|
 | `metadata/SHA256SUMS` | SHA-256 digests for released artifact files, excluding itself, local reports, local `code/results/**` cache trees, and Python bytecode. |
 | `metadata/MANIFEST.md` | This manifest. |
+| `ARTIFACT_README.md` | Reviewer-facing reproduction guide. |
+| `DATA_CARD.md` | Derived trace resource documentation. |
+| `environment.yml`, `requirements.txt` | Lightweight environment entry points. |
 
 Verify integrity from the bundle root. The hash manifest intentionally omits
 itself, local `reports/**` files, any local `code/results/**` cache tree if
@@ -177,7 +184,7 @@ PYTHONPATH=code/src python3 code/scripts/compute_late_brats_summaries.py \
   --out "$OUT_DIR/late_brats_summaries.json"
 ```
 
-The M14 standard segmentation-recipe summaries are recomputed task-by-task by:
+The M14 loss/augmentation sensitivity summaries are recomputed task-by-task by:
 
 ```bash
 PYTHONPATH=code/src python3 code/scripts/compute_m14_summary.py \

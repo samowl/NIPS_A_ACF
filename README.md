@@ -33,7 +33,7 @@ Additional audit outputs:
   seed-injection trainers and are not official nnU-Net benchmark results or
   case-identical baselines for the primary frozen-encoder rows.
 - `results/_merged/per_case_dice_m14/`: Dice+BCE+augmentation frozen-encoder
-  clinical-recipe sensitivity traces for RIGA Cup plus task-level extensions
+  loss/augmentation sensitivity traces for RIGA Cup plus task-level extensions
   on RIGA Disc, ACDC LV, and a staged 400-image ISIC-2018 diagnostic split.
 - `results/_merged/diagnostics/`: selected aggregate JSONs for secondary
   pixel-error, matched-lift, architecture, difficulty, held-out, MedSAM-probe,
@@ -50,6 +50,10 @@ Additional audit outputs:
 ```
 .
 ├── README.md
+├── ARTIFACT_README.md
+├── DATA_CARD.md
+├── environment.yml
+├── requirements.txt
 ├── LICENSE
 ├── paper/
 │   ├── main_ED9.pdf
@@ -148,7 +152,7 @@ PYTHONPATH=code/src python3 code/scripts/compute_late_brats_summaries.py \
   --out "$OUT_DIR/late_brats_summaries.json"
 ```
 
-The M14 standard segmentation-recipe appendix diagnostic is recomputed from
+The M14 loss/augmentation sensitivity appendix diagnostic is recomputed from
 released traces task-by-task. The `m14_clinical_summary.json` file is the
 RIGA Cup summary; task-specific summaries are also released for RIGA
 Disc, ACDC LV, and the staged ISIC-2018 diagnostic split:
