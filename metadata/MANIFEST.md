@@ -60,7 +60,7 @@ repository. The artifact is organized around `code/`, `paper/`,
 | `code/scripts/install_nnunet_seeded_trainers.py` | Optional no-training setup/verification helper that exposes seeded nnU-Net trainers through official nnU-Net discovery. |
 | `code/scripts/train_*.py`, `code/scripts/extract_features.py` | Training and feature-extraction provenance scripts. |
 | `code/jobs_m*.txt`, `code/scripts/run_worker*.sh` | Matrix job lists and worker launch scripts. |
-| `code/requirements-review.txt` | Minimal dependencies for inspecting released JSON summaries. |
+| `code/requirements-repro.txt` | Minimal dependencies for reproducing released JSON summaries. |
 | `code/requirements-training.txt` | Additional dependencies for frozen-head training/reproduction from local datasets. |
 | `code/requirements-3d-nnunet.txt` | Optional MONAI/nnU-Net dependencies for 3D/full-pipeline complements. |
 | `code/configs/paths.yaml` | Local dataset/cache path template. |

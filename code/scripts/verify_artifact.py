@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """One-command artifact verification.
 
-Runs the released CPU-only summary scorers into a scratch directory and
+Runs the released CPU-only summary scorers into a temporary directory and
 compares their outputs with the bundled JSON summaries. The test intentionally
 ignores timestamp/commit fields and tolerates roundoff at 1e-12. It does not
 require raw medical images, checkpoints, feature caches, GPUs, or Torch.
@@ -96,7 +96,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--keep-tmp",
         action="store_true",
-        help="Keep the scratch output directory for inspection.",
+        help="Keep the temporary output directory for inspection.",
     )
     args = parser.parse_args(argv)
     root = args.root.resolve()
@@ -431,7 +431,7 @@ def main(argv: list[str] | None = None) -> int:
             if keep.exists():
                 raise SystemExit(f"refusing to overwrite existing {keep}")
             tmp.rename(keep)
-            print(f"kept scratch outputs at {keep}")
+            print(f"kept temporary outputs at {keep}")
 
     print("FMPOOL_ARTIFACT_VERIFY_OK")
     return 0

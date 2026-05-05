@@ -3,7 +3,7 @@
 The package keeps the NumPy/SciPy estimators importable without importing
 Torch. Training-only objects such as ``LinearSegHead`` and deterministic Torch
 RNG helpers are loaded lazily through ``__getattr__`` so artifact summary
-scorers can run from ``requirements-review.txt`` only.
+scorers can run from ``requirements-repro.txt`` only.
 """
 from __future__ import annotations
 

@@ -72,7 +72,7 @@ PYTHONPATH=code/src python3 code/scripts/compute_cross_checkpoint_family.py \
 
 Expected output:
 
-- Diagnostic JSONs under the scratch directory named by `$OUT_DIR`.
+- Diagnostic JSONs under the temporary output directory named by `$OUT_DIR`.
 
 ## Data governance
 

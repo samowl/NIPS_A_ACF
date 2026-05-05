@@ -13,7 +13,7 @@ dependencies first:
 ```bash
 python3 -m venv .venv-review
 . .venv-review/bin/activate
-python3 -m pip install -r code/requirements-review.txt
+python3 -m pip install -r code/requirements-repro.txt
 ```
 
 Then run the primary scorer. By default it filters to the paper's 11-FM

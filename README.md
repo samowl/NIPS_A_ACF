@@ -68,7 +68,7 @@ Additional audit outputs:
 │   └── fig_phase3.pdf
 ├── code/
 │   ├── README.md
-│   ├── requirements-review.txt
+│   ├── requirements-repro.txt
 │   ├── requirements-training.txt
 │   ├── requirements-3d-nnunet.txt
 │   ├── src/fmpool/
@@ -110,7 +110,7 @@ environment, install the lightweight CPU-only dependencies first:
 ```bash
 python3 -m venv .venv-review
 . .venv-review/bin/activate
-python3 -m pip install -r code/requirements-review.txt
+python3 -m pip install -r code/requirements-repro.txt
 ```
 
 Then regenerate the merged summaries from the released traces:
