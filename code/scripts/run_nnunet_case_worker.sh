@@ -9,8 +9,10 @@
 #     bash scripts/run_nnunet_case_worker.sh worker
 #
 # The worker grid is 5 folds x 2 seeds (13, 37) using the nnU-Net v2 2D
-# 100-epoch trainer. Training folds use BinRushed+MESSIDOR; held-out scoring
-# uses the same Magrabia cases as the primary RIGA frozen-encoder row.
+# seeded trainer. By default this runs the 100-epoch scope check; set
+# TRAINER_EPOCHS=1000 and EXP_NAME=nnunet_case_riga_2d_1000ep for the
+# default-length companion. Training folds use BinRushed+MESSIDOR; held-out
+# scoring uses the same Magrabia cases as the primary RIGA frozen-encoder row.
 set -euo pipefail
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -29,7 +31,13 @@ export nnUNet_results="${nnUNet_results:-${REPO_ROOT}/nnunet_case_workspace/resu
 mkdir -p "${nnUNet_raw}" "${nnUNet_preprocessed}" "${nnUNet_results}"
 
 RIGA_CASE_DATASET_ID="${RIGA_CASE_DATASET_ID:-551}"
-EXP_NAME="${EXP_NAME:-nnunet_case_riga_2d_100ep}"
+TRAINER_EPOCHS="${TRAINER_EPOCHS:-100}"
+if [ "${TRAINER_EPOCHS}" != "100" ] && [ "${TRAINER_EPOCHS}" != "1000" ]; then
+  echo "TRAINER_EPOCHS must be 100 or 1000, got ${TRAINER_EPOCHS}" >&2
+  exit 2
+fi
+BASE_TRAINER="nnUNetTrainer_${TRAINER_EPOCHS}epochs"
+EXP_NAME="${EXP_NAME:-nnunet_case_riga_2d_${TRAINER_EPOCHS}ep}"
 OUT_DIR="${REPO_ROOT}/results/nnunet/${EXP_NAME}"
 LOG_DIR="${REPO_ROOT}/results/logs/${EXP_NAME}"
 mkdir -p "${OUT_DIR}" "${LOG_DIR}"
@@ -52,6 +60,17 @@ PY
   done
 }
 
+install_manual_split() {
+  local pad raw_split pre_dir
+  pad="$(printf '%03d' "${RIGA_CASE_DATASET_ID}")"
+  raw_split="$(find "${nnUNet_raw}" -maxdepth 2 -path "*/Dataset${pad}_*/splits_final.json" -type f -print -quit)"
+  pre_dir="$(find "${nnUNet_preprocessed}" -maxdepth 1 -type d -name "Dataset${pad}_*" -print -quit)"
+  if [ -n "${raw_split}" ] && [ -n "${pre_dir}" ]; then
+    cp "${raw_split}" "${pre_dir}/splits_final.json"
+    log "installed manual splits: ${raw_split} -> ${pre_dir}/splits_final.json"
+  fi
+}
+
 prepare_case_dataset() {
   verify_env
   log "install seeded nnU-Net trainer discovery shim"
@@ -66,16 +85,18 @@ prepare_case_dataset() {
   if [ "${FORCE_REPLAN:-0}" != "1" ] && \
      compgen -G "${nnUNet_preprocessed}/Dataset${pad}_*/nnUNetPlans.json" >/dev/null; then
     log "plan already exists for Dataset${pad}; skip"
+    install_manual_split
   else
     log "plan_and_preprocess Dataset${pad}"
     nnUNetv2_plan_and_preprocess -d "${RIGA_CASE_DATASET_ID}" --verify_dataset_integrity
+    install_manual_split
   fi
 }
 
 run_cell() {
   local fold="$1"
   local seed="$2"
-  local trainer="nnUNetTrainerSeed${seed}_100epochs"
+  local trainer="nnUNetTrainerSeed${seed}_${TRAINER_EPOCHS}epochs"
   local out_json="${OUT_DIR}/riga_cup_fold${fold}_seed${seed}.json"
   if [ -f "${out_json}" ]; then
     log "skip existing ${out_json}"
@@ -95,7 +116,7 @@ run_cell() {
     --config 2d \
     --fold "${fold}" \
     --seed "${seed}" \
-    --base-trainer nnUNetTrainer_100epochs \
+    --base-trainer "${BASE_TRAINER}" \
     --out "${out_json}" \
     --training-elapsed-s "${elapsed}"
 }

@@ -2,9 +2,10 @@
 """Summarise case-identical RIGA nnU-Net held-out traces.
 
 The input is the output directory produced by ``run_nnunet.sh
-case_riga_100ep``:
+case_riga_100ep`` or by ``run_nnunet_case_worker.sh``:
 
     results/nnunet/nnunet_case_riga_2d_100ep/riga_cup_fold{F}_seed{S}.json
+    results/nnunet/nnunet_case_riga_2d_1000ep/riga_cup_fold{F}_seed{S}.json
 
 Each file contains per-case Dice on the same Magrabia held-out cases used by
 the primary frozen-encoder RIGA rows. The summary computes same-fold
@@ -17,7 +18,9 @@ import argparse
 import json
 import logging
 import math
+import re
 import subprocess
+from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,11 +32,13 @@ BOOTSTRAP_B = 2000
 BOOTSTRAP_SEED = 0
 EXPECTED_FOLDS = tuple(range(5))
 EXPECTED_SEEDS = (13, 37)
+FILE_RE = re.compile(r"^riga_cup_fold(?P<fold>[0-4])_seed(?P<seed>13|37)\.json$")
 
 
 @dataclass(frozen=True)
 class Trace:
     path: Path
+    fm: str
     fold: int
     seed: int
     ids: tuple[str, ...]
@@ -75,19 +80,41 @@ def _strict(value):
 
 
 def _load(path: Path) -> Trace:
+    match = FILE_RE.match(path.name)
+    if match is None:
+        raise ValueError(
+            f"{path}: expected canonical filename "
+            "riga_cup_fold{0..4}_seed{13|37}.json"
+        )
     payload = json.loads(path.read_text(encoding="utf-8"))
-    required = {"task", "fold", "seed", "test_ids", "per_case_dice"}
+    required = {"task", "fm", "fold", "seed", "n_test", "test_ids", "per_case_dice"}
     missing = required - payload.keys()
     if missing:
         raise ValueError(f"{path}: missing keys {sorted(missing)}")
     if payload["task"] != "riga_cup":
         raise ValueError(f"{path}: expected task=riga_cup, got {payload['task']!r}")
+    fold = int(payload["fold"])
+    seed = int(payload["seed"])
+    if fold != int(match.group("fold")) or seed != int(match.group("seed")):
+        raise ValueError(
+            f"{path}: filename fold/seed disagree with payload "
+            f"fold={fold} seed={seed}"
+        )
+    ids = tuple(str(x) for x in payload["test_ids"])
     dice = np.asarray(payload["per_case_dice"], dtype=np.float64)
+    if int(payload["n_test"]) != len(ids) or len(ids) != len(dice):
+        raise ValueError(
+            f"{path}: inconsistent lengths n_test={payload['n_test']} "
+            f"len(test_ids)={len(ids)} len(per_case_dice)={len(dice)}"
+        )
+    if len(dice) == 0 or not np.all(np.isfinite(dice)):
+        raise ValueError(f"{path}: per_case_dice must be nonempty and finite")
     return Trace(
         path=path,
-        fold=int(payload["fold"]),
-        seed=int(payload["seed"]),
-        ids=tuple(str(x) for x in payload["test_ids"]),
+        fm=str(payload["fm"]),
+        fold=fold,
+        seed=seed,
+        ids=ids,
         dice=dice,
         mean_dice=float(payload.get("mean_dice", np.mean(dice))),
         elapsed_s=(
@@ -144,12 +171,39 @@ def _case_bootstrap_gap(traces: list[Trace]) -> list[float]:
     return [float(lo), float(hi)]
 
 
+def _protocol_label(input_dir: Path) -> str:
+    name = input_dir.name
+    if "1000ep" in name:
+        return "1000-epoch"
+    if "100ep" in name:
+        return "100-epoch"
+    return "seeded"
+
+
+def _expected_fm(input_dir: Path) -> str:
+    name = input_dir.name
+    if "1000ep" in name:
+        return "nnunet_2d_1000ep"
+    if "100ep" in name:
+        return "nnunet_2d_100ep"
+    raise ValueError(
+        f"cannot infer expected nnU-Net fm label from input directory {input_dir}"
+    )
+
+
 def summarise(input_dir: Path, output: Path, repo_root: Path) -> dict:
     traces = [_load(p) for p in sorted(input_dir.glob("riga_cup_fold*_seed*.json"))]
     if not traces:
         raise FileNotFoundError(f"no riga_cup_fold*_seed*.json under {input_dir}")
     expected_cells = {(fold, seed) for fold in EXPECTED_FOLDS for seed in EXPECTED_SEEDS}
-    observed_cells = {(tr.fold, tr.seed) for tr in traces}
+    counts = Counter((tr.fold, tr.seed) for tr in traces)
+    duplicates = sorted(cell for cell, count in counts.items() if count != 1)
+    if duplicates:
+        raise ValueError(
+            "duplicate RIGA case-identical nnU-Net cells are not allowed: "
+            f"{duplicates}"
+        )
+    observed_cells = set(counts)
     if observed_cells != expected_cells:
         missing = sorted(expected_cells - observed_cells)
         extra = sorted(observed_cells - expected_cells)
@@ -157,22 +211,28 @@ def summarise(input_dir: Path, output: Path, repo_root: Path) -> dict:
             "incomplete or unexpected RIGA case-identical nnU-Net grid: "
             f"missing={missing}, extra={extra}, observed={sorted(observed_cells)}"
         )
+    expected_fm = _expected_fm(input_dir)
+    bad_fm = sorted((str(tr.path), tr.fm) for tr in traces if tr.fm != expected_fm)
+    if bad_fm:
+        raise ValueError(f"unexpected fm labels for {input_dir}: {bad_fm}")
     first_ids = traces[0].ids
     for tr in traces:
         if tr.ids != first_ids:
             raise ValueError(f"test_ids mismatch: {tr.path} disagrees with {traces[0].path}")
     point = _point(traces)
+    protocol_label = _protocol_label(input_dir)
     payload = {
         "schema_version": "fmpool_clean_v1",
         "generated_at": _iso_utc_now(),
         "commit_sha": _git_commit_sha(repo_root),
         "protocol": (
-            "Case-identical RIGA Cup nnU-Net v2 2D 100-epoch scope check; "
+            f"Case-identical RIGA Cup nnU-Net v2 2D {protocol_label} scope check; "
             "train folds use BinRushed+MESSIDOR and held-out evaluation uses "
             "the primary Magrabia cases."
         ),
         "dataset": "RIGA_cup",
         "task": "riga_cup",
+        "fm": expected_fm,
         "case_unit": "fundus image",
         "n_test": len(first_ids),
         "test_source": "Magrabia",
@@ -184,6 +244,9 @@ def summarise(input_dir: Path, output: Path, repo_root: Path) -> dict:
         "cross_fold_rbar": point["cross_rbar"],
         "delta_within_minus_cross": point["gap"],
         "delta_ci95_case_bootstrap": _case_bootstrap_gap(traces),
+        "delta_ci95_method": "case bootstrap over held-out cases",
+        "bootstrap_b": BOOTSTRAP_B,
+        "bootstrap_seed": BOOTSTRAP_SEED,
         "n_within_pairs": point["n_within_pairs"],
         "n_cross_pairs": point["n_cross_pairs"],
         "mean_dice_all": float(np.mean([tr.mean_dice for tr in traces])),

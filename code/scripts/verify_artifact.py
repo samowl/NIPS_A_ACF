@@ -448,6 +448,41 @@ def main(argv: list[str] | None = None) -> int:
                 tmp / "riga_case_identical_2d_100ep.json",
             )
 
+        nnunet_case_1000_input = results_root / "nnunet_case_riga_2d_1000ep"
+        nnunet_case_1000_expected = (
+            root / "results/_merged/nnunet/riga_case_identical_2d_1000ep.json"
+        )
+        if nnunet_case_1000_input.is_dir() or nnunet_case_1000_expected.exists():
+            if not nnunet_case_1000_input.is_dir():
+                raise FileNotFoundError(
+                    "1000ep case-identical summary is present but canonical "
+                    f"input directory is missing: {nnunet_case_1000_input}"
+                )
+            if not nnunet_case_1000_expected.exists():
+                raise FileNotFoundError(
+                    "1000ep case-identical input directory is present but "
+                    f"summary is missing: {nnunet_case_1000_expected}"
+                )
+            _run(
+                [
+                    sys.executable,
+                    "code/scripts/compute_nnunet_case_identical.py",
+                    "--input-dir",
+                    str(nnunet_case_1000_input),
+                    "--out",
+                    str(tmp / "riga_case_identical_2d_1000ep.json"),
+                    "--repo-root",
+                    str(root),
+                ],
+                root,
+                tmp,
+            )
+            _compare_file(
+                root,
+                "results/_merged/nnunet/riga_case_identical_2d_1000ep.json",
+                tmp / "riga_case_identical_2d_1000ep.json",
+            )
+
         if args.keep_tmp:
             keep = root / "_artifact_verify_tmp"
             if keep.exists():
