@@ -13,8 +13,10 @@ Usage
 Layout produced
 ---------------
     $nnUNet_raw/Dataset501_RIGACup/
-        imagesTr/<case_id>_0000.png            (RIGA Cup: 2D 3-channel as PNG)
-        labelsTr/<case_id>.png                 (binary 0/1, 4-of-6 majority)
+        imagesTr/<case_id>_{0000,0001,0002}.png (RIGA Cup train RGB channels)
+        labelsTr/<case_id>.png                 (train binary 0/1, 4-of-6 majority)
+        imagesTs/<case_id>_{0000,0001,0002}.png (Magrabia held-out RGB channels)
+        labelsTs/<case_id>.png                 (held-out labels for scoring only)
         dataset.json
         splits_final.json                      (5-fold over train pool)
         fmpool_test_ids.json                   (Magrabia held-out for SPEC §2)
@@ -107,12 +109,16 @@ def _export_riga_cup(raw_root: Path, dataset_id: int, force: bool) -> Path:
     out_dir = _raw_dir(raw_root, dataset_id, _TASK_TO_DS_NAME["riga_cup"])
     images_dir = out_dir / "imagesTr"
     labels_dir = out_dir / "labelsTr"
+    test_images_dir = out_dir / "imagesTs"
+    test_labels_dir = out_dir / "labelsTs"
     ds_json = out_dir / "dataset.json"
     if ds_json.is_file() and not force:
         logger.info("RIGA Cup already exported at %s; skip", out_dir)
         return out_dir
     images_dir.mkdir(parents=True, exist_ok=True)
     labels_dir.mkdir(parents=True, exist_ok=True)
+    test_images_dir.mkdir(parents=True, exist_ok=True)
+    test_labels_dir.mkdir(parents=True, exist_ok=True)
 
     train_ds = RIGADataset(target="cup", split="train")
     test_ds = RIGADataset(target="cup", split="test")
@@ -121,27 +127,32 @@ def _export_riga_cup(raw_root: Path, dataset_id: int, force: bool) -> Path:
     nnunet_train_ids: list[str] = []
     nnunet_test_ids: list[str] = []
 
-    def _dump(ds, bucket: list[str]) -> None:
+    def _dump(
+        ds,
+        bucket: list[str],
+        image_out_dir: Path,
+        label_out_dir: Path,
+    ) -> None:
         for image_t, mask_t, case_id in ds:
             safe = _safe_case_id(case_id)
             img_np = image_t.permute(1, 2, 0).numpy()  # HxWx3 uint8
             mask_np = mask_t.squeeze(0).numpy().astype(np.uint8)  # 0/1
-            Image.fromarray(img_np, mode="RGB").save(
-                images_dir / f"{safe}_0000.png"
-            )
+            for ch in range(3):
+                Image.fromarray(img_np[:, :, ch], mode="L").save(
+                    image_out_dir / f"{safe}_{ch:04d}.png"
+                )
             Image.fromarray(mask_np, mode="L").save(
-                labels_dir / f"{safe}.png"
+                label_out_dir / f"{safe}.png"
             )
             bucket.append(safe)
             written.append(safe)
 
-    _dump(train_ds, nnunet_train_ids)
-    _dump(test_ds, nnunet_test_ids)
+    _dump(train_ds, nnunet_train_ids, images_dir, labels_dir)
+    _dump(test_ds, nnunet_test_ids, test_images_dir, test_labels_dir)
 
     # 5-fold over the *training pool* (BinRushed + MESSIDOR). The held-out
-    # Magrabia pool (SPEC §2 test) is also placed in imagesTr so it survives
-    # nnU-Net plan_and_preprocess; it is excluded from every fold's val list
-    # and is what we will predict on after training for SPEC §2 reporting.
+    # Magrabia pool (SPEC §2 test) is exported under imagesTs/labelsTs, so
+    # nnU-Net planning/preprocessing sees only training cases.
     rng = np.random.default_rng(42)
     perm = list(nnunet_train_ids)
     rng.shuffle(perm)
@@ -160,9 +171,13 @@ def _export_riga_cup(raw_root: Path, dataset_id: int, force: bool) -> Path:
     )
 
     dataset_json = {
-        "channel_names": {"0": "fundus_rgb"},
+        "channel_names": {
+            "0": "fundus_R",
+            "1": "fundus_G",
+            "2": "fundus_B",
+        },
         "labels": {"background": 0, "cup": 1},
-        "numTraining": len(written),
+        "numTraining": len(nnunet_train_ids),
         "file_ending": ".png",
         "name": "RIGACup",
         "description": "RIGA+ optic cup, 4-of-6 rater majority. SPEC §2.",

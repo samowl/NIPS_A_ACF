@@ -426,6 +426,28 @@ def main(argv: list[str] | None = None) -> int:
             tmp / "heldout_11fm_summary.json",
         )
 
+        nnunet_case_input = results_root / "nnunet_case_riga_2d_100ep"
+        if nnunet_case_input.is_dir():
+            _run(
+                [
+                    sys.executable,
+                    "code/scripts/compute_nnunet_case_identical.py",
+                    "--input-dir",
+                    str(nnunet_case_input),
+                    "--out",
+                    str(tmp / "riga_case_identical_2d_100ep.json"),
+                    "--repo-root",
+                    str(root),
+                ],
+                root,
+                tmp,
+            )
+            _compare_file(
+                root,
+                "results/_merged/nnunet/riga_case_identical_2d_100ep.json",
+                tmp / "riga_case_identical_2d_100ep.json",
+            )
+
         if args.keep_tmp:
             keep = root / "_artifact_verify_tmp"
             if keep.exists():

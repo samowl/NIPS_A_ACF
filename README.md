@@ -30,10 +30,10 @@ Additional audit outputs:
 - `results/_merged/subject_level/`: ACDC/BraTS patient-or-subject cluster checks.
 - `results/_merged/calibration_split/`: split-half sensitivity only; not the
   primary protocol.
-- `results/_merged/nnunet/`: seeded nnU-Net v2 2D/3D task-level
-  complements used as limited-scope diagnostics; these use custom
-  seed-injection trainers and are not official nnU-Net benchmark results or
-  case-identical baselines for the primary frozen-encoder rows.
+- `results/_merged/nnunet/`: seeded nnU-Net v2 2D/3D limited-scope
+  complements, including one case-identical RIGA Cup held-out scope check;
+  these use custom seed-injection trainers and are not official nnU-Net
+  benchmark results or replacements for the primary frozen-encoder rows.
 - `results/_merged/per_case_dice_m14/`: Dice+BCE+augmentation frozen-encoder
   loss/augmentation sensitivity traces for RIGA Cup plus task-level extensions
   on RIGA Disc, ACDC LV, and a staged 400-image ISIC-2018 diagnostic split.
@@ -88,6 +88,7 @@ Additional audit outputs:
 │   ├── per_case_dice_heldout_11fm/
 │   ├── per_case_dice_adapted/
 │   ├── nnunet/
+│   ├── nnunet_case_riga_2d_100ep/
 │   ├── diagnostics/
 │   └── additional appendix trace directories
 ├── metadata/
@@ -283,7 +284,7 @@ JSON files drive the paper tables.
 | Held-out 11-FM stress test | `results/_merged/diagnostics/heldout_11fm_summary.json`, `results/_merged/per_case_dice_heldout_11fm/**/*.json` | `code/scripts/compute_heldout_11fm_summary.py` |
 | Pixel-error and matched-lift diagnostics | `results/_merged/diagnostics/pixel_error/*.json`, `results/_merged/diagnostics/matched_lift/*.json` | Released aggregate JSONs only; raw masks/caches are not redistributed |
 | Same-backbone and appendix scope diagnostics | Appendix trace directories and bundled summary JSONs under `results/_merged/` | Dedicated appendix scripts listed above |
-| nnU-Net limited-scope complements | `results/_merged/nnunet/*.json` | Released task-level JSONs only; optional seeded trainers are documented under `code/scripts/` |
+| nnU-Net limited-scope complements | `results/_merged/nnunet/*.json`, `results/_merged/nnunet_case_riga_2d_100ep/*.json` | Released summary JSONs plus the RIGA case-identical per-model traces; optional seeded trainers are documented under `code/scripts/` |
 
 ## License
 

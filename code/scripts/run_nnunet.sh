@@ -8,6 +8,7 @@
 #   bash scripts/run_nnunet.sh m17_riga          # 2D 1000ep  RIGA Cup   (5x2=10 cells)
 #   bash scripts/run_nnunet.sh m17_acdc          # 3D fullres 1000ep ACDC LV (5x2=10 cells)
 #   bash scripts/run_nnunet.sh m17               # m17_riga then m17_acdc
+#   bash scripts/run_nnunet.sh case_riga_100ep   # RIGA primary split/Magrabia holdout
 #
 # Environment overrides (defaults use local workspace paths):
 #   nnUNet_raw           nnunet_workspace/raw
@@ -150,6 +151,14 @@ case "${cmd}" in
   m16)
     run_matrix riga_cup "${RIGA_DATASET_ID}" 2d \
         nnUNetTrainer_100epochs nnunet_2d_100ep
+    ;;
+  case_riga_100ep)
+    verify_install
+    RIGA_DATASET_ID="${RIGA_CASE_DATASET_ID:-551}"
+    prepare_dataset riga_cup "${RIGA_DATASET_ID}"
+    plan_and_preprocess "${RIGA_DATASET_ID}"
+    run_matrix riga_cup "${RIGA_DATASET_ID}" 2d \
+        nnUNetTrainer_100epochs nnunet_case_riga_2d_100ep
     ;;
   m17_riga)
     run_matrix riga_cup "${RIGA_DATASET_ID}" 2d \

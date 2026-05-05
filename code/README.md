@@ -78,6 +78,10 @@ PYTHONPATH=code/src python3 code/scripts/verify_artifact.py
   leave-one-out, and permutation negative-control scorer for the appendix.
 - `scripts/compute_cross_checkpoint_family.py`: CPU-only decomposition of
   same-FM seed, same-family cross-checkpoint, and cross-family correlations.
+- `scripts/compute_nnunet_case_identical.py`: CPU-only scorer for the released
+  case-identical RIGA nnU-Net scope-check traces.
+- `scripts/run_nnunet_case_worker.sh`: optional raw-data nnU-Net v2 launcher
+  for the RIGA case-identical scope check.
 - `scripts/train_*.py`, `scripts/extract_features.py`, `scripts/run_worker*.sh`:
   training and matrix-launch scripts used to produce the per-case traces.
 - `configs/paths.yaml`: local dataset/cache path template.
@@ -121,7 +125,11 @@ This writes a small compatibility module into the installed `nnunetv2`
 trainer tree so official `nnUNetv2_train -tr
 nnUNetTrainer_{100,1000}epochs_Seed*` lookup can resolve the seeded trainers.
 It also provides the 1000-epoch length preset used by the released complement
-summaries under `results/_merged/nnunet/`.
+summaries under `results/_merged/nnunet/`. The optional case-identical RIGA
+scope check uses the official nnU-Net v2 dataset layout (`imagesTr`,
+`labelsTr`, `imagesTs`, `dataset.json`) and channel-file naming
+`<case>_0000.png`, `<case>_0001.png`, `<case>_0002.png`; Magrabia labels are
+kept in `labelsTs` for scoring and are not part of the training folds.
 
 ## Released JSON Contract
 

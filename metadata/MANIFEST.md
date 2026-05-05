@@ -53,11 +53,13 @@ repository. The artifact is organized around `code/`, `paper/`,
 | `code/scripts/compute_tau_sweep.py` | CPU-only appendix conditional-recovery tau-sweep scorer. |
 | `code/scripts/compute_threshold_table.py` | CPU-only RIGA Cup empirical-threshold failure-correlation scorer. |
 | `code/scripts/compute_m15_cv_summary.py` | CPU-only single-seed 5-fold split-reslicing scorer. |
+| `code/scripts/compute_nnunet_case_identical.py` | CPU-only scorer for the released RIGA case-identical nnU-Net scope check. |
 | `code/scripts/compute_m4_table.py` | Appendix UNet-skip table scorer from released two-seed traces. |
 | `code/scripts/compute_late_brats_summaries.py` | BraTS train-size and multimodal appendix scorer for released traces. |
 | `code/scripts/compute_m14_summary.py` | Loss/augmentation sensitivity scorer for the released task-level traces. |
 | `code/scripts/verify_artifact.py` | One-command verification for the released summary artifact. |
 | `code/scripts/install_nnunet_seeded_trainers.py` | Optional no-training setup/verification helper that exposes seeded nnU-Net trainers through official nnU-Net discovery. |
+| `code/scripts/run_nnunet_case_worker.sh` | Optional raw-data launcher for the RIGA case-identical nnU-Net scope check. |
 | `code/scripts/train_*.py`, `code/scripts/extract_features.py` | Training and feature-extraction provenance scripts. |
 | `code/jobs_m*.txt`, `code/scripts/run_worker*.sh` | Matrix job lists and worker launch scripts. |
 | `code/requirements-repro.txt` | Minimal dependencies for reproducing released JSON summaries. |
@@ -79,7 +81,8 @@ All paper-table primary rows are generated from `results/_merged/`.
 | `results/_merged/m_eff/*.json` | 5 JSONs | Mono-pool and functional diverse 4-bundle `M_eff` summaries, including mean and conservative maximum-`rho_fail` readouts. |
 | `results/_merged/subject_level/*.json` | 2 JSONs | ACDC/BraTS patient-or-subject cluster sensitivity. |
 | `results/_merged/calibration_split/*.json` | 5 JSONs | Split-half sensitivity only; not the primary protocol. |
-| `results/_merged/nnunet/*.json` | 3 JSONs | Released nnU-Net v2 task-level 2D/3D complement summaries used as limited-scope evidence. |
+| `results/_merged/nnunet/*.json` | 4 JSONs | Released nnU-Net v2 2D/3D complement summaries used as limited-scope evidence, including the RIGA case-identical held-out scope summary. |
+| `results/_merged/nnunet_case_riga_2d_100ep/*.json` | 10 JSONs | Per-model RIGA case-identical nnU-Net held-out traces with hashed case IDs, consumed by `compute_nnunet_case_identical.py`. |
 | `results/_merged/diagnostics/` | 28 JSONs | Selected aggregate JSONs for secondary pixel-error, matched-lift, architecture, same-family cross-checkpoint, quality-controlled pair regression, item-difficulty, binary failure-event, distribution-shift, tau-sweep, threshold, split-reslicing, held-out, MedSAM-probe, and estimator-sensitivity diagnostics. Raw masks, NPZ traces, and full prediction caches are not redistributed. |
 | `results/_merged/per_case_dice_heldout_11fm/` | 220 JSONs | Released held-out stress-test per-case Dice traces consumed by `compute_heldout_11fm_summary.py`. |
 | `results/_merged/paper_table.json` | 1 JSON | Consolidated table-ready primary rows. |

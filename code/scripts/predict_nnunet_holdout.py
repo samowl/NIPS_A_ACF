@@ -6,7 +6,8 @@ Two modes:
   * RIGA Cup: per SPEC §2 the held-out test pool is *Magrabia*
     (`fmpool_test_ids.json`). This script runs `nnUNetv2_predict` on those
     PNGs with the seeded trainer of the requested fold and computes
-    per-case Dice against `labelsTr`.
+    per-case Dice against `labelsTs` (falling back to `labelsTr` for legacy
+    exports).
   * ACDC LV: per SPEC §2 the held-out fold's *val* set is the test pool.
     We reuse the per-fold validation predictions written by
     `nnUNetv2_train` (under `<results>/.../fold_<F>/validation/`).
@@ -28,6 +29,7 @@ Output schema (matches the FM JSONs at
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import logging
 import os
@@ -83,6 +85,11 @@ def _load_2d_label(path: Path) -> np.ndarray:
     return np.asarray(Image.open(path).convert("L"), dtype=np.uint8)
 
 
+def _release_case_id(case_id: str) -> str:
+    """Stable non-identifying ID for released RIGA alignment traces."""
+    return "riga_" + hashlib.sha256(case_id.encode("utf-8")).hexdigest()[:16]
+
+
 def _load_3d(path: Path) -> np.ndarray:
     import nibabel as nib
 
@@ -132,6 +139,8 @@ def _harvest_acdc(args, trainer_class_name) -> tuple[list[str], list[float]]:
 def _harvest_riga(args, trainer_class_name) -> tuple[list[str], list[float]]:
     raw = Path(os.environ["nnUNet_raw"]) / f"Dataset{args.dataset_id:03d}_RIGACup"
     test_ids = json.loads((raw / "fmpool_test_ids.json").read_text())["test_ids"]
+    images_ts = raw / "imagesTs"
+    labels_ts = raw / "labelsTs"
     images_tr = raw / "imagesTr"
     labels_tr = raw / "labelsTr"
 
@@ -142,8 +151,12 @@ def _harvest_riga(args, trainer_class_name) -> tuple[list[str], list[float]]:
     out_dir.mkdir()
     try:
         for cid in test_ids:
-            src = images_tr / f"{cid}_0000.png"
-            shutil.copy2(src, in_dir / src.name)
+            for ch in range(3):
+                name = f"{cid}_{ch:04d}.png"
+                src = images_ts / name
+                if not src.is_file():
+                    src = images_tr / name
+                shutil.copy2(src, in_dir / src.name)
         cmd = [
             "nnUNetv2_predict",
             "-d", str(args.dataset_id),
@@ -161,13 +174,15 @@ def _harvest_riga(args, trainer_class_name) -> tuple[list[str], list[float]]:
         scores: list[float] = []
         for cid in test_ids:
             pred_path = out_dir / f"{cid}.png"
-            gt_path = labels_tr / f"{cid}.png"
+            gt_path = labels_ts / f"{cid}.png"
+            if not gt_path.is_file():
+                gt_path = labels_tr / f"{cid}.png"
             if not pred_path.is_file() or not gt_path.is_file():
                 logger.warning("missing pred/GT for %s", cid)
                 continue
             pred = _load_2d_label(pred_path) > 0
             truth = _load_2d_label(gt_path) > 0
-            ids.append(cid)
+            ids.append(_release_case_id(cid))
             scores.append(_binary_dice(pred, truth))
         return ids, scores
     finally:
