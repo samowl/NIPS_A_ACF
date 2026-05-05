@@ -91,7 +91,7 @@ All paper-table primary rows are generated from `results/_merged/`.
 
 Current primary functional pools after the Dice >= 0.30 functional floor:
 
-| Task | Test cases | Higher-level units | Source JSONs | Post-floor pool |
+| Task | Test cases | Higher-level units | Source JSONs | Functional pool |
 |---|---:|---:|---:|---|
 | `kvasir` | 120 | 120 images | 44 | 11-bundle x 4-seed (44 members) |
 | `acdc_lv` | 361 | 20 patients | 44 | 10-bundle x 4-seed (40 members) |

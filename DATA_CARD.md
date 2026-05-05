@@ -7,7 +7,7 @@ Derived trace resource for an evaluation audit. This is not a new raw medical-im
 ## Included Fields
 
 - Per-case Dice vectors for released model traces.
-- Task, bundle, seed, and case identifiers needed for deterministic alignment.
+- Task, bundle, seed, hashed case identifiers, and non-identifying split keys needed for deterministic alignment and released sensitivity checks.
 - Same/cross summary JSONs, subject-level summaries, and selected diagnostic aggregate JSONs.
 - SHA-256 hashes and manifest metadata.
 
@@ -25,7 +25,7 @@ The resource must not be used for re-identification, patient profiling, protecte
 
 ## Privacy Considerations
 
-Identifiers are retained only where needed for trace alignment and subject-level resampling. Some RIGA alignment keys inherit public folder-name tokens from the upstream release. These tokens are retained only to reproduce deterministic split alignment; they are not validated demographic annotations and must not be used for subgroup, gender, or individual-level analysis.
+Identifiers are retained only where needed for trace alignment and subject-level resampling. RIGA alignment keys are released as deterministic hashed identifiers with non-identifying source/task labels; raw upstream folder-name components are not needed for the analysis and are not redistributed as case identifiers. These identifiers are not validated demographic annotations and must not be used for subgroup, gender, or individual-level analysis.
 
 ## Access Restrictions
 

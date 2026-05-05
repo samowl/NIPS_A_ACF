@@ -1128,11 +1128,12 @@ result JSONs are not included in this artifact release.
 Kvasir rows expose only image-level file identifiers in the released
 \texttt{test\_ids}; no patient, video, or near-duplicate grouping identifier is
 available in the released trace bundle, so we do not claim patient-level
-duplicate control for that row. RIGA Cup/Disc rows retain alignment identifiers
-and source labels only to make the $n{=}95$ Magrabia-source test split auditable.
-Some upstream public/research identifiers may inherit folder-name tokens from
-the source release; these tokens are not validated demographic annotations and
-must not be used for subgroup, gender, or individual-level analysis.
+duplicate control for that row. RIGA Cup/Disc rows retain deterministic hashed
+alignment identifiers and non-identifying source/task labels only to make the
+$n{=}95$ Magrabia-source test split auditable. Raw upstream folder-name
+components are not needed for this analysis and are not redistributed as case
+identifiers; the released identifiers are not validated demographic annotations
+and must not be used for subgroup, gender, or individual-level analysis.
 
 \paragraph{Encoder-loader boundary.}
 The released traces should be read as frozen-feature probes through the bundled

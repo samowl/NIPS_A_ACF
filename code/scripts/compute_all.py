@@ -126,6 +126,7 @@ class PerCaseJSON:
     seed: int
     per_case_dice: np.ndarray
     test_ids: tuple[str, ...]
+    case_split_ids: tuple[str, ...] | None = None
 
 
 def _load_per_case_json(path: Path) -> PerCaseJSON:
@@ -143,6 +144,11 @@ def _load_per_case_json(path: Path) -> PerCaseJSON:
         seed=int(payload["seed"]),
         per_case_dice=np.asarray(payload["per_case_dice"], dtype=np.float64),
         test_ids=tuple(str(x) for x in payload["test_ids"]),
+        case_split_ids=(
+            tuple(str(x) for x in payload["case_split_ids"])
+            if "case_split_ids" in payload
+            else None
+        ),
     )
 
 
@@ -204,6 +210,10 @@ def _validate_alignment(jsons: list[PerCaseJSON]) -> None:
         if j.test_ids != first.test_ids:
             raise ValueError(
                 f"test_ids mismatch: {j.path} disagrees with {first.path}"
+            )
+        if j.case_split_ids != first.case_split_ids:
+            raise ValueError(
+                f"case_split_ids mismatch: {j.path} disagrees with {first.path}"
             )
 
 
@@ -309,6 +319,15 @@ def _stable_unit_split(
     units = sorted(set(unit_ids))
     if len(units) < 2:
         raise ValueError(f"{task}: need at least two units for split-half check")
+    if all(
+        u.startswith("riga_split_cal_") or u.startswith("riga_split_eval_")
+        for u in units
+    ):
+        cal_units = {u for u in units if u.startswith("riga_split_cal_")}
+        eval_units = set(units) - cal_units
+        if not cal_units or not eval_units:
+            raise ValueError(f"{task}: explicit split keys must contain both halves")
+        return cal_units, eval_units
     keyed = sorted(
         (
             hashlib.sha256(f"{task}:{unit}".encode("utf-8")).hexdigest(),
@@ -483,7 +502,12 @@ def compute_calibration_split(
     """
     task = fm_jsons[0].task
     meta = _case_metadata(task, fm_jsons[0].test_ids)
-    unit_ids = tuple(str(x) for x in meta["unit_ids"])
+    if fm_jsons[0].case_split_ids is not None:
+        if len(fm_jsons[0].case_split_ids) != len(fm_jsons[0].test_ids):
+            raise ValueError(f"{task}: case_split_ids length mismatch")
+        unit_ids = tuple(str(x) for x in fm_jsons[0].case_split_ids)
+    else:
+        unit_ids = tuple(str(x) for x in meta["unit_ids"])
     unit_arr = np.asarray(unit_ids)
     cal_units, eval_units = _stable_unit_split(task, unit_ids)
     cal_mask = np.asarray([u in cal_units for u in unit_ids], dtype=bool)
