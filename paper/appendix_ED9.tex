@@ -436,19 +436,21 @@ The Table~\ref{tab:main} BraTS foreground row is a BraTS 2024 GLI 2D FLAIR deriv
 
 Per-class BraTS sensitivity can be inflated by sparse labels: if a class is absent from a slice, empty-vs-empty Dice can return a perfect score and obscure the foreground-error structure that matters for a segmentation audit. For this reason, the primary BraTS row uses the foreground derivative \texttt{seg>0} rather than a sparse NCR-only target. NCR filtering diagnostics from a separate sparse-class sweep are not used as numeric evidence here because their exact aggregate files are not included in the supplementary artifact. The released BraTS foreground train-size and multimodal diagnostics are instead reported later in Appendices~\ref{app:m19}--\ref{app:m20} from \texttt{results/\_merged/late\_brats\_summaries.json}.
 
-\section{Mechanism-probe scope}
+\section{Non-bundled exploratory probes --- not used as evidence}
 \label{sec:acdc-detail}
 \label{sec:adaptation}
 \label{app:randinit}
 \label{app:hetlora}
 \label{app:crossarch}
 
-This block keeps released diagnostics separate from exploratory mechanism probes
-whose source prediction caches are not included in the supplementary artifact. Only released traces
-or aggregate JSONs are used as numerical support. The shared reading is
-descriptive: same-backbone perturbations can reduce correlation, but the released
-diagnostics do not make same-backbone pools behave like the primary cross-family
-references.
+This consolidated block keeps released diagnostics separate from exploratory
+mechanism probes whose source prediction caches or aggregate summary files are
+not included in the supplementary artifact. Only released traces or released
+aggregate JSONs are used as numerical support for the paper's claims. The
+shared reading is descriptive: same-backbone perturbations can reduce
+correlation, but the released diagnostics do not make same-backbone pools behave
+like the primary cross-family references, and non-bundled probes below are not
+used as evidence.
 
 \textbf{ACDC architecture caveat.} Secondary ACDC exploratory tables used a
 separate 8-bundle split and architecture-pair subsets that are not included as
@@ -896,7 +898,7 @@ attenuation/scale-sensitivity check, not a causal decomposition.
   \label{tab:diffleak-allrow}
   \centering\scriptsize
   \setlength{\tabcolsep}{2.7pt}
-  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccccc}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccccc}
     \toprule
     Task & Raw $\Delta$ & Res. same & Res. cross & Res. $\Delta$ & Res. CI & Mean $R^2$ \\
     \midrule
@@ -941,20 +943,23 @@ the audit; it is \emph{not} a literal independent-member count.
   $M_{\text{eff}}$ uses an equicorrelation approximation for binary failure
   indicators and is not a literal independent-member count. Same-bundle pools are each FM's completed decoder seeds. Diverse rows enumerate
   every 4-bundle composition of the filtered functional pool and every available
-  one-seed-per-FM tuple. Undefined zero-variance failure-correlation tuples are
-  excluded rather than imputed. Source: \texttt{results/\_merged/m\_eff/*.json}.}
+  one-seed-per-FM tuple. $\rho_{\max}$ is the largest valid diverse-pool
+  $\rho_{\text{fail}}$ over that released enumeration and gives a conservative
+  lower $M_{\text{eff}}$ readout for the most redundant valid tuple. Undefined
+  zero-variance failure-correlation tuples are excluded rather than imputed.
+  Source: \texttt{results/\_merged/m\_eff/*.json}.}
   \label{tab:meff}
   \centering\scriptsize
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccc}
+  \setlength{\tabcolsep}{2.2pt}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccccc}
     \toprule
-    Task & Func. bundles & Mono mean$^{\dag}$ & Diverse $\rho_{\text{fail}}$ & Diverse $M_{\text{eff}}$ & Valid tuples \\
+    Task & Func. bundles & Mono mean$^{\dag}$ & Diverse $\bar\rho_{\text{fail}}$ & $\rho_{\max}$ & Mean $M_{\text{eff}}$ & $M_{\text{eff}}(\rho_{\max})$ & Valid tuples \\
     \midrule
-    Kvasir     & 11 & 1.12 & 0.333$\pm$0.104 & 2.05$\pm$0.32 & 84{,}480 / 84{,}480 \\
-    ACDC LV    & 10 & 1.14 & 0.298$\pm$0.075 & 2.14$\pm$0.24 & 53{,}760 / 53{,}760 \\
-    BraTS foreground   & 10 & 1.13 & 0.273$\pm$0.089 & 2.24$\pm$0.32 & 53{,}760 / 53{,}760 \\
-    RIGA Cup   & 9  & 1.16 & 0.246$\pm$0.121 & 2.43$\pm$0.63 & 31{,}488 / 32{,}256 \\
-    RIGA Disc  & 11 & 1.17 & 0.126$\pm$0.067 & 2.97$\pm$0.44 & 84{,}480 / 84{,}480 \\
+    Kvasir     & 11 & 1.12 & 0.333$\pm$0.104 & 0.625 & 2.05$\pm$0.32 & 1.39 & 84{,}480 / 84{,}480 \\
+    ACDC LV    & 10 & 1.14 & 0.298$\pm$0.075 & 0.528 & 2.14$\pm$0.24 & 1.55 & 53{,}760 / 53{,}760 \\
+    BraTS foreground   & 10 & 1.13 & 0.273$\pm$0.089 & 0.506 & 2.24$\pm$0.32 & 1.59 & 53{,}760 / 53{,}760 \\
+    RIGA Cup   & 9  & 1.16 & 0.246$\pm$0.121 & 0.695 & 2.43$\pm$0.63 & 1.30 & 31{,}488 / 32{,}256 \\
+    RIGA Disc  & 11 & 1.17 & 0.126$\pm$0.067 & 0.455 & 2.97$\pm$0.44 & 1.69 & 84{,}480 / 84{,}480 \\
     \bottomrule
   \end{tabular*}
   \\[2pt]
@@ -964,16 +969,18 @@ the audit; it is \emph{not} a literal independent-member count.
 \textbf{Reading the table.} The scorer uses the same estimand as
 the text: a diverse pool is four distinct FMs with one decoder-seed member from
 each FM. Under that definition, the nominal $M{=}4$ diverse pools yield
-$M_{\text{eff}}\approx2$--3 under this equicorrelation readout, not four; same-FM
-seed pools are near one under the same calculation. The exact level varies
-by task and failure threshold, so we use $M_{\text{eff}}$ as a dependence
-readout, not as a literal deployment objective.
+$M_{\text{eff}}\approx2$--3 under the mean equicorrelation readout, not four.
+The $\rho_{\max}$ column shows that the most redundant valid diverse tuples have
+lower conservative readouts ($1.30$--$1.69$), while same-FM seed pools are near
+one under the same calculation. The exact level varies by task, tuple, and
+failure threshold, so we use $M_{\text{eff}}$ as a dependence readout, not as a
+literal deployment objective.
 
 \paragraph{Pairwise $\rho_{\text{fail}}$ heterogeneity disclosure (equicorrelation caveat).} The $M_{\text{eff}}$ formula assumes constant pairwise correlation across member pairs (equicorrelated pool). In practice the per-pair $\rho_{\text{fail}}$ varies across the bundles in each task. From the \texttt{m\_eff/*.json} outputs, mono-pool $\rho_{\text{fail}}$ across the per-task functional bundles has mean / SD / range:
 Kvasir mean $0.865$, SD $0.103$, range $[0.601, 0.948]$ ($n{=}11$);
 ACDC LV mean $0.847$, SD $0.122$, range $[0.518, 0.931]$ ($n{=}10$);
 BraTS foreground mean $0.860$, SD $0.117$, range $[0.553, 0.958]$ ($n{=}10$);
-RIGA Cup mean $0.833$ over 7 defined mono pools, and RIGA Disc mean $0.812$ over 10 defined mono pools. Undefined rows occur when an FM's $\tau{=}0.85$ failure indicator is constant, giving zero-variance Pearson. Diverse 4-of-$K$ compositions span a wider $\rho_{\text{fail}}$ distribution, which is why Table~\ref{tab:meff} reports means and standard deviations across all valid seed tuples rather than selecting a representative pool.
+RIGA Cup mean $0.833$ over 7 defined mono pools, and RIGA Disc mean $0.812$ over 10 defined mono pools. Undefined rows occur when an FM's $\tau{=}0.85$ failure indicator is constant, giving zero-variance Pearson. Diverse 4-of-$K$ compositions span a wider $\rho_{\text{fail}}$ distribution, which is why Table~\ref{tab:meff} reports both means and the released-enumeration $\rho_{\max}$ rather than selecting a single representative pool.
 
 \section{Shared-backbone random-effects representation}
 \label{app:rand-effects}

@@ -76,7 +76,7 @@ All paper-table primary rows are generated from `results/_merged/`.
 |---|---:|---|
 | `results/_merged/per_case_dice/` | 392 JSONs | Primary and selected appendix/diagnostic per-case Dice traces: 220 primary JSONs plus 120 same-family cross-checkpoint traces, 32 RIGA OOD, and 20 BraTS multimodal JSONs. |
 | `results/_merged/within_cross/*.json` | 5 JSONs | Primary within/cross/gap summaries and bootstrap intervals. |
-| `results/_merged/m_eff/*.json` | 5 JSONs | Mono-pool and functional diverse 4-bundle `M_eff` summaries. |
+| `results/_merged/m_eff/*.json` | 5 JSONs | Mono-pool and functional diverse 4-bundle `M_eff` summaries, including mean and conservative maximum-`rho_fail` readouts. |
 | `results/_merged/subject_level/*.json` | 2 JSONs | ACDC/BraTS patient-or-subject cluster sensitivity. |
 | `results/_merged/calibration_split/*.json` | 5 JSONs | Split-half sensitivity only; not the primary protocol. |
 | `results/_merged/nnunet/*.json` | 3 JSONs | Released nnU-Net v2 task-level 2D/3D complement summaries used as limited-scope evidence. |

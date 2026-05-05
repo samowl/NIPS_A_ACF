@@ -680,12 +680,22 @@ def compute_m_eff_pools(fm_jsons: list[PerCaseJSON]) -> dict:
                 float(np.std(diverse_rhos, ddof=1))
                 if len(diverse_rhos) > 1 else float("nan")
             ),
+            "rho_fail_min": (
+                float(np.min(diverse_rhos)) if diverse_rhos else float("nan")
+            ),
+            "rho_fail_max": (
+                float(np.max(diverse_rhos)) if diverse_rhos else float("nan")
+            ),
             "M_eff_mean": (
                 float(np.mean(diverse_meffs)) if diverse_meffs else float("nan")
             ),
             "M_eff_std": (
                 float(np.std(diverse_meffs, ddof=1))
                 if len(diverse_meffs) > 1 else float("nan")
+            ),
+            "M_eff_at_rho_max": (
+                float(4.0 / (1.0 + 3.0 * np.max(diverse_rhos)))
+                if diverse_rhos else float("nan")
             ),
         },
         "full_pool_diagnostic": full_pool_summary,

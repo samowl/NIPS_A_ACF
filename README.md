@@ -13,9 +13,11 @@ arrays and full caches are not redistributed in this artifact.
 
 Source: `results/_merged/paper_table.json` and `results/_merged/m_eff/*.json`.
 `M_eff` is a tau=0.85 failure-indicator equicorrelation diagnostic, not a
-literal independent-member count or standalone pool-selection objective.
+literal independent-member count or standalone pool-selection objective; the
+`m_eff` JSONs also include `rho_fail_max` and `M_eff_at_rho_max` for the
+appendix conservative-tuple readout.
 
-| Task | Filtered functional pool | Test units | Gap Delta | Diverse M=4 M_eff (diagnostic) |
+| Task | Filtered functional pool | Test units | Gap Delta | Mean diverse M=4 M_eff (diagnostic) |
 |---|---:|---:|---:|---:|
 | Kvasir polyp | 11 bundles / 44 members | 120 images | 0.261 | 2.05 |
 | ACDC LV | 10 bundles / 40 members | 361 slices / 20 patients | 0.321 | 2.14 |

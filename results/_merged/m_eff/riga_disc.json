@@ -1,13 +1,16 @@
 {
-  "commit_sha": "not_recorded_for_artifact",
+  "commit_sha": "a59462f894113b7a62f962c936f01bfe974c6c3e",
   "diverse_pools_summary": {
+    "M_eff_at_rho_max": 1.6908664682342278,
     "M_eff_mean": 2.967814757828679,
     "M_eff_std": 0.43604446397844354,
     "n_fm_compositions": 330,
     "n_seed_compositions": 84480,
     "n_valid_compositions": 84480,
     "pool_size_fms": 4,
+    "rho_fail_max": 0.45521700957206107,
     "rho_fail_mean": 0.12559225173925495,
+    "rho_fail_min": -0.10146690986135798,
     "rho_fail_std": 0.06744074932046629
   },
   "full_pool_diagnostic": {
@@ -15,7 +18,7 @@
     "n_fm_seed": 44,
     "rho_fail": 0.17548465710139216
   },
-  "generated_at": "2026-04-29T18:23:48Z",
+  "generated_at": "2026-05-05T15:26:13Z",
   "mono_pools": [
     {
       "M_eff": null,
