@@ -25,7 +25,7 @@ The resource must not be used for re-identification, patient profiling, protecte
 
 ## Privacy Considerations
 
-Identifiers are retained only where needed for trace alignment and subject-level resampling. RIGA source/subfolder labels are retained only for deterministic split auditing and should not be treated as demographic labels for profiling.
+Identifiers are retained only where needed for trace alignment and subject-level resampling. Some RIGA alignment keys inherit public folder-name tokens from the upstream release. These tokens are retained only to reproduce deterministic split alignment; they are not validated demographic annotations and must not be used for subgroup, gender, or individual-level analysis.
 
 ## Access Restrictions
 
@@ -33,4 +33,4 @@ Upstream datasets and checkpoints remain subject to their original licenses, res
 
 ## Croissant Metadata
 
-A Croissant JSON file describing this derived trace artifact is provided as an OpenReview dataset-metadata fallback. It describes the trace/code artifact and should not be read as a claim that this submission introduces a new raw dataset.
+A Croissant JSON file describing this derived trace artifact is provided as an OpenReview dataset-metadata fallback. It includes the required Responsible AI metadata fields for intended use, limitations, sensitive-information scope, data collection, labels, preprocessing, and maintenance. It describes the trace/code artifact and should not be read as a claim that this submission introduces a new raw dataset.

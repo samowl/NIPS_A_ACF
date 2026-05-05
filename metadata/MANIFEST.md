@@ -134,10 +134,9 @@ sha256sum -c metadata/SHA256SUMS
 Released code and metadata authored for this submission bundle are Apache-2.0.
 Derived scalar traces are redistributed only to the extent permitted by the
 upstream dataset/model terms. RIGA+ is CC BY-NC 4.0 via Deep Blue; Kvasir-SEG
-is used via Simula's upstream research/educational terms; the CVC-ClinicDB
-HuggingFace mirror page is labelled cc-by-4.0 but its card defers to the
-original CVC licence/citation requirements; ACDC and BraTS require their
-challenge/research licences or DUAs. Model checkpoints are not redistributed:
+is used via Simula's upstream research/educational terms; ACDC, BraTS, MSD, and
+ISIC resources require their challenge/research licences, terms, or DUAs. Model
+checkpoints are not redistributed:
 DINOv2 and SAM/MedSAM are Apache-2.0, MAE and RETFound checkpoints are
 non-commercial/research-use, OpenAI CLIP weights use the OpenAI CLIP licence,
 BiomedCLIP follows its model-card terms, and torchvision/open_clip/timm code
