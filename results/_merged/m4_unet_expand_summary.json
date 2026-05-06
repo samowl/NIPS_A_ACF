@@ -2,8 +2,8 @@
   "counters": {
     "missing": 0,
     "na_data_layout": 4,
-    "ok": 36,
-    "tbd": 5
+    "ok": 41,
+    "tbd": 0
   },
   "fm_labels": {
     "biomedclip": "BiomedCLIP",
@@ -138,9 +138,17 @@
       "fm": "efficientnet_b0",
       "fm_label": "EfficientNet-B0",
       "have_seeds": [
-        42
+        42,
+        43
       ],
-      "status": "tbd",
+      "mean_dice": 0.8185001221457909,
+      "mean_dice_per_seed": [
+        0.8228379284205558,
+        0.814162315871026
+      ],
+      "n_test": 120,
+      "seed_pair_r": 0.9554218013139455,
+      "status": "ok",
       "task": "kvasir"
     },
     {
@@ -266,9 +274,17 @@
       "fm": "resnet18",
       "fm_label": "ResNet-18",
       "have_seeds": [
-        42
+        42,
+        43
       ],
-      "status": "tbd",
+      "mean_dice": 0.8794604306778516,
+      "mean_dice_per_seed": [
+        0.8739671870386343,
+        0.884953674317069
+      ],
+      "n_test": 361,
+      "seed_pair_r": 0.8613839828691686,
+      "status": "ok",
       "task": "acdc_lv"
     },
     {
@@ -445,9 +461,17 @@
       "fm": "mae_vitb16",
       "fm_label": "MAE-B",
       "have_seeds": [
+        42,
         43
       ],
-      "status": "tbd",
+      "mean_dice": 0.8899658995033777,
+      "mean_dice_per_seed": [
+        0.8904382536867234,
+        0.8894935453200321
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.9601646046854051,
+      "status": "ok",
       "task": "riga_cup"
     },
     {
@@ -601,9 +625,17 @@
       "fm": "dinov2_vits14",
       "fm_label": "DINOv2-S",
       "have_seeds": [
+        42,
         43
       ],
-      "status": "tbd",
+      "mean_dice": 0.9598054436974204,
+      "mean_dice_per_seed": [
+        0.9595942736882334,
+        0.9600166137066074
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.7005685550004686,
+      "status": "ok",
       "task": "riga_disc"
     },
     {
@@ -695,9 +727,17 @@
       "fm": "mae_vitb16",
       "fm_label": "MAE-B",
       "have_seeds": [
-        42
+        42,
+        43
       ],
-      "status": "tbd",
+      "mean_dice": 0.9599687930808084,
+      "mean_dice_per_seed": [
+        0.9610297452999916,
+        0.9589078408616252
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.9340513131701984,
+      "status": "ok",
       "task": "riga_disc"
     },
     {
