@@ -33,7 +33,6 @@ import hashlib
 import json
 import logging
 import os
-import socket
 import shutil
 import subprocess
 import sys
@@ -231,10 +230,12 @@ def main(argv=None) -> int:
         "trainer_class_name": trainer_class_name,
         "plans_identifier": "nnUNetPlans",
         "checkpoint": "checkpoint_final.pth",
-        "nnunet_raw": os.environ.get("nnUNet_raw"),
-        "nnunet_preprocessed": os.environ.get("nnUNet_preprocessed"),
-        "nnunet_results": os.environ.get("nnUNet_results"),
-        "host": socket.gethostname(),
+        # Workspace paths and host are intentionally omitted from the released
+        # trace payload to avoid leaking site-specific identifiers. The audit
+        # record (workspace SHA-256 of splits_final.json, dataset/plan IDs) is
+        # documented in the parity audit report rather than in per-trace
+        # payloads. Trainer class, base trainer, plans identifier, and final
+        # checkpoint name above are sufficient to reproduce the run.
         "fold": int(args.fold),
         "seed": int(args.seed),
         "n_test": int(len(ids)),
