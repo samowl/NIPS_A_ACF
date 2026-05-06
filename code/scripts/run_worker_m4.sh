@@ -34,7 +34,11 @@ GPU_ID="${3:-}"
 cd "$(dirname "$0")/.."
 REPO_ROOT="$PWD"
 
-JOBS_FILE="${REPO_ROOT}/jobs_m4.txt"
+# FMPOOL_M4_JOBS_FILE overrides the default queue for expansion runs (e.g.
+# jobs_m4_expand.txt). Resume safety still applies: cells with an existing
+# per-case JSON are skipped, so the same expanded queue can run safely on a
+# tree that already contains the original M4 cells.
+JOBS_FILE="${FMPOOL_M4_JOBS_FILE:-${REPO_ROOT}/jobs_m4.txt}"
 LOG_DIR="${REPO_ROOT}/results/logs"
 STATUS_FILE="${LOG_DIR}/worker_m4_${WORKER_ID}.status"
 LOG_FILE="${LOG_DIR}/worker_m4_${WORKER_ID}.log"

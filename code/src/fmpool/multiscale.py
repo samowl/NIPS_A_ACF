@@ -228,6 +228,33 @@ class _ConvNeXtMultiScale(nn.Module):
         return outs
 
 
+class _EfficientNetMultiScale(nn.Module):
+    """EfficientNet-B0 multi-scale wrapper.
+
+    torchvision ``efficientnet_b0.features`` is a 9-element ``Sequential``.
+    Stage outputs at strides 4 / 8 / 16 / 32 fall at indices 2 / 3 / 5 / 8
+    with channel widths 24 / 40 / 112 / 1280 and spatial grids
+    56 / 28 / 14 / 7 at 224 input. The last index includes the head 1x1
+    conv that lifts 320 -> 1280, matching the SPEC §4 frozen-pool feature
+    dim of 1280.
+    """
+
+    _STAGE_INDICES: tuple[int, int, int, int] = (2, 3, 5, 8)
+
+    def __init__(self, model: nn.Module) -> None:
+        super().__init__()
+        self.features = model.features
+
+    def forward(self, x: torch.Tensor) -> list[torch.Tensor]:
+        outs: list[torch.Tensor] = []
+        wanted = set(self._STAGE_INDICES)
+        for i, layer in enumerate(self.features):
+            x = layer(x)
+            if i in wanted:
+                outs.append(x)
+        return outs
+
+
 # ---------------------------------------------------------------------------
 # Specs (must match the wrappers above)
 # ---------------------------------------------------------------------------
@@ -273,6 +300,38 @@ MULTISCALE_SPECS: dict[str, MultiScaleSpec] = {
         level_hw=((56, 56), (28, 28), (14, 14), (7, 7)),
         norm_mean=encoders.FM_SPECS["convnext_tiny"].norm_mean,
         norm_std=encoders.FM_SPECS["convnext_tiny"].norm_std,
+    ),
+    "resnet18": MultiScaleSpec(
+        fm_id="resnet18",
+        family="ResNet",
+        level_dims=(64, 128, 256, 512),
+        level_hw=((56, 56), (28, 28), (14, 14), (7, 7)),
+        norm_mean=encoders.FM_SPECS["resnet18"].norm_mean,
+        norm_std=encoders.FM_SPECS["resnet18"].norm_std,
+    ),
+    "efficientnet_b0": MultiScaleSpec(
+        fm_id="efficientnet_b0",
+        family="EfficientNet",
+        level_dims=(24, 40, 112, 1280),
+        level_hw=((56, 56), (28, 28), (14, 14), (7, 7)),
+        norm_mean=encoders.FM_SPECS["efficientnet_b0"].norm_mean,
+        norm_std=encoders.FM_SPECS["efficientnet_b0"].norm_std,
+    ),
+    "mae_vitb16": MultiScaleSpec(
+        fm_id="mae_vitb16",
+        family="MAE",
+        level_dims=(768, 768, 768, 768),
+        level_hw=((14, 14), (14, 14), (14, 14), (14, 14)),
+        norm_mean=encoders.FM_SPECS["mae_vitb16"].norm_mean,
+        norm_std=encoders.FM_SPECS["mae_vitb16"].norm_std,
+    ),
+    "deit_vitb16": MultiScaleSpec(
+        fm_id="deit_vitb16",
+        family="DeiT",
+        level_dims=(768, 768, 768, 768),
+        level_hw=((14, 14), (14, 14), (14, 14), (14, 14)),
+        norm_mean=encoders.FM_SPECS["deit_vitb16"].norm_mean,
+        norm_std=encoders.FM_SPECS["deit_vitb16"].norm_std,
     ),
 }
 
@@ -324,6 +383,30 @@ def build_multiscale_encoder(
 
         cn = tvm.convnext_tiny(weights=tvm.ConvNeXt_Tiny_Weights.IMAGENET1K_V1)
         wrapper = _ConvNeXtMultiScale(cn)
+    elif fm_id == "resnet18":
+        import torchvision.models as tvm
+
+        rn = tvm.resnet18(weights=tvm.ResNet18_Weights.IMAGENET1K_V1)
+        wrapper = _ResNetMultiScale(rn)
+    elif fm_id == "efficientnet_b0":
+        import torchvision.models as tvm
+
+        en = tvm.efficientnet_b0(weights=tvm.EfficientNet_B0_Weights.IMAGENET1K_V1)
+        wrapper = _EfficientNetMultiScale(en)
+    elif fm_id in ("mae_vitb16", "deit_vitb16"):
+        import timm
+
+        timm_id = (
+            "vit_base_patch16_224.mae"
+            if fm_id == "mae_vitb16"
+            else "deit_base_patch16_224"
+        )
+        trunk = timm.create_model(timm_id, pretrained=True, num_classes=0)
+        wrapper = _TimmViTMultiScale(
+            trunk,
+            feature_dim=spec.level_dims[-1],
+            grid=spec.level_hw[-1],
+        )
     else:  # pragma: no cover (guarded above)
         raise KeyError(fm_id)
 
