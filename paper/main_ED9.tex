@@ -20,6 +20,9 @@
 \usepackage{placeins}
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{makecell}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{}
 \sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
@@ -120,10 +123,10 @@ Table~\ref{tab:main} reports the primary finite-pool audit on five medical segme
   \caption{\textbf{Primary finite-pool co-failure audit.} For each filtered functional pool we report average pairwise Pearson correlation of per-case Dice traces for the primary same/release-recipe group and the cross-bundle reference. $K$ is the retained bundle count after the Dice${\geq}0.30$ functional floor; with four decoder seeds per bundle the trace count is $4K$ and same/cross pair counts follow deterministically from $K$. $\Delta_{0.30}$ is conditional on the retained functional pool; $\Delta_{\mathrm{no\,floor}}$ recomputes the same scorer without the floor. CIs are 95\% case-level paired bootstrap ($B{=}2{,}000$), and the conservative finite-pool interval $\Delta$ hier CI$^{\dag}$ is a hierarchical bootstrap over primary grouping and seed clusters; all displayed hierarchical CIs exclude zero. ACDC and BraTS are slice-level rows nested within $20$ ACDC patients and $324$ BraTS subjects; subject-aggregated gaps are ACDC $\Delta=0.262$ [0.151, 0.413] and BraTS $\Delta=0.214$ [0.182, 0.251] (Appendix~\ref{app:subject-cluster}). The BraTS row uses the 11-bundle source pool for the 2D FLAIR \texttt{seg>0} derivative; ResNet-18 is below the Dice floor, leaving $10$ retained bundles. The primary ACDC pool retains CLIP-L/14 because it passes the Dice floor; a secondary 8-FM ACDC diagnostic with a different split (Appendix~\ref{sec:acdc-detail}) reports CLIP-L/14 collapsed at Dice $0.007$ on that split.}
   \label{tab:main}
   \centering\footnotesize
-  \setlength{\tabcolsep}{3.2pt}
+  \setlength{\tabcolsep}{3.5pt}
   \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrcccccc}
     \toprule
-    Task row & Unit $N$ & $K$ & $\rho_{\text{same/release}}$ & $\rho_{\text{cross}}$ & $\Delta_{0.30}$ & $\Delta_{\mathrm{no\,floor}}$ & $\Delta$ case CI & $\Delta$ hier CI$^{\dag}$ \\
+    Task row & Unit $N$ & $K$ & \makecell[c]{$\rho_{\text{same}}$\\release} & $\rho_{\text{cross}}$ & $\Delta_{0.30}$ & \makecell[c]{$\Delta$\\no floor} & \makecell[c]{$\Delta$\\case CI} & \makecell[c]{$\Delta$ hier\\CI$^{\dag}$} \\
     \midrule
     Kvasir polyp & image 120 & 11 & 0.958 & 0.697 & 0.261 & 0.261 & [0.211,0.320] & [0.174,0.378] \\
     ACDC LV & slice 361 (20 pts) & 10 & 0.959 & 0.639 & 0.321 & 0.355 & [0.289,0.355] & [0.211,0.435] \\
@@ -152,7 +155,7 @@ Table~\ref{tab:main-robustness} summarizes four sign-stability diagnostics: a ca
   \setlength{\tabcolsep}{4pt}
   \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccc}
     \toprule
-    Task & Cal.-split $\Delta$ & $P_{33}$ fail $\phi$ gap & QC $\beta_{\mathrm{same}}$ & Checkpoint-family gap \\
+    Task & \makecell[c]{Cal.-split\\$\Delta$} & \makecell[c]{$P_{33}$ fail\\$\phi$ gap} & \makecell[c]{QC\\$\beta_{\mathrm{same}}$} & \makecell[c]{Checkpoint-\\family gap} \\
     \midrule
     Kvasir polyp & 0.250 & 0.329 & 0.169 & 0.080 \\
     ACDC LV & 0.350 & 0.386 & 0.208 & 0.134 \\
@@ -189,7 +192,7 @@ A representation-similarity concern, following \citet{kornblith2019similarity}, 
   \setlength{\tabcolsep}{4pt}
   \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llccccc}
     \toprule
-    Dataset & ViT subset & Func. ViTs & Seed floor & ViT cross-pretrain & Cross ref. & Floor $-$ cross-pretrain \\
+    Dataset & ViT subset & \makecell[c]{Func.\\ViTs} & \makecell[c]{Seed\\floor} & \makecell[c]{ViT cross-\\pretrain} & \makecell[c]{Cross\\ref.} & \makecell[c]{Floor $-$\\cross-pretrain} \\
     \midrule
     RIGA Cup & all 5 ViTs & 5/5 & 0.968 & 0.680 & 0.361 & 0.288 \\
     ACDC LV & CLIP-B dropped$^{\dag}$ & 4/5 & 0.988 & 0.807 & 0.639 & 0.182 \\
@@ -209,17 +212,19 @@ The released CNN random-init diagnostic (Appendix~\ref{app:m9}) shows positive s
 \begin{table}[t]
   \caption{\textbf{Same-backbone perturbation diagnostics.} These comparisons vary decoder capacity, skip structure, or MC dropout under limited grids. They test whether simple same-backbone perturbations remove high correlation; they are not dose-matched causal controls.}
   \label{tab:controls}
-  \centering\scriptsize
-  \setlength{\tabcolsep}{3.5pt}
-  \begin{tabularx}{\linewidth}{p{0.20\linewidth}p{0.22\linewidth}Yp{0.20\linewidth}}
+  \centering\footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabularx}{\linewidth}{p{0.27\linewidth}p{0.22\linewidth}Y}
     \toprule
-    Diagnostic & Released source & Main readout & Reading \\
+    Diagnostic & Released source & Main readout \\
     \midrule
-    Head-capacity sweep, RIGA Cup & Released traces, App.~\ref{app:m3} & 4 heads, 769--3.94M params; Dice 0.725--0.848; cross-head same-bundle $\bar r{=}0.690$ (range 0.510--0.896) & Head design changes accuracy and some pairwise $r$, but stays above primary RIGA cross-family $\bar r{=}0.361$. \\
-    UNet-skip decoder replication & Released summary, App.~\ref{app:unet} & 20 cells; Dice 0.806--0.902; seed-pair $r{=}0.774$--0.979 & Stronger skip head improves accuracy but does not make same-backbone pools look cross-family. \\
-    MC dropout, DINOv2-B/RIGA Cup & Released traces, App.~\ref{app:m22} & MC $\bar r{=}0.947,0.925,0.893$ for $p{=}0.1,0.2,0.4$ & Weak decorrelation lever; largest tested drop is about 0.10. \\
+    Head-capacity sweep, RIGA Cup & Released traces, App.~\ref{app:m3} & 4 heads, 769--3.94M params; Dice 0.725--0.848; cross-head same-bundle $\bar r{=}0.690$ (range 0.510--0.896) \\
+    UNet-skip decoder replication & Released summary, App.~\ref{app:unet} & 20 cells; Dice 0.806--0.902; seed-pair $r{=}0.774$--0.979 \\
+    MC dropout, DINOv2-B/RIGA Cup & Released traces, App.~\ref{app:m22} & MC $\bar r{=}0.947,0.925,0.893$ for $p{=}0.1,0.2,0.4$ \\
     \bottomrule
   \end{tabularx}
+  \\[2pt]
+  {\footnotesize Readings: head-capacity and UNet-skip stay above the primary RIGA cross-family $\bar r{=}0.361$; MC dropout is a weak decorrelation lever (largest tested drop ${\approx}0.10$).}
 \end{table}
 
 \textbf{(C1) Head architecture/capacity.} The head-capacity and UNet-skip decoder perturbation diagnostics change accuracy and reduce some pairwise correlations, but their same-backbone correlations remain above the primary RIGA cross-family reference. Thus the tested decoder-capacity changes did not remove same-backbone co-failure in these diagnostics.
