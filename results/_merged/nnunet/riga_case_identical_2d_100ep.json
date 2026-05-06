@@ -1,4 +1,6 @@
 {
+  "bootstrap_b": 2000,
+  "bootstrap_seed": 0,
   "case_ids": [
     "riga_a47d58c8dee70425",
     "riga_8e967ce8531f1e9a",
@@ -97,7 +99,7 @@
     "riga_67ab26df44bc933e"
   ],
   "case_unit": "fundus image",
-  "commit_sha": "ea8889f50fa966e532c1e3247c766ab460fe5a8e",
+  "commit_sha": "ccb58b2fe5ca57b47f558ab0a4b0b50555099fef",
   "cross_fold_rbar": 0.9759415451580038,
   "cross_pairs": [
     0.9654336114150378,
@@ -146,7 +148,9 @@
     0.0024952834888013198,
     0.03939567204712446
   ],
+  "delta_ci95_method": "case bootstrap over held-out cases",
   "delta_within_minus_cross": 0.007910314926435902,
+  "fm": "nnunet_2d_100ep",
   "folds": [
     0,
     1,
@@ -154,7 +158,7 @@
     3,
     4
   ],
-  "generated_at": "2026-05-05T18:32:07Z",
+  "generated_at": "2026-05-06T07:42:18Z",
   "mean_dice_all": 0.9162153559264425,
   "mean_dice_per_model": {
     "fold0_seed13": 0.9146475260969691,
