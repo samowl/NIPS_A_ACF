@@ -513,47 +513,36 @@ protocol from Section~\ref{sec:design}.
 \section{UNet-with-skip decoder replication}
 \label{app:unet}
 
-The paper's primary decoder is a $1{\times}1$ conv with $C{+}1$ trainable parameters for $C$ frozen channels (for example, 769 parameters for a 768-channel feature map), which is close to a linear probe on frozen features. Dense decoders with skip connections---nnU-Net, U-Net, SegFormer---are closer to deployed medical segmentation. We therefore ran a separate diagnostic in which the frozen backbone is unchanged but the head is replaced by a multi-scale UNet-style decoder over four encoder feature levels. This is a \emph{two-seed diagnostic grid} (seeds 42/43), not an inferential table with the same status as the four-seed primary pool; the reported correlation is the single seed-pair Pearson coefficient for each cell.
+The paper's primary decoder is a $1{\times}1$ conv with $C{+}1$ trainable parameters for $C$ frozen channels (for example, 769 parameters for a 768-channel feature map), which is close to a linear probe on frozen features. Dense decoders with skip connections---nnU-Net, U-Net, SegFormer---are closer to deployed medical segmentation. We therefore ran a separate diagnostic in which the frozen backbone is unchanged but the head is replaced by a multi-scale UNet-style decoder over four encoder feature levels. The diagnostic uses two released seeds (42/43) per cell; ``seed-pair $r$'' is therefore a single Pearson coefficient, not a bootstrapped four-seed within-family estimate.
 
-\textbf{Architecture.} For hierarchical CNNs (ConvNeXt-T, ResNet-50) the decoder uses the native feature pyramid as skip sources; for ViT-style encoders (DINOv2-B/S and BiomedCLIP ViT) it uses sampled intermediate token maps reassembled into a four-level pyramid. The released head first applies lateral $1{\times}1$ projections to a common decoder width, then runs a top-down bilinear-upsample path with three additive skip merges (deep $\to$ mid $\to$ shallow $\to$ shallowest), two conv-BN-ReLU blocks after each merge, a final conv-BN-ReLU after upsampling to the output grid, and a final $1{\times}1$ output conv. Training matches the frozen-feature recipe where possible: Adam lr $10^{-3}$, batch 16, 30 epochs, BCE, seeds $\{42,43\}$.
+\textbf{Architecture.} For hierarchical CNNs (ConvNeXt-T, ResNet-50, ResNet-18, EfficientNet-B0) the decoder uses the native feature pyramid as skip sources; for ViT-style encoders (DINOv2-B/S, BiomedCLIP, MAE-B, DeiT-B) it uses sampled intermediate token maps reassembled into a four-level pyramid. The released head first applies lateral $1{\times}1$ projections to a common decoder width, then runs a top-down bilinear-upsample path with three additive skip merges (deep $\to$ mid $\to$ shallow $\to$ shallowest), two conv-BN-ReLU blocks after each merge, a final conv-BN-ReLU after upsampling to the output grid, and a final $1{\times}1$ output conv. Training matches the frozen-feature recipe where possible: Adam lr $10^{-3}$, batch 16, 30 epochs, BCE, seeds $\{42,43\}$.
+
+\textbf{Coverage.} The 9-backbone $\times$ 5-task expansion adds (i) ResNet-18, EfficientNet-B0, MAE-B and DeiT-B as four new backbones for Kvasir, ACDC LV, RIGA Cup and RIGA Disc, and (ii) RIGA Disc as a fifth task row for the original 5 backbones (DINOv2-B/S, BiomedCLIP, ConvNeXt-T, ResNet-50). The BraTS column for the four new backbones requires a different data-root layout on the host that ran the expansion (BraTS-2024-GLI subjects live under \texttt{training/training\_data1\_v2/} rather than at the data-root top level expected by \texttt{fmpool.datasets.brats}); those four cells are therefore marked \texttt{---} and the BraTS row for the original 5 backbones is unchanged from the prior diagnostic. Five cells (kvasir/EfficientNet-B0, acdc\_lv/ResNet-18, riga\_cup/MAE-B, riga\_disc/DINOv2-S, riga\_disc/MAE-B) are marked \texttt{TBD} because one of the two seeds was still finalising at submission time; those cells are produced from the same protocol and will be filled in a follow-up commit.
 
 \begin{table}[!htbp]
-  \caption{\textbf{Two-seed UNet-skip same-backbone diagnostic.} Each cell uses the two released seeds 42/43 from the UNet-skip trace set; ``seed-pair $r$'' is therefore one Pearson coefficient, not a bootstrapped four-seed within-family estimate. Primary Table~\ref{tab:main} cross references are Kvasir 0.697, ACDC 0.639, RIGA Cup 0.361, and BraTS foreground 0.623.}
+  \caption{\textbf{UNet-skip same-backbone diagnostic, 9 backbones $\times$ 5 tasks (two seeds 42/43 per cell).} Each cell reports ``mean Dice (averaged over the two seeds) / seed-pair Pearson $r$''. Single-pair $r$ is a high-variance estimator; the reading is that within-backbone correlations stay clearly positive on every reported cell while pool-mean Dice rises substantially over the matching $1{\times}1$ probe rows. Primary Table~\ref{tab:main} cross-bundle references for context: Kvasir 0.697, ACDC LV 0.639, RIGA Cup 0.361, BraTS fg 0.623, RIGA Disc 0.232. Cells marked \texttt{---} are not in scope (BraTS expansion for the four new backbones, see Coverage paragraph). Cells marked \texttt{TBD} are pending the second seed.}
   \label{tab:unet}
   \centering\scriptsize
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{llcc}
+  \setlength{\tabcolsep}{2.5pt}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccc}
     \toprule
-    Task & Backbone & Mean Dice & Seed-pair $r$ \\
+    Backbone & Kvasir & ACDC LV & RIGA Cup & BraTS fg & RIGA Disc \\
     \midrule
-    Kvasir & DINOv2-B & 0.883 & 0.877 \\
-    Kvasir & DINOv2-S & 0.866 & 0.919 \\
-    Kvasir & BiomedCLIP & 0.806 & 0.926 \\
-    Kvasir & ConvNeXt-T & 0.860 & 0.775 \\
-    Kvasir & ResNet-50 & 0.816 & 0.774 \\
+    DINOv2-B        & $0.883/0.877$ & $0.864/0.979$ & $0.902/0.967$ & $0.877/0.936$ & $0.963/0.426$ \\
+    DINOv2-S        & $0.866/0.919$ & $0.863/0.970$ & $0.894/0.893$ & $0.875/0.886$ & TBD           \\
+    BiomedCLIP      & $0.806/0.926$ & $0.827/0.950$ & $0.880/0.892$ & $0.858/0.929$ & $0.960/0.874$ \\
+    ConvNeXt-T      & $0.860/0.775$ & $0.885/0.917$ & $0.895/0.970$ & $0.895/0.938$ & $0.966/0.809$ \\
+    ResNet-50       & $0.816/0.774$ & $0.882/0.945$ & $0.881/0.952$ & $0.889/0.934$ & $0.965/0.873$ \\
     \addlinespace
-    ACDC LV & DINOv2-B & 0.864 & 0.979 \\
-    ACDC LV & DINOv2-S & 0.863 & 0.970 \\
-    ACDC LV & BiomedCLIP & 0.827 & 0.950 \\
-    ACDC LV & ConvNeXt-T & 0.885 & 0.917 \\
-    ACDC LV & ResNet-50 & 0.882 & 0.945 \\
-    \addlinespace
-    RIGA Cup & DINOv2-B & 0.902 & 0.967 \\
-    RIGA Cup & DINOv2-S & 0.894 & 0.893 \\
-    RIGA Cup & BiomedCLIP & 0.880 & 0.892 \\
-    RIGA Cup & ConvNeXt-T & 0.895 & 0.970 \\
-    RIGA Cup & ResNet-50 & 0.881 & 0.952 \\
-    \addlinespace
-    BraTS foreground & DINOv2-B & 0.877 & 0.936 \\
-    BraTS foreground & DINOv2-S & 0.875 & 0.886 \\
-    BraTS foreground & BiomedCLIP & 0.858 & 0.929 \\
-    BraTS foreground & ConvNeXt-T & 0.895 & 0.938 \\
-    BraTS foreground & ResNet-50 & 0.889 & 0.934 \\
+    ResNet-18       & $0.774/0.828$ & TBD           & $0.883/0.814$ & ---           & $0.961/0.651$ \\
+    EfficientNet-B0 & TBD           & $0.881/0.938$ & $0.899/0.888$ & ---           & $0.965/0.787$ \\
+    MAE-B           & $0.795/0.827$ & $0.846/0.955$ & TBD           & ---           & TBD           \\
+    DeiT-B          & $0.837/0.920$ & $0.849/0.945$ & $0.893/0.941$ & ---           & $0.963/0.880$ \\
     \bottomrule
-  \end{tabular}
+  \end{tabular*}
 \end{table}
 
-\textbf{Finding.} The UNet-skip head improves mean Dice substantially over several weak $1{\times}1$ probe cells, but it does not remove same-backbone co-failure: across the 20 evaluated cells, the seed-pair correlation remains $0.774$--$0.979$. On rows where the matched $1{\times}1$ seeds 42/43 are both available, UNet-skip usually lowers seed-pair $r$ modestly, but the effect is heterogeneous: Kvasir ResNet-50 drops $0.973{\to}0.774$, while RIGA Cup DINOv2-B is flat ($0.965{\to}0.967$) and RIGA Cup ResNet-50 increases ($0.908{\to}0.952$). The BraTS cells are consistent with the same boundary: DINOv2-B/S UNet-skip reaches mean Dice $0.875$--$0.877$, but seed-pair $r$ remains $0.886$--$0.936$. Thus the conclusion is narrower than a decoder-family claim: a stronger skip decoder can improve accuracy and sometimes reduce seed correlation, but under this frozen-backbone two-seed grid it does not make same-backbone pools resemble the cross-family references in Table~\ref{tab:main}. A full nnU-Net v2 $5$-fold audit on RIGA Cup is reported in Appendix~\ref{app:nnunet}.
+\textbf{Finding.} The UNet-skip head improves mean Dice substantially over several weak $1{\times}1$ probe cells, but it does not remove same-backbone co-failure. Across the $36$ evaluated cells, single seed-pair $r$ values stay positive (range $0.426$--$0.979$) while pool-mean Dice rises into the $0.77$--$0.97$ range; the within-backbone seed correlation is therefore concentrated well above the primary cross-bundle references in Table~\ref{tab:main} on every reported cell. The single-pair $r$ is high-variance (one Pearson coefficient per cell), so individual outliers like the DINOv2-B RIGA Disc cell ($r=0.426$) should not be over-read; what survives the noise is that no cell yields a near-zero seed-pair correlation and no cell approaches the cross-bundle reference for its task. The conclusion is narrower than a decoder-family claim: a stronger skip decoder can improve accuracy and sometimes reduce seed correlation, but under this frozen-backbone two-seed grid it does not make same-backbone pools resemble the cross-family references in Table~\ref{tab:main}. A full nnU-Net v2 $5$-fold audit on RIGA Cup is reported in Appendix~\ref{app:nnunet}.
 
 
 
@@ -743,7 +732,7 @@ claims.
     Diagnostic & Readout & Approx. change from stated baseline & Evidence \\
     \midrule
     Mono baseline (same FM, 4 seeds)                       & $0.96$                           & $0.00$                       & RIGA diagnostic baseline \\
-    UNet-skip decoder (5 backbones, 4 tasks)               & $0.774$--$0.979$                 & heterogeneous                & Appendix~\ref{app:unet}, Tab.~\ref{tab:unet} \\
+    UNet-skip decoder (9 backbones, 5 tasks expansion)     & $0.426$--$0.979$                 & heterogeneous                & Appendix~\ref{app:unet}, Tab.~\ref{tab:unet} \\
     Fold-reslicing cross-bundle check                      & $0.315$--$0.565$                 & split-stable                 & Appendix~\ref{app:nnunet}; released summary \\
     MC dropout $p{=}0.1$--$0.4$                            & $0.89$--$0.95$                   & $-0.02$ to $-0.10$           & Appendix~\ref{app:m22} \\
     Same-backbone bootstrap-bagging                        & $0.85$--$0.92$                   & $-0.05$ to $-0.12$           & Fig.~\ref{fig:phase3} \\

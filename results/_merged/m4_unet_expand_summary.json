@@ -1,0 +1,733 @@
+{
+  "counters": {
+    "missing": 0,
+    "na_data_layout": 4,
+    "ok": 36,
+    "tbd": 5
+  },
+  "fm_labels": {
+    "biomedclip": "BiomedCLIP",
+    "convnext_tiny": "ConvNeXt-T",
+    "deit_vitb16": "DeiT-B",
+    "dinov2_vitb14": "DINOv2-B",
+    "dinov2_vits14": "DINOv2-S",
+    "efficientnet_b0": "EfficientNet-B0",
+    "mae_vitb16": "MAE-B",
+    "resnet18": "ResNet-18",
+    "resnet50": "ResNet-50"
+  },
+  "fm_order": [
+    "dinov2_vitb14",
+    "dinov2_vits14",
+    "biomedclip",
+    "convnext_tiny",
+    "resnet50",
+    "resnet18",
+    "efficientnet_b0",
+    "mae_vitb16",
+    "deit_vitb16"
+  ],
+  "notes": {
+    "na_data_layout_meaning": "BraTS column expansion for the four new backbones is skipped because the BraTS-2024-GLI subjects on the snu12 host live under training/training_data1_v2/, while fmpool.datasets.brats expects them at the data-root top level. The original 5-backbone brats_wt row from the main M4 grid is unchanged.",
+    "tbd_meaning": "Cells where one of the two released seeds has not yet produced a per-case JSON; the cell will fill in after the running worker finalises that seed."
+  },
+  "rows": [
+    {
+      "fm": "dinov2_vitb14",
+      "fm_label": "DINOv2-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8833608720544728,
+      "mean_dice_per_seed": [
+        0.8800320712557407,
+        0.8866896728532048
+      ],
+      "n_test": 120,
+      "seed_pair_r": 0.8766371942123119,
+      "status": "ok",
+      "task": "kvasir"
+    },
+    {
+      "fm": "dinov2_vits14",
+      "fm_label": "DINOv2-S",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8655056102961594,
+      "mean_dice_per_seed": [
+        0.8633457327795874,
+        0.8676654878127315
+      ],
+      "n_test": 120,
+      "seed_pair_r": 0.918575076994442,
+      "status": "ok",
+      "task": "kvasir"
+    },
+    {
+      "fm": "biomedclip",
+      "fm_label": "BiomedCLIP",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.806158148552387,
+      "mean_dice_per_seed": [
+        0.8019250268542528,
+        0.8103912702505212
+      ],
+      "n_test": 120,
+      "seed_pair_r": 0.9256218118478886,
+      "status": "ok",
+      "task": "kvasir"
+    },
+    {
+      "fm": "convnext_tiny",
+      "fm_label": "ConvNeXt-T",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8596681019890061,
+      "mean_dice_per_seed": [
+        0.8634578466234671,
+        0.8558783573545451
+      ],
+      "n_test": 120,
+      "seed_pair_r": 0.7748929137562665,
+      "status": "ok",
+      "task": "kvasir"
+    },
+    {
+      "fm": "resnet50",
+      "fm_label": "ResNet-50",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8157103663233264,
+      "mean_dice_per_seed": [
+        0.8196060929224828,
+        0.81181463972417
+      ],
+      "n_test": 120,
+      "seed_pair_r": 0.7741974961471467,
+      "status": "ok",
+      "task": "kvasir"
+    },
+    {
+      "fm": "resnet18",
+      "fm_label": "ResNet-18",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.7744774832596646,
+      "mean_dice_per_seed": [
+        0.7571090613866753,
+        0.7918459051326537
+      ],
+      "n_test": 120,
+      "seed_pair_r": 0.8275170842481243,
+      "status": "ok",
+      "task": "kvasir"
+    },
+    {
+      "fm": "efficientnet_b0",
+      "fm_label": "EfficientNet-B0",
+      "have_seeds": [
+        42
+      ],
+      "status": "tbd",
+      "task": "kvasir"
+    },
+    {
+      "fm": "mae_vitb16",
+      "fm_label": "MAE-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.7953607494133308,
+      "mean_dice_per_seed": [
+        0.8013734198149998,
+        0.7893480790116619
+      ],
+      "n_test": 120,
+      "seed_pair_r": 0.8267085048428297,
+      "status": "ok",
+      "task": "kvasir"
+    },
+    {
+      "fm": "deit_vitb16",
+      "fm_label": "DeiT-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8373488484821638,
+      "mean_dice_per_seed": [
+        0.8435249271918942,
+        0.8311727697724336
+      ],
+      "n_test": 120,
+      "seed_pair_r": 0.9197980133330534,
+      "status": "ok",
+      "task": "kvasir"
+    },
+    {
+      "fm": "dinov2_vitb14",
+      "fm_label": "DINOv2-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8642136217017212,
+      "mean_dice_per_seed": [
+        0.8649216917724398,
+        0.8635055516310026
+      ],
+      "n_test": 361,
+      "seed_pair_r": 0.9792492297995563,
+      "status": "ok",
+      "task": "acdc_lv"
+    },
+    {
+      "fm": "dinov2_vits14",
+      "fm_label": "DINOv2-S",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8632894929287445,
+      "mean_dice_per_seed": [
+        0.8662987967861682,
+        0.8602801890713206
+      ],
+      "n_test": 361,
+      "seed_pair_r": 0.9695241121894029,
+      "status": "ok",
+      "task": "acdc_lv"
+    },
+    {
+      "fm": "biomedclip",
+      "fm_label": "BiomedCLIP",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8271820553939742,
+      "mean_dice_per_seed": [
+        0.8240144144782203,
+        0.8303496963097279
+      ],
+      "n_test": 361,
+      "seed_pair_r": 0.950127309955487,
+      "status": "ok",
+      "task": "acdc_lv"
+    },
+    {
+      "fm": "convnext_tiny",
+      "fm_label": "ConvNeXt-T",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.88519914954774,
+      "mean_dice_per_seed": [
+        0.8865811903148704,
+        0.8838171087806096
+      ],
+      "n_test": 361,
+      "seed_pair_r": 0.9169816395219452,
+      "status": "ok",
+      "task": "acdc_lv"
+    },
+    {
+      "fm": "resnet50",
+      "fm_label": "ResNet-50",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8824906626704077,
+      "mean_dice_per_seed": [
+        0.881699170793524,
+        0.8832821545472913
+      ],
+      "n_test": 361,
+      "seed_pair_r": 0.9448604677165066,
+      "status": "ok",
+      "task": "acdc_lv"
+    },
+    {
+      "fm": "resnet18",
+      "fm_label": "ResNet-18",
+      "have_seeds": [
+        42
+      ],
+      "status": "tbd",
+      "task": "acdc_lv"
+    },
+    {
+      "fm": "efficientnet_b0",
+      "fm_label": "EfficientNet-B0",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.881198928525859,
+      "mean_dice_per_seed": [
+        0.8808471680733551,
+        0.8815506889783629
+      ],
+      "n_test": 361,
+      "seed_pair_r": 0.9377726354090107,
+      "status": "ok",
+      "task": "acdc_lv"
+    },
+    {
+      "fm": "mae_vitb16",
+      "fm_label": "MAE-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8459433508723115,
+      "mean_dice_per_seed": [
+        0.842818947174081,
+        0.849067754570542
+      ],
+      "n_test": 361,
+      "seed_pair_r": 0.955189338439757,
+      "status": "ok",
+      "task": "acdc_lv"
+    },
+    {
+      "fm": "deit_vitb16",
+      "fm_label": "DeiT-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8486069129927138,
+      "mean_dice_per_seed": [
+        0.845539096325577,
+        0.8516747296598506
+      ],
+      "n_test": 361,
+      "seed_pair_r": 0.9445089007840941,
+      "status": "ok",
+      "task": "acdc_lv"
+    },
+    {
+      "fm": "dinov2_vitb14",
+      "fm_label": "DINOv2-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.9022173376109405,
+      "mean_dice_per_seed": [
+        0.9018607551035576,
+        0.9025739201183234
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.9670129838386453,
+      "status": "ok",
+      "task": "riga_cup"
+    },
+    {
+      "fm": "dinov2_vits14",
+      "fm_label": "DINOv2-S",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8938787000680843,
+      "mean_dice_per_seed": [
+        0.8970325709539747,
+        0.890724829182194
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.893118852185437,
+      "status": "ok",
+      "task": "riga_cup"
+    },
+    {
+      "fm": "biomedclip",
+      "fm_label": "BiomedCLIP",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8799676410661346,
+      "mean_dice_per_seed": [
+        0.8829260730541585,
+        0.8770092090781106
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.8921258561694725,
+      "status": "ok",
+      "task": "riga_cup"
+    },
+    {
+      "fm": "convnext_tiny",
+      "fm_label": "ConvNeXt-T",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8947707114480044,
+      "mean_dice_per_seed": [
+        0.8944062481264744,
+        0.8951351747695342
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.969996107279718,
+      "status": "ok",
+      "task": "riga_cup"
+    },
+    {
+      "fm": "resnet50",
+      "fm_label": "ResNet-50",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8809417342463866,
+      "mean_dice_per_seed": [
+        0.889097193283404,
+        0.8727862752093691
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.9522877949112236,
+      "status": "ok",
+      "task": "riga_cup"
+    },
+    {
+      "fm": "resnet18",
+      "fm_label": "ResNet-18",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8834921381280144,
+      "mean_dice_per_seed": [
+        0.8838124228408496,
+        0.8831718534151792
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.8141007065626881,
+      "status": "ok",
+      "task": "riga_cup"
+    },
+    {
+      "fm": "efficientnet_b0",
+      "fm_label": "EfficientNet-B0",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8991072519217795,
+      "mean_dice_per_seed": [
+        0.9038302668514727,
+        0.8943842369920862
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.8881411631602425,
+      "status": "ok",
+      "task": "riga_cup"
+    },
+    {
+      "fm": "mae_vitb16",
+      "fm_label": "MAE-B",
+      "have_seeds": [
+        43
+      ],
+      "status": "tbd",
+      "task": "riga_cup"
+    },
+    {
+      "fm": "deit_vitb16",
+      "fm_label": "DeiT-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8932904632646854,
+      "mean_dice_per_seed": [
+        0.8907746093920667,
+        0.8958063171373042
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.941317789709169,
+      "status": "ok",
+      "task": "riga_cup"
+    },
+    {
+      "fm": "dinov2_vitb14",
+      "fm_label": "DINOv2-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.877371893956407,
+      "mean_dice_per_seed": [
+        0.8776202882889252,
+        0.8771234996238888
+      ],
+      "n_test": 3228,
+      "seed_pair_r": 0.9360103719370724,
+      "status": "ok",
+      "task": "brats_wt"
+    },
+    {
+      "fm": "dinov2_vits14",
+      "fm_label": "DINOv2-S",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8745787241066287,
+      "mean_dice_per_seed": [
+        0.8757322730392104,
+        0.8734251751740469
+      ],
+      "n_test": 3228,
+      "seed_pair_r": 0.8857449525046903,
+      "status": "ok",
+      "task": "brats_wt"
+    },
+    {
+      "fm": "biomedclip",
+      "fm_label": "BiomedCLIP",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8575165661681377,
+      "mean_dice_per_seed": [
+        0.8583477133260842,
+        0.8566854190101912
+      ],
+      "n_test": 3228,
+      "seed_pair_r": 0.9286131126617069,
+      "status": "ok",
+      "task": "brats_wt"
+    },
+    {
+      "fm": "convnext_tiny",
+      "fm_label": "ConvNeXt-T",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8946611204041199,
+      "mean_dice_per_seed": [
+        0.895552516993864,
+        0.893769723814376
+      ],
+      "n_test": 3228,
+      "seed_pair_r": 0.9381260472379817,
+      "status": "ok",
+      "task": "brats_wt"
+    },
+    {
+      "fm": "resnet50",
+      "fm_label": "ResNet-50",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.8892226527160791,
+      "mean_dice_per_seed": [
+        0.8890391262453313,
+        0.889406179186827
+      ],
+      "n_test": 3228,
+      "seed_pair_r": 0.9343031116576465,
+      "status": "ok",
+      "task": "brats_wt"
+    },
+    {
+      "fm": "resnet18",
+      "fm_label": "ResNet-18",
+      "note": "BraTS expansion not run for the new-backbone column due to a host-specific data-root layout mismatch; the original 5-backbone brats_wt row from the main M4 grid is retained unchanged.",
+      "status": "na_data_layout",
+      "task": "brats_wt"
+    },
+    {
+      "fm": "efficientnet_b0",
+      "fm_label": "EfficientNet-B0",
+      "note": "BraTS expansion not run for the new-backbone column due to a host-specific data-root layout mismatch; the original 5-backbone brats_wt row from the main M4 grid is retained unchanged.",
+      "status": "na_data_layout",
+      "task": "brats_wt"
+    },
+    {
+      "fm": "mae_vitb16",
+      "fm_label": "MAE-B",
+      "note": "BraTS expansion not run for the new-backbone column due to a host-specific data-root layout mismatch; the original 5-backbone brats_wt row from the main M4 grid is retained unchanged.",
+      "status": "na_data_layout",
+      "task": "brats_wt"
+    },
+    {
+      "fm": "deit_vitb16",
+      "fm_label": "DeiT-B",
+      "note": "BraTS expansion not run for the new-backbone column due to a host-specific data-root layout mismatch; the original 5-backbone brats_wt row from the main M4 grid is retained unchanged.",
+      "status": "na_data_layout",
+      "task": "brats_wt"
+    },
+    {
+      "fm": "dinov2_vitb14",
+      "fm_label": "DINOv2-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.9629314635010534,
+      "mean_dice_per_seed": [
+        0.9630809737424423,
+        0.9627819532596645
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.4255797872862658,
+      "status": "ok",
+      "task": "riga_disc"
+    },
+    {
+      "fm": "dinov2_vits14",
+      "fm_label": "DINOv2-S",
+      "have_seeds": [
+        43
+      ],
+      "status": "tbd",
+      "task": "riga_disc"
+    },
+    {
+      "fm": "biomedclip",
+      "fm_label": "BiomedCLIP",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.960354287056953,
+      "mean_dice_per_seed": [
+        0.9600891755899044,
+        0.9606193985240016
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.8741534495766203,
+      "status": "ok",
+      "task": "riga_disc"
+    },
+    {
+      "fm": "convnext_tiny",
+      "fm_label": "ConvNeXt-T",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.9656786660235457,
+      "mean_dice_per_seed": [
+        0.9653101425683072,
+        0.9660471894787841
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.8086416041837261,
+      "status": "ok",
+      "task": "riga_disc"
+    },
+    {
+      "fm": "resnet50",
+      "fm_label": "ResNet-50",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.9653040991566577,
+      "mean_dice_per_seed": [
+        0.9655496628263387,
+        0.9650585354869767
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.8734598787641717,
+      "status": "ok",
+      "task": "riga_disc"
+    },
+    {
+      "fm": "resnet18",
+      "fm_label": "ResNet-18",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.9607881687332895,
+      "mean_dice_per_seed": [
+        0.9633501177798143,
+        0.9582262196867649
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.6511629898072856,
+      "status": "ok",
+      "task": "riga_disc"
+    },
+    {
+      "fm": "efficientnet_b0",
+      "fm_label": "EfficientNet-B0",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.9649249099226127,
+      "mean_dice_per_seed": [
+        0.9641546283791742,
+        0.9656951914660512
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.786971886472356,
+      "status": "ok",
+      "task": "riga_disc"
+    },
+    {
+      "fm": "mae_vitb16",
+      "fm_label": "MAE-B",
+      "have_seeds": [
+        42
+      ],
+      "status": "tbd",
+      "task": "riga_disc"
+    },
+    {
+      "fm": "deit_vitb16",
+      "fm_label": "DeiT-B",
+      "have_seeds": [
+        42,
+        43
+      ],
+      "mean_dice": 0.9630850370095263,
+      "mean_dice_per_seed": [
+        0.9647836628389809,
+        0.9613864111800717
+      ],
+      "n_test": 95,
+      "seed_pair_r": 0.8798731438948957,
+      "status": "ok",
+      "task": "riga_disc"
+    }
+  ],
+  "schema_version": "m4_unet_expand_v1",
+  "seeds": [
+    42,
+    43
+  ],
+  "task_order": [
+    "kvasir",
+    "acdc_lv",
+    "riga_cup",
+    "brats_wt",
+    "riga_disc"
+  ]
+}
