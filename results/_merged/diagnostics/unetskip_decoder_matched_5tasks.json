@@ -23,7 +23,7 @@
       "cross_pairs_n_pooled": 32,
       "cross_rbar": 0.851,
       "gap": 0.068,
-      "note": "32 pairs because original-5 and e1-4 use disjoint test splits"
+      "note": "32 cross-bundle pairs because cross-bundle pairs are restricted to within-split where backbones share identical test IDs; the original-5 cluster and e1-4 expansion encode the same RIGA test cases differently (hashes vs paths), so cross-cluster pairs cannot be directly aligned without a hash\u2194path map."
     },
     "brats_wt": {
       "within_FMs_n": 5,
@@ -45,28 +45,28 @@
     "kvasir": {
       "primary_1x1_gap_floor": 0.261,
       "unetskip_decoder_matched_gap": 0.178,
-      "ratio": 0.682
+      "retention_ratio": 0.682
     },
     "acdc_lv": {
       "primary_1x1_gap_floor": 0.321,
       "unetskip_decoder_matched_gap": 0.074,
-      "ratio": 0.23
+      "retention_ratio": 0.23
     },
     "riga_cup": {
       "primary_1x1_gap_floor": 0.473,
       "unetskip_decoder_matched_gap": 0.068,
-      "ratio": 0.144
+      "retention_ratio": 0.144
     },
     "brats_wt": {
       "primary_1x1_gap_floor": 0.315,
       "unetskip_decoder_matched_gap": 0.064,
-      "ratio": 0.203
+      "retention_ratio": 0.203
     },
     "riga_disc": {
       "primary_1x1_gap_floor": 0.638,
       "unetskip_decoder_matched_gap": 0.226,
-      "ratio": 0.354
+      "retention_ratio": 0.354
     }
   },
-  "interpretation": "Decoder-matched UNet-skip same-vs-cross gaps are 14%-68% of the 1x1-conv primary post-floor gaps. The same/cross gap shrinks substantially when the cross-bundle reference is computed under the matched UNet-skip decoder rather than the 1x1-conv decoder. Mean attenuation across tasks: gap_unetskip / gap_1x1 = 32%."
+  "interpretation": "Decoder-matched UNet-skip same-vs-cross gaps are 14%-68% of the 1x1-conv primary post-floor gaps (mean retention ratio gap_unetskip/gap_1x1 = 0.32; equivalently mean attenuation = 68%). The same/cross gap shrinks substantially when the cross-bundle reference is computed under the matched UNet-skip decoder rather than the 1x1-conv decoder."
 }

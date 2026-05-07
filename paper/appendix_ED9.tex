@@ -1146,7 +1146,6 @@ We rerun the Section~\ref{sec:controls} (C1) decoder sweep at four explicit head
 
 \subsection{Random-init CNN decorrelation}
 \label{app:m9}
-\label{app:randinit}
 
 To check whether within-vs-cross structure persists in the absence of pretraining, we rerun the released random-init diagnostic on two CNN backbones (ConvNeXt-Tiny, ResNet-50) trained from scratch, $8$ seeds $\{42{-}49\}$, on ACDC LV and RIGA Cup. Even with no shared pretraining, within-FM (cross-seed) $\bar r$ stays clearly above cross-FM (different-architecture) $\bar r$: $0.916$ vs.\ $0.830$ on ACDC LV ($\Delta{=}0.086$), $0.841$ vs.\ $0.720$ on RIGA Cup ($\Delta{=}0.121$). The gap is much smaller than the frozen-FM Table~\ref{tab:main} numbers ($0.834/0.361$ on Cup, $\Delta{=}0.473$), but it is still positive, consistent with architecture and shared recipe contributing to within-vs-cross structure in this diagnostic.
 

@@ -30,7 +30,10 @@ Derived scalar traces inherit the most restrictive upstream license that applies
 
 ## PHI Handling
 
-Released JSONs contain only per-case Dice scalars and deterministic hashed alignment IDs (16-hex SHA-256 prefixed by source token, e.g., `riga_magrabia_<hash>`). No DICOM headers, no demographic attributes, no raw filenames, no pixel-level outputs are released. Spot-check command: `grep -r "patient\|name=\|/data/\|P0[0-9][0-9]" results/_merged/per_case_dice/` returns zero hits.
+Released JSONs contain only per-case Dice scalars and deterministic alignment identifiers. No DICOM headers, no demographic attributes, no raw filenames, no pixel-level outputs are released. RIGA, Kvasir, and held-out task IDs are 16-hex SHA-256 hashes prefixed by source token (e.g., `riga_magrabia_<hash>`). ACDC test_ids retain the upstream-anonymized form `patientNNN_frameNN_sliceNNN` (the public ACDC challenge identifiers used by the original release; these contain no personally-identifying information). PHI spot-check command (true PHI patterns; should return zero):
+```
+grep -rE '[0-9]{3}-[0-9]{2}-[0-9]{4}|@[A-Za-z0-9._-]+\.(com|org|edu|gov)|DOB:|MRN:' results/_merged/per_case_dice*/
+```
 
 ## Intended Use
 
