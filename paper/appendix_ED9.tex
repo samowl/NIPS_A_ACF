@@ -107,7 +107,7 @@ Table~\ref{tab:main} reports 95\% CIs from a three-level nested hierarchical boo
 
 Case-only bootstrap intervals match the Case CI column of Table~\ref{tab:main} exactly (the case-only resampling uses the same fixed family/seed structure as the per-row case CI), so we do not retabulate them here. The remainder of this section reports BraTS pool reconciliation and the slice-vs-subject sampling caveats.
 
-\paragraph{BraTS foreground pool reconciliation.} The 5-FM, 8-FM, and 8-FM-alt-estimator BraTS values cited elsewhere differ because they use disjoint analytic pools (5-FM: a subset of the 11-bundle source pool; 8-FM: a completed-only subset; alt-estimator: scoring with a different family-grouping convention). The principled headline is the post-floor 10-FM value because it uses the Dice${\geq}0.30$ functional floor and the Table~\ref{tab:main} same/cross definition consistent with every other primary row. The primary BraTS foreground result is the 10-bundle Table~\ref{tab:main} value of $\Delta{=}0.315$ [0.302, 0.329] (case-level CI), from the 11-bundle source pool with 10 retained bundles after functional-floor filtering (BiomedCLIP, CLIP-B/16, CLIP-L/14, ConvNeXt-T, DeiT-B/16, DINOv2-B/S, EfficientNet-B0, MAE-B/16, ResNet-50; ResNet-18 is below the Dice floor). Source: \texttt{results/\_merged/paper\_table.json}. Subset diagnostics without released aggregate files are omitted from the released numeric evidence. The value reported throughout the main text and abstract is therefore the Table~\ref{tab:main} value.
+\paragraph{BraTS foreground pool reconciliation.} The 5-FM, 8-FM, and 8-FM-alt-estimator BraTS values cited elsewhere differ because they use disjoint analytic pools (5-FM: a subset of the 11-bundle source pool; 8-FM: a completed-only subset; alt-estimator: scoring with a different family-grouping convention). The principled headline is the post-floor 10-FM value because it uses the Dice${\geq}0.30$ functional floor and the Table~\ref{tab:main} same/cross definition consistent with every other primary row. The primary BraTS foreground result is $\Delta{=}0.315$ [0.302, 0.329] (case-level CI) from the 11-bundle source pool, with 10 bundles retained after the Dice$\geq$0.30 floor (BiomedCLIP, CLIP-B/16, CLIP-L/14, ConvNeXt-T, DeiT-B/16, DINOv2-B/S, EfficientNet-B0, MAE-B/16, ResNet-50; ResNet-18 is the only bundle below the floor). Source: \texttt{results/\_merged/paper\_table.json}. Subset diagnostics without released aggregate files are omitted from the released numeric evidence. The value reported throughout the main text and abstract is therefore the Table~\ref{tab:main} value.
 
 All gap CIs strictly exclude zero under the case-level bootstrap, matching the family/seed-level CIs in the main text.
 
@@ -445,7 +445,6 @@ Per-class BraTS sensitivity can be inflated by sparse labels: if a class is abse
 \section{Scope-only exploratory probes}
 \label{sec:acdc-detail}
 \label{sec:adaptation}
-\label{app:randinit}
 \label{app:hetlora}
 \label{app:crossarch}
 
@@ -1133,6 +1132,7 @@ We rerun the Section~\ref{sec:controls} (C1) decoder sweep at four explicit head
 
 \subsection{Random-init CNN decorrelation}
 \label{app:m9}
+\label{app:randinit}
 
 To check whether within-vs-cross structure persists in the absence of pretraining, we rerun the released random-init diagnostic on two CNN backbones (ConvNeXt-Tiny, ResNet-50) trained from scratch, $8$ seeds $\{42{-}49\}$, on ACDC LV and RIGA Cup. Even with no shared pretraining, within-FM (cross-seed) $\bar r$ stays clearly above cross-FM (different-architecture) $\bar r$: $0.916$ vs.\ $0.830$ on ACDC LV ($\Delta{=}0.086$), $0.841$ vs.\ $0.720$ on RIGA Cup ($\Delta{=}0.121$). The gap is much smaller than the frozen-FM Table~\ref{tab:main} numbers ($0.834/0.361$ on Cup, $\Delta{=}0.473$), but it is still positive, consistent with architecture and shared recipe contributing to within-vs-cross structure in this diagnostic.
 
