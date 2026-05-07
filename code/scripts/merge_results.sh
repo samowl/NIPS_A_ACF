@@ -46,8 +46,7 @@ merge_source() {
 
     # Tier-3 matrix outputs (best-effort; skip on missing)
     for sub in per_case_dice_m1 per_case_dice_m3 per_case_dice_m14 \
-               per_case_dice_m15 per_case_dice_m19 per_case_dice_m22 \
-               m12_bootstrap; do
+               per_case_dice_m15 per_case_dice_m19 per_case_dice_m22; do
         rsync -avz --rsync-path='rsync' -e "ssh $SSH_OPTS" \
             "${src_root}/${sub}/" \
             "${DEST}/${sub}/" 2>&1 | tail -3 || true

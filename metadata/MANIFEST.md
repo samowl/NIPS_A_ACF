@@ -14,7 +14,6 @@ repository. The artifact is organized around `code/`, `paper/`,
 |---|---|
 | `README.md` | Bundle overview, headline numbers, regeneration command. |
 | `LICENSE` | Apache-2.0 licence for released code/metadata authored for this bundle. |
-| `ARTIFACT_README.md` | Short trace-level reproduction and governance guide. |
 | `DATA_CARD.md` | Derived trace resource data card for intended use, non-use, and upstream constraints. |
 | `environment.yml` | Conda environment helper for artifact inspection. |
 | `requirements.txt` | Root pip requirements shim for lightweight artifact checks. |
@@ -108,7 +107,6 @@ Current primary functional pools after the Dice >= 0.30 functional floor:
 |---|---|
 | `metadata/SHA256SUMS` | SHA-256 digests for released artifact files, excluding itself, local reports, local `code/results/**` cache trees, and Python bytecode. |
 | `metadata/MANIFEST.md` | This manifest. |
-| `ARTIFACT_README.md` | Reviewer-facing reproduction guide. |
 | `DATA_CARD.md` | Derived trace resource documentation. |
 | `environment.yml`, `requirements.txt` | Lightweight environment entry points. |
 
