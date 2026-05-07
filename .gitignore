@@ -27,3 +27,6 @@ paper/*.synctex.gz
 
 # Internal audit / planning / handoff documents (NOT for public release)
 reports/
+
+# Paper LaTeX sources — kept locally for builds only, NOT pushed to anonymous mirror
+paper/

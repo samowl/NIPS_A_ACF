@@ -5,8 +5,9 @@ Pretrained-Encoder Pools for Medical Segmentation" (NeurIPS 2026 Evaluations &
 Datasets).
 
 This manifest describes the submission artifact rooted at this
-repository. The artifact is organized around `code/`, `paper/`,
-`results/_merged/`, and `metadata/`.
+repository. The artifact is organized around `code/`,
+`results/_merged/`, and `metadata/`. The paper PDF is delivered through the
+OpenReview submission; LaTeX sources are not redistributed in this artifact.
 
 ## Included Top-Level Files
 
@@ -17,17 +18,6 @@ repository. The artifact is organized around `code/`, `paper/`,
 | `DATA_CARD.md` | Derived trace resource data card for intended use, non-use, and upstream constraints. |
 | `environment.yml` | Conda environment helper for artifact inspection. |
 | `requirements.txt` | Root pip requirements shim for lightweight artifact checks. |
-
-## Paper
-
-| Path | Role |
-|---|---|
-| `paper/main_ED9.pdf` | Built main manuscript. |
-| `paper/main_ED9.tex` | Main LaTeX source. |
-| `paper/appendix_ED9.tex` | Appendix source. |
-| `paper/checklist.tex` | NeurIPS checklist source included by the manuscript. |
-| `paper/references.bib` | Bibliography. |
-| `paper/neurips_2026.sty` | Venue style file used for local build. |
 
 ## Figures
 

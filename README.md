@@ -52,18 +52,10 @@ Additional audit outputs:
 ```
 .
 ├── README.md
-├── ARTIFACT_README.md
 ├── DATA_CARD.md
 ├── environment.yml
 ├── requirements.txt
 ├── LICENSE
-├── paper/
-│   ├── main_ED9.pdf
-│   ├── main_ED9.tex
-│   ├── appendix_ED9.tex
-│   ├── checklist.tex
-│   ├── references.bib
-│   └── neurips_2026.sty
 ├── figures/
 │   ├── fig1_hero.pdf
 │   ├── fig_adaptation.pdf
