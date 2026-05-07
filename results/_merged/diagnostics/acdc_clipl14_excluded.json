@@ -1,0 +1,93 @@
+{
+  "task": "acdc_lv",
+  "excluded_fm": "clip_vitl14",
+  "no_floor": {
+    "pool_desc": "10-FM x 4-seed (40 members)",
+    "n_test": 361,
+    "case_unit": "2D cardiac slice",
+    "cluster_unit": "ACDC patient",
+    "n_units": 20,
+    "fms_available_before_floor": [
+      "biomedclip",
+      "clip_vitb16",
+      "convnext_tiny",
+      "deit_vitb16",
+      "dinov2_vitb14",
+      "dinov2_vits14",
+      "efficientnet_b0",
+      "mae_vitb16",
+      "resnet18",
+      "resnet50"
+    ],
+    "within_rbar": 0.9559642120905221,
+    "cross_rbar": 0.5893874522929449,
+    "gap": 0.3665767597975772,
+    "n_within_pairs": 76,
+    "n_cross_pairs": 704,
+    "case_bootstrap_95ci_gap": [
+      0.33494896391227796,
+      0.4012535971553671
+    ],
+    "hierarchical_bootstrap_95ci_gap": [
+      0.25610523393159784,
+      0.4736597287454925
+    ],
+    "B": 2000,
+    "fms_kept_after_floor": [
+      "biomedclip",
+      "clip_vitb16",
+      "convnext_tiny",
+      "deit_vitb16",
+      "dinov2_vitb14",
+      "dinov2_vits14",
+      "efficientnet_b0",
+      "mae_vitb16",
+      "resnet18",
+      "resnet50"
+    ]
+  },
+  "floor_0.30": {
+    "pool_desc": "9-FM x 4-seed (36 members)",
+    "n_test": 361,
+    "case_unit": "2D cardiac slice",
+    "cluster_unit": "ACDC patient",
+    "n_units": 20,
+    "fms_available_before_floor": [
+      "biomedclip",
+      "clip_vitb16",
+      "convnext_tiny",
+      "deit_vitb16",
+      "dinov2_vitb14",
+      "dinov2_vits14",
+      "efficientnet_b0",
+      "mae_vitb16",
+      "resnet18",
+      "resnet50"
+    ],
+    "within_rbar": 0.9562452899062608,
+    "cross_rbar": 0.6249247942616425,
+    "gap": 0.3313204956446183,
+    "n_within_pairs": 70,
+    "n_cross_pairs": 560,
+    "case_bootstrap_95ci_gap": [
+      0.29957397707829053,
+      0.3665813546280519
+    ],
+    "hierarchical_bootstrap_95ci_gap": [
+      0.22626113509499937,
+      0.44655037825133026
+    ],
+    "B": 2000,
+    "fms_kept_after_floor": [
+      "biomedclip",
+      "clip_vitb16",
+      "convnext_tiny",
+      "deit_vitb16",
+      "dinov2_vitb14",
+      "dinov2_vits14",
+      "efficientnet_b0",
+      "mae_vitb16",
+      "resnet50"
+    ]
+  }
+}

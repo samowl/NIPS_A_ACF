@@ -161,6 +161,22 @@ is held out. These checks do not add new cases or new model training. They
 instead reduce the risk that the primary sign is an artifact of the exact
 functional floor, the Pearson statistic, or arbitrary family labels.
 
+\paragraph{CLIP-L/14 inclusion sensitivity (ACDC LV).}
+Because CLIP-L/14 passes the Dice${\geq}0.30$ floor on the primary ACDC split
+but collapses on the secondary 8-FM split (Dice $0.007$;
+Appendix~\ref{sec:acdc-detail}), we recompute the primary ACDC row with all
+\texttt{clip\_vitl14} traces removed before any other step. With CLIP-L/14
+excluded the source pool drops to $10$ bundles ($K{=}10$ pre-floor, $K{=}9$
+post-floor): $\bar\rho_{\text{same/release}}{=}0.956$,
+$\bar\rho_{\text{cross}}{=}0.625$, $\Delta_{0.30}{=}0.331$
+[case 95\% CI $0.300, 0.367$], and $\Delta_{\mathrm{no\,floor}}{=}0.367$. The
+sign and magnitude track the printed Table~\ref{tab:main} primary
+($K{=}10$, $\bar\rho_{\text{same}}{=}0.959$, $\bar\rho_{\text{cross}}{=}0.639$,
+$\Delta_{0.30}{=}0.321$, $\Delta_{\mathrm{no\,floor}}{=}0.355$); the case
+intervals overlap and exclude zero. CLIP-L/14 inclusion is therefore not the
+driver of the ACDC primary signal. Source:
+\texttt{results/\_merged/diagnostics/acdc\_clipl14\_excluded.json}.
+
 \paragraph{Calibration-selected functional pools.} The primary table defines a
 functional pool using all released evaluation traces. To check whether the sign
 depends on this convention, the scorer also makes a deterministic split of each
@@ -534,7 +550,7 @@ The paper's primary decoder is a $1{\times}1$ conv with $C{+}1$ trainable parame
     ConvNeXt-T      & $0.860/0.775$ & $0.885/0.917$ & $0.895/0.970$ & $0.895/0.938$ & $0.966/0.809$ \\
     ResNet-50       & $0.816/0.774$ & $0.882/0.945$ & $0.881/0.952$ & $0.889/0.934$ & $0.965/0.873$ \\
     \addlinespace
-    ResNet-18       & $0.774/0.828$ & $0.880/0.861$ & $0.883/0.814$ & ---           & $0.961/0.651$ \\
+    ResNet-18       & $0.774/0.828$ & $0.879/0.861$ & $0.883/0.814$ & ---           & $0.961/0.651$ \\
     EfficientNet-B0 & $0.819/0.955$ & $0.881/0.938$ & $0.899/0.888$ & ---           & $0.965/0.787$ \\
     MAE-B           & $0.795/0.827$ & $0.846/0.955$ & $0.890/0.960$ & ---           & $0.960/0.934$ \\
     DeiT-B          & $0.837/0.920$ & $0.849/0.945$ & $0.893/0.941$ & ---           & $0.963/0.880$ \\
@@ -542,7 +558,11 @@ The paper's primary decoder is a $1{\times}1$ conv with $C{+}1$ trainable parame
   \end{tabular*}
 \end{table}
 
-\textbf{Finding.} The UNet-skip head improves mean Dice substantially over several weak $1{\times}1$ probe cells, but it does not remove same-backbone co-failure. Across the $41$ evaluated cells, single seed-pair $r$ values stay positive (range $0.426$--$0.979$) while pool-mean Dice rises into the $0.77$--$0.97$ range; the within-backbone seed correlation is therefore concentrated well above the primary cross-bundle references in Table~\ref{tab:main} on every reported cell. The single-pair $r$ is high-variance (one Pearson coefficient per cell), so individual outliers like the DINOv2-B RIGA Disc cell ($r=0.426$) should not be over-read; what survives the noise is that no cell yields a near-zero seed-pair correlation and no cell approaches the cross-bundle reference for its task. The conclusion is narrower than a decoder-family claim: a stronger skip decoder can improve accuracy and sometimes reduce seed correlation, but under this frozen-backbone two-seed grid it does not make same-backbone pools resemble the cross-family references in Table~\ref{tab:main}. A full nnU-Net v2 $5$-fold audit on RIGA Cup is reported in Appendix~\ref{app:nnunet}.
+\textbf{Finding.} The UNet-skip head improves mean Dice substantially over several weak $1{\times}1$ probe cells, and within-backbone seed-pair $r$ stays positive on every cell (range $0.426$--$0.979$, with the DINOv2-B RIGA Disc outlier at $0.426$ a single high-variance pair).
+
+\emph{Caveat on cross-bundle comparison.} The cross-bundle Pearson references printed in the table caption ($0.361$ for RIGA Cup, etc.) are computed from the primary $1{\times}1$-conv pool with $4$ seeds per bundle and many bundle pairs; the UNet-skip cells use $2$ seeds and a different decoder. Comparing within-backbone UNet-skip seed-pair $r$ (single Pearson per cell) directly to those cross-bundle references mixes a decoder shift, a seed-count shift, and a pair-mixture shift. We therefore do not claim the UNet-skip same-backbone correlations sit ``above the cross-bundle reference'' numerically.
+
+\emph{Decoder-matched check on RIGA Cup.} As a decoder-matched reference we recompute UNet-skip cross-bundle $r$ on the released per-case Dice ($9$ backbones, seeds $42/43$, intersection-aligned over the released test cases): mean cross-bundle $\bar r{=}0.851$ ($n{=}32$ pairs across both seeds; the original-5 and e1-4 expansions use disjoint test splits, so cross-pairs are restricted to within-split). The within-backbone mean seed-pair $r$ on the same cells is $0.920$ ($n{=}9$). The implied UNet-skip same-vs-cross gap on RIGA Cup is therefore $\approx +0.068$ rather than the $\approx +0.5$ implied against the $1{\times}1$-conv reference; the absolute level of cross-bundle correlation rises sharply when the decoder is matched, while the same/cross gap shrinks. Decoder-matched cross-bundle references for the other four tasks would require an analogous within-split alignment we have not yet released. A full nnU-Net v2 $5$-fold audit on RIGA Cup is reported in Appendix~\ref{app:nnunet}.
 
 
 
@@ -814,24 +834,24 @@ Matched-recipe adaptation factorials require source prediction caches and aggreg
 \section{Item-difficulty residualisation and held-out nulls}
 \label{app:diffleak}
 
-The main-text Section~\ref{sec:main} reports a cross-fitted residualised $\Delta$ diagnostic on all five primary rows. Three distinct residualisation procedures appear in this appendix and we tabulate them in order of provenance: (i) the \emph{naive} all-bundle null, included only as a leakage warning; (ii) the \emph{random A-vs-B family-split holdout} on Cup and ACDC (the existing \texttt{r7\_item\_difficulty\_holdout.json} diagnostic, Table~\ref{tab:diffleak} below); and (iii) the \emph{cross-fitted broad-family-leaveout} on all five primary rows (Table~\ref{tab:diffleak-crossfit}, the headline 5-row diagnostic referenced in the main text). The cross-fitted procedure keeps the same/cross gap positive on every primary row (95\% CIs in Table~\ref{tab:diffleak-crossfit}: Kvasir [0.895, 1.008], ACDC LV [0.950, 1.000], BraTS fg [0.910, 0.932], RIGA Cup [0.782, 0.882], RIGA Disc [0.805, 0.920]; the Kvasir upper bound exceeds 1 because the residualised statistic is no longer constrained to canonical Pearson scale once item-difficulty signal has been subtracted from both members of the pair). The held-out-partition table below is retained as the historical Cup/ACDC-only diagnostic from \texttt{r7\_item\_difficulty\_holdout.json}.
+The main-text Section~\ref{sec:main} reports a cross-fitted \emph{ordinal residualised statistic} $\tilde{\Delta}$ on all five primary rows. Because residualisation subtracts shared per-case difficulty signal from both pair members, $\tilde{\Delta}$ is \emph{not} a Pearson-scaled $\Delta$ and its CI endpoints can exceed $1$ (e.g.\ Kvasir $[0.895, 1.008]$ below). $\tilde{\Delta}$ is read only as a sign-stability check on the primary $\Delta$; its numerical values are not comparable to the raw $\Delta$ or to any value on the canonical correlation scale. Three distinct residualisation procedures appear in this appendix and we tabulate them in order of provenance: (i) the \emph{naive} all-bundle null, included only as a leakage warning; (ii) the \emph{random A-vs-B family-split holdout} on Cup and ACDC (the existing \texttt{r7\_item\_difficulty\_holdout.json} diagnostic, Table~\ref{tab:diffleak} below); and (iii) the \emph{cross-fitted broad-family-leaveout} on all five primary rows (Table~\ref{tab:diffleak-crossfit}, the headline 5-row diagnostic referenced in the main text). The cross-fitted procedure keeps the $\tilde{\Delta}$ sign positive on every primary row (Kvasir $[0.895, 1.008]$, ACDC LV $[0.950, 1.000]$, BraTS fg $[0.910, 0.932]$, RIGA Cup $[0.782, 0.882]$, RIGA Disc $[0.805, 0.920]$). The held-out-partition table below is retained as the historical Cup/ACDC-only diagnostic from \texttt{r7\_item\_difficulty\_holdout.json}.
 
-\textbf{Cross-fitted broad-family-leaveout (headline, all five rows).} For each trace, item difficulty is estimated from traces outside that trace's broad upstream family, the trace is residualised by OLS against this leave-out estimator, and the Table~\ref{tab:main} same/cross rule is recomputed on residuals. The residualised gap is positive on all five primary rows. Residualised gaps \emph{exceed} raw gaps because the cross-fitted regressor removes shared item-difficulty signal that both same- and cross-bundle pairs already share at the per-case level; same-bundle residual continues to capture bundle-specific systematic deviations not absorbed by case difficulty, while cross-bundle residual decorrelates faster. The attenuation ratio (residual gap / raw gap) is $1.37$--$3.68$ across the five tasks.
+\textbf{Cross-fitted broad-family-leaveout (headline, all five rows).} For each trace, item difficulty is estimated from traces outside that trace's broad upstream family, the trace is residualised by OLS against this leave-out estimator, and the Table~\ref{tab:main} same/cross rule is recomputed on residuals to yield $\tilde{\Delta}$. The sign of $\tilde{\Delta}$ is positive on all five primary rows. The CIs of $\tilde{\Delta}$ are not comparable to raw-$\Delta$ CIs and the magnitudes should not be ranked against raw $\Delta$ values; $\tilde{\Delta}$ is reported only as a sign-stability check.
 
 \begin{table}[!htbp]
-  \caption{\textbf{Cross-fitted item-difficulty residualisation, all five primary rows.} Each trace's item-difficulty regressor is estimated using only traces from broad upstream families \emph{other than} the trace's own family; the same-vs-cross Pearson gap is then recomputed on residuals. Residualised gaps exceed raw gaps because the cross-fitted regressor removes shared item-difficulty signal that both same- and cross-bundle pairs already share at the per-case level; same-bundle residual continues to capture bundle-specific systematic deviations not absorbed by case difficulty, while cross-bundle residual decorrelates faster. Source: \texttt{results/\_merged/diagnostics/item\_difficulty\_robustness.json} (schema \texttt{fmpool\_item\_difficulty\_robustness\_v1}); $B{=}2{,}000$ case bootstrap.}
+  \caption{\textbf{Cross-fitted item-difficulty ordinal residualised statistic $\tilde{\Delta}$, all five primary rows.} Each trace's item-difficulty regressor is estimated using only traces from broad upstream families \emph{other than} the trace's own family. $\tilde{\Delta}$ is \emph{not} a Pearson-scaled $\Delta$ (CI endpoints can exceed $1$) and is reported only for sign stability of the primary $\Delta$; its magnitudes are not comparable to raw $\Delta$ values. Source: \texttt{results/\_merged/diagnostics/item\_difficulty\_robustness.json} (schema \texttt{fmpool\_item\_difficulty\_robustness\_v1}); $B{=}2{,}000$ case bootstrap.}
   \label{tab:diffleak-crossfit}
   \centering\footnotesize
   \setlength{\tabcolsep}{3pt}
   \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccc}
     \toprule
-    Task & Raw $\Delta$ 95\% CI & Residualised $\Delta$ 95\% CI & Attenuation ratio & Functional pool \\
+    Task & Raw $\Delta$ 95\% CI & Ordinal $\tilde{\Delta}$ 95\% CI & Sign & Functional pool \\
     \midrule
-    Kvasir          & [0.211, 0.320] & [0.895, 1.008] & 3.68 & 11-bundle \\
-    ACDC LV         & [0.289, 0.355] & [0.950, 1.000] & 3.05 & 10-bundle \\
-    BraTS foreground & [0.302, 0.329] & [0.910, 0.932] & 2.92 & 10-bundle \\
-    RIGA Cup        & [0.395, 0.556] & [0.782, 0.882] & 1.75 & 9-bundle  \\
-    RIGA Disc       & [0.569, 0.687] & [0.805, 0.920] & 1.37 & 11-bundle \\
+    Kvasir          & [0.211, 0.320] & [0.895, 1.008] & $+$ & 11-bundle \\
+    ACDC LV         & [0.289, 0.355] & [0.950, 1.000] & $+$ & 10-bundle \\
+    BraTS foreground & [0.302, 0.329] & [0.910, 0.932] & $+$ & 10-bundle \\
+    RIGA Cup        & [0.395, 0.556] & [0.782, 0.882] & $+$ & 9-bundle  \\
+    RIGA Disc       & [0.569, 0.687] & [0.805, 0.920] & $+$ & 11-bundle \\
     \bottomrule
   \end{tabular*}
 \end{table}
