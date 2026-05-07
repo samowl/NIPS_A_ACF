@@ -156,7 +156,7 @@ permutation control.
 
 The five-task mean Pearson gap at the paper floor is $0.401$ (median $0.321$,
 range $0.261$--$0.638$). Leave-one-task-out means stay in
-$0.342$--$0.437$; the smallest value occurs when the largest-gap RIGA Disc row
+$0.343$--$0.437$; the smallest value occurs when the largest-gap RIGA Disc row
 is held out. These checks do not add new cases or new model training. They
 instead reduce the risk that the primary sign is an artifact of the exact
 functional floor, the Pearson statistic, or arbitrary family labels.
@@ -968,8 +968,8 @@ literal deployment objective.
 
 \paragraph{Pairwise $\rho_{\text{fail}}$ heterogeneity disclosure (equicorrelation caveat).} The $M_{\text{eff}}$ formula assumes constant pairwise correlation across member pairs (equicorrelated pool). In practice the per-pair $\rho_{\text{fail}}$ varies across the bundles in each task. From the \texttt{m\_eff/*.json} outputs, mono-pool $\rho_{\text{fail}}$ across the per-task functional bundles has mean / SD / range:
 Kvasir mean $0.865$, SD $0.103$, range $[0.601, 0.948]$ ($n{=}11$);
-ACDC LV mean $0.847$, SD $0.122$, range $[0.518, 0.931]$ ($n{=}10$);
-BraTS foreground mean $0.860$, SD $0.117$, range $[0.553, 0.958]$ ($n{=}10$);
+ACDC LV mean $0.847$, SD $0.116$, range $[0.518, 0.931]$ ($n{=}10$);
+BraTS foreground mean $0.860$, SD $0.111$, range $[0.553, 0.958]$ ($n{=}10$);
 RIGA Cup mean $0.833$ over 7 defined mono pools, and RIGA Disc mean $0.812$ over 10 defined mono pools. Undefined rows occur when an FM's $\tau{=}0.85$ failure indicator is constant, giving zero-variance Pearson. Diverse 4-of-$K$ compositions span a wider $\rho_{\text{fail}}$ distribution, which is why Table~\ref{tab:meff} reports both means and the released-enumeration $\rho_{\max}$ rather than selecting a single representative pool.
 
 \section{Shared-backbone random-effects representation}
