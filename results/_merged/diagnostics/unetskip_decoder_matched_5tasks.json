@@ -1,0 +1,72 @@
+{
+  "schema_version": "fmpool_unet_skip_decoder_matched_v1",
+  "description": "UNet-skip decoder-matched cross-bundle Pearson r and within-FM seed-pair Pearson r per task. Cross-bundle pairs are restricted to within-split (orig-5-cluster and e1-4-expansion use disjoint test splits). Within-FM uses seeds 42 and 43.",
+  "method": "intersection-aligned per_case_dice from per_case_dice_m4 (orig 5 backbones) and per_case_dice_m4_e1/per_case_dice_m4 (4 new backbones)",
+  "tasks": {
+    "kvasir": {
+      "within_FMs_n": 9,
+      "within_seedpair_rbar": 0.867,
+      "cross_pairs_n_pooled": 72,
+      "cross_rbar": 0.689,
+      "gap": 0.178
+    },
+    "acdc_lv": {
+      "within_FMs_n": 9,
+      "within_seedpair_rbar": 0.94,
+      "cross_pairs_n_pooled": 72,
+      "cross_rbar": 0.866,
+      "gap": 0.074
+    },
+    "riga_cup": {
+      "within_FMs_n": 9,
+      "within_seedpair_rbar": 0.92,
+      "cross_pairs_n_pooled": 32,
+      "cross_rbar": 0.851,
+      "gap": 0.068,
+      "note": "32 pairs because original-5 and e1-4 use disjoint test splits"
+    },
+    "brats_wt": {
+      "within_FMs_n": 5,
+      "within_seedpair_rbar": 0.925,
+      "cross_pairs_n_pooled": 20,
+      "cross_rbar": 0.86,
+      "gap": 0.064,
+      "note": "BraTS column NA for 4 new backbones (data layout); only orig-5 backbones evaluated"
+    },
+    "riga_disc": {
+      "within_FMs_n": 9,
+      "within_seedpair_rbar": 0.77,
+      "cross_pairs_n_pooled": 72,
+      "cross_rbar": 0.545,
+      "gap": 0.226
+    }
+  },
+  "comparison_to_1x1_primary": {
+    "kvasir": {
+      "primary_1x1_gap_floor": 0.261,
+      "unetskip_decoder_matched_gap": 0.178,
+      "ratio": 0.682
+    },
+    "acdc_lv": {
+      "primary_1x1_gap_floor": 0.321,
+      "unetskip_decoder_matched_gap": 0.074,
+      "ratio": 0.23
+    },
+    "riga_cup": {
+      "primary_1x1_gap_floor": 0.473,
+      "unetskip_decoder_matched_gap": 0.068,
+      "ratio": 0.144
+    },
+    "brats_wt": {
+      "primary_1x1_gap_floor": 0.315,
+      "unetskip_decoder_matched_gap": 0.064,
+      "ratio": 0.203
+    },
+    "riga_disc": {
+      "primary_1x1_gap_floor": 0.638,
+      "unetskip_decoder_matched_gap": 0.226,
+      "ratio": 0.354
+    }
+  },
+  "interpretation": "Decoder-matched UNet-skip same-vs-cross gaps are 14%-68% of the 1x1-conv primary post-floor gaps. The same/cross gap shrinks substantially when the cross-bundle reference is computed under the matched UNet-skip decoder rather than the 1x1-conv decoder. Mean attenuation across tasks: gap_unetskip / gap_1x1 = 32%."
+}

@@ -561,7 +561,21 @@ The paper's primary decoder is a $1{\times}1$ conv with $C{+}1$ trainable parame
 
 \emph{Caveat on cross-bundle comparison.} The cross-bundle Pearson references printed in the table caption ($0.361$ for RIGA Cup, etc.) are computed from the primary $1{\times}1$-conv pool with $4$ seeds per bundle and many bundle pairs; the UNet-skip cells use $2$ seeds and a different decoder. Comparing within-backbone UNet-skip seed-pair $r$ (single Pearson per cell) directly to those cross-bundle references mixes a decoder shift, a seed-count shift, and a pair-mixture shift. We therefore do not claim the UNet-skip same-backbone correlations sit ``above the cross-bundle reference'' numerically.
 
-\emph{Decoder-matched check on RIGA Cup.} As a decoder-matched reference we recompute UNet-skip cross-bundle $r$ on the released per-case Dice ($9$ backbones, seeds $42/43$, intersection-aligned over the released test cases): mean cross-bundle $\bar r{=}0.851$ ($n{=}32$ pairs across both seeds; the original-5 and e1-4 expansions use disjoint test splits, so cross-pairs are restricted to within-split). The within-backbone mean seed-pair $r$ on the same cells is $0.920$ ($n{=}9$). The implied UNet-skip same-vs-cross gap on RIGA Cup is therefore $\approx +0.068$ rather than the $\approx +0.5$ implied against the $1{\times}1$-conv reference; the absolute level of cross-bundle correlation rises sharply when the decoder is matched, while the same/cross gap shrinks. Decoder-matched cross-bundle references for the other four tasks would require an analogous within-split alignment we have not yet released. A full nnU-Net v2 $5$-fold audit on RIGA Cup is reported in Appendix~\ref{app:nnunet}.
+\emph{Decoder-matched check, all five tasks.} As a decoder-matched reference we recompute UNet-skip within-FM seed-pair $r$ and cross-bundle $r$ on the released per-case Dice (seeds $42/43$, intersection-aligned over the released test cases; cross-pairs restricted to within-split because original-5 and e1-4 expansions use disjoint test splits). Released values (Source: \texttt{results/\_merged/diagnostics/unetskip\_decoder\_matched\_5tasks.json}):
+\begin{center}\footnotesize
+\begin{tabular}{lcccc}
+\toprule
+Task & within $\bar r$ ($n$) & cross $\bar r$ ($n$) & decoder-matched gap & 1$\times$1 primary $\Delta_{0.30}$ \\
+\midrule
+Kvasir       & $0.867$ ($9$) & $0.689$ ($72$) & $0.178$ & $0.261$ \\
+ACDC LV      & $0.940$ ($9$) & $0.866$ ($72$) & $0.074$ & $0.321$ \\
+BraTS fg     & $0.925$ ($5$) & $0.860$ ($20$) & $0.064$ & $0.315$ \\
+RIGA Cup     & $0.920$ ($9$) & $0.851$ ($32$) & $0.068$ & $0.473$ \\
+RIGA Disc    & $0.770$ ($9$) & $0.545$ ($72$) & $0.226$ & $0.638$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The decoder-matched gap is $14$--$68\%$ of the $1{\times}1$-conv primary post-floor gap (mean attenuation $\sim$32\%). The absolute level of cross-bundle correlation rises sharply when the decoder is matched (e.g., RIGA Cup cross $\bar r$ goes $0.361 \to 0.851$ when the cross reference is recomputed under UNet-skip), while the same/cross gap shrinks. A full nnU-Net v2 $5$-fold audit on RIGA Cup is reported in Appendix~\ref{app:nnunet}.
 
 
 
@@ -1272,6 +1286,23 @@ A natural pool-design question is whether MC dropout \citep{gal2016mcdropout} ca
     \bottomrule
   \end{tabular}
 \end{table}
+
+\section{Broader impacts and responsible AI}
+\label{app:broader-impacts}
+
+This is a retrospective audit of evaluation evidence; it does not propose, deploy, or recommend any clinical AI system. The released artifact comprises per-case Dice scalars, deterministic hashed alignment IDs, scorer code, and metadata. No raw images, no per-pixel predictions, no checkpoints, and no demographic attributes are redistributed.
+
+\textbf{Intended use.} Recompute the audit statistics of Table~\ref{tab:main}, run sensitivity diagnostics, and reuse the trace artifact for related evaluation-protocol research. The audit is scoped to retrospective benchmarks; results are not population-level inferences over future encoders, datasets, recipes, or clinical workflows.
+
+\textbf{Foreseeable misuse.} The case-level traces could in principle be combined with publicly available benchmark images to attempt re-identification. We mitigate this by releasing only deterministic 16-hex hash alignment IDs (e.g., \texttt{riga\_magrabia\_<hash>}) without source filenames, by not redistributing pixel-level outputs, and by stating the prohibited-use list in DATA\_CARD.md (no re-identification, profiling, protected-attribute inference, clinical diagnosis, or deployment decisions).
+
+\textbf{Patient privacy and PHI.} All upstream datasets (Kvasir-SEG, ACDC, BraTS 2024 GLI, RIGA+, ISIC 2018, MSD) are publicly released under their respective licenses with their own de-identification procedures. The derived scalar traces and hashed IDs preserve those de-identification guarantees and do not introduce new PHI exposure.
+
+\textbf{Demographic and fairness limitations.} The released benchmarks lack standardised demographic annotations; we do not perform subgroup or fairness analyses, and we do not claim subgroup robustness. The audit is a redundancy diagnostic over fixed pools, not a fairness diagnostic.
+
+\textbf{Environmental footprint.} The released audit is recomputable from trace JSONs in CPU minutes-scale (Appendix~\ref{app:release-manifest}); no GPU is required for the released scorer pipeline. Upstream feature-extraction and decoder training were performed on shared academic GPU infrastructure; the released artifact does not require that compute to be reproduced.
+
+\textbf{Licensing.} Authored code under Apache-2.0; derived traces inherit the most restrictive upstream license that applies (e.g., MAE- or RETFound-derived traces are CC BY-NC 4.0 research-only). DATA\_CARD.md gives the per-upstream license matrix.
 
 \section{Release manifest and artifact metadata}
 \label{app:release-manifest}
