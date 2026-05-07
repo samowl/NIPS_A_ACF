@@ -6,7 +6,7 @@ chronology. It starts with diagnostic readouts, then documents primary
 estimators, uncertainty, task-level sources, and estimator sensitivity. Middle
 sections collect same-backbone perturbations, segmentation-pipeline scope
 checks, distribution-shift and held-out stress tests, operational metrics, and
-$M_{\text{eff}}$. Later sections collect mechanism diagnostics and additional
+$M_{\mathrm{eff}}$. Later sections collect mechanism diagnostics and additional
 scope tables, and the appendix ends with the release manifest and artifact
 metadata. Secondary rows are retained only when they qualify or explain a paper
 claim, and their captions state when they use non-primary pools or splits.
@@ -48,7 +48,7 @@ FM identifier.
     Held-out 5-task stress test, lever index, leave-one-family-out, lift-ceiling support, 3D pilot, matched-recipe adaptation scope. \\
     Mechanism diagnostics &
     App.~\ref{app:diffleak}, \ref{app:meff}, \ref{app:rand-effects}, \ref{app:arch-3task}, \ref{app:cross-checkpoint} &
-    Item-difficulty residualisation (cross-fitted + holdout), $M_{\text{eff}}$, random-effects representation, ViT cross-pretraining, cross-checkpoint same-family. \\
+    Item-difficulty residualisation (cross-fitted + holdout), $M_{\mathrm{eff}}$, random-effects representation, ViT cross-pretraining, cross-checkpoint same-family. \\
     Additional scope diagnostics &
     App.~\ref{app:matrix-extra}, \ref{app:m3}, \ref{app:m9}, \ref{app:m14}, \ref{app:m15}, \ref{app:m19}, \ref{app:m20}, \ref{app:m22} &
     Decoder capacity, random-init CNN, loss/aug sensitivity, fold CV, BraTS train-size, BraTS multimodal, MC dropout. \\
@@ -656,7 +656,7 @@ Across these scope analyses, the frozen-FM loss/augmentation row remains in the 
   \setlength{\tabcolsep}{3pt}
   \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccccc}
     \toprule
-    Task & $N$ & Func./avail. & Within & Cross & $\Delta$ & $M_{\text{eff}}$ \\
+    Task & $N$ & Func./avail. & Within & Cross & $\Delta$ & $M_{\mathrm{eff}}$ \\
     \midrule
     \multicolumn{7}{l}{\emph{Direction-positive point estimates with enough support to read qualitatively}} \\
     MSD Hippocampus   & 52  & 11/11 & 0.909 & 0.419 & \textbf{0.491}$^{\S}$ & 3.94 \\
@@ -672,15 +672,15 @@ Across these scope analyses, the frozen-FM loss/augmentation row remains in the 
   {\footnotesize $^{*}$No bundle passes the Dice${\geq}0.30$ floor on the four-case Heart derivative, so no within/cross gap is interpretable. $^{\S}$Values are point estimates from \texttt{results/\_merged/diagnostics/heldout\_11fm\_summary.json}; case-level CIs are not computed for this aggregate diagnostic, and the MSD Prostate/Spleen rows have too few held-out cases to support a primary claim. $^{\ddagger}$ISIC-2018 uses a single random $N{=}400$-image subset of the 2{,}594-image ISIC-2018 training release with $N{=}80$ test cases under the seed-42 80/20 split; we do not report an independent redraw and we do not use the official ISIC test server in this study.}
 \end{table}
 
-\textbf{Interpretation.} The 11-bundle held-out protocol yields three classes of outcome: (i)~ISIC-2018 and Hippocampus both show direction-positive gaps under the same broad estimator family as the primary audit, but without case-bootstrap CIs and with smaller held-out support than the primary rows. (ii)~Prostate and Spleen illustrate why held-out diagnostics are scope boundaries rather than primary evidence: Prostate is direction-positive but has only six test cases, while Spleen passes the floor yet has a near-zero gap and $M_{\text{eff}}\approx1$ because the members fail together. (iii)~Heart does not yield a functional pool under the frozen-feature 2D derivative. Thus the held-out stress test is compatible with transfer to some external rows, but it also records where the protocol is too weak or too saturated to audit same-bundle dependence.
+\textbf{Interpretation.} The 11-bundle held-out protocol yields three classes of outcome: (i)~ISIC-2018 and Hippocampus both show direction-positive gaps under the same broad estimator family as the primary audit, but without case-bootstrap CIs and with smaller held-out support than the primary rows. (ii)~Prostate and Spleen illustrate why held-out diagnostics are scope boundaries rather than primary evidence: Prostate is direction-positive but has only six test cases, while Spleen passes the floor yet has a near-zero gap and $M_{\mathrm{eff}}\approx1$ because the members fail together. (iii)~Heart does not yield a functional pool under the frozen-feature 2D derivative. Thus the held-out stress test is compatible with transfer to some external rows, but it also records where the protocol is too weak or too saturated to audit same-bundle dependence.
 
 \textbf{Operational 8-bundle held-out probes.} The following recovery, pool-size, abstention, and pool-selection diagnostics use an 8-bundle held-out candidate set stored under \texttt{results/\_merged/diagnostics/held\_out/}. They are retained as operational-method sensitivities, not as the provenance for Table~\ref{tab:heldout} above.
 
 \textbf{CLIP/BiomedCLIP normalization robustness.} Uniform ImageNet normalization can be a potential artifact for BiomedCLIP and CLIP-L because both have their own normalization statistics. We therefore evaluated those two FMs on Hippocampus and ISIC-2018 with the correct CLIP normalization. The released \texttt{summary\_clipfix.json} reports BiomedCLIP mean Dice $0.840$ (Hippocampus) / $0.908$ (ISIC-2018), while CLIP-L remains below the functional floor on Hippocampus (mean Dice ${<}10^{-10}$) and reaches $0.106$ on ISIC-2018, still below the $0.30$ floor. Relative to \texttt{summary\_5tasks.json}, the aggregate $\Delta$ changed by $0.002$ (Hippocampus $0.731{\to}0.729$) and $0.003$ (ISIC-2018 $0.552{\to}0.555$). In this held-out diagnostic, correcting CLIP/BiomedCLIP normalization does not materially change the Hippocampus/ISIC point estimates.
 
-\textbf{Held-out recovery-rate sensitivity.} To complement the primary-task $\Delta_{\text{rec}}{=}+0.29$ (Cup) / $+0.26$ (ACDC) grand means, we computed an exploratory held-out recovery gap at $\tau{=}0.85$ on the single ISIC-2018 subset: $\Delta_{\text{rec}}{=}+0.269$~[$+0.212$,$+0.331$] under a case-resampling calculation saved as \texttt{recovery\_CI.json}. This supports the direction of the operational gap on one dermoscopy subset, but it is not a deployment-calibrated guarantee and does not resolve the held-out estimator-dependence above. Hippocampus at $\tau{=}0.85$ is recovery-saturated and gives $\Delta_{\text{rec}}{=}-0.01$~[$-0.03$, $+0.00$] (diverse and mono both near-zero recovery because only 2/7 functional bundles individually pass Dice${\geq}0.85$). Lower thresholds are not evaluated here.
+\textbf{Held-out recovery-rate sensitivity.} To complement the primary-task $\Delta_{\mathrm{rec}}{=}+0.29$ (Cup) / $+0.26$ (ACDC) grand means, we computed an exploratory held-out recovery gap at $\tau{=}0.85$ on the single ISIC-2018 subset: $\Delta_{\mathrm{rec}}{=}+0.269$~[$+0.212$,$+0.331$] under a case-resampling calculation saved as \texttt{recovery\_CI.json}. This supports the direction of the operational gap on one dermoscopy subset, but it is not a deployment-calibrated guarantee and does not resolve the held-out estimator-dependence above. Hippocampus at $\tau{=}0.85$ is recovery-saturated and gives $\Delta_{\mathrm{rec}}{=}-0.01$~[$-0.03$, $+0.00$] (diverse and mono both near-zero recovery because only 2/7 functional bundles individually pass Dice${\geq}0.85$). Lower thresholds are not evaluated here.
 
-\textbf{Pool-size sweep on held-out tasks.} How does diverse-vs-same-bundle conditional recovery scale with $M$? For $M{\in}\{2,3,4,5,6\}$ on the two functional held-out tasks (Table~\ref{tab:pool-size-sweep}), diverse pools beat same-bundle seed pools at every $M{\geq}3$ on the single ISIC-2018 subset ($\Delta_{\text{rec}}{=}0.27$--$0.46$), while Hippocampus at the paper's $\tau{=}0.85$ threshold is recovery-rate-saturated (all pools ${<}0.11$) because only 2 of 7 functional bundles reach Dice${\geq}0.85$ individually. These held-out operational analyses are exploratory: ISIC provides one supportive dermoscopy subset, Hippocampus is threshold-saturated at $\tau{=}0.85$, and the $M{=}5,6$ same-bundle rows are proxy constructions using the available four seeds rather than true larger same-bundle pools. Released aggregate data: \texttt{results/\_merged/diagnostics/held\_out/pool\_size\_sweep.json}.
+\textbf{Pool-size sweep on held-out tasks.} How does diverse-vs-same-bundle conditional recovery scale with $M$? For $M{\in}\{2,3,4,5,6\}$ on the two functional held-out tasks (Table~\ref{tab:pool-size-sweep}), diverse pools beat same-bundle seed pools at every $M{\geq}3$ on the single ISIC-2018 subset ($\Delta_{\mathrm{rec}}{=}0.27$--$0.46$), while Hippocampus at the paper's $\tau{=}0.85$ threshold is recovery-rate-saturated (all pools ${<}0.11$) because only 2 of 7 functional bundles reach Dice${\geq}0.85$ individually. These held-out operational analyses are exploratory: ISIC provides one supportive dermoscopy subset, Hippocampus is threshold-saturated at $\tau{=}0.85$, and the $M{=}5,6$ same-bundle rows are proxy constructions using the available four seeds rather than true larger same-bundle pools. Released aggregate data: \texttt{results/\_merged/diagnostics/held\_out/pool\_size\_sweep.json}.
 
 \begin{table}[!htbp]
   \caption{\textbf{Exploratory held-out pool-size sweep.} Conditional recovery rate $P[\text{ens pass}\mid\text{any fail}]$ at $\tau{=}0.85$ vs pool size $M$. $M{=}2$ recovery is a definition artifact under the strict-majority rule, and $M{=}5,6$ same-bundle values are four-seed proxies. This table is not a deployable pool-size recommendation.}
@@ -704,10 +704,10 @@ Across these scope analyses, the frozen-FM loss/augmentation row remains in the 
 
 \textbf{Calibration-tuned disagreement-based abstention (an exploratory alternative lever, not a conformal guarantee).} A natural operational question is whether standard abstention-based uncertainty gating closes the same-bundle gap with modest additional computation. We calibrate a per-task disagreement-score threshold on 20 cases (inter-member Dice standard deviation as score; grid-search the quantile $q$ to meet a target case-risk $\alpha{=}0.1$ on calibration; apply the selected threshold to the remaining test cases). \emph{This is a tuned heuristic, not split-conformal prediction} \citep{angelopoulos2021gentle}: we use a grid search over $q$ that terminates on the first calibration risk meeting $\alpha$ and use inter-member variance rather than a proper conformity score, so no finite-sample risk guarantee holds. The pool is also chosen per-task on the whole task mean Dice (family-representative highest-Dice FMs), so the diverse-pool selection step leaks task labels---this biases the comparison toward diverse pools. We report it as a sensitivity. On ISIC-2018 at matched abstention $\approx 0.74$, diverse pools reach test-risk $0.129{\pm}0.027$ vs.\ same-bundle grand mean $0.174{\pm}0.209$ (\texttt{conformal\_vs\_meff.json}). The \emph{point estimate} is $\sim 25\%$ lower for diverse, but the same-bundle grand-mean SD ($0.21$) is $\sim 8{\times}$ the diverse SD ($0.027$); the per-FM same-bundle risk means span $0.000$--$0.616$ across the seven functional FMs, so the grand-mean comparison is highly composition-sensitive and we do not claim a tight ranking. Hippocampus cannot hit $\alpha{=}0.1$ for either pool, giving residual risk $0.694$ (diverse) vs.\ $0.665$ (same-bundle grand mean) ($\Delta{=}+0.03$, with same-bundle SD $0.28$, indistinguishable). A label-free conformal procedure with a proper conformity score is not evaluated here. Released aggregate data: \texttt{results/\_merged/diagnostics/held\_out/conformal\_vs\_meff.json}.
 
-\textbf{Calibration-set pool-selection probe on held-out tasks.} We operationalise a small calibration exercise: given only a 20-case calibration set on a held-out task, can a rule pick a 4-of-8 FM pool from the same secondary held-out candidate set that beats random? We evaluate five rules---(R1) random, (R2) top-4 by mean Dice on calibration, (R3) max-$M_{\text{eff}}$, (R4) quality-gated max-$M_{\text{eff}}$ (Dice${\geq}0.30$ floor then max-$M_{\text{eff}}$ among qualifying), (R5) diverse-by-architecture (2 best-Dice ViT $+$ 2 best-Dice CNN; reported as an exploratory hand-crafted baseline, not a general proposal)---and report conditional recovery rate $P[\text{ens pass}\mid\text{any fail}]$ at $\tau{=}0.85$ on the remaining held-out cases, averaged over 100 calibration-set bootstraps (Table~\ref{tab:pool-challenge}). All rule selectors and the recovery estimator use seed-42 per-case Dice (not seed-averaged), matching a one-model-per-FM pool construction. Hippocampus has lower effective recovery support than ISIC at $\tau{=}0.85$, so its recovery numbers are exploratory. In this diagnostic, simple top-4-by-Dice has the highest mean on both tasks (Hippocampus 0.161 vs.\ 0.043 random; ISIC-2018 0.581 vs.\ 0.378 random), while max-$M_{\text{eff}}$ alone is worse than random (0.011 / 0.327). This supports the narrower point that $M_{\text{eff}}$ is a dependence readout rather than a standalone operational objective; it is not a validated clinical pool-selection rule. Released aggregate data: \texttt{results/\_merged/diagnostics/held\_out/pool\_selection\_challenge.json}.
+\textbf{Calibration-set pool-selection probe on held-out tasks.} We operationalise a small calibration exercise: given only a 20-case calibration set on a held-out task, can a rule pick a 4-of-8 FM pool from the same secondary held-out candidate set that beats random? We evaluate five rules---(R1) random, (R2) top-4 by mean Dice on calibration, (R3) max-$M_{\mathrm{eff}}$, (R4) quality-gated max-$M_{\mathrm{eff}}$ (Dice${\geq}0.30$ floor then max-$M_{\mathrm{eff}}$ among qualifying), (R5) diverse-by-architecture (2 best-Dice ViT $+$ 2 best-Dice CNN; reported as an exploratory hand-crafted baseline, not a general proposal)---and report conditional recovery rate $P[\text{ens pass}\mid\text{any fail}]$ at $\tau{=}0.85$ on the remaining held-out cases, averaged over 100 calibration-set bootstraps (Table~\ref{tab:pool-challenge}). All rule selectors and the recovery estimator use seed-42 per-case Dice (not seed-averaged), matching a one-model-per-FM pool construction. Hippocampus has lower effective recovery support than ISIC at $\tau{=}0.85$, so its recovery numbers are exploratory. In this diagnostic, simple top-4-by-Dice has the highest mean on both tasks (Hippocampus 0.161 vs.\ 0.043 random; ISIC-2018 0.581 vs.\ 0.378 random), while max-$M_{\mathrm{eff}}$ alone is worse than random (0.011 / 0.327). This supports the narrower point that $M_{\mathrm{eff}}$ is a dependence readout rather than a standalone operational objective; it is not a validated clinical pool-selection rule. Released aggregate data: \texttt{results/\_merged/diagnostics/held\_out/pool\_selection\_challenge.json}.
 
 \begin{table}[!htbp]
-  \caption{\textbf{Exploratory pool-selection probe.} Conditional recovery rate at $\tau{=}0.85$ (mean $\pm$ SD over 100 calibration bootstraps, 20 cases each, using seed-42 traces). Selection uses calibration labels. This probes whether $M_{\text{eff}}$ alone is a poor objective; it is not a validated clinical selection rule.}
+  \caption{\textbf{Exploratory pool-selection probe.} Conditional recovery rate at $\tau{=}0.85$ (mean $\pm$ SD over 100 calibration bootstraps, 20 cases each, using seed-42 traces). Selection uses calibration labels. This probes whether $M_{\mathrm{eff}}$ alone is a poor objective; it is not a validated clinical selection rule.}
   \label{tab:pool-challenge}
   \centering\small
   \begin{tabular}{lcc}
@@ -716,8 +716,8 @@ Across these scope analyses, the frozen-FM loss/augmentation row remains in the 
     \midrule
     (R1) Random 4-of-8                        & 0.043$\,\pm\,$0.050 & 0.378$\,\pm\,$0.125 \\
     (R2) Top-4 by calibration Dice            & \textbf{0.161}$\,\pm\,$0.017 & \textbf{0.581}$\,\pm\,$0.030 \\
-    (R3) Max $M_{\text{eff}}$                 & 0.011$\,\pm\,$0.011 & 0.327$\,\pm\,$0.100 \\
-    (R4) Quality-gated max $M_{\text{eff}}$   & 0.016$\,\pm\,$0.014 & 0.381$\,\pm\,$0.112 \\
+    (R3) Max $M_{\mathrm{eff}}$                 & 0.011$\,\pm\,$0.011 & 0.327$\,\pm\,$0.100 \\
+    (R4) Quality-gated max $M_{\mathrm{eff}}$   & 0.016$\,\pm\,$0.014 & 0.381$\,\pm\,$0.112 \\
     (R5) Diverse-by-arch (2 ViT $+$ 2 CNN)    & 0.096$\,\pm\,$0.017 & 0.445$\,\pm\,$0.036 \\
     \bottomrule
   \end{tabular}
@@ -912,17 +912,17 @@ benchmark panel and therefore remains a robustness check rather than a
 pre-registered causal adjustment.
 
 
-\section{Correlation-equivalent effective pool size $M_{\text{eff}}$}
+\section{Correlation-equivalent effective pool size $M_{\mathrm{eff}}$}
 \label{app:meff}
 
 \textbf{Definition.} For a pool of $M$ members whose per-case failure indicators
 $F_1,\dots,F_M$ at threshold $\tau$ are exchangeable with mean pairwise Pearson
-correlation $\rho_{\text{fail}}$, the variance of the per-case mean indicator is
-$\sigma^2_F [1 + (M-1)\rho_{\text{fail}}] / M$ where $\sigma^2_F$ is the marginal
+correlation $\rho_{\mathrm{fail}}$, the variance of the per-case mean indicator is
+$\sigma^2_F [1 + (M-1)\rho_{\mathrm{fail}}] / M$ where $\sigma^2_F$ is the marginal
 variance. Equating this with the variance of a hypothetical independent pool of
-size $M_{\text{eff}}$, i.e.\ $\sigma^2_F / M_{\text{eff}}$, gives
+size $M_{\mathrm{eff}}$, i.e.\ $\sigma^2_F / M_{\mathrm{eff}}$, gives
 \[
-  M_{\text{eff}} \;=\; \frac{M}{1 + (M-1)\,\rho_{\text{fail}}}.
+  M_{\mathrm{eff}} \;=\; \frac{M}{1 + (M-1)\,\rho_{\mathrm{fail}}}.
 \]
 This is the equicorrelation approximation also used in climate-model ensembles
 (``effective number of models''). We report it as a second-moment readout of
@@ -930,12 +930,12 @@ the audit; it is \emph{not} a literal independent-member count. The reported $M_
 
 \begin{table}[!htbp]
   \caption{\textbf{Threshold-specific effective pool-size diagnostic at $\tau{=}0.85$.}
-  $M_{\text{eff}}$ uses an equicorrelation approximation for binary failure
+  $M_{\mathrm{eff}}$ uses an equicorrelation approximation for binary failure
   indicators and is not a literal independent-member count. Same-bundle pools are each FM's completed decoder seeds. Diverse rows enumerate
   every 4-bundle composition of the filtered functional pool and every available
   one-seed-per-FM tuple. $\rho_{\max}$ is the largest valid diverse-pool
-  $\rho_{\text{fail}}$ over that released enumeration and gives a conservative
-  lower $M_{\text{eff}}$ readout for the most redundant valid tuple. Undefined
+  $\rho_{\mathrm{fail}}$ over that released enumeration and gives a conservative
+  lower $M_{\mathrm{eff}}$ readout for the most redundant valid tuple. Undefined
   zero-variance failure-correlation tuples are excluded rather than imputed.
   Source: \texttt{results/\_merged/m\_eff/*.json}.}
   \label{tab:meff}
@@ -943,7 +943,7 @@ the audit; it is \emph{not} a literal independent-member count. The reported $M_
   \setlength{\tabcolsep}{2.2pt}
   \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccccccc}
     \toprule
-    Task & Func. bundles & Mono mean$^{\dag}$ & Diverse $\bar\rho_{\text{fail}}$ & $\rho_{\max}$ & Mean $M_{\text{eff}}$ & $M_{\text{eff}}(\rho_{\max})$ & Valid tuples \\
+    Task & Func. bundles & Mono mean$^{\dag}$ & Diverse $\bar\rho_{\mathrm{fail}}$ & $\rho_{\max}$ & Mean $M_{\mathrm{eff}}$ & $M_{\mathrm{eff}}(\rho_{\max})$ & Valid tuples \\
     \midrule
     Kvasir     & 11 & 1.12 & 0.333$\pm$0.104 & 0.625 & 2.05$\pm$0.32 & 1.39 & 84{,}480 / 84{,}480 \\
     ACDC LV    & 10 & 1.14 & 0.298$\pm$0.075 & 0.528 & 2.14$\pm$0.24 & 1.55 & 53{,}760 / 53{,}760 \\
@@ -959,18 +959,18 @@ the audit; it is \emph{not} a literal independent-member count. The reported $M_
 \textbf{Reading the table.} The scorer uses the same estimand as
 the text: a diverse pool is four distinct FMs with one decoder-seed member from
 each FM. Under that definition, the nominal $M{=}4$ diverse pools yield
-$M_{\text{eff}}\approx2$--3 under the mean equicorrelation readout, not four.
+$M_{\mathrm{eff}}\approx2$--3 under the mean equicorrelation readout, not four.
 The $\rho_{\max}$ column shows that the most redundant valid diverse tuples have
 lower conservative readouts ($1.30$--$1.69$), while same-FM seed pools are near
 one under the same calculation. The exact level varies by task, tuple, and
-failure threshold, so we use $M_{\text{eff}}$ as a dependence readout, not as a
+failure threshold, so we use $M_{\mathrm{eff}}$ as a dependence readout, not as a
 literal deployment objective.
 
-\paragraph{Pairwise $\rho_{\text{fail}}$ heterogeneity disclosure (equicorrelation caveat).} The $M_{\text{eff}}$ formula assumes constant pairwise correlation across member pairs (equicorrelated pool). In practice the per-pair $\rho_{\text{fail}}$ varies across the bundles in each task. From the \texttt{m\_eff/*.json} outputs, mono-pool $\rho_{\text{fail}}$ across the per-task functional bundles has mean / SD / range:
+\paragraph{Pairwise $\rho_{\mathrm{fail}}$ heterogeneity disclosure (equicorrelation caveat).} The $M_{\mathrm{eff}}$ formula assumes constant pairwise correlation across member pairs (equicorrelated pool). In practice the per-pair $\rho_{\mathrm{fail}}$ varies across the bundles in each task. From the \texttt{m\_eff/*.json} outputs, mono-pool $\rho_{\mathrm{fail}}$ across the per-task functional bundles has mean / SD / range:
 Kvasir mean $0.865$, SD $0.103$, range $[0.601, 0.948]$ ($n{=}11$);
 ACDC LV mean $0.847$, SD $0.116$, range $[0.518, 0.931]$ ($n{=}10$);
 BraTS foreground mean $0.860$, SD $0.111$, range $[0.553, 0.958]$ ($n{=}10$);
-RIGA Cup mean $0.833$ over 7 defined mono pools, and RIGA Disc mean $0.812$ over 10 defined mono pools. Undefined rows occur when an FM's $\tau{=}0.85$ failure indicator is constant, giving zero-variance Pearson. Diverse 4-of-$K$ compositions span a wider $\rho_{\text{fail}}$ distribution, which is why Table~\ref{tab:meff} reports both means and the released-enumeration $\rho_{\max}$ rather than selecting a single representative pool.
+RIGA Cup mean $0.833$ over 7 defined mono pools, and RIGA Disc mean $0.812$ over 10 defined mono pools. Undefined rows occur when an FM's $\tau{=}0.85$ failure indicator is constant, giving zero-variance Pearson. Diverse 4-of-$K$ compositions span a wider $\rho_{\mathrm{fail}}$ distribution, which is why Table~\ref{tab:meff} reports both means and the released-enumeration $\rho_{\max}$ rather than selecting a single representative pool.
 
 \section{Shared-backbone random-effects representation}
 \label{app:rand-effects}
@@ -1005,15 +1005,15 @@ $0.988 \geq 0.807 \geq 0.639$; the all-5 ACDC row is a sensitivity to including 
 This is consistent with the predicted ordering and with trajectory/same-basin evidence from deep ensembles and model soups
 \citep{fort2019loss,neyshabur2020what,wortsman2022soups}; \citet{abe2023pathologies} is better read here as motivation that predictive diversity can remain constrained in high-capacity ensembles, not as a trajectory-bound theorem.
 
-\textbf{Implication for $M_{\text{eff}}$.} When the binary failure thresholds
-preserve the same broad ordering as the continuous Dice scores, $M_{\text{eff}}$
-is monotone decreasing in the observed $\rho_{\text{fail}}$ by definition. The
+\textbf{Implication for $M_{\mathrm{eff}}$.} When the binary failure thresholds
+preserve the same broad ordering as the continuous Dice scores, $M_{\mathrm{eff}}$
+is monotone decreasing in the observed $\rho_{\mathrm{fail}}$ by definition. The
 empirical diagnostics therefore suggest the descriptive ordering
-$M_{\text{eff}}^{\text{within-FM}} \leq M_{\text{eff}}^{\text{same-arch}} \leq M_{\text{eff}}^{\text{cross-arch}}$
+$M_{\mathrm{eff}}^{\text{within-FM}} \leq M_{\mathrm{eff}}^{\text{same-arch}} \leq M_{\mathrm{eff}}^{\text{cross-arch}}$
 in the tested regime, but the paper estimates this quantity from released
 per-case traces rather than inferring it from labels alone. Same-bundle seed pools
 are same-FM by construction and sit near the lower end of the measured
-$M_{\text{eff}}$ range; diverse pools that cross both architecture and
+$M_{\mathrm{eff}}$ range; diverse pools that cross both architecture and
 pretraining bundles sit closer to the upper end.
 
 \textbf{Caveats.} This is a second-moment model at the per-case-score level, not

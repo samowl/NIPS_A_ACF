@@ -11,9 +11,26 @@ Derived trace resource for an evaluation audit. This is not a new raw medical-im
 - Same/cross summary JSONs, subject-level summaries, and selected diagnostic aggregate JSONs.
 - SHA-256 hashes and manifest metadata.
 
-## Upstream Data
+## Upstream Data and Access Procedures
 
-The traces are derived from public or access-controlled medical segmentation benchmarks, including Kvasir-SEG, ACDC, BraTS 2024 GLI, and RIGA+. Raw images and masks are not redistributed here.
+The traces are derived from public or access-controlled medical segmentation benchmarks. Raw images and masks are not redistributed here.
+
+| Dataset | License / DUA | Access page |
+|---|---|---|
+| Kvasir-SEG | CC BY 4.0 | https://datasets.simula.no/kvasir-seg/ |
+| ACDC | CC BY-NC-SA 4.0 (research) | https://www.creatis.insa-lyon.fr/Challenge/acdc/ |
+| BraTS 2024 GLI | Challenge DUA | https://www.synapse.org/brats2024 |
+| RIGA+ (BinRushed/MESSIDOR) | Per-source license | https://deepblue.lib.umich.edu/data/concern/data_sets/3b591905z |
+| ISIC 2018 | CC BY-NC 4.0 | https://challenge.isic-archive.com/data/ |
+| MSD (Spleen, Heart, Hippocampus, Prostate) | CC BY-SA 4.0 | http://medicaldecathlon.com/ |
+
+Pretrained encoder licenses (per `code/docs/NEW_ENCODERS.md`): DINOv2 (Apache-2.0), BiomedCLIP (MIT), MedSAM (Apache-2.0), CLIP/open_clip (MIT + OpenAI weight terms), MAE (CC BY-NC 4.0; research-only), RETFound (CC BY-NC 4.0), ConvNeXt/EfficientNet/ResNet/DeiT (BSD/MIT/Apache as per torchvision/timm).
+
+Derived scalar traces inherit the most restrictive upstream license that applies to the encoder used and the dataset used (e.g., MAE-derived or RETFound-derived traces are CC BY-NC 4.0 research-only).
+
+## PHI Handling
+
+Released JSONs contain only per-case Dice scalars and deterministic hashed alignment IDs (16-hex SHA-256 prefixed by source token, e.g., `riga_magrabia_<hash>`). No DICOM headers, no demographic attributes, no raw filenames, no pixel-level outputs are released. Spot-check command: `grep -r "patient\|name=\|/data/\|P0[0-9][0-9]" results/_merged/per_case_dice/` returns zero hits.
 
 ## Intended Use
 
